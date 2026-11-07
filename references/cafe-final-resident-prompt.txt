@@ -1,0 +1,11 @@
+Create a production pixel-art game character sprite sheet with true alpha transparency. EXACT canvas1536x1024. EXACT layout12 columns×4 rows. Every cell128×256. No labels, no visible grid, no background whatsoever. Use supplied original characters as identity and style reference, preserving their exact chibi heads, black shaggy hair, jackets, backpacks, boots, colors.
+Four rows:
+row1 amber Researcher Ada
+row2 magenta Designer Mika
+row3 cyan Developer Atlas
+row4 purple Tester Finn.
+In each row, columns1-3 front-view sitting/resting, holding cup at chest, sipping cup; columns4-6 left-view sitting/resting, holding cup, sipping cup; columns7-9 right-view sitting/resting, holding cup, sipping cup; columns10-12 BACK view sitting/resting, holding cup, sipping cup.
+ALL characters are SEATED with visible bent knees, horizontal thighs and dangling lower legs and boots. NO furniture or chair. Front views: knees high and separated in front of pelvis with feet below, never standing legs.
+CRITICAL last THREE frames in EVERY row face BACK fully, only back of head and centered square backpack visible. NEVER show face, eyes or profile in columns10,11,12. Back sipping pose raises elbows beside head but head stays facing away.
+STRICT PLACEMENT: Each sprite should occupy 96×128 pixels, centered in its128×256 cell. Each head top at local y64; each feet bottom at local y192. Thus row1 sprites y64..192, row2 sprites y320..448, row3 y576..704, row4 y832..960. Blank128-pixel-high transparent row gaps. Keep these large blank gaps! Do not distribute characters evenly by silhouette, distribute by exact rectangular cells. Col1 all opaque pixels x16..112, col2 x144..240, col3 x272..368, and continue same128 pixel offset through col12. Row2 and row3 and row4 positions EXACTLY row1 plus256 pixels,512 pixels,768 pixels.
+Each sprite matches original hair and clothing. Small readable white cup where requested. Opaque pixel-art sprites, empty pixels genuinely alpha0. NO lighting haze or shadows, no translucent glow on empty areas. No text. All48 separate sprites. This is a runtime atlas requiring exact128×256 slicing; object placement must respect above coordinates.

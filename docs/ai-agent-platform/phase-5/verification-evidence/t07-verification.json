@@ -1,0 +1,283 @@
+{
+  "date": "2026-10-28 Asia/Bangkok",
+  "task": "Phase 5 T07",
+  "decision": "COMPLETE",
+  "scope": "Durable owner/connection/namespace/generation identity approval, internal authenticated source receipt, conservative external observation and explicit bounded replay. No real provider, generic/public webhook, worker, polling, native Execution mutation or frontend integration.",
+  "audit": {
+    "gitStatusExitCode": 128,
+    "gitDiffExitCode": 129,
+    "gitStagedDiffExitCode": 129,
+    "gitMetadata": "Absent; staged/untracked Git inspection unavailable. Maintained-file SHA baseline used; no commit/push/tag/release/deploy.",
+    "applicableAgentsFiles": [],
+    "t01T06Prerequisites": "Reviewed architecture/ADRs/domain, native collaboration/persistence/recovery, T06 config/capability/envelope/security contracts and prior verification. Existing worker, broker, generic webhook/inbox infrastructure absent.",
+    "baselineFiles": 472
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-build-final.log",
+      "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "result": "PASS latest backend build after immutable-grant hardening."
+    },
+    {
+      "command": "npm.cmd run lint",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-lint-verified.log",
+      "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "result": "PASS maintained JS syntax, frontend runtime contract typecheck and backend no-emit typecheck."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-unit-verified.log",
+      "logSha256": "6ae883174aa8cd0646121ee060f76046fde5f09f2b33cbd916ff496504e44ed5",
+      "tests": 255,
+      "passed": 255,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 45312.6427,
+      "result": "PASS 248 prior cases plus 7 new ordering/authentication/no-public-ingress tests. Includes frozen grant metadata/escalation/fingerprint regression assertion."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-db-verified2.log",
+      "logSha256": "25fd20d01153acec35a06956c9e960468fa64b39f37722b657ff1f8b3f815467",
+      "tests": 189,
+      "passed": 189,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 170810.8708,
+      "result": "PASS 174 prior PostgreSQL/Nest/native/browser regression cases plus 15 new T07 identity/ingestion/security/replay/correlation/migration cases."
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-dbcheck.log",
+      "logSha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f",
+      "result": "PASS Drizzle snapshot/journal metadata; no later schema metadata changes."
+    },
+    {
+      "command": "npm.cmd run db:generate",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-generate.log",
+      "logSha256": "bdeede4b0ea8c1d99c91e021dceddee5284731db0a309e114ab25a9738d0cd91",
+      "result": "PASS additive external tables/FKs/indexes generated using existing ORM tooling. New SQL guard functions added to this unapplied development migration and verified on PostgreSQL."
+    }
+  ],
+  "earlierChecks": [
+    {
+      "command": "node --test --test-name-pattern='P5 T07' test/database.integration.cjs",
+      "workingDirectory": "apps/api",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t07-focused.log",
+      "logSha256": "680149f22f395e4061772d1eed87e9430818f1cd6af94368812e5d1efbbb10b8",
+      "result": "Environment failure before scenarios: Docker Desktop Linux daemon stopped. Started installed Desktop hidden, checked 27.4.0, reran isolated tests."
+    },
+    {
+      "command": "node --test --test-name-pattern='P5 T07' test/database.integration.cjs",
+      "workingDirectory": "apps/api",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t07-focused2.log",
+      "logSha256": "1c4176940d976afb1e512f05702c79020b6a25e63ede3a77ab77641b67e04c10",
+      "result": "New SQL guard CASE expression needed explicit parentheses in PL/pgSQL IF. Corrected new migration; no historical SQL changed."
+    },
+    {
+      "command": "node --test --test-name-pattern='P5 T07' test/database.integration.cjs",
+      "workingDirectory": "apps/api",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-focused3.log",
+      "logSha256": "c67eafef6afe4d1616b45631b74fa99f77cc978f93cafd3ec6cdac2eecf696bb",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "result": "Initial twelve focused integration cases passed before expansion to fifteen."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t07-db-final.log",
+      "logSha256": "f4cef805290ddf137505717e9869388699e6a159681d7d0674b017c6c4c25c4b",
+      "tests": 189,
+      "passed": 187,
+      "failed": 2,
+      "result": "Fresh-schema assertion still expected 14 tables; updated exact expected count to 18 and verified zero seeds in all four new tables. Upgrade fixture omitted existing required Task input; supplied valid legacy input. Original preservation assertions retained."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t07-db-verified.log",
+      "logSha256": "b2c9619894498fc3c1b7bb973d94ea133e37414fdd6f5f7c9adc44c9c08213e2",
+      "tests": 189,
+      "passed": 189,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS before final grant-metadata freeze; final complete rerun above supersedes after hardening."
+    }
+  ],
+  "integrationCases": [
+    {
+      "scenario": "P5 T07 trusted real DI PostgreSQL ingestion maps and observes RUNNING to COMPLETED without native work",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 identical concurrent receipts deduplicate durably across restart without audit/projection duplication",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 out-of-order, equal-version and changed-terminal events preserve the last accepted source evidence",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 unknown provider status is retained and unsequenced/unapproved ordering stays deferred",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 an unsequenced source contract cannot claim terminal projection certainty",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 durable receipt survives interruption and missing mapping resolves by bounded replay",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 failed projection rolls back state/audit but retains committed receipt for recovery",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 forged sessions cross-source payloads cross-owner mappings and lifecycle metadata are rejected",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 connection-scoped identical external IDs and explicit generation tombstones preserve history",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 database constraints reject invalid ownership native identity takeover and ambiguous duplicate mappings",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 external-owned collaboration correlation is explicit and never completes native collaboration",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 mapping and replay races serialize across independent service instances",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 explicit external delegation correlation preserves target identity and never mutates Task or delegation",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 bounded history and disabled registered source prevent injection without losing receipts",
+      "outcome": "PASS final canonical full suite"
+    },
+    {
+      "scenario": "P5 T07 migration upgrades populated pre-ingestion schema without rewriting legacy identities",
+      "outcome": "PASS final canonical full suite"
+    }
+  ],
+  "architecture": {
+    "tables": [
+      "external_sources",
+      "external_agent_mappings",
+      "external_execution_mappings",
+      "external_event_inbox"
+    ],
+    "identity": "Unique owner/connection/namespace/generation source plus opaque provider IDs; no name/position inference. Optional approved existing EXTERNAL Agent reference; no registry creation.",
+    "authentication": "Existing fixed-owner operator credential approves five-minute opaque per-process grants with role/source/incarnation/domain. Constant-time digest verification; expiry/rotation/disable/capability revalidation; frozen non-sensitive metadata view. No provider-specific signature or production identity claim.",
+    "durability": "Receipt PENDING+acceptance audit commits; application then atomically commits external projection/inbox outcome/audit. Unknown mappings/order/correlation defer.",
+    "ordering": "Explicit approved immutable source ordering domain; 40-digit sequence strings compared with BigInt; timestamps never determine total order. Terminal state and last known evidence preserved. Unknown source statuses are not cast into native enums.",
+    "recovery": "Operator-only exact replay/history cursor pages default 10/max20, stable UUID order. No automatic polling, timers, consumers or dispatch. Reauthorize after restart; durable state remains in PostgreSQL.",
+    "audit": "Existing immutable command_audit and structured ApiLogger reused. Compatible duplicate receipt/final processing does not duplicate durable side effects. No raw credentials/provider payload logs."
+  },
+  "migration": {
+    "file": "apps/api/migrations/0007_volatile_bloodstorm.sql",
+    "strategy": "Additive four tables, same-owner/referential/unique constraints, history/recovery indexes, immutable identity/history and projection-evidence/type guards. Existing native table definitions/indexes unchanged.",
+    "fresh": "All 18 public tables verified; new tables empty without seeds; existing migration reapplication/drift checks pass.",
+    "upgrade": "Separate regex-verified disposable database on the test-owned PG container; apply pre-0007 journal prefix, persist real legacy owner/route/Agent/Task, then apply current migrator and verify legacy Task data/identities unchanged. Temporary DB and folder cleaned with exact-path/name guards.",
+    "rollback": "Disable source writes/replay and preserve mapping/inbox/audit history first; no destructive reset or dedupe deletion. No production database was targeted."
+  },
+  "security": {
+    "nativeOwnership": "No RuntimeCoordinator or lifecycle dependency in ingestion service; no canonical Task/Execution or Agent writes. Tests verify unchanged counts, disabled Agent state and native/external collaboration/delegation status.",
+    "correlation": "EXTERNAL owned session, active membership and exact delegation target required; source-owned events cannot correlate native collaboration or fabricate parent/child Tasks.",
+    "input": "T06 closed plain-record/getter/prototype/length/time/provenance validators plus 12KB encoded event limit and 16KiB DB bound. Known configured/operator credentials rejected; no arbitrary metadata/payload shape.",
+    "dedupe": "Source/event uniqueness, canonical hash excluding receivedAt, incompatible ID reuse rejected, durable owner advisory lock across instances.",
+    "tenancy": "Owner isolation enforced and tested with independent owners; no tenant abstraction exists, so cross-tenant N/A.",
+    "ingress": "No HTTP controller/webhook route; real application POST tests return 404 for generic event/mapping paths."
+  },
+  "preservation": {
+    "baselineFiles": 472,
+    "method": "Pre-edit maintained-file SHA-256 inventory plus final API source/test/migration snapshot.",
+    "modified": [
+      "apps/api/src/app.module.ts",
+      "apps/api/src/database/schema.ts",
+      "apps/api/test/database.integration.cjs",
+      "apps/api/migrations/meta/_journal.json",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/adapter-foundation.md",
+      "docs/ai-agent-platform/phase-5/api-frontend.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "docs/ai-agent-platform/phase-5/current-system-audit.md",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "docs/ai-agent-platform/phase-5/domain-model.md",
+      "docs/ai-agent-platform/phase-5/external-integration.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/security-reliability.md",
+      "README.md",
+      "WORKSPACE.md"
+    ],
+    "added": [
+      "apps/api/migrations/0007_volatile_bloodstorm.sql",
+      "apps/api/migrations/meta/0007_snapshot.json",
+      "apps/api/src/external-orchestrators/external-ingestion.module.ts",
+      "apps/api/src/external-orchestrators/external-ingestion.service.ts",
+      "apps/api/src/external-orchestrators/ingestion-authority.ts",
+      "apps/api/src/external-orchestrators/ingestion.domain.ts",
+      "apps/api/test/external-ingestion.integration.cjs",
+      "apps/api/test/external-ingestion.test.cjs",
+      "docs/ai-agent-platform/phase-5/external-ingestion.md",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t07-verification.json"
+    ],
+    "missing": [],
+    "cityFilesUnchanged": 79,
+    "nativeRegistryTaskExecutionRuntimeLifecycleCollaborationCityFilesUnchanged": 92,
+    "existingT06SourceFilesUnchanged": 9,
+    "historicalMigrationFilesUnchanged": 14,
+    "finalSourceTestMigrationFilesVerified": 219,
+    "dependenciesAndCI": "Unchanged. Existing test:api/test:db -> verify:phase1 CI path includes new tests; hosted CI not executed."
+  },
+  "cleanup": {
+    "command": "docker ps -a --filter label=elyqreth.test.run --format '{{.Names}}'; docker volume ls --filter label=elyqreth.test.run --format '{{.Name}}'",
+    "exitCode": 0,
+    "testOwnedContainers": 0,
+    "testOwnedVolumes": 0
+  },
+  "limitations": [
+    "Trusted local fixed-owner internal source approval only; no production tenants or public ingress/signature implementation.",
+    "No real external adapter is registered. T08 must verify source authentication, capabilities, ID/incarnation/ordering and provider-specific status mapping.",
+    "No approved order/domain or unknown/conflicting evidence remains durably deferred; authoritative provider snapshot reconciliation is a T08 prerequisite, not fabricated polling.",
+    "No worker/broker/scheduled recovery exists. Tests use controlled durable cuts, fresh Nest contexts, SQL failure injection and explicit replay, not OS hard-kill or worker restart claims.",
+    "No native Execution conversion, external Task dispatch/cancellation, Agent creation/NPC binding, activity API, projection to frontend or city change.",
+    "Mapping/inbox history has no destructive retention cleanup; dedupe/provenance rows must be retained.",
+    "Hosted CI, live provider compatibility, paid APIs and Mermaid renderer execution are not claimed."
+  ],
+  "nextTask": "Phase 5 T08 ? Reference External Orchestrator Integration (not begun)",
+  "documentationValidation": {
+    "markdownFiles": 18,
+    "localLinksAndAnchors": 106,
+    "issues": [],
+    "diagrams": "Mermaid source/fence review only; no renderer executed."
+  }
+}

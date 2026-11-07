@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "actualOwnedProcessKilled": true,
+  "committedCorrelation": true,
+  "concurrentRecoveryCalls": 3,
+  "childExecutionCount": 1,
+  "collaborationStatus": "WAITING",
+  "attention": "OUTCOME_UNCERTAIN",
+  "automaticRedispatch": false
+}

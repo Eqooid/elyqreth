@@ -1,0 +1,77 @@
+# Packaging contract only. No public edge or database is provisioned here.
+name: elyqreth-production
+x-restrictions: &restrictions
+  read_only: true
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: ["ALL"]
+  pids_limit: 128
+  tmpfs: ["/tmp:rw,noexec,nosuid,size=32m,mode=1777"]
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+services:
+  api:
+    <<: *restrictions
+    image: ${API_IMAGE:?Set a reviewed immutable API image reference}
+    user: "1000:1000"
+    env_file: ["${API_CONFIGURATION_FILE:?Set the reviewed backend non-secret configuration file}"]
+    environment:
+      NODE_ENV: production
+      API_HOST: 0.0.0.0
+      API_PORT: "3001"
+      DATABASE_URL_FILE: /run/secrets/database_url
+      DATABASE_SSL_MODE: verify-full
+      DATABASE_SSL_CA_FILE: /run/config/database-ca.pem
+    secrets: [{source: database_url, target: database_url}]
+    configs: [{source: database_ca, target: /run/config/database-ca.pem}]
+    networks: [application]
+    mem_limit: 1g
+    cpus: 1.0
+    restart: "on-failure:3"
+    stop_grace_period: 45s
+  web:
+    <<: *restrictions
+    image: ${WEB_IMAGE:?Set a reviewed immutable web image reference}
+    user: "101:101"
+    configs: [{source: public_access, target: /run/config/access-config.json}]
+    networks: [presentation]
+    mem_limit: 128m
+    cpus: 0.5
+    restart: "on-failure:3"
+    stop_grace_period: 15s
+  migrate:
+    <<: *restrictions
+    profiles: [maintenance]
+    image: ${API_IMAGE:?Set a reviewed immutable API image reference}
+    user: "1000:1000"
+    command: [node, docker/api-start.cjs, migrate]
+    environment:
+      NODE_ENV: production
+      API_HOST: 0.0.0.0
+      API_PORT: "3001"
+      CORS_ORIGINS: ${PUBLIC_ORIGIN:?Set the canonical HTTPS application origin}
+      AUTH_MODE: disabled
+      DATABASE_MIGRATION_TARGET: ${DATABASE_MIGRATION_TARGET:?Set the explicitly reviewed target database name}
+      DATABASE_URL_FILE: /run/secrets/migration_database_url
+      DATABASE_SSL_MODE: verify-full
+      DATABASE_SSL_CA_FILE: /run/config/database-ca.pem
+    secrets: [{source: migration_database_url, target: migration_database_url}]
+    configs: [{source: database_ca, target: /run/config/database-ca.pem}]
+    networks: [application]
+    mem_limit: 512m
+    cpus: 0.5
+    restart: "no"
+    healthcheck: {disable: true}
+secrets:
+  database_url:
+    file: ${DATABASE_URL_SECRET_FILE:?Set the protected API database URL file}
+  migration_database_url:
+    file: ${MIGRATION_DATABASE_URL_SECRET_FILE:?Set the protected migration database URL file}
+configs:
+  database_ca:
+    file: ${DATABASE_CA_FILE:?Set the verified database CA certificate file}
+  public_access:
+    file: ${PUBLIC_ACCESS_CONFIG_FILE:-./dist/access-config.json}
+networks:
+  application: {}
+  presentation: {internal: true}

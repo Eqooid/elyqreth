@@ -1,0 +1,58 @@
+name: Review promotion or rollback plan only
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [staging, production]
+        required: true
+      candidate_run:
+        type: string
+        required: true
+      candidate_attempt:
+        type: string
+        required: true
+      manifest_sha256:
+        type: string
+        required: true
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: promotion-review-${{ inputs.environment }}
+  cancel-in-progress: false
+jobs:
+  review:
+    if: vars.ELYQRETH_PLAN_ENABLED == 'true' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version-file: .node-version
+      - name: Validate identifiers before artifact retrieval
+        env:
+          CANDIDATE_RUN: ${{ inputs.candidate_run }}
+          CANDIDATE_ATTEMPT: ${{ inputs.candidate_attempt }}
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+        run: node -e "if(!/^\d{1,20}$/.test(process.env.CANDIDATE_RUN)||!/^\d{1,3}$/.test(process.env.CANDIDATE_ATTEMPT)||!/^[a-f0-9]{64}$/.test(process.env.MANIFEST_SHA256))process.exit(1)"
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: candidate-${{ inputs.candidate_run }}-${{ inputs.candidate_attempt }}
+          path: ${{ runner.temp }}/candidate
+          run-id: ${{ inputs.candidate_run }}
+          github-token: ${{ github.token }}
+      - name: Verify bundle integrity (no commands from artifact are executed)
+        env:
+          MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/release.mjs producer --bundle "$RUNNER_TEMP/candidate" --expected-sha "$MANIFEST_SHA256"
+      - name: Deployment remains closed
+        run: |
+          printf '%s\n' 'Integrity checked only. Use reviewed policy/evidence with the local plan CLI.'
+          printf '%s\n' 'No registry publication, staging deploy, production promotion or rollback is configured.'

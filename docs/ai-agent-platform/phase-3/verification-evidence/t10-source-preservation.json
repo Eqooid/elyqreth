@@ -1,0 +1,10 @@
+﻿{
+    "scope":  "Maintained frontend source/assets, backend source/migrations and existing Docker files present in recovered inventory",
+    "changed":  [
+
+                ],
+    "checked":  166,
+    "method":  "SHA-256 against recovered pre-T10 inventory; Git metadata absent",
+    "date":  "2026-10-25 Asia/Bangkok",
+    "notClaimed":  "Git history or repository cleanliness; browser visual-diff equivalence"
+}

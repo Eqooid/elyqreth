@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/155.0.8059.85",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "P4 T04 native browser and authorized Nest/PostgreSQL Task creation",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 86,
+  "exceptions": 0,
+  "taskPanelAcceptance": {
+    "status": "PASS",
+    "taskId": "8274f1a0-3762-4ae0-a6d3-418e605a2882",
+    "agentId": "b8694ab9-2196-4bd2-8dd8-0d4f9c6a9a3f",
+    "checkpoints": [
+      "Actual Chrome CORS/native fetch and distinct interaction capability",
+      "Persisted binding to existing resident; backend eligibility verified",
+      "Double submit creates saved-not-started Task",
+      "Close/reopen preserves confirmed reference; unbound NPC has no Task section",
+      "Explicit disconnect clears protected form state"
+    ]
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

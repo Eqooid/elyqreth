@@ -1,0 +1,247 @@
+{
+  "task": "Phase 6 T11 Observability & Production Runbooks",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "status": "PARTIAL",
+  "scope": "Existing API/native runtime, restricted host diagnostics and offline alert fixtures; no production deployment or notification",
+  "user_decision": "No incident owner or approved alert receiver yet; document deployment gates. No external notifications. External production activation remains closed.",
+  "audit": {
+    "agents": "No applicable AGENTS.md found",
+    "git": "No metadata; 5296-file pre-change SHA256 and source snapshots retained outside repository",
+    "missing_original_files": [],
+    "private_env_unchanged": true
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "Backend production TypeScript build passed"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend syntax/runtime-web and backend typechecks passed"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "342 passed; no skipped or failed tests"
+    },
+    {
+      "command": "node --test apps/api/test/observability.test.cjs apps/api/test/operational-signals.test.cjs apps/api/test/container-configuration.test.cjs",
+      "exit_code": 0,
+      "outcome": "17 passed; final request-cookie/event and startup-message assertions included"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 0,
+      "outcome": "45 passed; actual restricted PostgreSQL roles including owner-scoped read-only report and ingestion diagnostics"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238 frontend/city tests passed"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exit_code": 0,
+      "outcome": "16 encrypted backup/isolated-restore tests passed"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "Existing pinned root Dockerfile API target built successfully"
+    },
+    {
+      "command": "node --check scripts/operational-signals.mjs",
+      "exit_code": 0,
+      "outcome": "Syntax valid"
+    },
+    {
+      "command": "node --check scripts/container-hardening.mjs",
+      "exit_code": 0,
+      "outcome": "Syntax valid"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "Final serial rerun: 232/232 passed, including actual PostgreSQL persistence/authorization/recovery, observability tests and all existing browser/session/city cases. Initial concurrent run was 231/232 with one CDP timeout; retained below."
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain",
+      "exit_code": 0,
+      "outcome": "PASS: actual hardened containers, TLS Chromium auth/city, namespace diagnostics, PostgreSQL outage/recovery JSON transitions, clean/timeout PID1 drain, restart/persistence, merged Compose validation and image secret checks"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "17 documents: local links, consumed environment inventory, touched-file whitespace/conflict checks passed"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: supplied workspace has no .git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no .git metadata; source snapshots, SHA256 and whitespace/conflict checks used instead"
+    },
+    {
+      "command": "Get-Content -LiteralPath \"$env:TEMP\\elyqreth-t11-db.log\" | node scripts/operational-signals.mjs",
+      "exit_code": 2,
+      "outcome": "EXPECTED: actual synthetic integration log slice triggered proposed alerts; output contains only fixed-label counts, no source IDs/payloads; mixed test output counted as invalid lines"
+    }
+  ],
+  "corrected_initial_failures": [
+    {
+      "command": "node --test apps/api/test/observability.test.cjs apps/api/test/foundation.test.cjs apps/api/test/runtime-coordinator.test.cjs",
+      "exit_code": 1,
+      "cause": "Test capture intercepted Node test-runner binary IPC; restricted capture to JSON strings and forwarded other writes; focused tests passed afterward"
+    },
+    {
+      "command": "node --test apps/api/test/operational-signals.test.cjs apps/api/test/container-configuration.test.cjs",
+      "exit_code": 1,
+      "cause": "Old readiness test expected one log; now explicitly verifies api_draining once and dependency transition events while preserving probe bounds"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 1,
+      "cause": "New ingestion diagnostic test patched a different DI logger instance; fixed exact service sink; subsequent 44/45 exposed a real new report query defect: receivedAt maps to SQL created_at, not received_at. Corrected SELECT alias/order; final 45/45 passed"
+    },
+    {
+      "command": "docker build -f apps/api/Dockerfile -t elyqreth-t05-api:verification .",
+      "exit_code": 1,
+      "cause": "Incorrect Dockerfile path; existing topology uses root Dockerfile --target api, which built successfully"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 1,
+      "cause": "Initial run: 231/232 passed; one P4 browser case hit CDP Runtime.evaluate 10s timeout while other container/backup checks ran. Serial full-suite rerun passed 232/232 without application or timeout changes. Contention is suspected, not proven."
+    }
+  ],
+  "capabilities": {
+    "structured_logs": "VERIFIED: fixed envelope/event/field vocabulary; request/config secret omission; no payload/error serialization",
+    "correlation": "VERIFIED: concurrent AsyncLocalStorage and HTTP-close request context; existing durable runtime/collaboration audit references retained",
+    "diagnostics": "VERIFIED in actual restricted PostgreSQL role: configured-owner latest20 metadata sections, read-only transaction and bounded SQL; no public endpoint or arbitrary SQL",
+    "metrics": "VERIFIED LOCAL: fixed-label offline counters, six disjoint latency buckets, malformed-line framing and proposed alert detection; no exporter/monitor backend",
+    "tracing": "DOCUMENTED: existing IDs are correlation foundations only; distributed trace collection NOT IMPLEMENTED or claimed",
+    "audit": "PRESERVED: durable actor attribution and owner authorization remain authoritative; report omits audit.details",
+    "runbooks": "16 incident procedures plus component T07-T10 runbooks; unsupported workers/broker/webhook commands are not invented"
+  },
+  "production_gates": [
+    "Designated incident, security and recovery owners with escalation roster",
+    "Approved off-host receiver, delivery authorization and access/retention policy",
+    "Actual delivery/recovery/exhaustion/silence and storage failure verification",
+    "Production baselines and approved thresholds, RPO/RTO/retention",
+    "Approved external production target/policy remains absent and activation closed"
+  ],
+  "not_run": [
+    "External notification delivery: explicitly not configured or authorized",
+    "Production monitoring backend, uptime probe, log retention/export and host disk-exhaustion drill",
+    "Production incident tabletop and live provider outage tests",
+    "Distributed tracing exporter/backend"
+  ],
+  "files_changed": [
+    "apps/api/src/common/api-logger.ts",
+    "apps/api/src/common/http-foundation.ts",
+    "apps/api/src/common/request-context.ts",
+    "apps/api/src/database/database.module.ts",
+    "apps/api/src/external-orchestrators/external-ingestion.service.ts",
+    "apps/api/src/health/health.controller.ts",
+    "apps/api/src/health/readiness.service.ts",
+    "apps/api/src/runtime/providers/ollama/ollama.provider.ts",
+    "apps/api/src/runtime/providers/openai/openai.provider.ts",
+    "apps/api/src/runtime/runtime-coordinator.ts",
+    "apps/api/test/container-configuration.test.cjs",
+    "apps/api/test/external-ingestion.integration.cjs",
+    "apps/api/test/readiness.integration.cjs",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/operations-recovery.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "README.md",
+    "scripts/container-hardening.mjs",
+    "apps/api/src/common/log-policy.ts",
+    "apps/api/src/operations/diagnostics-command.ts",
+    "apps/api/test/observability.test.cjs",
+    "apps/api/test/operational-signals.test.cjs",
+    "docs/ai-agent-platform/phase-6/observability.md",
+    "scripts/operational-signals.mjs",
+    "docs/ai-agent-platform/phase-6/verification-evidence/observability-verification.json"
+  ],
+  "final_review": {
+    "status": "PASS",
+    "no_commit_push_tag_release_deployment": true,
+    "no_production_database_access": true,
+    "no_frontend_renderer_or_npc_source_changes": true,
+    "no_dependency_compose_auth_migration_changes": true,
+    "baseline_files": 5296,
+    "modified_files": 20,
+    "created_files": 7,
+    "missing_original_files": 0,
+    "unexpected_changed_files": 0,
+    "private_env_unchanged": true,
+    "private_key_blocks_added": 0,
+    "whitespace_or_conflict_markers": 0,
+    "renderer_npcs_sessions_migrations_compose_dependencies_unchanged": true
+  },
+  "container_checks": [
+    "production missing schema fails before serving",
+    "T11 namespace diagnostics expose safe pool and runtime metadata; remote container denied",
+    "non-root read-only capability/process/resource limits; namespace-only readiness; public liveness",
+    "T10 external key file loads as non-root under production file permissions without enabling integration or printing its value; ambiguous direct/file input rejected",
+    "T06 verified TLS1.2/1.3, HTTP redirect/canonical host, static assets/CSP, actual bearer login/me/401/403/logout/reauth, native execution, polling after edge restart, CORS, body/page bounds and internal route rejection",
+    "T06 only edge publishes loopback test ports; edge/web cannot reach DB; web cannot directly reach API; readiness remains namespace-only",
+    "T06 real Chromium HTTPS CSP/city/login/session/polling/reconnect/logout regression",
+    "T06 protected TLS rotation, invalid pair leaves existing TLS intact, invalid host/unsafe key fail startup, production HSTS and maximum bearer/header bounds verified",
+    "T06 spoofed forwarding headers overwritten, canonical upstream Host, no implicit proxy trust, 429 login budget, safe outage/logging and merged Compose network/port checks",
+    "real local account session native Task/Execution success and logout; separate migrator/application credentials",
+    "T09 clean: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+    "T09 timeout: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+    "missing/world-readable secret files and TLS hostname mismatch rejected safely",
+    "database outage removes readiness without killing liveness; readiness recovers after durable PG restart",
+    "T11 actual PostgreSQL outage and recovery have categorized JSON transition logs; liveness remains available",
+    "bounded SIGTERM shutdown and API recreation preserve successful work and one execution",
+    "non-root static web assets/readiness; malformed public JSON fails startup; invalid live input cannot expose mounted secrets",
+    "production Compose configuration valid; no published API/database/worker ports; managed DB boundary retained",
+    "image content/history contain no test credentials, private env, host modules or build/test tooling"
+  ],
+  "actual_log_slice": {
+    "event_count": 2515,
+    "conditions": [
+      "runtime_drain_deadline",
+      "ingestion_authorization_denied",
+      "ingestion_requires_reconciliation"
+    ],
+    "invalid_non_JSON_test_output_lines": 286,
+    "dimensions": 47
+  },
+  "failure_scenarios": [
+    {
+      "scenario": "API/database dependency failure",
+      "evidence": "Real container PG stop/start: private readiness503, liveness200, JSON dependency transition and recovery; schema drift/permission fixtures also pass"
+    },
+    {
+      "scenario": "Worker/native drain deadline",
+      "evidence": "Real container PID1 clean/deadline paths preserve durable state and reject duplicate effective work; existing runtime races pass"
+    },
+    {
+      "scenario": "External provider timeout/auth failure",
+      "evidence": "Deterministic adapter/security fixture tests and fixed-label alert fixtures; no production target or live outage claimed"
+    },
+    {
+      "scenario": "Invalid trusted ingestion authentication",
+      "evidence": "Actual PG role tests reject copied grant, omit untrusted identities, retain authorized deduplication and stale projection state; no public webhook exists"
+    },
+    {
+      "scenario": "Collaboration failure/recovery",
+      "evidence": "Existing native/mixed PostgreSQL integration and restricted-role workflows pass; parent/child IDs/audit available in bounded host report"
+    },
+    {
+      "scenario": "Backup/restore failure protection",
+      "evidence": "16 existing corruption/retention/isolated-restore regressions pass; live off-host scheduler/delivery not configured"
+    }
+  ]
+}

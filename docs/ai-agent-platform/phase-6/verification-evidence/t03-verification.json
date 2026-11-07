@@ -1,0 +1,121 @@
+{
+  "task": "Phase 6 T03",
+  "date": "2026-10-29",
+  "decision": "PARTIAL",
+  "identity_direction": "Existing OIDC/JWT issuer selected by user; required verification and ownership policy not supplied",
+  "production_access": "closed; no issuer/audience/key/owner mapping invented",
+  "required_inputs": [
+    "issuer URL",
+    "API audience",
+    "accepted algorithms and trusted JWKS/public-key source",
+    "verified subject to existing owner and operation policy",
+    "private operator or public account audience"
+  ],
+  "files_changed": [
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/common/local-access.guard.ts",
+    "apps/api/src/common/local-principal.ts",
+    "apps/api/src/interaction/interaction.context.ts",
+    "apps/api/src/interaction/interaction.guard.ts",
+    "apps/api/test/native-coordination.integration.cjs",
+    "apps/api/test/principal-authorization.test.cjs",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/principal-authorization.md",
+    "docs/ai-agent-platform/phase-6/t03-verification.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/t03-verification.json",
+    "docs/ai-agent-platform/security-and-reliability.md"
+  ],
+  "files_created": [
+    "apps/api/src/common/local-principal.ts",
+    "apps/api/test/principal-authorization.test.cjs",
+    "docs/ai-agent-platform/phase-6/principal-authorization.md",
+    "docs/ai-agent-platform/phase-6/t03-verification.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/t03-verification.json"
+  ],
+  "files_modified": [
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/common/local-access.guard.ts",
+    "apps/api/src/interaction/interaction.context.ts",
+    "apps/api/src/interaction/interaction.guard.ts",
+    "apps/api/test/native-coordination.integration.cjs",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/security-and-reliability.md"
+  ],
+  "deleted_files": [],
+  "preservation": {
+    "baseline_files": 671,
+    "unchanged_files": 661,
+    "city_unchanged": true,
+    "migrations_unchanged": true,
+    "configuration_unchanged": true,
+    "docker_ci_unchanged": true
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "exit": 0,
+      "outcome": "Backend build passed"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exit": 0,
+      "outcome": "Frontend syntax and frontend/backend typechecks passed"
+    },
+    {
+      "command": "node --test apps/api/test/principal-authorization.test.cjs apps/api/test/interaction.test.cjs",
+      "exit": 0,
+      "outcome": "15 tests passed"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit": 0,
+      "outcome": "289 backend tests passed"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit": 0,
+      "outcome": "210 real PostgreSQL/Nest/integration/browser tests passed; includes new forged-header native/delegation/polling isolation case"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit": 0,
+      "outcome": "228 frontend tests passed"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit": 0,
+      "outcome": "Disposable Vite production bundle passed"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "exit": 0,
+      "outcome": "Chrome156 smoke passed; exceptions 0"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit": 0,
+      "outcome": "7 documents, local links, direct environment inventory and touched-file whitespace"
+    },
+    {
+      "command": "git status --short",
+      "exit": 128,
+      "outcome": "BLOCKED: no Git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 129,
+      "outcome": "BLOCKED: no Git metadata"
+    }
+  ],
+  "not_run": [
+    "Real production OIDC issuer/audience/signature/expiry/revocation/rotation: missing contract",
+    "Production human/tenant authorization and session integration: not implemented; no tenancy invented"
+  ],
+  "secret_review": "No production credentials, tokens, private keys or ignored env files added; only deterministic synthetic unit credentials and existing isolated test harness."
+}

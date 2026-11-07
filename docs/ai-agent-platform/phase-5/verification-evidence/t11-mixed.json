@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "nativeChildCount": 1,
+  "duplicateReceipts": 4,
+  "nativeExternalIdCollisionPreserved": true,
+  "sourceOutageRecovery": true,
+  "receiptReplay": true,
+  "immutableNativeCounts": true,
+  "projectionReads": [
+    {
+      "operation": "snapshot",
+      "durationMs": 26,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 18,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 16,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 18,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 15,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 17,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 16,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 13,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 14,
+      "responseBytes": 2007
+    },
+    {
+      "operation": "snapshot",
+      "durationMs": 13,
+      "responseBytes": 2007
+    }
+  ]
+}

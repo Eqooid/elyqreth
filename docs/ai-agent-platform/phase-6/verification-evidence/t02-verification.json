@@ -1,0 +1,131 @@
+{
+  "task": "Phase 6 T02",
+  "date": "2026-10-29",
+  "decision": "PARTIAL",
+  "production_access": "disabled; T01 decisions unresolved",
+  "git_metadata": "absent; status/diff/staging blocked",
+  "files_changed": [
+    ".env.example",
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/.env.example",
+    "apps/api/src/config/configuration.ts",
+    "apps/api/src/database/database-configuration.ts",
+    "apps/api/test/activity.integration.cjs",
+    "apps/api/test/agents.test.cjs",
+    "apps/api/test/database-config.test.cjs",
+    "apps/api/test/events.test.cjs",
+    "apps/api/test/foundation.test.cjs",
+    "apps/api/test/helpers/production-configuration.cjs",
+    "apps/api/test/production-configuration.test.cjs",
+    "apps/api/test/runtime-api.test.cjs",
+    "apps/api/test/tasks.test.cjs",
+    "apps/api/test/tools-di.test.cjs",
+    "docs/ai-agent-platform/backend-foundation.md",
+    "docs/ai-agent-platform/database-foundation.md",
+    "docs/ai-agent-platform/phase-5/README.md",
+    "docs/ai-agent-platform/phase-5/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/t02-verification.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/t02-verification.json",
+    "tests/configuration-boundary.test.js",
+    "vite.config.js"
+  ],
+  "deleted_files": [],
+  "preservation": {
+    "baseline_files": 663,
+    "unchanged_files": 642,
+    "city_source_unchanged": true,
+    "migrations_unchanged": true,
+    "docker_ci_unchanged": true,
+    "source_hashes": {
+      ".env.example": "ddd94eb20029f9756a6b2476c6e03d14e6deacc3539de484af39aff2df9df0f1",
+      "vite.config.js": "c2d72a1c4bc39554aa485b5c9484c9eb62dff33845ecca2421f3262e88ab6c07",
+      "apps/api/.env.example": "8fe97a8a626bf1aa3680bf3173fe3b193d32563ab5c462be08c1c1a47305fc5b",
+      "apps/api/src/config/configuration.ts": "07acb03bc31acfca58049111223c87e2666c8afb23e51d1efc60adb6c15d30e6",
+      "apps/api/src/database/database-configuration.ts": "3d22fd7b8ca67f52d46513f3d42550c93b5096ec9ebd715bba791de2aab870f6",
+      "apps/api/test/activity.integration.cjs": "c3a0b518eebb42fbeccf6518901a5d3525ac5cfebc423c06cbd8fdfd1c25c187",
+      "apps/api/test/agents.test.cjs": "eb3f84d25392483d01e69f7e4fbcdf7237db8991a175513b1cd6a6f4068a0a9d",
+      "apps/api/test/database-config.test.cjs": "da67e7de1424af7d65365e3063a3a9cbd8b8b23c9a15064231dd32e40ed150d0",
+      "apps/api/test/events.test.cjs": "448ee956af8aa8eec2b339fba5a70e406c04d023ef304d88cb11ac789bd5cc2d",
+      "apps/api/test/foundation.test.cjs": "e589f45b7a167fded320723baf0db86dafbbd9381e6984d25ce6a058d58e3109",
+      "apps/api/test/production-configuration.test.cjs": "0b9ffc5ad08e0fa547964dad9d91fc7a1993cbd10077fd4be19efa06f01f1208",
+      "apps/api/test/runtime-api.test.cjs": "d4e554e9e0d86f26a8bf3f60a8e1d78200baaea2e6a37b3cf91f307adea6cf35",
+      "apps/api/test/tasks.test.cjs": "be9ca2713cf39292cd0d295b673de2b6f5c76618314953b6d86a6d5a03f4588d",
+      "apps/api/test/tools-di.test.cjs": "26ea96bfae5746bda06025eee341b195c5d4b4d00b8ce3cc80751220c082a7a6",
+      "apps/api/test/helpers/production-configuration.cjs": "decbc5e32d20aa459d4fec5139cd2542e80e60b22d6eb0cc46f145c8a3e4a6b4",
+      "tests/configuration-boundary.test.js": "f61adaee4eb1d7d4aae915966bf899822cde714437ff0071b1349847e1a54a32"
+    }
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit": 0,
+      "outcome": "syntax and frontend/backend typechecks passed"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit": 0,
+      "outcome": "backend production build passed"
+    },
+    {
+      "command": "node --test apps/api/test/production-configuration.test.cjs tests/configuration-boundary.test.js",
+      "exit": 0,
+      "outcome": "11 tests passed"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit": 0,
+      "outcome": "280 backend tests passed; includes 9 configuration/security tests"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit": 0,
+      "outcome": "228 frontend tests passed; includes 2 configuration boundary tests"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit": 0,
+      "outcome": "209 isolated PostgreSQL/integration/browser tests passed"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "exit": 0,
+      "outcome": "Chrome156 smoke PASS; exceptions 0"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit": 0,
+      "outcome": "disposable static bundle passed"
+    },
+    {
+      "command": "git status --short",
+      "exit": 128,
+      "outcome": "BLOCKED: no Git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 129,
+      "outcome": "BLOCKED: no Git metadata"
+    },
+    {
+      "command": "git diff --cached --stat",
+      "exit": 129,
+      "outcome": "BLOCKED: no Git metadata"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit": 0,
+      "outcome": "5 current documents, local links, direct consumed environment inventory and touched-file whitespace passed"
+    }
+  ],
+  "not_run": [
+    "Production authentication/session/CSRF/trusted proxy: policy and T03/T04 implementation deferred",
+    "Live production TLS/database/provider/deployment: no approved target or credentials; no deployment authorized"
+  ],
+  "secret_review": "No production credentials or private-key material added. One marker-only existing malicious-input fixture in tasks.test.cjs was reviewed; it is not a key. Newly introduced credential strings are explicitly synthetic unit fixtures. No env files added."
+}

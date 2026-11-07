@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "publicationEnabled": false,
+  "deploymentEnabled": false,
+  "operationsReady": false,
+  "repository": "owner/repository",
+  "defaultBranch": "replace-with-actual-default-branch",
+  "imagePrefix": "registry.example.invalid/approved-prefix",
+  "targetIds": {
+    "staging": "replace-with-approved-staging-id",
+    "production": "replace-with-approved-production-id"
+  }
+}

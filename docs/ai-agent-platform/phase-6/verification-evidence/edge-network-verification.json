@@ -1,0 +1,410 @@
+{
+  "task": "Phase 6 T06",
+  "decision": "COMPLETE",
+  "review_date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "scope": "Locally verified private-operator edge/private-network configuration; not a deployed or production-accepted site",
+  "checks": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend syntax/strict types and backend typecheck",
+      "log": "OS_TEMP/elyqreth-t06-lint-final.log",
+      "log_sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "304/304 backend unit/security/configuration tests",
+      "log": "OS_TEMP/elyqreth-t06-api-accepted.log",
+      "log_sha256": "601a645fdd2972070233973694b7e7ea89ef46a045c5c153b6e4bbf79b171e47"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238/238 frontend unit/regression tests",
+      "log": "OS_TEMP/elyqreth-t06-web.log",
+      "log_sha256": "d7a473fa47d74a601170126b073ee0bdec1124fa9c2fc0a48e08f81c9d1dfe66"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "221/221 real persistence/native/external/auth/browser tests",
+      "log": "OS_TEMP/elyqreth-t06-db.log",
+      "log_sha256": "90da502ceed34890eddb68bf3ff5afd5125ab21e34415096851b1968b62afb89"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "Backend production compilation",
+      "log": "OS_TEMP/elyqreth-t06-build-api-host.log",
+      "log_sha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 0,
+      "outcome": "Disposable frontend production build",
+      "log": "OS_TEMP/elyqreth-t06-build-web-accepted.log",
+      "log_sha256": "c3b56454b6dca5473fa446b9724ca3d699e8ccae0ab5a87986deb570a6f49b29"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "Final API image",
+      "log": "OS_TEMP/elyqreth-t06-build-api-final.log",
+      "log_sha256": "1e0a94fa21fda301d0137cae52bce9a8ea3ebc3039f12cceb9c37fad51eafb0f"
+    },
+    {
+      "command": "docker build --target web -t elyqreth-t05-web:verification .",
+      "exit_code": 0,
+      "outcome": "Final web image with safe logs/relative redirects",
+      "log": "OS_TEMP/elyqreth-t06-build-web-image-final.log",
+      "log_sha256": "f596ed55ddfc41fb85653a0d8fd308deb73c5ec14cbf6aa4891c2d4210c3506d"
+    },
+    {
+      "command": "docker build --target edge -t elyqreth-t06-edge:verification .",
+      "exit_code": 0,
+      "outcome": "Final TLS edge image",
+      "log": "OS_TEMP/elyqreth-t06-build-edge-final.log",
+      "log_sha256": "06089c805525f1847bd0f3d5d0c73ca3f3cfe45e283b0cc761d8e8cd4e6f0899"
+    },
+    {
+      "command": "npm.cmd run test:edge",
+      "exit_code": 0,
+      "outcome": "All final edge/T05 inherited checks passed",
+      "log": "OS_TEMP/elyqreth-t06-edge-accepted.log",
+      "log_sha256": "79c97c3eab68a9ec282b6b12ef14298edb6a129060cd5d03761b9ea1df0f8a2e"
+    },
+    {
+      "command": "npm.cmd run test:docker",
+      "exit_code": 0,
+      "outcome": "Development Compose/city/browser regression; zero exceptions",
+      "log": "OS_TEMP/elyqreth-t06-development-docker-accepted.log",
+      "log_sha256": "d429dc258c1931e03a7fed29a312048104946694bd04210fd62d9708d40b3d5c"
+    }
+  ],
+  "edge_checks": [
+    "production missing schema fails before serving",
+    "non-root read-only capability/process/resource limits; namespace-only readiness; public liveness",
+    "T06 verified TLS1.2/1.3, HTTP redirect/canonical host, static assets/CSP, actual bearer login/me/401/403/logout/reauth, native execution, polling after edge restart, CORS, body/page bounds and internal route rejection",
+    "T06 only edge publishes loopback test ports; edge/web cannot reach DB; web cannot directly reach API; readiness remains namespace-only",
+    "T06 real Chromium HTTPS CSP/city/login/session/polling/reconnect/logout regression",
+    "T06 protected TLS rotation, invalid pair leaves existing TLS intact, invalid host/unsafe key fail startup, production HSTS and maximum bearer/header bounds verified",
+    "T06 spoofed forwarding headers overwritten, canonical upstream Host, no implicit proxy trust, 429 login budget, safe outage/logging and merged Compose network/port checks",
+    "real local account session native Task/Execution success and logout; separate migrator/application credentials",
+    "missing/world-readable secret files and TLS hostname mismatch rejected safely",
+    "database outage removes readiness without killing liveness; readiness recovers after durable PG restart",
+    "bounded SIGTERM shutdown and API recreation preserve successful work and one execution",
+    "non-root static web assets/readiness; malformed public JSON fails startup; invalid live input cannot expose mounted secrets",
+    "production Compose configuration valid; no published API/database/worker ports; managed DB boundary retained",
+    "image content/history contain no test credentials, private env, host modules or build/test tooling"
+  ],
+  "subcommands": [
+    {
+      "command": "nginx -t -c /tmp/edge-nginx.conf (inside owned edge)",
+      "exit_code": 0
+    },
+    {
+      "command": "docker compose --env-file <owned-fixture>/compose.env -f docker-compose.production.yml -f docker-compose.edge.yml config --format json",
+      "exit_code": 0
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: no Git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: independent hashes/whitespace used"
+    },
+    {
+      "command": "node --check scripts/container-hardening.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "node --check scripts/edge-network.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "node --check scripts/edge-browser.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges:true --entrypoint sh elyqreth-t06-edge:verification -c 'test ! -e /run/secrets/tls_private_key && test ! -e /run/secrets/tls_certificate && test ! -e /app/.env && id -u'",
+      "exit_code": 0,
+      "outcome": "No TLS runtime secrets in edge image; UID 101"
+    }
+  ],
+  "images": [
+    {
+      "tags": [
+        "elyqreth-t05-api:verification"
+      ],
+      "image_id": "sha256:3b004963a4804b53f94b895093074fd41743adbf627926a8c619c8406ed7cdab",
+      "runtime_user": "1000:1000",
+      "size_bytes_uncompressed": 214320359,
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "tags": [
+        "elyqreth-t05-web:verification"
+      ],
+      "image_id": "sha256:3e9041e87c5b7d29f83bebce14fd97524e0f4acdd74925b24fc9d476de15c98b",
+      "runtime_user": "101:101",
+      "size_bytes_uncompressed": 41676162,
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "tags": [
+        "elyqreth-t06-edge:verification"
+      ],
+      "image_id": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2",
+      "runtime_user": "101:101",
+      "size_bytes_uncompressed": 12745745,
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  ],
+  "files_created": [
+    "docker-compose.edge.yml",
+    "docker/edge/nginx.conf.template",
+    "docker/edge/start.sh",
+    "docs/ai-agent-platform/phase-6/edge-network.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/edge-network-verification.json",
+    "scripts/edge-browser.mjs",
+    "scripts/edge-network.mjs"
+  ],
+  "files_modified": [
+    ".dockerignore",
+    "Dockerfile",
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/application.ts",
+    "apps/api/test/container-configuration.test.cjs",
+    "docker/nginx.conf",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/production-architecture.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "package.json",
+    "scripts/container-hardening.mjs"
+  ],
+  "files_changed": [
+    ".dockerignore",
+    "Dockerfile",
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/application.ts",
+    "apps/api/test/container-configuration.test.cjs",
+    "docker-compose.edge.yml",
+    "docker/edge/nginx.conf.template",
+    "docker/edge/start.sh",
+    "docker/nginx.conf",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/edge-network.md",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/production-architecture.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/edge-network-verification.json",
+    "package.json",
+    "scripts/container-hardening.mjs",
+    "scripts/edge-browser.mjs",
+    "scripts/edge-network.mjs"
+  ],
+  "files_removed": [],
+  "preservation": {
+    "baseline_files": 713,
+    "method": "SHA256 compared to OS_TEMP/elyqreth-t06-baseline.json",
+    "groups": {
+      "city": {
+        "files_compared": 87,
+        "unchanged": true
+      },
+      "migrations": {
+        "files_compared": 23,
+        "unchanged": true
+      },
+      "native_runtime": {
+        "files_compared": 46,
+        "unchanged": true
+      },
+      "collaboration": {
+        "files_compared": 16,
+        "unchanged": true
+      },
+      "external_orchestrators": {
+        "files_compared": 17,
+        "unchanged": true
+      },
+      "authentication": {
+        "files_compared": 8,
+        "unchanged": true
+      },
+      "configuration_database": {
+        "files_compared": 8,
+        "unchanged": true
+      },
+      "development_dependencies_ci": {
+        "files_compared": 7,
+        "unchanged": true
+      }
+    }
+  },
+  "cleanup": [
+    {
+      "label": "elyqreth.t05.run",
+      "kind": "containers",
+      "remaining": 0
+    },
+    {
+      "label": "elyqreth.t05.run",
+      "kind": "volumes",
+      "remaining": 0
+    },
+    {
+      "label": "elyqreth.t05.run",
+      "kind": "networks",
+      "remaining": 0
+    },
+    {
+      "label": "elyqreth.t06.probe",
+      "kind": "containers",
+      "remaining": 0
+    },
+    {
+      "label": "elyqreth.t06.probe",
+      "kind": "volumes",
+      "remaining": 0
+    },
+    {
+      "label": "elyqreth.t06.probe",
+      "kind": "networks",
+      "remaining": 0
+    },
+    {
+      "label": "com.docker.compose.project=elyqreth_docker_test_26b0466c2e082ee4",
+      "kind": "containers",
+      "remaining": 0
+    },
+    {
+      "label": "com.docker.compose.project=elyqreth_docker_test_26b0466c2e082ee4",
+      "kind": "volumes",
+      "remaining": 0
+    },
+    {
+      "label": "com.docker.compose.project=elyqreth_docker_test_26b0466c2e082ee4",
+      "kind": "networks",
+      "remaining": 0
+    }
+  ],
+  "confirmed_fixes": [
+    "Read-only nginx scratch paths",
+    "Single edge ownership of security headers",
+    "Existing 16 KiB bearer versus default Node aggregate-header mismatch; bounded 24 KiB HTTP server budget",
+    "Authoritative backend error bodies preserved; proxy transport failures generic",
+    "Static upstream combined/error logs no longer record raw query strings",
+    "Static directory redirects remain relative, avoiding HTTP/internal-port Location"
+  ],
+  "historical_failures": [
+    "Harness encoding error corrected",
+    "Initial nginx startup failed on unused default /var/cache paths",
+    "Duplicate security header assertion exposed upstream header duplication",
+    "Direct typed maxHeaderSize assignment did not compile; tested bounded runtime assignment used",
+    "Denied preflight returns existing 404 without allow-origin, not assumed 403",
+    "Browser polling uses actual /cities/elyqreth/agents endpoint, not assumed /agents/activities",
+    "Online revalidation before edge startup correctly cleared protected session; harness waits for verified TLS",
+    "Frontend build first hit sandbox filesystem denial; approved unrestricted run passed",
+    "Initial directory probe used unsupported BusyBox wget option; direct HTTP probe confirmed incorrect absolute Location before fix"
+  ],
+  "limitations": [
+    "No remote deployment, cloud provisioning or production credentials",
+    "T02 public audience/DB operating decisions remain open",
+    "Actual DNS/certificate issuance/renewal ownership, private DB routing and host/provider firewall/admin/egress policy require operator approval and site verification",
+    "Only existing bounded HTTP polling exists; no SSE/WebSocket/public ingestion endpoint fabricated",
+    "No hosted OIDC/provider acceptance, production load/visual-diff/backup/full active-drain acceptance claimed",
+    "No Git checkout/provenance supplied; release gate remains",
+    "Image vulnerability scans were not rerun in T06; T05 package evidence is historical, not a new edge-image scan"
+  ],
+  "next_task": "T07 Production Database Roles & Migration Safety ? not started",
+  "remote_actions": false,
+  "production_databases_modified": false,
+  "requirements": [
+    {
+      "area": "Production reverse proxy",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Public/private service boundaries",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "TLS and certificate handling",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Forwarding-header trust boundary",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Frontend/backend routing",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Authentication/session compatibility",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Private database and absent messaging/cache/worker boundaries",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Trusted internal ingestion and existing egress policy",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Existing polling/reconnection; no SSE/WebSocket implementation",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Request/connection budgets and security headers",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Container networking and local production-like verification",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    },
+    {
+      "area": "Logging, documentation and regression evidence",
+      "status": "COMPLETE",
+      "scope": "Verified local configuration; deployment/site controls remain the documented operator gates"
+    }
+  ]
+}

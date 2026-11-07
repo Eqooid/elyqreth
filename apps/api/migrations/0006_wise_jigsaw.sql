@@ -1,0 +1,2 @@
+CREATE INDEX "collaboration_sessions_incomplete_idx" ON "collaboration_sessions" USING btree ("owner_id","id") WHERE "collaboration_sessions"."authority" = 'NATIVE' AND "collaboration_sessions"."status" IN ('CREATED','ACTIVE','WAITING');--> statement-breakpoint
+CREATE INDEX "command_audit_resource_command_idx" ON "command_audit" USING btree ("owner_id","resource_type","resource_id","command_type");

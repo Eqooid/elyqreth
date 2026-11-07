@@ -1,0 +1,1650 @@
+{
+  "props": {
+    "path": "/workspace/scratch/b8e339b953ba/cafe-assets/cafe-props.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "sprites": {
+      "counter": {
+        "rect": [
+          80,
+          19,
+          436,
+          342
+        ],
+        "inspectionRegion": [
+          65,
+          0,
+          455,
+          380
+        ]
+      },
+      "table": {
+        "rect": [
+          659,
+          109,
+          273,
+          231
+        ],
+        "inspectionRegion": [
+          620,
+          55,
+          365,
+          320
+        ]
+      },
+      "chair-down": {
+        "rect": [
+          1194,
+          63,
+          181,
+          275
+        ],
+        "inspectionRegion": [
+          1160,
+          35,
+          255,
+          345
+        ]
+      },
+      "chair-left": {
+        "rect": [
+          195,
+          399,
+          182,
+          248
+        ],
+        "inspectionRegion": [
+          175,
+          380,
+          255,
+          270
+        ]
+      },
+      "chair-right": {
+        "rect": [
+          702,
+          397,
+          187,
+          252
+        ],
+        "inspectionRegion": [
+          675,
+          380,
+          260,
+          280
+        ]
+      },
+      "chair-up": {
+        "rect": [
+          1185,
+          409,
+          198,
+          240
+        ],
+        "inspectionRegion": [
+          1160,
+          385,
+          255,
+          280
+        ]
+      },
+      "umbrella": {
+        "rect": [
+          100,
+          657,
+          373,
+          330
+        ],
+        "inspectionRegion": [
+          65,
+          650,
+          445,
+          374
+        ]
+      },
+      "planter": {
+        "rect": [
+          624,
+          745,
+          330,
+          209
+        ],
+        "inspectionRegion": [
+          590,
+          710,
+          410,
+          314
+        ]
+      },
+      "cup": {
+        "rect": [
+          1229,
+          823,
+          111,
+          92
+        ],
+        "inspectionRegion": [
+          1170,
+          760,
+          245,
+          264
+        ]
+      }
+    }
+  },
+  "residents": {
+    "path": "/workspace/scratch/b8e339b953ba/cafe-assets/cafe-residents.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "nominalGrid": [
+      12,
+      4
+    ],
+    "nominalCell": [
+      128,
+      256
+    ],
+    "sprites": [
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 0,
+        "actualPose": "down-rest",
+        "rect": [
+          18,
+          90,
+          104,
+          161
+        ],
+        "cell": [
+          0,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 1,
+        "actualPose": "down-hold",
+        "rect": [
+          148,
+          91,
+          101,
+          160
+        ],
+        "cell": [
+          128,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 2,
+        "actualPose": "down-sip",
+        "rect": [
+          274,
+          91,
+          102,
+          160
+        ],
+        "cell": [
+          256,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 3,
+        "actualPose": "right-rest",
+        "rect": [
+          404,
+          91,
+          98,
+          163
+        ],
+        "cell": [
+          384,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 4,
+        "actualPose": "right-hold",
+        "rect": [
+          528,
+          91,
+          101,
+          163
+        ],
+        "cell": [
+          512,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 5,
+        "actualPose": "left-sip",
+        "rect": [
+          655,
+          91,
+          103,
+          163
+        ],
+        "cell": [
+          640,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 6,
+        "actualPose": "left-rest",
+        "rect": [
+          782,
+          91,
+          101,
+          163
+        ],
+        "cell": [
+          768,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 7,
+        "actualPose": "right-hold",
+        "rect": [
+          909,
+          91,
+          101,
+          163
+        ],
+        "cell": [
+          896,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 8,
+        "actualPose": "left-sip",
+        "rect": [
+          1036,
+          91,
+          102,
+          163
+        ],
+        "cell": [
+          1024,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 254
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 9,
+        "actualPose": "up-rest",
+        "rect": [
+          1163,
+          91,
+          99,
+          160
+        ],
+        "cell": [
+          1152,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 10,
+        "actualPose": "up-hold",
+        "rect": [
+          1292,
+          91,
+          101,
+          160
+        ],
+        "cell": [
+          1280,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "researcher",
+        "row": 0,
+        "col": 11,
+        "actualPose": "up-sip",
+        "rect": [
+          1416,
+          91,
+          100,
+          160
+        ],
+        "cell": [
+          1408,
+          0,
+          128,
+          256
+        ],
+        "feetBaseline": 251
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 0,
+        "actualPose": "down-rest",
+        "rect": [
+          19,
+          337,
+          103,
+          163
+        ],
+        "cell": [
+          0,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 1,
+        "actualPose": "down-hold",
+        "rect": [
+          147,
+          337,
+          102,
+          163
+        ],
+        "cell": [
+          128,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 2,
+        "actualPose": "down-sip",
+        "rect": [
+          273,
+          337,
+          103,
+          163
+        ],
+        "cell": [
+          256,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 3,
+        "actualPose": "right-rest",
+        "rect": [
+          403,
+          337,
+          102,
+          166
+        ],
+        "cell": [
+          384,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 4,
+        "actualPose": "right-hold",
+        "rect": [
+          526,
+          337,
+          102,
+          166
+        ],
+        "cell": [
+          512,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 5,
+        "actualPose": "left-sip",
+        "rect": [
+          654,
+          338,
+          104,
+          165
+        ],
+        "cell": [
+          640,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 6,
+        "actualPose": "left-rest",
+        "rect": [
+          781,
+          338,
+          102,
+          165
+        ],
+        "cell": [
+          768,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 7,
+        "actualPose": "right-hold",
+        "rect": [
+          908,
+          337,
+          102,
+          166
+        ],
+        "cell": [
+          896,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 8,
+        "actualPose": "left-sip",
+        "rect": [
+          1035,
+          337,
+          103,
+          166
+        ],
+        "cell": [
+          1024,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 503
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 9,
+        "actualPose": "up-rest",
+        "rect": [
+          1164,
+          339,
+          99,
+          161
+        ],
+        "cell": [
+          1152,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 10,
+        "actualPose": "up-hold",
+        "rect": [
+          1293,
+          339,
+          100,
+          161
+        ],
+        "cell": [
+          1280,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "designer",
+        "row": 1,
+        "col": 11,
+        "actualPose": "up-sip",
+        "rect": [
+          1415,
+          339,
+          103,
+          161
+        ],
+        "cell": [
+          1408,
+          256,
+          128,
+          256
+        ],
+        "feetBaseline": 500
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 0,
+        "actualPose": "down-rest",
+        "rect": [
+          19,
+          590,
+          103,
+          164
+        ],
+        "cell": [
+          0,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 1,
+        "actualPose": "down-hold",
+        "rect": [
+          147,
+          590,
+          102,
+          164
+        ],
+        "cell": [
+          128,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 2,
+        "actualPose": "down-sip",
+        "rect": [
+          274,
+          590,
+          102,
+          164
+        ],
+        "cell": [
+          256,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 3,
+        "actualPose": "right-rest",
+        "rect": [
+          404,
+          590,
+          100,
+          167
+        ],
+        "cell": [
+          384,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 757
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 4,
+        "actualPose": "right-hold",
+        "rect": [
+          527,
+          590,
+          101,
+          167
+        ],
+        "cell": [
+          512,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 757
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 5,
+        "actualPose": "left-rest",
+        "rect": [
+          654,
+          591,
+          103,
+          165
+        ],
+        "cell": [
+          640,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 756
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 6,
+        "actualPose": "left-rest",
+        "rect": [
+          781,
+          591,
+          102,
+          164
+        ],
+        "cell": [
+          768,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 755
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 7,
+        "actualPose": "right-hold",
+        "rect": [
+          909,
+          590,
+          101,
+          166
+        ],
+        "cell": [
+          896,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 756
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 8,
+        "actualPose": "left-sip",
+        "rect": [
+          1035,
+          591,
+          103,
+          165
+        ],
+        "cell": [
+          1024,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 756
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 9,
+        "actualPose": "up-rest",
+        "rect": [
+          1163,
+          592,
+          100,
+          162
+        ],
+        "cell": [
+          1152,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 10,
+        "actualPose": "up-hold",
+        "rect": [
+          1292,
+          591,
+          101,
+          163
+        ],
+        "cell": [
+          1280,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "developer",
+        "row": 2,
+        "col": 11,
+        "actualPose": "up-sip",
+        "rect": [
+          1414,
+          592,
+          103,
+          162
+        ],
+        "cell": [
+          1408,
+          512,
+          128,
+          256
+        ],
+        "feetBaseline": 754
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 0,
+        "actualPose": "down-rest",
+        "rect": [
+          19,
+          821,
+          104,
+          163
+        ],
+        "cell": [
+          0,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 1,
+        "actualPose": "down-hold",
+        "rect": [
+          148,
+          821,
+          102,
+          163
+        ],
+        "cell": [
+          128,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 2,
+        "actualPose": "down-sip",
+        "rect": [
+          275,
+          821,
+          102,
+          163
+        ],
+        "cell": [
+          256,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 3,
+        "actualPose": "right-rest",
+        "rect": [
+          405,
+          821,
+          102,
+          165
+        ],
+        "cell": [
+          384,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 4,
+        "actualPose": "right-hold",
+        "rect": [
+          528,
+          821,
+          103,
+          165
+        ],
+        "cell": [
+          512,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 5,
+        "actualPose": "left-rest",
+        "rect": [
+          655,
+          822,
+          104,
+          164
+        ],
+        "cell": [
+          640,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 6,
+        "actualPose": "left-rest",
+        "rect": [
+          782,
+          823,
+          102,
+          163
+        ],
+        "cell": [
+          768,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 7,
+        "actualPose": "right-hold",
+        "rect": [
+          909,
+          821,
+          102,
+          165
+        ],
+        "cell": [
+          896,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 8,
+        "actualPose": "left-sip",
+        "rect": [
+          1035,
+          821,
+          103,
+          165
+        ],
+        "cell": [
+          1024,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 986
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 9,
+        "actualPose": "up-rest",
+        "rect": [
+          1162,
+          823,
+          101,
+          161
+        ],
+        "cell": [
+          1152,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 10,
+        "actualPose": "up-hold",
+        "rect": [
+          1291,
+          824,
+          101,
+          160
+        ],
+        "cell": [
+          1280,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      },
+      {
+        "role": "tester",
+        "row": 3,
+        "col": 11,
+        "actualPose": "up-sip",
+        "rect": [
+          1415,
+          823,
+          102,
+          161
+        ],
+        "cell": [
+          1408,
+          768,
+          128,
+          256
+        ],
+        "feetBaseline": 984
+      }
+    ],
+    "recommendedDirectionalFrames": {
+      "researcher": {
+        "down": [
+          {
+            "rect": [
+              18,
+              90,
+              104,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 0,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              148,
+              91,
+              101,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 1,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              274,
+              91,
+              102,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 2,
+            "pose": "sip"
+          }
+        ],
+        "left": [
+          {
+            "rect": [
+              782,
+              91,
+              101,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 6,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              91,
+              101,
+              163
+            ],
+            "flipX": true,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1036,
+              91,
+              102,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "right": [
+          {
+            "rect": [
+              404,
+              91,
+              98,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 3,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              91,
+              101,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1036,
+              91,
+              102,
+              163
+            ],
+            "flipX": true,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "up": [
+          {
+            "rect": [
+              1163,
+              91,
+              99,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 9,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              1292,
+              91,
+              101,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 10,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1416,
+              91,
+              100,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 11,
+            "pose": "sip"
+          }
+        ]
+      },
+      "designer": {
+        "down": [
+          {
+            "rect": [
+              19,
+              337,
+              103,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 0,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              147,
+              337,
+              102,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 1,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              273,
+              337,
+              103,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 2,
+            "pose": "sip"
+          }
+        ],
+        "left": [
+          {
+            "rect": [
+              781,
+              338,
+              102,
+              165
+            ],
+            "flipX": false,
+            "sourceCol": 6,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              908,
+              337,
+              102,
+              166
+            ],
+            "flipX": true,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              337,
+              103,
+              166
+            ],
+            "flipX": false,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "right": [
+          {
+            "rect": [
+              403,
+              337,
+              102,
+              166
+            ],
+            "flipX": false,
+            "sourceCol": 3,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              908,
+              337,
+              102,
+              166
+            ],
+            "flipX": false,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              337,
+              103,
+              166
+            ],
+            "flipX": true,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "up": [
+          {
+            "rect": [
+              1164,
+              339,
+              99,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 9,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              1293,
+              339,
+              100,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 10,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1415,
+              339,
+              103,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 11,
+            "pose": "sip"
+          }
+        ]
+      },
+      "developer": {
+        "down": [
+          {
+            "rect": [
+              19,
+              590,
+              103,
+              164
+            ],
+            "flipX": false,
+            "sourceCol": 0,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              147,
+              590,
+              102,
+              164
+            ],
+            "flipX": false,
+            "sourceCol": 1,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              274,
+              590,
+              102,
+              164
+            ],
+            "flipX": false,
+            "sourceCol": 2,
+            "pose": "sip"
+          }
+        ],
+        "left": [
+          {
+            "rect": [
+              781,
+              591,
+              102,
+              164
+            ],
+            "flipX": false,
+            "sourceCol": 6,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              590,
+              101,
+              166
+            ],
+            "flipX": true,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              591,
+              103,
+              165
+            ],
+            "flipX": false,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "right": [
+          {
+            "rect": [
+              404,
+              590,
+              100,
+              167
+            ],
+            "flipX": false,
+            "sourceCol": 3,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              590,
+              101,
+              166
+            ],
+            "flipX": false,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              591,
+              103,
+              165
+            ],
+            "flipX": true,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "up": [
+          {
+            "rect": [
+              1163,
+              592,
+              100,
+              162
+            ],
+            "flipX": false,
+            "sourceCol": 9,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              1292,
+              591,
+              101,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 10,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1414,
+              592,
+              103,
+              162
+            ],
+            "flipX": false,
+            "sourceCol": 11,
+            "pose": "sip"
+          }
+        ]
+      },
+      "tester": {
+        "down": [
+          {
+            "rect": [
+              19,
+              821,
+              104,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 0,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              148,
+              821,
+              102,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 1,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              275,
+              821,
+              102,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 2,
+            "pose": "sip"
+          }
+        ],
+        "left": [
+          {
+            "rect": [
+              782,
+              823,
+              102,
+              163
+            ],
+            "flipX": false,
+            "sourceCol": 6,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              821,
+              102,
+              165
+            ],
+            "flipX": true,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              821,
+              103,
+              165
+            ],
+            "flipX": false,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "right": [
+          {
+            "rect": [
+              405,
+              821,
+              102,
+              165
+            ],
+            "flipX": false,
+            "sourceCol": 3,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              909,
+              821,
+              102,
+              165
+            ],
+            "flipX": false,
+            "sourceCol": 7,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1035,
+              821,
+              103,
+              165
+            ],
+            "flipX": true,
+            "sourceCol": 8,
+            "pose": "sip"
+          }
+        ],
+        "up": [
+          {
+            "rect": [
+              1162,
+              823,
+              101,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 9,
+            "pose": "rest"
+          },
+          {
+            "rect": [
+              1291,
+              824,
+              101,
+              160
+            ],
+            "flipX": false,
+            "sourceCol": 10,
+            "pose": "hold"
+          },
+          {
+            "rect": [
+              1415,
+              823,
+              102,
+              161
+            ],
+            "flipX": false,
+            "sourceCol": 11,
+            "pose": "sip"
+          }
+        ]
+      }
+    }
+  },
+  "inspection": {
+    "boundsMethod": "Alpha>=32 bounds expanded2px, clamped to independent sprite ROI; true alpha preserved; no pixels altered.",
+    "propsTransparencyZeroFraction": 0.7240956624348959,
+    "residentTransparencyZeroFraction": 0.5665257771809896,
+    "notes": [
+      "48 figures separate and contained in nominal128x256 cells; tight crops/feet baselines preferred due generated vertical drift.",
+      "Raw character middle columns do not follow requested direction ordering. Use recommendedDirectionalFrames mapping.",
+      "No drawn right-sipping frame: use left-sipping column8 horizontally reflected at runtime.",
+      "No drawn left-holding frame: use right-holding column7 horizontally reflected at runtime.",
+      "Up-holding cup is occluded; frame resembles rest but hands differ slightly.",
+      "Cyan and purple source col5 is left-rest rather than sipping; recommended mapping uses col8 for sip.",
+      "Front and side seated poses have bent knees. Back views have subtle legs/bends and raised elbows for sipping."
+    ]
+  }
+}

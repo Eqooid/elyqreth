@@ -1,0 +1,23 @@
+{
+  "enabled": false,
+  "intervalSeconds": 60,
+  "windowSeconds": 300,
+  "repeatSeconds": 3600,
+  "healthyChecks": 2,
+  "stateDirectory": "/protected/elyqreth-monitor/state",
+  "composeFiles": [
+    "/approved-release/docker-compose.production.yml",
+    "/approved-release/docker-compose.edge.yml"
+  ],
+  "composeEnvFile": "/protected/elyqreth-monitor/compose.env",
+  "email": {
+    "enabled": false,
+    "host": "smtp.example.invalid",
+    "port": 465,
+    "username": "replace-with-monitor-only-smtp-login",
+    "passwordFile": "/protected/elyqreth-monitor/credential.smtp-password",
+    "from": "alerts@example.invalid",
+    "to": ["incident-owner@example.invalid"],
+    "timeoutMs": 10000
+  }
+}

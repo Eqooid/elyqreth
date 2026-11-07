@@ -1,0 +1,277 @@
+{
+  "task": "Phase 6 T09 Native Runtime Drain, Restart & Admission Hardening",
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "status": "COMPLETE for locally verified native runtime drain, admission and restart contracts; production promotion remains gated",
+  "audit": {
+    "agents": "No applicable AGENTS.md found",
+    "git": "No .git metadata: cannot classify staged/unstaged/untracked; original 5283-file SHA256 baseline retained",
+    "runtime": "One HTTP/API native writer; no queue consumer, dedicated worker or background retry scheduler",
+    "preservation": {
+      "missing_original_files": [],
+      "private_env_unchanged": true,
+      "renderer_and_sprites_changed": [],
+      "migration_files_changed": []
+    }
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend syntax/runtime typecheck and backend typecheck pass"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238 frontend regression tests pass"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 0,
+      "outcome": "40 restricted-role/migration/native/collaboration/drain tests pass"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exit_code": 0,
+      "outcome": "16 backup/isolated restore/integrity/replay tests pass"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "Current API source image built; sha256:d58fe43d3400c58fdd569e81c3b9db52967e8fbd79b1b3f33c84461aed3311f9"
+    },
+    {
+      "command": "docker build --target web -t elyqreth-t05-web:verification .",
+      "exit_code": 0,
+      "outcome": "Current web image built; sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 0,
+      "outcome": "Disposable production bundle built; maintained dist source preserved"
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --runtime-drain",
+      "exit_code": 0,
+      "outcome": "Real PID1 clean/deadline/repeated signals, durable state, nonroot/readonly/secret/DB-outage/recreate/Compose checks pass"
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain",
+      "exit_code": 0,
+      "outcome": "Final rebuilt image TLS/auth/city Chromium/polling/reconnect/network/Compose and both active shutdown scenarios pass"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: no Git metadata in supplied working directory"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no Git metadata; independent touched-file whitespace and SHA256 preservation checks used"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "Backend production TypeScript build passes"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "227 real PostgreSQL API/runtime/collaboration/ownership/crash/external/auth/browser/readiness/drain regressions pass; 0 skipped"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "15 docs, local links, environment inventory and touched-file whitespace pass"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "323 backend unit/security/configuration/runtime tests pass; parser child succeeds on full rerun, 0 skipped"
+    },
+    {
+      "command": "node --check scripts/runtime-shutdown.mjs; node --check apps/api/test/runtime-drain.integration.cjs; node --check scripts/container-hardening.mjs",
+      "exit_code": 0,
+      "outcome": "Changed harness syntax checks pass"
+    }
+  ],
+  "earlier_attempts": [
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 1,
+      "outcome": "Docker Desktop initially stopped; no test database created. Local engine started and rerun passed."
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 1,
+      "outcome": "38/39; new test incorrectly expected 200 rather than existing 202 deferred receipt; assertion corrected, final 40/40 pass."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 1,
+      "outcome": "224/226; old immediate-cancel LLM fixture and new deferred-receipt assertion needed adaptation. Fixture now uses explicit 100ms drain and expects RUNTIME_DRAINING after stop."
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exit_code": 1,
+      "outcome": "Disposable PostgreSQL setup connection terminated unexpectedly; subsequent full isolated recovery rerun passed 16/16."
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 1,
+      "outcome": "Sandbox denied esbuild ancestor resolution. Same build outside sandbox passed; no source workaround."
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --runtime-drain",
+      "exit_code": 1,
+      "outcome": "Test expected successful Execution DTO for cancellation; existing API returns 409/CANCELLED. Assertion corrected; real durable cancellation verified and final reruns pass."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 1,
+      "outcome": "322/323; parser child 5s startup timeout under concurrent load. Full rerun pending; no parser policy/timeout weakened."
+    }
+  ],
+  "files_changed": [
+    "README.md",
+    "apps/api/.env.example",
+    "apps/api/src/collaboration/collaboration-api.filter.ts",
+    "apps/api/src/collaboration/collaboration-recovery.service.ts",
+    "apps/api/src/collaboration/native-coordination.service.ts",
+    "apps/api/src/common/http-foundation.ts",
+    "apps/api/src/health/health.controller.ts",
+    "apps/api/src/health/health.module.ts",
+    "apps/api/src/health/readiness.service.ts",
+    "apps/api/src/lifecycle/lifecycle.module.ts",
+    "apps/api/src/lifecycle/task-lifecycle.service.ts",
+    "apps/api/src/main.ts",
+    "apps/api/src/runtime/contracts/runtime-error.contract.ts",
+    "apps/api/src/runtime/http/runtime-api.filter.ts",
+    "apps/api/src/runtime/local-command.ts",
+    "apps/api/src/runtime/runtime-configuration.ts",
+    "apps/api/src/runtime/runtime-coordinator.ts",
+    "apps/api/src/runtime/runtime-host.module.ts",
+    "apps/api/src/runtime/runtime-host.service.ts",
+    "apps/api/src/runtime/runtime-persistence.service.ts",
+    "apps/api/src/runtime/runtime-signals.ts",
+    "apps/api/src/runtime/runtime.module.ts",
+    "apps/api/test/collaboration-recovery-fixture.cjs",
+    "apps/api/test/database-roles.integration.cjs",
+    "apps/api/test/database.integration.cjs",
+    "apps/api/test/external-ingestion.integration.cjs",
+    "apps/api/test/llm.integration.cjs",
+    "apps/api/test/runtime-contracts.test.cjs",
+    "apps/api/test/runtime-coordinator.test.cjs",
+    "apps/api/test/runtime-drain.integration.cjs",
+    "apps/api/test/runtime-drain.test.cjs",
+    "dist/js/runtime/interaction/errors.js",
+    "docker/production-api.env.example",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/backup-recovery.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/runtime-drain.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/runtime-drain-verification.json",
+    "scripts/container-hardening.mjs",
+    "scripts/runtime-shutdown.mjs"
+  ],
+  "limits": [
+    "Process-local drain; approved single native writer. No fleet-wide barrier or rolling native overlap.",
+    "Uncertain provider/tool side effects remain quarantined and require operator review; no blind redispatch or lease reset.",
+    "SIGUSR2 is native-only Linux maintenance drain; termination requests stop after grace. Windows uses SIGINT/SIGTERM where supported.",
+    "No native broker/dedicated worker exists, so queue ACK and separate worker probes are not applicable.",
+    "No real provider, remote deployment, production database, secret creation, migration or T10 implementation performed."
+  ],
+  "verification_matrix": [
+    {
+      "area": "Admission path inventory",
+      "status": "VERIFIED",
+      "evidence": "runtime-drain.md path table; no broker or separate worker exists"
+    },
+    {
+      "area": "Lifecycle and idempotent bounded drain",
+      "status": "VERIFIED",
+      "evidence": "runtime-drain.test.cjs state/fake-clock/repeated-signal tests; runtime-host.service.ts"
+    },
+    {
+      "area": "Direct allocation, execution and legacy native starts",
+      "status": "VERIFIED",
+      "evidence": "runtime-drain.integration.cjs real PG rejection, unchanged PENDING/CREATED state, 503 and reads/liveness/readiness"
+    },
+    {
+      "area": "Admission/drain transaction race",
+      "status": "VERIFIED",
+      "evidence": "deterministic agent-lock gate during actual PG transaction rolls back all Task/Execution mutation"
+    },
+    {
+      "area": "Child dispatch cut and restart",
+      "status": "VERIFIED",
+      "evidence": "committed ACCEPTED/CREATED child returns 202, drain recovery rejects, new app recovers one successful Execution"
+    },
+    {
+      "area": "Deadline and late success",
+      "status": "VERIFIED",
+      "evidence": "PG noncooperative strategy stop preserves CANCELLED/CANCELLATION_UNCONFIRMED and no replay after restart"
+    },
+    {
+      "area": "Durable fencing and concurrent owners",
+      "status": "VERIFIED",
+      "evidence": "existing full PG concurrent coordinator/queue/start, lost-lease/stale completion and cancellation races pass"
+    },
+    {
+      "area": "Forced termination",
+      "status": "VERIFIED",
+      "evidence": "existing P5 T11 hard process crash after child admission test actually executes SIGKILL and fences recovery"
+    },
+    {
+      "area": "External event during drain",
+      "status": "VERIFIED",
+      "evidence": "trusted ingestion applies event, replay deduplicates and native Execution count unchanged"
+    },
+    {
+      "area": "Container shutdown and restart",
+      "status": "VERIFIED",
+      "evidence": "final rebuilt API PID1 Linux SIGUSR2/repeated SIGTERM, clean completion/deadline cancellation, ordinary API recreation and DB outage/restart pass"
+    },
+    {
+      "area": "Authentication, TLS/network and frontend/city",
+      "status": "VERIFIED",
+      "evidence": "real Chromium HTTPS edge login/session/poll/reconnect/logout/city regression plus 238 frontend tests; only frontend source edit is error code whitelist"
+    },
+    {
+      "area": "Database privilege and restore compatibility",
+      "status": "VERIFIED",
+      "evidence": "40 restricted-role/migration tests and 16 backup/isolated restore/integrity/replay tests pass; no schema migration/grant changes"
+    },
+    {
+      "area": "Operational diagnostics and configuration",
+      "status": "VERIFIED",
+      "evidence": "namespace-only readiness with safe state/counts, fixed logs, bounded drain timeout and safe disabled-setting rejection"
+    },
+    {
+      "area": "Documentation and preservation",
+      "status": "VERIFIED",
+      "evidence": "15-doc checker passes; no missing original files, private .env/renderer/sprites/migrations unchanged"
+    }
+  ],
+  "not_applicable": [
+    "Queue ACK/prefetch/consumer cancellation: no native queue/broker exists",
+    "Separate worker health/startup: native runtime resides in the API; CLI is a trusted local development command"
+  ],
+  "final_review": {
+    "status": "PASS",
+    "original_files": 5283,
+    "modified_files": 36,
+    "created_files": 8,
+    "missing_original_files": 0,
+    "unexpected_changed_files": 0,
+    "private_key_blocks_added": 0,
+    "whitespace_or_conflict_markers": 0,
+    "schema_and_city_source_preserved": true,
+    "no_production_or_remote_work": true
+  }
+}

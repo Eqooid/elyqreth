@@ -1,0 +1,147 @@
+{
+  "task": "T11 follow-up: isolated optional email monitoring",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "implementation": "Implemented and locally verified; disabled by default",
+  "t11_status": "PARTIAL: actual SMTP target/recipient, incident owner, inbox delivery and deployment drills remain unconfigured",
+  "authorization": "User requested monitoring without disturbing existing features; selected Email. No real external notifications authorized or sent.",
+  "architecture": {
+    "application_changes": false,
+    "dependencies_added": false,
+    "database_credentials_used": false,
+    "new_routes_or_ports": false,
+    "deployment_or_scheduler_installed": false,
+    "transport": "SMTP implicit verified TLS (normally465) and AUTH PLAIN inside TLS; no STARTTLS or OAuth-only support",
+    "runner": "Separate opt-in host CLI: check/once/watch; existing private readiness and bounded Docker logs only",
+    "delivery": "Bounded retry/suppression/clear state; inflight or ambiguous DATA acknowledgement requires operator review"
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend syntax/runtime and backend typechecks passed"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238 frontend/city tests passed"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "Backend production build and355 unit tests passed, including initial email-monitor tests"
+    },
+    {
+      "command": "node --test apps/api/test/email-monitor.test.cjs apps/api/test/operational-signals.test.cjs",
+      "exit_code": 0,
+      "outcome": "Final16 tests passed after final SMTP/header/error and collection changes;13 email-monitor tests plus3 existing signal tests, zero skips"
+    },
+    {
+      "command": "node --check scripts/production-monitor.mjs",
+      "exit_code": 0,
+      "outcome": "Syntax passed"
+    },
+    {
+      "command": "node --check scripts/monitor/config.mjs",
+      "exit_code": 0,
+      "outcome": "Syntax passed"
+    },
+    {
+      "command": "node --check scripts/monitor/smtp.mjs",
+      "exit_code": 0,
+      "outcome": "Syntax passed"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: no .git metadata supplied;5303-file pre-change SHA256 baseline used"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no .git metadata supplied; file preservation and whitespace/conflict checks used"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "PASS:18 documents, local links, consumed backend environment inventory and changed-file whitespace/conflict checks"
+    }
+  ],
+  "local_verification": [
+    "Real loopback TLS SMTP accepted/authenticated mail with synthetic credentials; no raw input payload in content",
+    "Untrusted certificate rejected before AUTH; stalls, malformed replies and authentication rejection fail safely",
+    "Lost DATA acknowledgement is uncertain; explicit DATA rejection is retry-safe",
+    "Duplicate suppression, timed repeat and consecutive-clear notification; no Execution success inferred",
+    "Three maximum attempts per notice; persisted retry wait and exhaustion; uncertain/inflight intent never blindly resent",
+    "State write failure after acceptance leaves conservative inflight intent; private state exclusive lock and corruption rejection",
+    "Known fixed-condition read-only collection, failed/truncated input, current readiness overriding historical failure",
+    "Disabled CLI performs no Docker or SMTP activity; errors omit config values and secret paths"
+  ],
+  "not_run": [
+    "Real provider connection, real email or recipient inbox acknowledgement",
+    "Actual installation Compose collector configuration and scheduler activation",
+    "Production host-loss/silence, disk exhaustion, notification delivery/retention and incident tabletop",
+    "New database/container integration rerun not necessary for this follow-up: no application/container/schema/runtime source changes; prior T11 evidence remains available"
+  ],
+  "corrected_initial_checks": [
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 1,
+      "outcome": "New guide initially linked pending evidence file; create evidence then rerun. No broken link left intentionally."
+    }
+  ],
+  "files_changed": [
+    ".gitignore",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/observability.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "apps/api/test/email-monitor.test.cjs",
+    "docker/monitor.example.json",
+    "docs/ai-agent-platform/phase-6/email-monitoring.md",
+    "scripts/monitor/config.mjs",
+    "scripts/monitor/smtp.mjs",
+    "scripts/production-monitor.mjs",
+    "docs/ai-agent-platform/phase-6/verification-evidence/email-monitoring-verification.json"
+  ],
+  "preservation": {
+    "baseline_files": 5303,
+    "modified": [
+      ".gitignore",
+      "docs/ai-agent-platform/phase-6/decisions.md",
+      "docs/ai-agent-platform/phase-6/implementation-plan.md",
+      "docs/ai-agent-platform/phase-6/observability.md",
+      "docs/ai-agent-platform/phase-6/README.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py"
+    ],
+    "created": [
+      "apps/api/test/email-monitor.test.cjs",
+      "docker/monitor.example.json",
+      "docs/ai-agent-platform/phase-6/email-monitoring.md",
+      "scripts/monitor/config.mjs",
+      "scripts/monitor/smtp.mjs",
+      "scripts/production-monitor.mjs"
+    ],
+    "missing": [],
+    "private_env_unchanged": true,
+    "application_source_changes": []
+  },
+  "production_gates": [
+    "Approved implicit-TLS SMTP server/credential source/sender/recipient",
+    "Designated incident/recovery/security owner and escalation",
+    "Real authorized delivery and clear-notification verification",
+    "Approved cadence/thresholds, retention, independent host-loss monitor and operating supervision"
+  ],
+  "no_commit_push_release_deployment": true,
+  "final_review": {
+    "status": "PASS",
+    "modified_files": 6,
+    "created_files": 7,
+    "missing_original_files": 0,
+    "application_runtime_city_auth_compose_dependencies_schema_unchanged": true,
+    "private_env_unchanged": true,
+    "actual_external_emails_sent": 0,
+    "scheduler_installed": false
+  }
+}

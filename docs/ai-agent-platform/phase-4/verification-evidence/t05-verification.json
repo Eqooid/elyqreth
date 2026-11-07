@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-26 Asia/Bangkok",
+  "decision": "COMPLETE",
+  "scope": "Existing local NPC Task panel: explicit Start, confirmed Cancel, authoritative lifecycle reads and reconciliation; no result/history UI",
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "result": "PASS",
+      "details": "JS syntax, strict runtime-web TypeScript, backend no-emit compatibility"
+    },
+    {
+      "command": "npm.cmd run check:runtime:web",
+      "result": "PASS"
+    },
+    {
+      "command": "node --test tests/execution-controls.test.js",
+      "result": "PASS",
+      "tests": 17
+    },
+    {
+      "command": "npm.cmd test",
+      "result": "PASS",
+      "tests": 172,
+      "fail": 0
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "result": "PASS",
+      "modules": 55,
+      "details": "Disposable Vite production build; maintained dist source preserved"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "result": "PASS",
+      "browser": "Chrome/155.0.8059.85",
+      "exceptions": 0,
+      "details": "T04 real DOM/form fixture and existing city, NPC, inspection, synchronization, camera, mobile smoke"
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T05' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 2,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[345]' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 6,
+      "fail": 0,
+      "details": "Actual frontend clients/owners against owned PostgreSQL/Nest; T04 and T05 real native Chrome workflows"
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T05 real browser' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 1,
+      "fail": 0,
+      "details": "Final native Chrome workflow with long Agent name and mobile cancellation dialog overflow check"
+    }
+  ],
+  "nativeBrowser": {
+    "status": "PASS",
+    "executions": 2,
+    "statuses": [
+      "SUCCEEDED",
+      "CANCELLED"
+    ],
+    "reloadRecovered": true,
+    "selectionClosePreserved": true,
+    "confirmationBackVerified": true,
+    "exceptions": 0,
+    "longNameMobileDialogVerified": true
+  },
+  "contractFindings": [
+    "Task-only eligibility cannot grant cancel for a specific Execution: exact Execution detail grant plus both persisted versions is used.",
+    "Execute is synchronous; selection close does not abort it; reload/disconnect can request cooperative cancellation.",
+    "No automatic mutation retry or detached execution guarantee."
+  ],
+  "preservation": {
+    "baselineFiles": 462,
+    "changedExisting": [
+      "scripts/task-panel-browser.mjs",
+      "scripts/browser-smoke.mjs",
+      "README.md",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/task-submission-ui.md",
+      "docs/ai-agent-platform/phase-4/README.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-4/decisions.md",
+      "dist/js/agent-task-panel.js",
+      "dist/js/runtime/interaction/submission-owner.js",
+      "apps/api/test/interaction.integration.cjs"
+    ],
+    "removed": [],
+    "protectedChanges": []
+  },
+  "filesCreated": [
+    "dist/js/runtime/interaction/lifecycle-owner.js",
+    "tests/execution-controls.test.js",
+    "docs/ai-agent-platform/phase-4/execution-lifecycle-controls.md",
+    "docs/ai-agent-platform/phase-4/verification-evidence/t05-verification.json",
+    "docs/ai-agent-platform/phase-4/verification-evidence/t05-live-browser.json"
+  ],
+  "logs": [
+    {
+      "name": "elyqreth-p4-t05-tests-final.log",
+      "sha256": "6238a618ec440e850c3a3d057345b1cc767176d409421509d5f6ba6bcb956cfd"
+    },
+    {
+      "name": "elyqreth-p4-t05-lint-final.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+    },
+    {
+      "name": "elyqreth-p4-t05-contracts-final.log",
+      "sha256": "41a63b3c2956fcce6caee92c4872eea53ca83c69a4827145c019157f565a05b2"
+    },
+    {
+      "name": "elyqreth-p4-t05-browser-final.log",
+      "sha256": "6ddb146a3dcb54c54bbcff22717ea9b04461a3fec7059fdeda5c7abfb57f1f1b"
+    }
+  ],
+  "limitations": [
+    "Local capability model only; no production person/tenant authentication.",
+    "Reload/disconnect/page close can interrupt synchronous execution; state is recovered by authorized reads after reconnect.",
+    "No durable locator/private draft journal; unstarted Tasks absent from projection require their known reference (T07).",
+    "An uncertain Start with no committed Execution stays blocked; no new backend idempotency/recovery endpoint invented.",
+    "No live provider, full backend suite, long-duration FPS/heap or visual-diff run.",
+    "Git metadata absent; no clean-tree claim."
+  ],
+  "documentation": {
+    "files": 13,
+    "localLinksAndAnchors": 121,
+    "mermaidSourceBlocks": 16,
+    "errors": [],
+    "mermaidRendering": "NOT RUN; balanced source fences checked"
+  }
+}

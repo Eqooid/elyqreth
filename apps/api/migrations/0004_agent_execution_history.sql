@@ -1,0 +1,1 @@
+CREATE INDEX "executions_owner_agent_history_idx" ON "executions" USING btree ("owner_id","agent_id","created_at" DESC NULLS LAST,"id" DESC NULLS LAST);

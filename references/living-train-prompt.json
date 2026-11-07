@@ -1,0 +1,37 @@
+{
+  "tool": "builtin image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit.\nAsset type: production game sprite atlas, exactly 1536 x 1024 PNG with genuine alpha transparency.\nInput images: Image 1 is the station architecture edit target, cropped from the existing Orange City landmarks atlas. Image 2 is a close train reference extracted from that station. Image 3 is the original Orange City scene and establishes the exact cohesive pixel-art style.\nCreate ONE atlas with exactly TWO disconnected sprites on a fully transparent canvas:\nLEFT: recreate the CENTRAL STATION architecture in Image 1 extremely faithfully, with the TRAIN COMPLETELY REMOVED. Keep the broad flat layered graphite roof, roof machinery/antennae, orange CENTRAL STATION sign with its small circular star icon, thick gray outer columns, thin orange illuminated inner columns, central slim support pillar, elevated frontal/isometric perspective, low foreground railing and underside support feet. Keep the silhouette and material proportions, the crisp dark pixel outlines, small blue-gray highlights and amber-orange strips. Station sprite should occupy approximately x=45..900 and y=245..845. This is an independent architecture cutout, without ground or water.\nCRITICAL BAY ALPHA: The train aperture beneath the sign must be an EMPTY OPENING with genuine transparent alpha holes all the way through the station. DELETE the train AND the opaque dark back wall behind it. The large areas BETWEEN the columns, BELOW the sign and ABOVE the foreground railing must be alpha=0, not dark paint, not black rectangles, not a checkerboard baked into the pixels. These empty transparent windows allow a moving train on a lower game layer to show through. Roof/sign, pillars and the railing form only a foreground architectural frame. Preserve the central narrow structural pillar as an opaque foreground strip.\nRIGHT: draw ONE separate complete unobstructed side-view train sprite facing RIGHT, faithful to Image 2's original train: long low dark blue-gray graphite carriage, silver blue-gray rounded nose at the right, dark curved driver windshield, orange horizontal stripes and roof lights, warm amber rectangular passenger windows, right nose orange lamp, small dark undercarriage. Complete train should occupy approximately x=1060..1460 and y=470..630, about 400 x 160 pixels. NO rails, station structures, platform, ground or shadow beneath the train. The train must be completely separate from the station, with at least 150 pixels of empty transparent space between sprite silhouettes.\nStyle: the exact refined crisp pixel cyberpunk art of the supplied Orange City game. Hard pixel clusters, dark graphite blocks, visible pixel texture, blue-gray edge highlights, warm amber-orange signage and windows. Match the architecture rather than redesigning it. No people or characters. No surrounding environment, trees, water, roads or landscape. No extra sprites. No labels besides the station's literal orange \"CENTRAL STATION\" sign. No background, no glow haze outside silhouettes, no checkerboard pixels. Full actual alpha transparency including station bay interior. Keep the two sprites fully inside the 1536x1024 canvas with generous transparent margins.",
+  "referenced_image_paths": [
+    "/workspace/scratch/b8e339b953ba/living-assets/station-reference-crop.png",
+    "/workspace/scratch/b8e339b953ba/living-assets/train-reference-crop.png",
+    "/workspace/scratch/b8e339b953ba/upload/Orange City: A Brighter Tomorrow.png"
+  ],
+  "source_rectangles": {
+    "station": {
+      "image": "/workspace/sites/orange-city/dist/assets/blueprint-landmarks.png",
+      "x": 947,
+      "y": 600,
+      "width": 575,
+      "height": 393
+    },
+    "train": {
+      "image": "/workspace/sites/orange-city/dist/assets/blueprint-landmarks.png",
+      "x": 1080,
+      "y": 807,
+      "width": 298,
+      "height": 93
+    }
+  },
+  "output": {
+    "path": "/workspace/scratch/b8e339b953ba/living-assets/central-station-train-atlas.png",
+    "source_generated_path": "/workspace/scratch/b8e339b953ba/generated_images/exec-069da4b6-da81-4d8c-a16a-091aa752e963.png",
+    "sha256": "6a27161c8bb572e009ea2722c3a7b7c9c251fcf3616ac183de58ebb6709004b1",
+    "copy_intact": true,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  }
+}

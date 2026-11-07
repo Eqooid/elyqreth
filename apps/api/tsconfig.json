@@ -1,0 +1,30 @@
+{
+    "compilerOptions":  {
+                            "target":  "ES2023",
+                            "module":  "CommonJS",
+                            "moduleResolution":  "Node",
+                            "rootDir":  "src",
+                            "outDir":  "dist",
+                            "strict":  true,
+                            "noEmitOnError":  true,
+                            "noUncheckedIndexedAccess":  true,
+                            "exactOptionalPropertyTypes":  true,
+                            "noImplicitOverride":  true,
+                            "noFallthroughCasesInSwitch":  true,
+                            "forceConsistentCasingInFileNames":  true,
+                            "experimentalDecorators":  true,
+                            "emitDecoratorMetadata":  true,
+                            "esModuleInterop":  true,
+                            "skipLibCheck":  true,
+                            "types":  [
+                                          "node"
+                                      ]
+                        },
+    "include":  [
+                    "src/**/*.ts"
+                ],
+    "exclude":  [
+                    "dist",
+                    "node_modules"
+                ]
+}

@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "platform": "win32",
+  "arch": "x64",
+  "node": "v24.9.0",
+  "fixture": "Actual frontend owner/client with deterministic HTTP boundary and forced GC; not browser FPS or production throughput",
+  "scenarios": [
+    {
+      "mappedAgents": 1,
+      "selections": 20,
+      "duplicateSweepSignals": 20,
+      "requests": {
+        "agent": 25,
+        "snapshot": 24,
+        "events": 16
+      },
+      "notifications": 163,
+      "postDisposeNotifications": 0,
+      "pendingRequestTimers": 0,
+      "durationMs": 99.83,
+      "retainedHeapDeltaBytes": 2721048
+    },
+    {
+      "mappedAgents": 5,
+      "selections": 100,
+      "duplicateSweepSignals": 100,
+      "requests": {
+        "agent": 200,
+        "snapshot": 100,
+        "events": 100
+      },
+      "notifications": 1001,
+      "postDisposeNotifications": 0,
+      "pendingRequestTimers": 0,
+      "durationMs": 105.55,
+      "retainedHeapDeltaBytes": 184752
+    },
+    {
+      "mappedAgents": 20,
+      "selections": 400,
+      "duplicateSweepSignals": 400,
+      "requests": {
+        "agent": 800,
+        "snapshot": 400,
+        "events": 400
+      },
+      "notifications": 4001,
+      "postDisposeNotifications": 0,
+      "pendingRequestTimers": 0,
+      "durationMs": 378.38,
+      "retainedHeapDeltaBytes": 723760
+    }
+  ],
+  "limits": "Observed memory/time only, no capacity/zero-allocation claim. One selected NPC at a time; no per-NPC connection."
+}

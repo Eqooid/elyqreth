@@ -1,0 +1,2298 @@
+{
+  "buildings-fixed": {
+    "path": "/workspace/scratch/b8e339b953ba/game-assets/buildings-fixed.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "zero_alpha_pixels": 495803,
+    "full_alpha_pixels": 0,
+    "partial_alpha_pixels": 1077061,
+    "grid": [
+      3,
+      2
+    ],
+    "cells": [
+      {
+        "column": 0,
+        "row": 0,
+        "bounds": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 1,
+        "row": 0,
+        "bounds": [
+          512,
+          0,
+          1024,
+          512
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 2,
+        "row": 0,
+        "bounds": [
+          1024,
+          0,
+          1536,
+          512
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 0,
+        "row": 1,
+        "bounds": [
+          0,
+          512,
+          512,
+          1024
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 1,
+        "row": 1,
+        "bounds": [
+          512,
+          512,
+          1024,
+          1024
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 2,
+        "row": 1,
+        "bounds": [
+          1024,
+          512,
+          1536,
+          1024
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "path": "/workspace/scratch/b8e339b953ba/game-assets/characters.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_alpha_pixels": 874836,
+    "full_alpha_pixels": 1068,
+    "partial_alpha_pixels": 696612,
+    "grid": [
+      8,
+      8
+    ],
+    "cells": [
+      {
+        "column": 0,
+        "row": 0,
+        "bounds": [
+          0,
+          0,
+          157,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 0,
+        "bounds": [
+          157,
+          0,
+          314,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 0,
+        "bounds": [
+          314,
+          0,
+          470,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 0,
+        "bounds": [
+          470,
+          0,
+          627,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 0,
+        "bounds": [
+          627,
+          0,
+          784,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 0,
+        "bounds": [
+          784,
+          0,
+          940,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 0,
+        "bounds": [
+          940,
+          0,
+          1097,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 0,
+        "bounds": [
+          1097,
+          0,
+          1254,
+          157
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 1,
+        "bounds": [
+          0,
+          157,
+          157,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 1,
+        "bounds": [
+          157,
+          157,
+          314,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 1,
+        "bounds": [
+          314,
+          157,
+          470,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 1,
+        "bounds": [
+          470,
+          157,
+          627,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 1,
+        "bounds": [
+          627,
+          157,
+          784,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 1,
+        "bounds": [
+          784,
+          157,
+          940,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 1,
+        "bounds": [
+          940,
+          157,
+          1097,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 1,
+        "bounds": [
+          1097,
+          157,
+          1254,
+          314
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 2,
+        "bounds": [
+          0,
+          314,
+          157,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 2,
+        "bounds": [
+          157,
+          314,
+          314,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 2,
+        "bounds": [
+          314,
+          314,
+          470,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 2,
+        "bounds": [
+          470,
+          314,
+          627,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 2,
+        "bounds": [
+          627,
+          314,
+          784,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 2,
+        "bounds": [
+          784,
+          314,
+          940,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 2,
+        "bounds": [
+          940,
+          314,
+          1097,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 2,
+        "bounds": [
+          1097,
+          314,
+          1254,
+          470
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 3,
+        "bounds": [
+          0,
+          470,
+          157,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 3,
+        "bounds": [
+          157,
+          470,
+          314,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 3,
+        "bounds": [
+          314,
+          470,
+          470,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 3,
+        "bounds": [
+          470,
+          470,
+          627,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 3,
+        "bounds": [
+          627,
+          470,
+          784,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 3,
+        "bounds": [
+          784,
+          470,
+          940,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 3,
+        "bounds": [
+          940,
+          470,
+          1097,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 3,
+        "bounds": [
+          1097,
+          470,
+          1254,
+          627
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 4,
+        "bounds": [
+          0,
+          627,
+          157,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 4,
+        "bounds": [
+          157,
+          627,
+          314,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 4,
+        "bounds": [
+          314,
+          627,
+          470,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 4,
+        "bounds": [
+          470,
+          627,
+          627,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 4,
+        "bounds": [
+          627,
+          627,
+          784,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 4,
+        "bounds": [
+          784,
+          627,
+          940,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 4,
+        "bounds": [
+          940,
+          627,
+          1097,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 4,
+        "bounds": [
+          1097,
+          627,
+          1254,
+          784
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 5,
+        "bounds": [
+          0,
+          784,
+          157,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 5,
+        "bounds": [
+          157,
+          784,
+          314,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 5,
+        "bounds": [
+          314,
+          784,
+          470,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 5,
+        "bounds": [
+          470,
+          784,
+          627,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 5,
+        "bounds": [
+          627,
+          784,
+          784,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 5,
+        "bounds": [
+          784,
+          784,
+          940,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 5,
+        "bounds": [
+          940,
+          784,
+          1097,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 5,
+        "bounds": [
+          1097,
+          784,
+          1254,
+          940
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 6,
+        "bounds": [
+          0,
+          940,
+          157,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 6,
+        "bounds": [
+          157,
+          940,
+          314,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 6,
+        "bounds": [
+          314,
+          940,
+          470,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 6,
+        "bounds": [
+          470,
+          940,
+          627,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 6,
+        "bounds": [
+          627,
+          940,
+          784,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 6,
+        "bounds": [
+          784,
+          940,
+          940,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 6,
+        "bounds": [
+          940,
+          940,
+          1097,
+          1097
+        ],
+        "corner_alpha": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 6,
+        "bounds": [
+          1097,
+          940,
+          1254,
+          1097
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 7,
+        "bounds": [
+          0,
+          1097,
+          157,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 7,
+        "bounds": [
+          157,
+          1097,
+          314,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 7,
+        "bounds": [
+          314,
+          1097,
+          470,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 7,
+        "bounds": [
+          470,
+          1097,
+          627,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 4,
+        "row": 7,
+        "bounds": [
+          627,
+          1097,
+          784,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 5,
+        "row": 7,
+        "bounds": [
+          784,
+          1097,
+          940,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 6,
+        "row": 7,
+        "bounds": [
+          940,
+          1097,
+          1097,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 7,
+        "row": 7,
+        "bounds": [
+          1097,
+          1097,
+          1254,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  "terrain-props": {
+    "path": "/workspace/scratch/b8e339b953ba/game-assets/terrain-props.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_alpha_pixels": 385039,
+    "full_alpha_pixels": 359,
+    "partial_alpha_pixels": 1187118,
+    "grid": [
+      4,
+      4
+    ],
+    "cells": [
+      {
+        "column": 0,
+        "row": 0,
+        "bounds": [
+          0,
+          0,
+          314,
+          314
+        ],
+        "corner_alpha": [
+          242,
+          251,
+          251,
+          252
+        ],
+        "inset8_alpha": [
+          252,
+          252,
+          251,
+          252
+        ],
+        "alpha_extrema": [
+          242,
+          253
+        ]
+      },
+      {
+        "column": 1,
+        "row": 0,
+        "bounds": [
+          314,
+          0,
+          627,
+          314
+        ],
+        "corner_alpha": [
+          251,
+          249,
+          252,
+          252
+        ],
+        "inset8_alpha": [
+          250,
+          250,
+          252,
+          252
+        ],
+        "alpha_extrema": [
+          247,
+          253
+        ]
+      },
+      {
+        "column": 2,
+        "row": 0,
+        "bounds": [
+          627,
+          0,
+          940,
+          314
+        ],
+        "corner_alpha": [
+          249,
+          251,
+          252,
+          252
+        ],
+        "inset8_alpha": [
+          250,
+          251,
+          252,
+          252
+        ],
+        "alpha_extrema": [
+          247,
+          253
+        ]
+      },
+      {
+        "column": 3,
+        "row": 0,
+        "bounds": [
+          940,
+          0,
+          1254,
+          314
+        ],
+        "corner_alpha": [
+          251,
+          223,
+          253,
+          251
+        ],
+        "inset8_alpha": [
+          252,
+          251,
+          253,
+          251
+        ],
+        "alpha_extrema": [
+          223,
+          253
+        ]
+      },
+      {
+        "column": 0,
+        "row": 1,
+        "bounds": [
+          0,
+          314,
+          314,
+          627
+        ],
+        "corner_alpha": [
+          251,
+          252,
+          2,
+          2
+        ],
+        "inset8_alpha": [
+          252,
+          251,
+          60,
+          86
+        ],
+        "alpha_extrema": [
+          1,
+          253
+        ]
+      },
+      {
+        "column": 1,
+        "row": 1,
+        "bounds": [
+          314,
+          314,
+          627,
+          627
+        ],
+        "corner_alpha": [
+          252,
+          252,
+          2,
+          2
+        ],
+        "inset8_alpha": [
+          252,
+          252,
+          90,
+          103
+        ],
+        "alpha_extrema": [
+          1,
+          253
+        ]
+      },
+      {
+        "column": 2,
+        "row": 1,
+        "bounds": [
+          627,
+          314,
+          940,
+          627
+        ],
+        "corner_alpha": [
+          252,
+          253,
+          2,
+          2
+        ],
+        "inset8_alpha": [
+          252,
+          252,
+          97,
+          99
+        ],
+        "alpha_extrema": [
+          1,
+          253
+        ]
+      },
+      {
+        "column": 3,
+        "row": 1,
+        "bounds": [
+          940,
+          314,
+          1254,
+          627
+        ],
+        "corner_alpha": [
+          253,
+          251,
+          2,
+          1
+        ],
+        "inset8_alpha": [
+          251,
+          250,
+          85,
+          82
+        ],
+        "alpha_extrema": [
+          0,
+          253
+        ]
+      },
+      {
+        "column": 0,
+        "row": 2,
+        "bounds": [
+          0,
+          627,
+          314,
+          940
+        ],
+        "corner_alpha": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 2,
+        "bounds": [
+          314,
+          627,
+          627,
+          940
+        ],
+        "corner_alpha": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 2,
+        "bounds": [
+          627,
+          627,
+          940,
+          940
+        ],
+        "corner_alpha": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "column": 3,
+        "row": 2,
+        "bounds": [
+          940,
+          627,
+          1254,
+          940
+        ],
+        "corner_alpha": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 0,
+        "row": 3,
+        "bounds": [
+          0,
+          940,
+          314,
+          1254
+        ],
+        "corner_alpha": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 1,
+        "row": 3,
+        "bounds": [
+          314,
+          940,
+          627,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 2,
+        "row": 3,
+        "bounds": [
+          627,
+          940,
+          940,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "column": 3,
+        "row": 3,
+        "bounds": [
+          940,
+          940,
+          1254,
+          1254
+        ],
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "inset8_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  }
+}

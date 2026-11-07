@@ -1,0 +1,601 @@
+{
+  "task": "Phase 5 T09",
+  "decision": "COMPLETE",
+  "date": "2026-10-28",
+  "timezone": "Asia/Bangkok",
+  "scope": "Fixed-owner loopback operator backend read model; T10-T12 not started",
+  "audit": {
+    "git": "Metadata absent; status/diff/staged inspection unavailable",
+    "agents": "No applicable AGENTS.md found in ancestors/maintained source search",
+    "baselineFiles": 476,
+    "priorTasks": "T02-T08 code/evidence reviewed; T08 observation-only, no dispatch/cancellation capability"
+  },
+  "architecture": {
+    "composition": "Existing Phase 3 activitySql/mapAgentActivity within READ ONLY REPEATABLE READ transactions",
+    "v1": "Unchanged city and Agent activity contracts/audiences",
+    "v2": "Separate operator-only /api/v1/collaboration-activity",
+    "nativeExecutionAuthority": "Existing Runtime Coordinator persistence",
+    "externalExecutionAuthority": "Provider, represented by T07 last accepted observations",
+    "mutations": "None; no provider calls, lifecycle writes, audit append or inbox processing",
+    "synchronization": "REST snapshots plus native owner-stream event invalidations; externalSnapshotRequired true"
+  },
+  "endpoints": [
+    {
+      "route": "GET /api/v1/collaboration-activity",
+      "query": [
+        "limit",
+        "after",
+        "authority",
+        "status",
+        "agentId"
+      ]
+    },
+    {
+      "route": "GET /api/v1/collaboration-activity/:sessionId/snapshot",
+      "query": [
+        "limit",
+        "participantsAfter",
+        "delegationsAfter",
+        "externalAfter"
+      ]
+    },
+    {
+      "route": "GET /api/v1/collaboration-activity/agents/:agentId",
+      "query": [
+        "limit",
+        "after",
+        "externalAfter"
+      ]
+    },
+    {
+      "route": "GET /api/v1/collaboration-activity/:sessionId/timeline",
+      "query": [
+        "limit",
+        "cursor"
+      ]
+    },
+    {
+      "route": "GET /api/v1/collaboration-activity/:sessionId/events",
+      "query": [
+        "limit",
+        "afterPosition"
+      ]
+    }
+  ],
+  "bounds": {
+    "defaultPage": 10,
+    "maxPage": 20,
+    "responseBytes": 65536,
+    "timeline": "Each branch limited before merging; exact microsecond keyset browsing, context-bound cursor",
+    "externalStaleAfterMs": 30000,
+    "progress": null,
+    "externalHealth": "UNKNOWN",
+    "externalResultAvailability": "NOT_PROJECTED"
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "exitCode": 0,
+      "log": "build-verified"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "log": "lint-final",
+      "meaning": "Maintained city JS syntax, runtime frontend contract typecheck and backend no-emit check"
+    },
+    {
+      "command": "npm.cmd run check:api",
+      "exitCode": 0,
+      "log": "types"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exitCode": 0,
+      "passed": 269,
+      "failed": 0,
+      "skipped": 0,
+      "log": "unit-verified"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exitCode": 0,
+      "passed": 205,
+      "failed": 0,
+      "skipped": 0,
+      "log": "db-verified",
+      "meaning": "Actual PostgreSQL/Nest/controllers/runtime/browser regressions; nine new T09 cases"
+    },
+    {
+      "command": "node --test --test-name-pattern=\"^T09 (native API|external observations|native incremental|bounded timeline|real HTTP|paginated summaries|disabled external|read-only snapshot|timeline query)\" apps/api/test/database.integration.cjs",
+      "exitCode": 0,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "log": "projection-final",
+      "meaning": "Final T09 read SQL/audit whitelist and actual cancellation audit coverage, after full regression run; no lifecycle source changes"
+    },
+    {
+      "command": "npm.cmd run db:generate",
+      "exitCode": 0,
+      "log": "generate"
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "exitCode": 0,
+      "log": "dbcheck"
+    },
+    {
+      "command": "docker ps -aq --filter label=elyqreth.test.run; docker volume ls -q --filter label=elyqreth.test.run",
+      "exitCode": 0,
+      "meaning": "Both empty after owned harness cleanup"
+    }
+  ],
+  "coverage": [
+    "Strict query/UUID/page/cursor validation",
+    "Microsecond browsing and cross-owner/session cursor rejection",
+    "Evidence-age freshness vs health/Execution lifecycle",
+    "Actual native rule-based parent and delegated child execution through existing Runtime Coordinator",
+    "Native participant/delegation/Task/Execution correlation and no read audit/lifecycle mutation",
+    "Persisted external unknown raw status, explicit connection/namespace/generation and mapped IDs",
+    "Unified summaries keep native/external identities separate even if provider ID equals internal UUID",
+    "Snapshot high-water/native invalidation replay and future-position resnapshot",
+    "Durable provider dedupe creates one effective inbox timeline identity",
+    "Cancellation requests appear from actual T05 audit persistence",
+    "Cross-owner/missing/no-credential HTTP 404/401 behavior and rejected forged filters",
+    "Pagination across summaries/participants and filtering before slicing",
+    "Disabled sources retain RUNNING observation while marked RETIRED",
+    "Concurrent committed membership changes do not mix count/rows inside one snapshot",
+    "Index existence and actual EXPLAIN native owner-collaboration path"
+  ],
+  "migration": {
+    "file": "0009_zippy_lockheed.sql",
+    "changes": "Two additive history indexes, no table/column/source lifecycle changes",
+    "fresh": "Passed real full database harness",
+    "upgrade": "Existing populated pre-ingestion/T07 upgrade scenarios apply current migration chain and preserve records",
+    "plans": "EXPLAIN with enable_seqscan=off proves index support; no scaled production benchmark claimed"
+  },
+  "initialFailures": [
+    "First build rejected a generic page type; new projection page typing corrected",
+    "Initial integration run exposed raw Drizzle timestamp strings and a test missing required native execution If-Match. Explicit Date parsing and valid version header corrected; original correlation/ownership assertions retained",
+    "Timeline browsing preserves PostgreSQL microseconds rather than lossy JavaScript Date cursor precision",
+    "Final review bounded each timeline source and aligned recovery audit names to actual T05 dispatch/blocked categories; final focused nine cases passed"
+  ],
+  "logs": {
+    "build-verified": {
+      "file": "elyqreth-p5-t09-build-verified.log",
+      "sha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "tail": [
+        "",
+        "> build",
+        "> npm run build --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 build",
+        "> tsc -p tsconfig.json",
+        ""
+      ]
+    },
+    "lint-final": {
+      "file": "elyqreth-p5-t09-lint-final.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "tail": [
+        "",
+        "",
+        "> check:api",
+        "> npm run check --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 check",
+        "> tsc -p tsconfig.json --noEmit",
+        ""
+      ]
+    },
+    "types": {
+      "file": "elyqreth-p5-t09-types.log",
+      "sha256": "5886d484e369e267b955552d3bd725e715e01b765a35ede6291ae2d5ecc3141a",
+      "tail": [
+        "",
+        "> check:api",
+        "> npm run check --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 check",
+        "> tsc -p tsconfig.json --noEmit",
+        ""
+      ]
+    },
+    "unit-verified": {
+      "file": "elyqreth-p5-t09-unit-verified.log",
+      "sha256": "95146a4674a43071d5da2a6c101ffb8298d9d0ad3c980b07fad3476b8e57bd4c",
+      "tail": [
+        "\u2714 an expired execution is rejected before claim verification and oversized handler output never escapes (2.3166ms)",
+        "\u2139 tests 269",
+        "\u2139 suites 0",
+        "\u2139 pass 269",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 50074.7515"
+      ]
+    },
+    "db-verified": {
+      "file": "elyqreth-p5-t09-db-verified.log",
+      "sha256": "0be68812801e05a1b4ef140eadbff271157d83855d66e213d7d967389dbf63bb",
+      "tail": [
+        "\u2714 P4 T03 browser input validation and closed backend error codes match current backend contracts (2.0598ms)",
+        "\u2139 tests 205",
+        "\u2139 suites 0",
+        "\u2139 pass 205",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 180084.7092"
+      ]
+    },
+    "projection-final": {
+      "file": "elyqreth-p5-t09-projection-final.log",
+      "sha256": "ae0e718a96ce548e56e7143cc96d5ae2ed26f7d089f1fae9e7fb847ba9a2620e",
+      "tail": [
+        "\u2714 T09 timeline query indexes exist and native event read uses the owner-collaboration index (88.8601ms)",
+        "\u2139 tests 9",
+        "\u2139 suites 0",
+        "\u2139 pass 9",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 7402.411"
+      ]
+    },
+    "dbcheck": {
+      "file": "elyqreth-p5-t09-dbcheck.log",
+      "sha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f",
+      "tail": [
+        "> npm run db:check --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 db:check",
+        "> drizzle-kit check",
+        "",
+        "No config path provided, using default 'drizzle.config.ts'",
+        "Reading config file 'C:\\Users\\user\\Desktop\\Project\\Elyqreth\\apps\\api\\drizzle.config.ts'",
+        "Everything's fine \ud83d\udc36\ud83d\udd25"
+      ]
+    },
+    "generate": {
+      "file": "elyqreth-p5-t09-generate.log",
+      "sha256": "896949d37b6f9bfa5cadbfd6a0da9b111bcf6fba9a7ca3fdd85d1075056d6c3a",
+      "tail": [
+        "external_execution_mappings 17 columns 2 indexes 5 fks",
+        "external_event_inbox 10 columns 3 indexes 2 fks",
+        "external_sources 8 columns 0 indexes 2 fks",
+        "orchestrators 11 columns 0 indexes 1 fks",
+        "owner_streams 2 columns 0 indexes 1 fks",
+        "owners 3 columns 0 indexes 0 fks",
+        "tasks 16 columns 4 indexes 3 fks",
+        "",
+        "[\u2713] Your SQL migration file \u279c migrations\\0009_zippy_lockheed.sql \ud83d\ude80"
+      ]
+    }
+  },
+  "files": {
+    "modified": [
+      "README.md",
+      "WORKSPACE.md",
+      "apps/api/migrations/meta/_journal.json",
+      "apps/api/src/city/city.module.ts",
+      "apps/api/src/database/schema.ts",
+      "apps/api/test/database.integration.cjs",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/api-frontend.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "docs/ai-agent-platform/phase-5/current-system-audit.md",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/security-reliability.md"
+    ],
+    "added": [
+      "apps/api/migrations/0009_zippy_lockheed.sql",
+      "apps/api/migrations/meta/0009_snapshot.json",
+      "apps/api/src/city/collaboration-activity.contract.ts",
+      "apps/api/src/city/collaboration-activity.controller.ts",
+      "apps/api/src/city/collaboration-activity.service.ts",
+      "apps/api/test/collaboration-activity.integration.cjs",
+      "apps/api/test/collaboration-activity.test.cjs",
+      "docs/ai-agent-platform/phase-5/collaboration-activity.md",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t09-verification.json"
+    ]
+  },
+  "preservation": {
+    "protectedFiles": 177,
+    "changed": 0,
+    "cityFilesUnchanged": 79,
+    "existingPhase3SqlMapperServiceUnchanged": true,
+    "existingExternalAdapterIngestionUnchanged": true,
+    "nativeRuntimeCollaborationUnchanged": true,
+    "historicalMigrationsUnchanged": true,
+    "dependenciesScriptsCIUnchanged": true
+  },
+  "limitations": [
+    "Production principal/tenant access remains outside approved local scope",
+    "No commit-ordered external incremental cursor; snapshot refresh explicit",
+    "Timeline cursor is historical browsing, not a live stream checkpoint",
+    "Observation age is not provider connectivity or liveness; health UNKNOWN",
+    "Independent page requests are separate snapshots, so version-aware refresh belongs to T10",
+    "No full Execution results or Task instructions in these reads",
+    "No live provider rerun or hosted CI execution in T09; preserved T08 fixtures/integration regressions executed",
+    "No production-scaled benchmark or frontend implementation"
+  ],
+  "documentationCheck": {
+    "files": 20,
+    "localLinks": 127,
+    "issues": [],
+    "mermaid": "Source reviewed, not rendered"
+  },
+  "continuationReview": {
+    "reviewDate": "2026-10-29",
+    "timezone": "Asia/Bangkok",
+    "decision": "COMPLETE",
+    "implementationChanges": [],
+    "testChanges": [],
+    "recoveredState": "All T09 implementation, endpoints, migration, tests and documentation were saved. All eight original log files matched their recorded SHA-256 hashes.",
+    "remainingWorkIdentified": [
+      "Confirm current repository state and original verification hashes",
+      "Rerun final repository checks",
+      "Record continuation checklist, fresh results and cleanup"
+    ],
+    "requirements": [
+      {
+        "area": "Projection architecture",
+        "status": "COMPLETE",
+        "evidence": "Phase 3 activity SQL/mapper reused; strict v1 preserved"
+      },
+      {
+        "area": "Unified DTO",
+        "status": "COMPLETE",
+        "evidence": "Provider-neutral activity and explicit Execution references"
+      },
+      {
+        "area": "Ownership",
+        "status": "COMPLETE",
+        "evidence": "NATIVE and EXTERNAL provenance remain separate"
+      },
+      {
+        "area": "Native projection",
+        "status": "COMPLETE",
+        "evidence": "Persisted collaboration/delegation/child Task and Execution facts"
+      },
+      {
+        "area": "External projection",
+        "status": "COMPLETE",
+        "evidence": "Persisted T07 observations only; no provider read on requests"
+      },
+      {
+        "area": "Relationships",
+        "status": "COMPLETE",
+        "evidence": "Stable source/target Agent and parent/child references"
+      },
+      {
+        "area": "Summary",
+        "status": "COMPLETE",
+        "evidence": "Actual persisted lifecycle and scoped counts, without aggregate mutation"
+      },
+      {
+        "area": "Progress",
+        "status": "COMPLETE",
+        "evidence": "Explicit null; no invented percentage"
+      },
+      {
+        "area": "Timeline",
+        "status": "COMPLETE",
+        "evidence": "Authorized persisted events/audit/inbox; bounded source merge and dedupe identity"
+      },
+      {
+        "area": "Snapshot",
+        "status": "COMPLETE",
+        "evidence": "READ ONLY REPEATABLE READ; coherent concurrent-membership test"
+      },
+      {
+        "area": "Incremental sync",
+        "status": "COMPLETE",
+        "evidence": "Existing owner-stream native invalidation cursors"
+      },
+      {
+        "area": "Reconnection",
+        "status": "COMPLETE",
+        "evidence": "Snapshot/high-water replay; malformed/future cursor recovery"
+      },
+      {
+        "area": "Staleness",
+        "status": "COMPLETE",
+        "evidence": "Evidence age and retired source labels; health remains UNKNOWN"
+      },
+      {
+        "area": "APIs",
+        "status": "COMPLETE",
+        "evidence": "Five protected GET routes; no new mutation route"
+      },
+      {
+        "area": "Pagination",
+        "status": "COMPLETE",
+        "evidence": "Default 10/max 20; stable scoped ordering and validated filters"
+      },
+      {
+        "area": "Performance",
+        "status": "COMPLETE",
+        "evidence": "Bounded pages/bytes/queries, two additive indexes, tested index support"
+      },
+      {
+        "area": "Security",
+        "status": "COMPLETE",
+        "evidence": "Existing local operator guard; actual unauthenticated/cross-owner HTTP rejection"
+      },
+      {
+        "area": "Tests",
+        "status": "COMPLETE",
+        "evidence": "Three unit-contract and nine real PostgreSQL/API projection cases"
+      },
+      {
+        "area": "Regression",
+        "status": "COMPLETE",
+        "evidence": "Fresh full backend/native/database/browser suites passed"
+      },
+      {
+        "area": "Documentation",
+        "status": "COMPLETE",
+        "evidence": "Existing guide/ADRs/roadmap plus recovered checklist and fresh evidence"
+      }
+    ],
+    "commands": [
+      {
+        "command": "npm.cmd run lint",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-lint.log",
+        "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+        "summary": [
+          "",
+          "",
+          "> check:api",
+          "> npm run check --workspace @elyqreth/api",
+          "",
+          "",
+          "> @elyqreth/api@0.1.0 check",
+          "> tsc -p tsconfig.json --noEmit",
+          ""
+        ]
+      },
+      {
+        "command": "npm.cmd run check:api",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-types.log",
+        "logSha256": "5886d484e369e267b955552d3bd725e715e01b765a35ede6291ae2d5ecc3141a",
+        "summary": [
+          "",
+          "> check:api",
+          "> npm run check --workspace @elyqreth/api",
+          "",
+          "",
+          "> @elyqreth/api@0.1.0 check",
+          "> tsc -p tsconfig.json --noEmit",
+          ""
+        ]
+      },
+      {
+        "command": "npm.cmd run build",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-build.log",
+        "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+        "summary": [
+          "",
+          "> build",
+          "> npm run build --workspace @elyqreth/api",
+          "",
+          "",
+          "> @elyqreth/api@0.1.0 build",
+          "> tsc -p tsconfig.json",
+          ""
+        ]
+      },
+      {
+        "command": "npm.cmd run test:api",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-unit.log",
+        "logSha256": "716ff56140551a1001a6b5de06485bc9186b0e0d3545029b4360cab14acea5eb",
+        "summary": [
+          "\u2714 an expired execution is rejected before claim verification and oversized handler output never escapes (2.4485ms)",
+          "\u2139 tests 269",
+          "\u2139 suites 0",
+          "\u2139 pass 269",
+          "\u2139 fail 0",
+          "\u2139 cancelled 0",
+          "\u2139 skipped 0",
+          "\u2139 todo 0",
+          "\u2139 duration_ms 38462.207"
+        ],
+        "passed": 269,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "command": "npm.cmd run db:check",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-dbcheck.log",
+        "logSha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f",
+        "summary": [
+          "> npm run db:check --workspace @elyqreth/api",
+          "",
+          "",
+          "> @elyqreth/api@0.1.0 db:check",
+          "> drizzle-kit check",
+          "",
+          "No config path provided, using default 'drizzle.config.ts'",
+          "Reading config file 'C:\\Users\\user\\Desktop\\Project\\Elyqreth\\apps\\api\\drizzle.config.ts'",
+          "Everything's fine \ud83d\udc36\ud83d\udd25"
+        ]
+      },
+      {
+        "command": "npm.cmd run test:db",
+        "exitCode": 0,
+        "logFile": "elyqreth-p5-t09-resume-db-verified.log",
+        "logSha256": "f27277eca5790664eae7ee6a974af598c2f29557ef38687c19143a09bb02502a",
+        "summary": [
+          "\u2714 P4 T03 browser input validation and closed backend error codes match current backend contracts (5.3218ms)",
+          "\u2139 tests 205",
+          "\u2139 suites 0",
+          "\u2139 pass 205",
+          "\u2139 fail 0",
+          "\u2139 cancelled 0",
+          "\u2139 skipped 0",
+          "\u2139 todo 0",
+          "\u2139 duration_ms 187109.9938"
+        ],
+        "passed": 205,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "environmentFailure": {
+      "command": "npm.cmd run test:db",
+      "exitCode": 1,
+      "category": "Environment prerequisite",
+      "cause": "Docker Desktop Linux engine was stopped; hook failed before resource creation/assertions",
+      "resolution": "Started Docker Desktop hidden, confirmed engine 27.4.0 and reran the unchanged full suite successfully"
+    },
+    "limitations": [
+      "Approved fixed-owner loopback scope only; no production tenants/principal architecture",
+      "External synchronization requires snapshot refresh; native cursors are invalidations",
+      "External health remains unknown; no live-provider or hosted CI execution claimed",
+      "No scaled production benchmark",
+      "T10-T12 not started"
+    ],
+    "preservation": {
+      "allMaintainedImplementationAndTestFilesUnchanged": true,
+      "frontendAndCityUnchanged": true,
+      "runtimeCollaborationAndAdapterUnchanged": true,
+      "gitMetadata": "Unavailable; Git status/diff/staged inspection failed; filesystem baselines used",
+      "continuationModifiedFiles": [
+        "docs/ai-agent-platform/phase-5/collaboration-activity.md",
+        "docs/ai-agent-platform/phase-5/implementation-plan.md",
+        "docs/ai-agent-platform/phase-5/verification-evidence/t09-verification.json"
+      ],
+      "continuationCreatedFiles": [
+        "docs/ai-agent-platform/phase-5/t09-continuation.md"
+      ]
+    },
+    "cleanup": {
+      "command": "docker ps -aq --filter label=elyqreth.test.run; docker volume ls -q --filter label=elyqreth.test.run",
+      "exitCode": 0,
+      "ownedContainers": 0,
+      "ownedVolumes": 0
+    },
+    "documentationCheck": {
+      "markdownFiles": 21,
+      "localLinks": 131,
+      "issues": []
+    }
+  }
+}

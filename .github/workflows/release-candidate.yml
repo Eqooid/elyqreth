@@ -1,0 +1,55 @@
+name: Prepare immutable release candidate
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-candidate-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  quality:
+    if: vars.ELYQRETH_CANDIDATE_ENABLED == 'true' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    uses: ./.github/workflows/verify.yml
+  candidate:
+    needs: quality
+    if: vars.ELYQRETH_CANDIDATE_ENABLED == 'true' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    env:
+      ELYQRETH_IMAGE_PREFIX: ${{ vars.ELYQRETH_IMAGE_PREFIX }}
+      ELYQRETH_SBOM_GENERATOR: ${{ vars.ELYQRETH_SBOM_GENERATOR }}
+      ELYQRETH_SCANNER_IMAGE: ${{ vars.ELYQRETH_SCANNER_IMAGE }}
+      ELYQRETH_BUILDKIT_IMAGE: ${{ vars.ELYQRETH_BUILDKIT_IMAGE }}
+      ELYQRETH_BUILDX_VERSION: ${{ vars.ELYQRETH_BUILDX_VERSION }}
+      ELYQRETH_DOCKERFILE_FRONTEND_IMAGE: ${{ vars.ELYQRETH_DOCKERFILE_FRONTEND_IMAGE }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified 2026-11-06
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: node scripts/release.mjs preflight
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+        with:
+          version: ${{ vars.ELYQRETH_BUILDX_VERSION }}
+          driver: docker-container
+          driver-opts: image=${{ vars.ELYQRETH_BUILDKIT_IMAGE }}
+          buildkitd-flags: --oci-worker-gc
+      - id: bundle
+        run: node scripts/release.mjs build --bundle "$RUNNER_TEMP/release"
+      # No login, push, tag, release, environment credential, or deployment command exists here.
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/release
+          if-no-files-found: error
+          overwrite: false
+          include-hidden-files: true
+          retention-days: 7
+      - run: printf '%s\n' 'Candidate prepared only. Registry publication and deployment remain closed.'

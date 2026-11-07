@@ -1,0 +1,429 @@
+{
+  "date": "2026-10-26 Asia/Bangkok",
+  "decision": "COMPLETE",
+  "scope": "Approved local-development Phase 4 E2E and conservative recovery semantics; T10 acceptance not performed",
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "result": "PASS",
+      "details": "Final maintained JS syntax, strict runtime-web TypeScript and backend no-emit"
+    },
+    {
+      "command": "npm.cmd run test:all",
+      "result": "PASS",
+      "frontendTests": 207,
+      "backendUnitTests": 198,
+      "details": "Before two new frontend reference regressions; unchanged backend production source"
+    },
+    {
+      "command": "npm.cmd test",
+      "result": "PASS",
+      "frontendTests": 209,
+      "details": "Final source, including both added regression tests"
+    },
+    {
+      "command": "node --test tests/task-submission.test.js tests/interaction-session.test.js",
+      "result": "PASS",
+      "tests": 30
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "result": "PASS",
+      "details": "Rerun outside Windows sandbox after user-profile lookup ENOMEM"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "result": "PASS",
+      "tests": 122,
+      "details": "Full real PostgreSQL/API suite after Vite root fix; affected frontend cases rerun after subsequent owner correction"
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[2345678]' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 18,
+      "details": "Affected Phase 4 subset after final owner correction; not additional unique cases beyond the full suite"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "result": "PASS",
+      "details": "Final source, disposable Vite output; no maintained city source overwritten"
+    },
+    {
+      "command": "npm.cmd run test:interaction:e2e",
+      "result": "PASS",
+      "tests": 1,
+      "browser": "Chrome/155.0.8059.85",
+      "details": "Includes backend build and isolated comprehensive native workflow"
+    },
+    {
+      "command": "$env:BROWSER_HARDENING_PHASE4='true'; $env:BROWSER_HARDENING_REPORT=\"$env:TEMP/elyqreth-p4-t09-accessibility-final.json\"; npm.cmd run test:browser",
+      "result": "PASS",
+      "browserExceptions": 0,
+      "details": "Final source native keyboard/AX/focus/reflow/motion/city smoke"
+    },
+    {
+      "command": "npm.cmd run test:city:e2e",
+      "result": "PASS",
+      "tests": 1,
+      "persistedExecutions": 5
+    },
+    {
+      "command": "node --expose-gc scripts/phase4-interaction-profile.mjs --out \"$env:TEMP/elyqreth-p4-t09-load.json\"",
+      "result": "PASS",
+      "details": "Synthetic 1/5/20 Agent observation scopes and 100 timer-cleanup cycles"
+    },
+    {
+      "command": "node --check scripts/interaction-reliability-browser.mjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check scripts/interaction-acceptance.mjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check apps/api/test/interaction-runtime-child.cjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check apps/api/test/interaction-reliability.integration.cjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check vite.config.js",
+      "result": "PASS"
+    }
+  ],
+  "exploratoryFailures": [
+    {
+      "classification": "environment",
+      "finding": "Docker Desktop engine unavailable before setup; started installed engine and reran."
+    },
+    {
+      "classification": "environment",
+      "finding": "Sandboxed migration checker Windows user-profile lookup ENOMEM; same command passed outside sandbox."
+    },
+    {
+      "classification": "test fixture",
+      "finding": "Rule-only child inherited unused LLM settings; removed LLM configuration. Added safe startup diagnostics instead of waiting for ready indefinitely."
+    },
+    {
+      "classification": "test fixture",
+      "finding": "Waited for actual New Task eligibility and armed CDP response interception before Start dispatch. Preflights explicitly continued; HMR disabled in offline fixture."
+    },
+    {
+      "classification": "confirmed CI defect",
+      "finding": "Initial full suite 118/122; four native city initializations failed because cwd-relative Vite root served apps/api/dist. Config-relative root fixed full suite to 122/122."
+    },
+    {
+      "classification": "confirmed interaction defect",
+      "finding": "New transient eligibility regression failed because a confirmed Task was cleared on network error. One-line owner fix retains reference while clearing eligibility; 401/403/404 denial tests retain erasure. Focused 30 and full 209 frontend tests pass."
+    }
+  ],
+  "e2e": {
+    "result": {
+      "status": "PASS",
+      "initialTaskId": "f755f120-4688-4036-b2d0-33114fa41545",
+      "recoveredTaskId": "74a9f51e-4677-4f5b-bda7-53a09fe064e6",
+      "successExecutionId": "a9672103-21af-4c10-932b-a71f8960438e",
+      "failedExecutionId": "f6ddf216-ed94-45b6-8a21-f49f4acd8397",
+      "timedOutExecutionId": "bf44d98b-3068-4871-b61f-6b683cb2399b",
+      "crashedExecutionId": "acad13fa-776c-4474-b3ea-31205bca0c41",
+      "crashOutcome": "RUNNING persisted / UNKNOWN lease observation; no automatic recovery worker",
+      "verified": {
+        "tasks": 5,
+        "executions": 4,
+        "dispatches": 4
+      },
+      "checkpoints": [
+        "CDP lost Create response after real commit; reload, explicit reauthorization and exact-key GET restore one Task",
+        "Real rule-based Start/RUNNING, discarded committed success acknowledgement, canonical result/history and no redispatch",
+        "Actual Chrome offline/online transport failure preserves references and reconciles through shared synchronization",
+        "Genuine coordinator failure and native configured deadline; safe unavailable outputs, one terminal event per attempt",
+        "Actual runtime-process hard kill; same-port restart, persisted identity, expired-lease UNKNOWN, no fabricated success or retry",
+        "Real capability revocation/401 cleanup, explicit reauthorization, removed binding and unbound NPC preservation"
+      ]
+    },
+    "browser": "Chrome/155.0.8059.85",
+    "exceptions": 0,
+    "requestCounts": {
+      "GET /api/v1/cities/elyqreth/agents": 32,
+      "OPTIONS /api/v1/cities/elyqreth/agents": 32,
+      "GET /api/v1/agents/:id": 14,
+      "OPTIONS /api/v1/agents/:id": 14,
+      "POST /api/v1/tasks": 5,
+      "OPTIONS /api/v1/tasks": 5,
+      "GET /api/v1/tasks/:id/status": 41,
+      "OPTIONS /api/v1/tasks/:id/status": 41,
+      "GET /api/v1/tasks/lookup": 1,
+      "OPTIONS /api/v1/tasks/lookup": 1,
+      "OPTIONS /api/v1/tasks/:id/execute": 4,
+      "POST /api/v1/tasks/:id/execute": 4,
+      "GET /api/v1/tasks/:id/executions/:id": 23,
+      "OPTIONS /api/v1/tasks/:id/executions/:id": 23,
+      "GET /api/v1/tasks/:id/executions/:id/result": 9,
+      "OPTIONS /api/v1/tasks/:id/executions/:id/result": 9,
+      "GET /api/v1/agents/:id/executions": 11,
+      "OPTIONS /api/v1/agents/:id/executions": 11
+    },
+    "mutationAssertions": {
+      "taskPOSTs": 5,
+      "executionPOSTs": 4,
+      "persistedTasks": 5,
+      "persistedExecutions": 4,
+      "strategyDispatches": 4
+    }
+  },
+  "accessibility": {
+    "native": true,
+    "manualScreenReader": "NOT VERIFIED",
+    "checks": {
+      "status": "PASS",
+      "kind": "Real Chrome panel semantics, keyboard, untrusted name and deterministic repeated selections",
+      "escapeRestored": true,
+      "validationFocused": true,
+      "keyboardResidentSelection": true,
+      "modalTabContainment": true,
+      "stable": {
+        "repeatedSelections": 100,
+        "domTextMutations": 0,
+        "elapsedMs": 3.599999964237213,
+        "additionalRequests": 0
+      },
+      "targets": [
+        {
+          "label": "Disconnect interaction access",
+          "width": 181.34375,
+          "height": 34
+        },
+        {
+          "label": "Save Task",
+          "width": 75.90625,
+          "height": 34
+        },
+        {
+          "label": "Recheck access",
+          "width": 106.15625,
+          "height": 34
+        },
+        {
+          "label": "Close selection",
+          "width": 104.921875,
+          "height": 34
+        },
+        {
+          "label": "Restore context",
+          "width": 108.3125,
+          "height": 34
+        },
+        {
+          "label": "Start Execution",
+          "width": 104.671875,
+          "height": 34
+        },
+        {
+          "label": "Cancel Execution",
+          "width": 115.328125,
+          "height": 34
+        },
+        {
+          "label": "Refresh lifecycle",
+          "width": 110.40625,
+          "height": 34
+        },
+        {
+          "label": "Execution result",
+          "width": 1440,
+          "height": 24
+        },
+        {
+          "label": "Refresh result",
+          "width": 97.78125,
+          "height": 34
+        },
+        {
+          "label": "Execution history",
+          "width": 1440,
+          "height": 24
+        },
+        {
+          "label": "Refresh history from first page",
+          "width": 186,
+          "height": 34
+        },
+        {
+          "label": "Previous page",
+          "width": 100.53125,
+          "height": 34
+        },
+        {
+          "label": "Next page",
+          "width": 80.625,
+          "height": 34
+        }
+      ],
+      "axLabels": true,
+      "reducedMotion": true,
+      "reflow320": true
+    }
+  },
+  "performance": {
+    "sameSelection": {
+      "repeatedSelections": 100,
+      "domTextMutations": 0,
+      "elapsedMs": 3.599999964237213,
+      "additionalRequests": 0
+    },
+    "interactionProfile": "t09-load.json",
+    "cleanupCycles": 100,
+    "remainingTimersPerCycle": 0,
+    "limits": "Controlled mocked load observations are not real provider concurrency/capacity or long-duration leak proof; real multi-Agent native case retained in final affected suite."
+  },
+  "cleanup": {
+    "testContainersWithOwnedLabelRemaining": 0,
+    "testVolumesWithOwnedLabelRemaining": 0,
+    "elyqrethBrowserProcessesRemaining": 0,
+    "runtimeChildProcessesRemaining": 0,
+    "method": "Post-run Docker label queries and scoped Win32 process inspection"
+  },
+  "ci": {
+    "workflow": ".github/workflows/verify.yml",
+    "tier": "npm run test:interaction:e2e",
+    "hardeningEnabled": true,
+    "evidence": "Node24 actions/upload-artifact@v7, seven-day scoped artifacts; hidden files excluded",
+    "remoteExecution": "NOT EXECUTED",
+    "validation": "Manual structural review; no installed YAML parser; official v7 manifest verified"
+  },
+  "notApplicable": [
+    "Separate runtime worker",
+    "Message broker",
+    "Redis",
+    "Production human/tenant login in approved local scope"
+  ],
+  "notVerified": [
+    "Remote GitHub CI/artifact upload",
+    "Manual screen-reader certification or exhaustive device/zoom coverage",
+    "Paid live providers",
+    "Long-duration native/GPU heap endurance or production capacity",
+    "Automatic crashed-work resumption: not implemented by existing architecture"
+  ],
+  "remainingRisks": [
+    {
+      "severity": "HIGH if publicly exposed",
+      "issue": "Fixed-owner local capabilities are not production authentication; public release remains blocked."
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Hard crash leaves persisted RUNNING; lease projection becomes UNKNOWN, no autonomous recovery worker or redispatch."
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Synchronous navigation/cancellation does not guarantee provider termination/billing; native quarantine remains authoritative."
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Existing per-caller quotas and general DLP absent; preserved T08 limits."
+    }
+  ],
+  "preservation": {
+    "gitMetadata": false,
+    "baselineFiles": 381,
+    "baselineNote": "vite.config.js appended before its edit after the workspace-root defect was confirmed",
+    "modifiedExistingFiles": [
+      "dist/js/runtime/interaction/submission-owner.js",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/architecture.md",
+      "docs/ai-agent-platform/phase-4/decisions.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-4/interaction-hardening.md",
+      "docs/ai-agent-platform/phase-4/README.md",
+      "scripts/browser-smoke.mjs",
+      "scripts/task-panel-browser.mjs",
+      "tests/task-submission.test.js",
+      "apps/api/test/interaction.integration.cjs",
+      ".github/workflows/verify.yml",
+      "README.md",
+      "package.json",
+      "vite.config.js"
+    ],
+    "newFiles": [
+      "apps/api/test/interaction-reliability.integration.cjs",
+      "apps/api/test/interaction-runtime-child.cjs",
+      "scripts/interaction-acceptance.mjs",
+      "scripts/interaction-reliability-browser.mjs",
+      "docs/ai-agent-platform/phase-4/end-to-end-reliability.md",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t09-verification.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t09-live-browser.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t09-accessibility.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t09-load.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t09-city-browser.json"
+    ],
+    "missingFiles": [],
+    "protectedProductionBackendMigrationsRendererAssetsAndEarlierPhasesUnchanged": true,
+    "additionalMigrationEvidence": {
+      "source": "retained pre-T07 maintained-file inventory; no migration edits in T07-T09",
+      "files": 11,
+      "changed": []
+    }
+  },
+  "temporaryLogHashes": [
+    {
+      "name": "elyqreth-p4-t09-lint-final.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+    },
+    {
+      "name": "elyqreth-p4-t09-unit.log",
+      "sha256": "bd56461520df8ac972995cf3d3e8f7712bc98eac87c0b42885d72077b0c0af34"
+    },
+    {
+      "name": "elyqreth-p4-t09-references.log",
+      "sha256": "22cf3a78cb77fa8a8bdf9dc3d67313fcb2f66421235718655bedf9db5d75f24d"
+    },
+    {
+      "name": "elyqreth-p4-t09-frontend-final.log",
+      "sha256": "73a00afd55f73120f8ef0fed7fdf519b2330912a0513cb1cb1c3b8df61332e5c"
+    },
+    {
+      "name": "elyqreth-p4-t09-migrations.log",
+      "sha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f"
+    },
+    {
+      "name": "elyqreth-p4-t09-postgres.log",
+      "sha256": "1f75f0bedfe52fb24c83a2f594fc992f8921cfa4782588481a29011b47c1b3c7"
+    },
+    {
+      "name": "elyqreth-p4-t09-postgres-final.log",
+      "sha256": "b8b1aaa0738eb955dd34455174063a81a8e478cdcaf515300893f4cd619baeb4"
+    },
+    {
+      "name": "elyqreth-p4-t09-compatibility-final.log",
+      "sha256": "9019008604b0a740a9edc3be1f07af60f509c4f53a841712f1cceb3e3fb63dfa"
+    },
+    {
+      "name": "elyqreth-p4-t09-web-build-final.log",
+      "sha256": "aa6ef8005a1eba8f5181b28bc9acae2ae0acbca5ccf38d5c2df8768f474036ae"
+    },
+    {
+      "name": "elyqreth-p4-t09-reliability-final.log",
+      "sha256": "401658b6c8c05b7d5b6509df7bb61f82a6f7f44a3a5744675ea40c7f639fc2b7"
+    },
+    {
+      "name": "elyqreth-p4-t09-accessibility-final.log",
+      "sha256": "95735a6fc5cc0ed42551c393631b131d3506ba0e07a613781ed3202be4857b5f"
+    },
+    {
+      "name": "elyqreth-p4-t09-city.log",
+      "sha256": "df29727ff058318b0f44bc960cae223c8f91a12ace72c19f774c9c8e235b8cf8"
+    },
+    {
+      "name": "elyqreth-p4-t09-load.log",
+      "sha256": "65854e26b75b1433777827edab0d7136258d792b3084cc102c639fa1a4f8f5eb"
+    }
+  ],
+  "documentation": {
+    "files": 17,
+    "localLinksAndAnchors": 198,
+    "mermaidSourceBlocks": 18,
+    "errors": [],
+    "rendering": "No new Mermaid; existing source fence balance checked, not rendered"
+  }
+}

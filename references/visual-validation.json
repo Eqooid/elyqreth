@@ -1,0 +1,212 @@
+{
+  "reference": "orange-city-reference.png",
+  "world": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 96,
+    "rows": 64
+  },
+  "buildingCount": 15,
+  "agent": {
+    "width": 30,
+    "height": 42
+  },
+  "rendering": "independent alpha sprites fitted to image-relative rectangles; camera uses original image aspect",
+  "measurements": [
+    {
+      "id": "hall",
+      "referenceBounds": [
+        274,
+        -48,
+        330,
+        342
+      ],
+      "width": 330,
+      "height": 342,
+      "heightToAgentRatio": 8.14
+    },
+    {
+      "id": "develop",
+      "referenceBounds": [
+        653,
+        0,
+        306,
+        350
+      ],
+      "width": 306,
+      "height": 350,
+      "heightToAgentRatio": 8.33
+    },
+    {
+      "id": "design",
+      "referenceBounds": [
+        976,
+        0,
+        270,
+        351
+      ],
+      "width": 270,
+      "height": 351,
+      "heightToAgentRatio": 8.36
+    },
+    {
+      "id": "test",
+      "referenceBounds": [
+        333,
+        353,
+        196,
+        220
+      ],
+      "width": 196,
+      "height": 220,
+      "heightToAgentRatio": 5.24
+    },
+    {
+      "id": "research",
+      "referenceBounds": [
+        1034,
+        337,
+        225,
+        350
+      ],
+      "width": 225,
+      "height": 350,
+      "heightToAgentRatio": 8.33
+    },
+    {
+      "id": "station",
+      "referenceBounds": [
+        775,
+        708,
+        342,
+        246
+      ],
+      "width": 342,
+      "height": 246,
+      "heightToAgentRatio": 5.86
+    },
+    {
+      "id": "cat-billboard",
+      "referenceBounds": [
+        0,
+        -28,
+        194,
+        332
+      ],
+      "width": 194,
+      "height": 332,
+      "heightToAgentRatio": 7.9
+    },
+    {
+      "id": "hall-west-utility",
+      "referenceBounds": [
+        192,
+        -128,
+        96,
+        368
+      ],
+      "width": 96,
+      "height": 368,
+      "heightToAgentRatio": 8.76
+    },
+    {
+      "id": "market-west-utility",
+      "referenceBounds": [
+        596,
+        -136,
+        64,
+        432
+      ],
+      "width": 64,
+      "height": 432,
+      "heightToAgentRatio": 10.29
+    },
+    {
+      "id": "bar-arcade",
+      "referenceBounds": [
+        0,
+        286,
+        260,
+        424
+      ],
+      "width": 260,
+      "height": 424,
+      "heightToAgentRatio": 10.1
+    },
+    {
+      "id": "east-stories-billboard",
+      "referenceBounds": [
+        1320,
+        -28,
+        216,
+        372
+      ],
+      "width": 216,
+      "height": 372,
+      "heightToAgentRatio": 8.86
+    },
+    {
+      "id": "east-humanity-billboard",
+      "referenceBounds": [
+        1296,
+        320,
+        240,
+        404
+      ],
+      "width": 240,
+      "height": 404,
+      "heightToAgentRatio": 9.62
+    },
+    {
+      "id": "foreground-west-residences",
+      "referenceBounds": [
+        0,
+        748,
+        288,
+        368
+      ],
+      "width": 288,
+      "height": 368,
+      "heightToAgentRatio": 8.76
+    },
+    {
+      "id": "foreground-central-residences",
+      "referenceBounds": [
+        416,
+        820,
+        300,
+        300
+      ],
+      "width": 300,
+      "height": 300,
+      "heightToAgentRatio": 7.14
+    },
+    {
+      "id": "foreground-dock-utility",
+      "referenceBounds": [
+        1140,
+        928,
+        194,
+        192
+      ],
+      "width": 194,
+      "height": 192,
+      "heightToAgentRatio": 4.57
+    }
+  ],
+  "comparisonPasses": [
+    {
+      "pass": 1,
+      "evidence": "blueprint-first-pass.jpg",
+      "finding": "Primary landmark order and silhouettes match; plaza monument, basin rim, station-side wayfinding and dock transport missing."
+    },
+    {
+      "pass": 2,
+      "changes": "Added separate story monument, U basin railing, wayfinder, hover truck, foreground rail platform and garden planters.",
+      "finding": "Asymmetric composition now follows reference; all primary landmarks remain independently positioned. Some roof/window details differ because occluded architecture was regenerated."
+    }
+  ],
+  "navigation": "All walkable cells connected; all workplace doors and work alcoves reachable; footprint and task interruption tests pass.",
+  "browser": "Final reference-framed comparison reviewed; pan/zoom and agent inspection verified; full four-stage mission completed; residents resumed autonomous roaming or natural idle pauses; no application console errors.",
+  "finalScreenshot": "blueprint-final-pass.jpg"
+}

@@ -1,0 +1,289 @@
+{
+  "date": "2026-10-27 Asia/Bangkok",
+  "task": "Phase 5 T05",
+  "decision": "COMPLETE",
+  "scope": "Trusted fixed-owner loopback native operator workflow; deterministic aggregate state, durable cancellation and at most three explicit recovery dispatches for never-admitted child work. No automatic crash repair, worker, scheduler, terminal reset, external integration or frontend feature.",
+  "audit": {
+    "applicableAgentsFiles": [],
+    "gitStatus": 128,
+    "gitDiff": 129,
+    "stagedDiff": 129,
+    "gitMetadata": "Absent in supplied workspace; status/staged/untracked inventory cannot be established through Git. No Git mutation.",
+    "t04Prerequisite": "Reviewed source, docs and t04-verification.json; all 14 T04 integrations pass again in final suite.",
+    "baselineMaintainedFiles": 447
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-build-verified.log",
+      "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "result": "PASS final backend production TypeScript build."
+    },
+    {
+      "command": "npm.cmd run lint",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-lint-final5.log",
+      "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "result": "PASS maintained JS syntax, frontend runtime contract types and backend no-emit typecheck."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-unit-final5.log",
+      "logSha256": "a4185d4057b131bea62796b9c6ad9585696a53a53e29e5dae4a1cd8c514f360c",
+      "tests": 217,
+      "passed": 217,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 38161.2171,
+      "result": "PASS final source, including 3 new aggregate-policy unit cases."
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-dbcheck.log",
+      "logSha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f",
+      "result": "PASS Drizzle migration metadata validation."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-db-final4.log",
+      "logSha256": "16a55e455c8e5e6f6b0b972ec5bab2f41623c22450991427af3473ff96bf9c2b",
+      "tests": 174,
+      "passed": 174,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 161803.4083,
+      "result": "PASS isolated PostgreSQL, actual NestJS guards/services/native runtime/results, migrations, 15 T05 cases, 14 T04 cases and existing Phase 1-4/database/browser regressions."
+    },
+    {
+      "command": "npm.cmd run db:generate",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-generate-approved.log",
+      "logSha256": "572a8a1c4774963de5248f86052ed0769678a3bcc06a54eff95c1b7cbc3812ba",
+      "result": "PASS generated additive migration/index metadata using existing ORM tooling."
+    }
+  ],
+  "intermediateChecks": [
+    {
+      "command": "node --test --test-name-pattern='P5 T05' test/database.integration.cjs",
+      "workingDirectory": "apps/api",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-focused.log",
+      "logSha256": "77cd8cc817322980d5b24d42def2c808078069ab5929e434fe14f12d2bf477d4",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "result": "Initial ten focused cases passed before expanding coverage; working directory apps/api."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t05-unit-final.log",
+      "logSha256": "1dc2228e308282ae8351dc5eba04b01b88b496e462844694c7af3b099025c8a4",
+      "result": "Compile caught a Drizzle select builder used without FROM for database clock query. Replaced with parameter-free tx.execute, preserving PG clock source; final build/tests pass."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t05-db-final.log",
+      "logSha256": "c68df5a43f6debf25f2c5d729705e695c27beb2aa65c636909322f253686a622",
+      "tests": 173,
+      "passed": 171,
+      "failed": 2,
+      "result": "Fault fixture mistakenly blocked PENDING admission; narrowed to terminal writes. Product passive-read regression advanced REQUESTED sessions; restored T03 behavior and original assertions."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t05-db-final2.log",
+      "logSha256": "91ad98817dc161aa5ba95befae594538cfe35bcf04dd5a1f266baf717098bb8e",
+      "tests": 173,
+      "passed": 173,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS after initial corrections; later correlation and cancellation safeguards justified final reruns."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t05-db-final3.log",
+      "logSha256": "3415456267275c2c13047464477c69ea81d5d4950aca42e26602735b063018b3",
+      "tests": 174,
+      "passed": 173,
+      "failed": 1,
+      "result": "All 15 T05 cases passed. Existing P4 T07 reload wait read city-state.textContent before DOM element existed; optional readiness guard added, assertion retained. Final full run passes."
+    },
+    {
+      "command": "npm.cmd run db:generate -- --name=collaboration_recovery_indexes",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t05-generate.log",
+      "logSha256": "a1177787e20869c13ddf3025919c0a778dbd92cbaeb80973fa458129e2966610",
+      "result": "Sandbox Windows uv_os_get_passwd ENOMEM; initial npm name forwarding also warned. Existing generator rerun outside sandbox without unsupported forwarding; passed."
+    }
+  ],
+  "nativeReliabilityScenarios": [
+    {
+      "scenario": "P5 T05 genuine success propagates aggregate state and repeated/out-of-order observations have no side effects",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 genuine child failure closes the mandatory collaboration; native timeout remains quarantined when uncertain",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 pending cancellation is idempotent, never cancels the source, and blocks activation",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 committed cancellation intent survives restart and prevents prepared-child admission",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 restart recovery dispatches a never-admitted child once across concurrent requests and preserves result",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 recovery attempts are durably capped and rejected dispatch never fabricates a failed execution",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 active cancellation preserves native quarantine and does not cancel an unrelated Agent execution",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 operator controls deny unauthenticated, foreign and forged lifecycle requests",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 cancellation propagation failure retains durable intent for repeatable recovery after restart",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 reconciliation batches are owner-scoped, bounded, cursor-based and never dispatch work",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 independent recovery instances race on the same persisted child and admit exactly one execution",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 cancellation and completion race preserve the exact native terminal winner and session quarantine",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 expired native admission after lost finalization stays WAITING and is never replayed",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 additive recovery indexes apply against populated prior tables without changing existing work",
+      "outcome": "PASS in final canonical full suite"
+    },
+    {
+      "scenario": "P5 T05 incomplete historical correlation cannot fabricate aggregate success or trigger recovery execution",
+      "outcome": "PASS in final canonical full suite"
+    }
+  ],
+  "environment": {
+    "node": "v24.9.0 supported Node 24 runtime",
+    "database": "Existing harness pinned official PostgreSQL Docker image; random credentials/container/database/volume, loopback only; no developer/production data consumed.",
+    "runtime": "Existing synchronous RuntimeCoordinator and genuine TextStatisticsStrategy; controlled barriers/faults supplement real persistence, guards and runtime.",
+    "workers": "NOT APPLICABLE: no worker, broker, Redis, inbox or durable scheduler exists; no substitute worker test claimed.",
+    "restart": "Controlled durable preparation/cancellation cuts followed by API close/reopen and explicit reconciliation/recovery; native lost-finalization fault plus expired-lease observation. No T05 OS hard-kill or autonomous repair claim.",
+    "ci": "New cases registered in existing database.integration.cjs -> test:db -> verify:phase1 workflow; hosted CI not executed.",
+    "paidProviders": "Not required or executed."
+  },
+  "persistence": {
+    "migration": "apps/api/migrations/0006_wise_jigsaw.sql",
+    "changes": [
+      "collaboration_sessions_incomplete_idx (owner,id; partial native incomplete sessions)",
+      "command_audit_resource_command_idx (owner,resourceType,resourceId,commandType)"
+    ],
+    "controlState": "Existing append-only command_audit journal; owner-locked intent deduplication and maximum three recovery dispatch reservations. No new tables/columns or Task/Execution lifecycle.",
+    "compatibility": "Fresh migrations and reapplication in existing full harness; new index SQL applied inside an isolated transaction against populated prior tables, verifying work counts unchanged. Historical migrations/snapshots unchanged except appending _journal entry.",
+    "rollback": "Only index drops after stopping affected operations; no business-data rollback, terminal resets or audit deletion. Retain T04 delegated-child admission guard."
+  },
+  "preservation": {
+    "method": "SHA-256 comparison with pre-edit maintained-file baseline plus final source/test hash snapshot.",
+    "baselineFiles": 447,
+    "modified": [
+      "apps/api/src/collaboration/collaboration-api.service.ts",
+      "apps/api/src/collaboration/collaboration-http.guard.ts",
+      "apps/api/src/collaboration/collaboration.contract.ts",
+      "apps/api/src/collaboration/collaboration.controller.ts",
+      "apps/api/src/collaboration/collaboration.module.ts",
+      "apps/api/src/collaboration/native-coordination.service.ts",
+      "apps/api/src/collaboration/native-delegation.validation.ts",
+      "apps/api/src/database/schema.ts",
+      "apps/api/test/database.integration.cjs",
+      "apps/api/migrations/meta/_journal.json",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/api-frontend.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "docs/ai-agent-platform/phase-5/delegation-lifecycle.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/native-coordination.md",
+      "docs/ai-agent-platform/phase-5/native-delegation-api.md",
+      "docs/ai-agent-platform/phase-5/persistence.md",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/security-reliability.md",
+      "scripts/task-panel-browser.mjs",
+      "README.md",
+      "WORKSPACE.md"
+    ],
+    "added": [
+      "apps/api/migrations/0006_wise_jigsaw.sql",
+      "apps/api/migrations/meta/0006_snapshot.json",
+      "apps/api/src/collaboration/collaboration-aggregation.ts",
+      "apps/api/src/collaboration/collaboration-control.ts",
+      "apps/api/src/collaboration/collaboration-recovery.service.ts",
+      "apps/api/test/collaboration-recovery-fixture.cjs",
+      "apps/api/test/collaboration-recovery.integration.cjs",
+      "apps/api/test/collaboration-recovery.test.cjs",
+      "docs/ai-agent-platform/phase-5/lifecycle-recovery.md",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t05-verification.json"
+    ],
+    "missing": [],
+    "citySourceFilesUnchanged": 79,
+    "registryTaskExecutionRuntimeLifecycleAndCityBackendFilesUnchanged": 76,
+    "finalSourceFilesChecked": 196,
+    "sourceUnchangedAfterFinalVerification": true,
+    "browserScriptChange": "Only a test readiness expression for missing DOM immediately after reload; no city/rendering implementation change."
+  },
+  "cleanup": {
+    "command": "docker ps -a --filter label=elyqreth.test.run --format '{{.Names}}'; docker volume ls --filter label=elyqreth.test.run --format '{{.Name}}'",
+    "exitCode": 0,
+    "testOwnedContainers": 0,
+    "testOwnedVolumes": 0
+  },
+  "limitations": [
+    "Fixed-owner trusted loopback operator authorization only; no production users/tenant principals. Cross-owner HTTP controls tested with actual independently owned fixtures; cross-tenant N/A.",
+    "No worker/broker, automatic scheduling/backoff or autonomous crash repair; explicit commands reconcile persisted state.",
+    "Existing CANCELLATION_UNCONFIRMED/NATIVE_OUTCOME_UNCERTAIN or expired RUNNING claims remain WAITING with attention; no blind replay or invented process outcome.",
+    "Three recovery dispatch reservations only for an owned never-admitted CREATED child; rejected/interrupted reservations consume budget. No counter reset, terminal Task retry, new retry-linked work or parent continuation.",
+    "Existing audit journal is durable control state and must be retained; facts remain append-only.",
+    "Hosted CI, paid-provider execution and new frontend collaboration UI are not claimed."
+  ],
+  "nextTask": "Phase 5 T06 ? External Orchestrator Adapter Foundation (not begun)",
+  "documentationValidation": {
+    "markdownFiles": 16,
+    "localLinksAndAnchors": 82,
+    "issues": [],
+    "mermaid": "No new diagram or renderer execution claimed."
+  }
+}

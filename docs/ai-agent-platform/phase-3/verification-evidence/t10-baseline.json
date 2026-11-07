@@ -1,0 +1,92 @@
+﻿{
+    "completedBeforeInterruption":  true,
+    "postgresqlQueryMeasurements":  {
+                                        "measurements":  [
+                                                             {
+                                                                 "agents":  1,
+                                                                 "pages":  1,
+                                                                 "sqlStatements":  1,
+                                                                 "durationMs":  15.011,
+                                                                 "nodeApiAndDriverCpuMs":  0,
+                                                                 "heapBeforeBytes":  148621832,
+                                                                 "heapAfterBytes":  148732496,
+                                                                 "rssBytes":  315887616
+                                                             },
+                                                             {
+                                                                 "agents":  10,
+                                                                 "pages":  1,
+                                                                 "sqlStatements":  1,
+                                                                 "durationMs":  13.747,
+                                                                 "nodeApiAndDriverCpuMs":  16,
+                                                                 "heapBeforeBytes":  148738376,
+                                                                 "heapAfterBytes":  148876896,
+                                                                 "rssBytes":  315887616
+                                                             },
+                                                             {
+                                                                 "agents":  25,
+                                                                 "pages":  2,
+                                                                 "sqlStatements":  2,
+                                                                 "durationMs":  25.701,
+                                                                 "nodeApiAndDriverCpuMs":  0,
+                                                                 "heapBeforeBytes":  148877768,
+                                                                 "heapAfterBytes":  149178432,
+                                                                 "rssBytes":  315887616
+                                                             },
+                                                             {
+                                                                 "agents":  50,
+                                                                 "pages":  3,
+                                                                 "sqlStatements":  3,
+                                                                 "durationMs":  44.095,
+                                                                 "nodeApiAndDriverCpuMs":  0,
+                                                                 "heapBeforeBytes":  149179304,
+                                                                 "heapAfterBytes":  149666208,
+                                                                 "rssBytes":  315887616
+                                                             },
+                                                             {
+                                                                 "agents":  100,
+                                                                 "pages":  5,
+                                                                 "sqlStatements":  5,
+                                                                 "durationMs":  78.053,
+                                                                 "nodeApiAndDriverCpuMs":  0,
+                                                                 "heapBeforeBytes":  149667384,
+                                                                 "heapAfterBytes":  150553712,
+                                                                 "rssBytes":  315891712
+                                                             }
+                                                         ],
+                                        "agents":  100,
+                                        "historicalTasks":  2000,
+                                        "createdTasks":  100,
+                                        "planRoot":  "Result",
+                                        "estimatedCost":  32.75,
+                                        "kind":  "local-projection-only-not-runtime-benchmark"
+                                    },
+    "dependencyAudit":  {
+                            "info":  0,
+                            "low":  0,
+                            "moderate":  0,
+                            "high":  0,
+                            "critical":  0,
+                            "total":  0
+                        },
+    "browser":  "Chrome/155.0.8059.85 PASS; saved baseline log contains final JSON",
+    "tests":  [
+                  {
+                      "fail":  0,
+                      "pass":  125,
+                      "tests":  125
+                  },
+                  {
+                      "fail":  0,
+                      "pass":  192,
+                      "tests":  192
+                  },
+                  {
+                      "fail":  0,
+                      "pass":  104,
+                      "tests":  104
+                  }
+              ],
+    "command":  "npm.cmd run verify:phase1",
+    "note":  "Recovered successful complete baseline; no backend/frontend production source changes during T10. Dedicated city acceptance separately recorded.",
+    "date":  "2026-10-25 Asia/Bangkok"
+}

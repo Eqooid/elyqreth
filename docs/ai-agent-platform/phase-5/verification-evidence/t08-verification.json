@@ -1,0 +1,303 @@
+{
+  "task": "Phase 5 T08",
+  "decision": "COMPLETE",
+  "scope": "Pinned local LangGraph Agent Server observation reference; no production/hosted acceptance",
+  "reviewDate": "2026-10-28",
+  "timezone": "Asia/Bangkok",
+  "git": "No Git metadata supplied; status/diff/staged inspection failed. No VCS operations performed.",
+  "agents": "No applicable AGENTS.md found in ancestor/maintained source search",
+  "provider": {
+    "adapter": "langgraph.v1",
+    "api": "0.16.8",
+    "langgraph": "1.2.18",
+    "cli": "0.4.40",
+    "python": "3.13.3",
+    "mode": "OBSERVATION_ONLY",
+    "host": "127.0.0.1:20240",
+    "licenseMetadata": "langgraph-api Elastic-2.0; graph library separately licensed",
+    "hostedLive": false
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "log": "lint-final",
+      "meaning": "Existing maintained-JS syntax checks, frontend contract typecheck and backend no-emit typecheck"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exitCode": 0,
+      "log": "build-verified"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exitCode": 0,
+      "passed": 266,
+      "failed": 0,
+      "skipped": 0,
+      "log": "verified-unit"
+    },
+    {
+      "command": "node --test apps/api/test/langgraph.test.cjs",
+      "exitCode": 0,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "log": "provider-verified"
+    },
+    {
+      "command": "npm.cmd run test:langgraph:live",
+      "exitCode": 0,
+      "passed": 197,
+      "failed": 0,
+      "skipped": 0,
+      "log": "verified-live",
+      "meaning": "Existing test:db harness including seven new deterministic PG tests and one live test, existing native and real browser regressions"
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "exitCode": 0,
+      "log": "dbcheck2"
+    },
+    {
+      "command": "npm.cmd run db:generate",
+      "exitCode": 0,
+      "log": "generate-verified",
+      "meaning": "No schema changes detected"
+    },
+    {
+      "command": "docker ps -aq --filter label=elyqreth.test.run; docker volume ls -q --filter label=elyqreth.test.run",
+      "exitCode": 0,
+      "meaning": "Both empty after owned harness cleanup"
+    }
+  ],
+  "live": {
+    "observedStatuses": [
+      "QUEUED",
+      "RUNNING",
+      "COMPLETED"
+    ],
+    "result": {
+      "value": "external:live-reference"
+    },
+    "resultCheckpointAndHashVerified": true,
+    "restartDuplicateVerified": true,
+    "nativeAgentTaskExecutionCountsUnchanged": true,
+    "providerDispatch": "Disposable test setup calls official runtime directly; adapter offers no dispatch capability",
+    "cleanup": "Live test deleted its thread; captured fixture thread deleted HTTP 204; owned provider stopped; port 20240 no listener; Docker test containers/volumes absent"
+  },
+  "testCoverage": [
+    "Captured real API schema via bounded HTTP",
+    "X-Api-Key wire placement and error/diagnostic redaction",
+    "Authorization and observation-only capability gates",
+    "Bounded discovery and canonical thread/run UUID pair",
+    "Malformed, oversized, rate-limited and unavailable provider responses",
+    "Caller abort and inherited T06 connect/request deadlines and SSRF/TLS/DNS/redirect tests",
+    "Status normalization and stable duplicate phase snapshots",
+    "Completed checkpoint/run provenance and output hash matching",
+    "Cross-owner/forged delivery rejection before network access",
+    "Restart/replay and no fabricated failure on outage",
+    "Populated pre-T07 and populated T07 forward migration preservation",
+    "Actual local CLI using server environment without secrets in argv",
+    "Real external lifecycle and result metadata, no native work"
+  ],
+  "initialFailuresAndCorrections": [
+    "Sandbox pip network denied; isolated official runtime installation succeeded with approved escalation",
+    "Upstream CLI help hit Windows CP1252 UnicodeEncodeError; PYTHONUTF8=1 resolved",
+    "Upstream logging required colorama with colored Windows output; documented LOG_JSON=true resolved without patching upstream",
+    "Initial capability test requested executions without permission and got ACCESS_DENIED; explicitly grant read permission to test adapter unsupported-capability fence",
+    "Initial full DB suite hook failed because Docker Desktop was stopped; started hidden and reran full suite successfully",
+    "Sandbox Drizzle account lookup failed uv_os_get_passwd ENOMEM; approved non-sandbox metadata/generate checks passed",
+    "A test-fixture string replacement introduced an undefined q variable; corrected fixture; final focused 11 and full 266 passed. Assertions retained"
+  ],
+  "logs": {
+    "lint-final": {
+      "file": "elyqreth-p5-t08-lint-final.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "bytes": 692,
+      "summary": [
+        "",
+        "",
+        "> check:api",
+        "> npm run check --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 check",
+        "> tsc -p tsconfig.json --noEmit",
+        ""
+      ]
+    },
+    "verified-unit": {
+      "file": "elyqreth-p5-t08-verified-unit.log",
+      "sha256": "5aeda0f50538e3fe3e04fcd54293e4c5b64c8e8971481ce635bc26b87078ced1",
+      "bytes": 88550,
+      "summary": [
+        "\u2714 an expired execution is rejected before claim verification and oversized handler output never escapes (1.9471ms)",
+        "\u2139 tests 266",
+        "\u2139 suites 0",
+        "\u2139 pass 266",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 45363.7858"
+      ]
+    },
+    "provider-verified": {
+      "file": "elyqreth-p5-t08-provider-verified.log",
+      "sha256": "e3a98e1af2d98a1fa8edba959b35a7e96cbf497c9044a93f4f48866f513912e5",
+      "bytes": 2740,
+      "summary": [
+        "\u2714 LangGraph result checkpoint provenance rejects manual state edits and unrelated run output (32.494ms)",
+        "\u2139 tests 11",
+        "\u2139 suites 0",
+        "\u2139 pass 11",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 1108.1759"
+      ]
+    },
+    "verified-live": {
+      "file": "elyqreth-p5-t08-verified-live.log",
+      "sha256": "e0f4bd961396d2d176eb1e9a4772192df58254c3c5f976bc5fa6fa0fadad8832",
+      "bytes": 297946,
+      "summary": [
+        "\u2714 P4 T03 browser input validation and closed backend error codes match current backend contracts (4.3694ms)",
+        "\u2139 tests 197",
+        "\u2139 suites 0",
+        "\u2139 pass 197",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 194580.8813"
+      ]
+    },
+    "build-verified": {
+      "file": "elyqreth-p5-t08-build-verified.log",
+      "sha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "bytes": 228,
+      "summary": [
+        "",
+        "> build",
+        "> npm run build --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 build",
+        "> tsc -p tsconfig.json",
+        ""
+      ]
+    },
+    "dbcheck2": {
+      "file": "elyqreth-p5-t08-dbcheck2.log",
+      "sha256": "c5829e42c1f64945585a9b85ea8ce3b7b36c7e02f6e21ab4257eccd049a97f2f",
+      "bytes": 586,
+      "summary": [
+        "> npm run db:check --workspace @elyqreth/api",
+        "",
+        "",
+        "> @elyqreth/api@0.1.0 db:check",
+        "> drizzle-kit check",
+        "",
+        "No config path provided, using default 'drizzle.config.ts'",
+        "Reading config file 'C:\\Users\\user\\Desktop\\Project\\Elyqreth\\apps\\api\\drizzle.config.ts'",
+        "Everything's fine \ud83d\udc36\ud83d\udd25"
+      ]
+    },
+    "generate-verified": {
+      "file": "elyqreth-p5-t08-generate-verified.log",
+      "sha256": "9e7d5146bc9e482e7fa6f39ab6249967c12c8fd28aef8a22b30d381c6921cad0",
+      "bytes": 2272,
+      "summary": [
+        "external_execution_mappings 17 columns 2 indexes 5 fks",
+        "external_event_inbox 10 columns 2 indexes 2 fks",
+        "external_sources 8 columns 0 indexes 2 fks",
+        "orchestrators 11 columns 0 indexes 1 fks",
+        "owner_streams 2 columns 0 indexes 1 fks",
+        "owners 3 columns 0 indexes 0 fks",
+        "tasks 16 columns 4 indexes 3 fks",
+        "",
+        "No schema changes, nothing to migrate \ud83d\ude34"
+      ]
+    }
+  },
+  "preservation": {
+    "baselineFiles": 464,
+    "protectedNativeCityFiles": 171,
+    "protectedChanged": [],
+    "cityFilesUnchanged": 79,
+    "nativeRuntimeAndCollaborationUnchanged": true,
+    "noNewBackendDependency": true,
+    "noCIPipelineChanges": true,
+    "historicalMigrationSQLUnchanged": true
+  },
+  "files": {
+    "modified": [
+      "README.md",
+      "WORKSPACE.md",
+      "apps/api/migrations/meta/_journal.json",
+      "apps/api/src/app.module.ts",
+      "apps/api/src/external-orchestrators/adapter.contract.ts",
+      "apps/api/src/external-orchestrators/adapter.validation.ts",
+      "apps/api/src/external-orchestrators/external-adapter.service.ts",
+      "apps/api/src/external-orchestrators/external-http.transport.ts",
+      "apps/api/src/external-orchestrators/external-ingestion.service.ts",
+      "apps/api/src/external-orchestrators/external-orchestrators.module.ts",
+      "apps/api/src/external-orchestrators/ingestion.domain.ts",
+      "apps/api/test/database.integration.cjs",
+      "apps/api/test/external-ingestion.integration.cjs",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "docs/ai-agent-platform/phase-5/current-system-audit.md",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "docs/ai-agent-platform/phase-5/external-ingestion.md",
+      "docs/ai-agent-platform/phase-5/external-integration.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/security-reliability.md",
+      "package.json",
+      ".gitignore",
+      "apps/api/.env.example",
+      "apps/api/package.json"
+    ],
+    "added": [
+      "apps/api/migrations/0008_external_normalized_observation.sql",
+      "apps/api/migrations/meta/0008_snapshot.json",
+      "apps/api/src/external-orchestrators/langgraph-command.ts",
+      "apps/api/src/external-orchestrators/langgraph-observation.service.ts",
+      "apps/api/src/external-orchestrators/langgraph-reference.module.ts",
+      "apps/api/src/external-orchestrators/langgraph.adapter.ts",
+      "apps/api/test/fixtures/langgraph-0.16.8.json",
+      "apps/api/test/langgraph.integration.cjs",
+      "apps/api/test/langgraph.live.cjs",
+      "apps/api/test/langgraph.test.cjs",
+      "docs/ai-agent-platform/phase-5/reference-integration.md",
+      "tools/langgraph-reference/README.md",
+      "tools/langgraph-reference/connection.example.json",
+      "tools/langgraph-reference/graph.py",
+      "tools/langgraph-reference/langgraph.json",
+      "tools/langgraph-reference/pyproject.toml",
+      "tools/langgraph-reference/requirements.lock.txt",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t08-verification.json"
+    ]
+  },
+  "limitations": [
+    "Fixed-owner local operator security only; production multi-tenant access remains blocked",
+    "Hosted key/deployment authentication not live tested",
+    "Only pinned API/runtime live compatibility claimed",
+    "Explicit one-run polling and replay; no scheduler/webhook/stream consumer",
+    "Lifecycle phases are a conservative partial order, not provider event revisions",
+    "Unknown/resumable states and conflicting outcomes remain conservative/deferred",
+    "Results restricted to exact latest completed checkpoint with matching output hash; no raw/historical result UI/API",
+    "No external dispatch/cancellation, NPC mapping, collaboration activity API/UI or T09 work",
+    "Hosted CI, paid LLM providers and OS hard-kill recovery not run"
+  ],
+  "documentationCheck": {
+    "markdownFiles": 20,
+    "localLinks": 119,
+    "missing": [],
+    "mermaid": "Source reviewed, not rendered"
+  }
+}

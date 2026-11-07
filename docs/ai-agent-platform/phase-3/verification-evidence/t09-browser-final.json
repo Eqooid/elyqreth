@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/155.0.8059.85",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "Shared runtime integration loads disabled and credential-free without city API requests",
+    "T06 mocked transport: real T04/T05 pipeline, selected NPC inspector, Canvas running/waiting/completed/failed/stale/recovery and binding removal",
+    "T07 projection-only inspection: current/historical selection, single outcome timeline, expansion/focus preservation, NPC switch isolation and authorization cleanup",
+    "T08 mocked multi-Agent outage: independent A/B states, selection during disconnection and automatic authoritative poll reconciliation",
+    "NPC runtime binding sidecar indexes four stable slots without creating NPCs or backend requests",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport",
+    "T09 measured frame/heap/DOM samples and 300 integration mount/dispose cycles"
+  ],
+  "resourceRequests": 162,
+  "exceptions": 0,
+  "phase3Profile": {
+    "kind": "Headless Chromium; sampled rAF intervals, CDP task/heap/DOM counters; mocked provider-neutral activity transport",
+    "samples": [
+      {
+        "projectionAgents": 0,
+        "boundExistingNpcs": 0,
+        "sampledFrames": 120,
+        "meanFrameMs": 19.374166666666664,
+        "p95FrameMs": 25.100000000000364,
+        "sampledFps": 51.61512323110672,
+        "simulationTime": 3.1165999999999947,
+        "decorativeNpcCount": 6,
+        "camera": {
+          "x": 1128,
+          "y": 680,
+          "zoom": 0.7758620689655172
+        },
+        "sceneRenderMsEwma": 2.12973294055115,
+        "taskDurationSeconds": 3.7448659999999996,
+        "scriptDurationSeconds": 0.378253,
+        "heapUsedBytes": 11550560,
+        "dom": {
+          "documents": 1,
+          "nodes": 893,
+          "jsEventListeners": 57
+        },
+        "applicationFpsReadout": 52
+      },
+      {
+        "projectionAgents": 1,
+        "boundExistingNpcs": 1,
+        "sampledFrames": 120,
+        "meanFrameMs": 17.986666666666665,
+        "p95FrameMs": 25,
+        "sampledFps": 55.59673832468496,
+        "simulationTime": 5.258400000000003,
+        "decorativeNpcCount": 7,
+        "camera": {
+          "x": 1128,
+          "y": 680,
+          "zoom": 0.7758620689655172
+        },
+        "sceneRenderMsEwma": 2.5150621780521556,
+        "taskDurationSeconds": 0.3757900000000003,
+        "scriptDurationSeconds": 0.30999799999999994,
+        "heapUsedBytes": 22203112,
+        "dom": {
+          "documents": 1,
+          "nodes": 1897,
+          "jsEventListeners": 77
+        },
+        "applicationFpsReadout": 60
+      },
+      {
+        "projectionAgents": 10,
+        "boundExistingNpcs": 4,
+        "sampledFrames": 120,
+        "meanFrameMs": 21.319999999999997,
+        "p95FrameMs": 33.19999999999891,
+        "sampledFps": 46.904315196998134,
+        "simulationTime": 7.816800000000023,
+        "decorativeNpcCount": 7,
+        "camera": {
+          "x": 1128,
+          "y": 680,
+          "zoom": 0.7758620689655172
+        },
+        "sceneRenderMsEwma": 2.291552444447275,
+        "taskDurationSeconds": 0.4614950000000002,
+        "scriptDurationSeconds": 0.3685520000000001,
+        "heapUsedBytes": 6474544,
+        "dom": {
+          "documents": 1,
+          "nodes": 1072,
+          "jsEventListeners": 59
+        },
+        "applicationFpsReadout": 47
+      },
+      {
+        "projectionAgents": 20,
+        "boundExistingNpcs": 4,
+        "sampledFrames": 120,
+        "meanFrameMs": 19.93083333333334,
+        "p95FrameMs": 25.100000000000364,
+        "sampledFps": 50.1735167454112,
+        "simulationTime": 10.150100000000101,
+        "decorativeNpcCount": 7,
+        "camera": {
+          "x": 1128,
+          "y": 680,
+          "zoom": 0.7758620689655172
+        },
+        "sceneRenderMsEwma": 2.196085303185133,
+        "taskDurationSeconds": 0.39681000000000033,
+        "scriptDurationSeconds": 0.32004999999999995,
+        "heapUsedBytes": 5797616,
+        "dom": {
+          "documents": 1,
+          "nodes": 800,
+          "jsEventListeners": 59
+        },
+        "applicationFpsReadout": 52
+      }
+    ],
+    "requestsDuringForegroundSamples": 7,
+    "heap": [
+      {
+        "cycles": 0,
+        "usedSize": 4021156,
+        "totalSize": 4870144,
+        "embedderHeapUsedSize": 1730672,
+        "backingStorageSize": 1465388,
+        "dom": {
+          "documents": 1,
+          "nodes": 765,
+          "jsEventListeners": 57
+        }
+      },
+      {
+        "cycles": 100,
+        "usedSize": 3955776,
+        "totalSize": 4870144,
+        "embedderHeapUsedSize": 1606688,
+        "backingStorageSize": 1465388,
+        "dom": {
+          "documents": 1,
+          "nodes": 615,
+          "jsEventListeners": 57
+        }
+      },
+      {
+        "cycles": 200,
+        "usedSize": 3954668,
+        "totalSize": 4870144,
+        "embedderHeapUsedSize": 1610352,
+        "backingStorageSize": 1465388,
+        "dom": {
+          "documents": 1,
+          "nodes": 615,
+          "jsEventListeners": 57
+        }
+      },
+      {
+        "cycles": 300,
+        "usedSize": 3980464,
+        "totalSize": 5132288,
+        "embedderHeapUsedSize": 1580448,
+        "backingStorageSize": 1465388,
+        "dom": {
+          "documents": 1,
+          "nodes": 615,
+          "jsEventListeners": 57
+        }
+      }
+    ],
+    "limitations": "Four existing visible residents; up to 20 projections. No 25/50/100 linked NPC capacity, long soak, native/GPU memory, or strict comparable-world FPS guarantee."
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

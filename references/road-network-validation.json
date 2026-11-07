@@ -1,0 +1,258 @@
+{
+  "reference": "orange-city-reference.png",
+  "unchanged": "World dimensions, building render rectangles, workplace IDs, door/work cells, globe plaza, canal and two bridges, rail route, agent controller and orchestrator",
+  "baseline": {
+    "declaredRoadTilesOverwritten": 116,
+    "remainingAsphaltCells": 323,
+    "remainingAsphaltComponents": 1,
+    "cause": "Later terrain fills cut corridor widths and obscure logical street composition"
+  },
+  "result": {
+    "graphNodes": 6,
+    "segments": 5,
+    "graphComponents": 1,
+    "surfaceComponents": 1,
+    "componentSizes": [
+      490
+    ],
+    "asphaltComponents": 1,
+    "overwritten": 0,
+    "blockedAsphalt": 0,
+    "errors": []
+  },
+  "nodes": [
+    {
+      "id": "west-gate",
+      "col": 0,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "West continuation",
+      "mask": 2,
+      "kind": "terminal",
+      "segments": [
+        "civic-boulevard"
+      ]
+    },
+    {
+      "id": "market-junction",
+      "col": 47,
+      "row": 24,
+      "name": "Market junction",
+      "mask": 14,
+      "kind": "t-junction",
+      "segments": [
+        "civic-boulevard",
+        "market-boulevard",
+        "station-approach"
+      ]
+    },
+    {
+      "id": "east-junction",
+      "col": 80,
+      "row": 24,
+      "name": "East junction",
+      "mask": 14,
+      "kind": "t-junction",
+      "segments": [
+        "market-boulevard",
+        "east-boulevard",
+        "east-service-alley"
+      ]
+    },
+    {
+      "id": "east-gate",
+      "col": 96,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "East continuation",
+      "mask": 8,
+      "kind": "terminal",
+      "segments": [
+        "east-boulevard"
+      ]
+    },
+    {
+      "id": "station-dropoff",
+      "col": 47,
+      "row": 41,
+      "endpoint": "destination",
+      "name": "Station drop-off",
+      "mask": 1,
+      "kind": "terminal",
+      "segments": [
+        "station-approach"
+      ]
+    },
+    {
+      "id": "service-court",
+      "col": 80,
+      "row": 44,
+      "endpoint": "destination",
+      "name": "R&D service court",
+      "mask": 1,
+      "kind": "terminal",
+      "segments": [
+        "east-service-alley"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "civic-boulevard",
+      "from": "west-gate",
+      "to": "market-junction",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "west-gate",
+        "market-junction"
+      ],
+      "tiles": [
+        0,
+        22,
+        49,
+        4
+      ]
+    },
+    {
+      "id": "market-boulevard",
+      "from": "market-junction",
+      "to": "east-junction",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "market-junction",
+        "east-junction"
+      ],
+      "tiles": [
+        45,
+        22,
+        37,
+        4
+      ]
+    },
+    {
+      "id": "east-boulevard",
+      "from": "east-junction",
+      "to": "east-gate",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "east-junction",
+        "east-gate"
+      ],
+      "tiles": [
+        78,
+        22,
+        18,
+        4
+      ]
+    },
+    {
+      "id": "station-approach",
+      "from": "market-junction",
+      "to": "station-dropoff",
+      "width": 4,
+      "axis": "vertical",
+      "orientation": "vertical",
+      "roadType": "asphalt",
+      "connections": [
+        "market-junction",
+        "station-dropoff"
+      ],
+      "tiles": [
+        45,
+        22,
+        4,
+        21
+      ]
+    },
+    {
+      "id": "east-service-alley",
+      "from": "east-junction",
+      "to": "service-court",
+      "width": 2,
+      "axis": "vertical",
+      "orientation": "vertical",
+      "roadType": "alley",
+      "connections": [
+        "east-junction",
+        "service-court"
+      ],
+      "tiles": [
+        79,
+        23,
+        2,
+        22
+      ]
+    }
+  ],
+  "crossings": [
+    {
+      "id": "hall-crossing",
+      "tiles": [
+        39,
+        22,
+        1,
+        4
+      ],
+      "axis": "horizontal"
+    },
+    {
+      "id": "cafe-crossing",
+      "tiles": [
+        63,
+        22,
+        1,
+        4
+      ],
+      "axis": "horizontal"
+    },
+    {
+      "id": "market-crossing",
+      "tiles": [
+        45,
+        27,
+        4,
+        1
+      ],
+      "axis": "vertical"
+    },
+    {
+      "id": "station-crossing",
+      "tiles": [
+        45,
+        39,
+        4,
+        1
+      ],
+      "axis": "vertical"
+    }
+  ],
+  "terrain": "Distinct asphalt, sidewalk, plaza, alley, canal, railway and building footprint; protected road surface with independent collision mask",
+  "automatedChecks": {
+    "syntax": "passed",
+    "testCount": 11,
+    "tests": "All passed: every walkable tile connected, every workplace and point of interest reachable, idle roaming, directional frame changes, interrupted task routes, handoffs, error/retry/replacement, water loop and autonomous rail cycle, road topology and invalid layout rejection"
+  },
+  "browserChecks": {
+    "status": "passed",
+    "debug": "One connected surface, no overwritten or blocked asphalt cells; two explicit T-junctions, map-boundary continuations, named destination bays; highlighted terrain/collision view",
+    "fullCity": "Continuous boulevard and station approach; narrower east service alley; stone plaza, canal paths, bridges, station and existing architecture preserved; debug disabled by default",
+    "camera": "Zoom in, right-arrow pan and Fit town verified",
+    "mission": "Research, Design, Build and Test all delivered; mission complete 4/4; all four roster residents Wandering afterward",
+    "ambient": "Moving water highlights and independent train observed; arriving, waiting and at Central Station states visible across observations",
+    "console": "No application errors reported for terminal.local"
+  },
+  "screenshots": {
+    "debug": "road-network-debug.jpg",
+    "city": "road-network-city.jpg"
+  },
+  "debug": "?view=roads; disabled by default"
+}

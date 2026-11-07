@@ -1,0 +1,25 @@
+node_modules/
+.sites-runtime/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/apps/api/dist/
+coverage/
+
+# Encrypted recovery artifacts and private operator inputs never belong in source control.
+backups/
+*.backup
+*.dump
+elyqreth-*.json
+*.recovery-key
+
+.tmp-t08-venv/
+/tools/langgraph-reference/.langgraph_api/
+/tools/langgraph-reference/__pycache__/
+
+# Host-only email monitoring configuration, SMTP credentials and delivery state.
+.monitor/
+*.monitor.private.json
+*.smtp-password

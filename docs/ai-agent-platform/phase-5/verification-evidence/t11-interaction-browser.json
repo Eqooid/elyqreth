@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/156.0.8078.48",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "P4 T04 native browser and authorized Nest/PostgreSQL Task creation",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 513,
+  "exceptions": 0,
+  "taskPanelAcceptance": {
+    "status": "PASS",
+    "taskId": "47471aac-4808-4263-8d9e-a007f2c8ef38",
+    "agentId": "4c11c38d-32e2-4114-9c65-eea642c981ee",
+    "reliability": {
+      "status": "PASS",
+      "initialTaskId": "47471aac-4808-4263-8d9e-a007f2c8ef38",
+      "recoveredTaskId": "76fb38cb-54ec-4fb5-b216-6f8d59002ce1",
+      "successExecutionId": "e7612c4c-3f8d-4351-b116-b48f34af3c5e",
+      "failedExecutionId": "8972cfc7-2a63-42d4-9c4b-51d689f1f3d1",
+      "timedOutExecutionId": "096d1901-5679-4b2d-b49b-32c81000ac3e",
+      "crashedExecutionId": "ea178eb1-cf02-46f7-ab71-10a1174d1bde",
+      "crashOutcome": "RUNNING persisted / UNKNOWN lease observation; no automatic recovery worker",
+      "verified": {
+        "tasks": 5,
+        "executions": 4,
+        "dispatches": 4
+      },
+      "checkpoints": [
+        "CDP lost Create response after real commit; reload, explicit reauthorization and exact-key GET restore one Task",
+        "Real rule-based Start/RUNNING, discarded committed success acknowledgement, canonical result/history and no redispatch",
+        "Actual Chrome offline/online transport failure preserves references and reconciles through shared synchronization",
+        "Genuine coordinator failure and native configured deadline; safe unavailable outputs, one terminal event per attempt",
+        "Actual runtime-process hard kill; same-port restart, persisted identity, expired-lease UNKNOWN, no fabricated success or retry",
+        "Real capability revocation/401 cleanup, explicit reauthorization, removed binding and unbound NPC preservation"
+      ]
+    }
+  },
+  "apiRequests": {
+    "GET /api/v1/cities/elyqreth/agents": 33,
+    "OPTIONS /api/v1/cities/elyqreth/agents": 33,
+    "GET /api/v1/agents/:id": 14,
+    "OPTIONS /api/v1/agents/:id": 14,
+    "POST /api/v1/tasks": 5,
+    "OPTIONS /api/v1/tasks": 5,
+    "GET /api/v1/tasks/:id/status": 40,
+    "OPTIONS /api/v1/tasks/:id/status": 40,
+    "GET /api/v1/tasks/lookup": 1,
+    "OPTIONS /api/v1/tasks/lookup": 1,
+    "OPTIONS /api/v1/tasks/:id/execute": 4,
+    "POST /api/v1/tasks/:id/execute": 4,
+    "GET /api/v1/tasks/:id/executions/:id": 21,
+    "OPTIONS /api/v1/tasks/:id/executions/:id": 21,
+    "GET /api/v1/tasks/:id/executions/:id/result": 9,
+    "OPTIONS /api/v1/tasks/:id/executions/:id/result": 9,
+    "GET /api/v1/agents/:id/executions": 10,
+    "OPTIONS /api/v1/agents/:id/executions": 10
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

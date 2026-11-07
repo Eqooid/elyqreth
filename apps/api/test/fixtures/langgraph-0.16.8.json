@@ -1,0 +1,82 @@
+{
+  "info": {
+    "version": "0.16.8",
+    "langgraph_py_version": "1.2.18",
+    "flags": {
+      "assistants": true,
+      "crons": true,
+      "langsmith": false,
+      "langsmith_tracing_replicas": true,
+      "langsmith_tracing_session_on_runs": true
+    },
+    "host": {
+      "kind": "self-hosted",
+      "project_id": null,
+      "host_revision_id": null,
+      "revision_id": null,
+      "tenant_id": null
+    }
+  },
+  "assistants": [
+    {
+      "assistant_id": "086d0f4b-ec9e-5e76-a38e-d13699219864",
+      "graph_id": "reference",
+      "config": {},
+      "context": {},
+      "metadata": {
+        "created_by": "system"
+      },
+      "name": "reference",
+      "created_at": "2026-10-28T15:17:29.711928+00:00",
+      "updated_at": "2026-10-28T15:17:29.711928+00:00",
+      "version": 1,
+      "description": null
+    }
+  ],
+  "run": {
+    "run_id": "01a18317-2a8c-704d-a9fe-0ddb69609c70",
+    "thread_id": "01a18317-2a87-7732-848f-9755345cc64a",
+    "assistant_id": "086d0f4b-ec9e-5e76-a38e-d13699219864",
+    "metadata": {
+      "created_by": "system",
+      "graph_id": "reference",
+      "assistant_id": "086d0f4b-ec9e-5e76-a38e-d13699219864"
+    },
+    "status": "success",
+    "multitask_strategy": "enqueue",
+    "created_at": "2026-10-28T15:18:15.948819+00:00",
+    "updated_at": "2026-10-28T15:18:17.852384+00:00",
+    "langsmith_session_name": null
+  },
+  "result": {
+    "value": "external:fixture"
+  },
+  "state": {
+    "values": {
+      "value": "external:fixture"
+    },
+    "next": [],
+    "tasks": [],
+    "metadata": {
+      "run_id": "01a18317-2a8c-704d-a9fe-0ddb69609c70",
+      "thread_id": "01a18317-2a87-7732-848f-9755345cc64a",
+      "source": "loop",
+      "step": 1,
+      "parents": {}
+    },
+    "created_at": "2026-10-28T15:18:17.848687+00:00",
+    "checkpoint": {
+      "checkpoint_id": "1f1d2e2c-d914-6329-8001-9791bf9f2f29",
+      "thread_id": "01a18317-2a87-7732-848f-9755345cc64a",
+      "checkpoint_ns": ""
+    },
+    "parent_checkpoint": {
+      "checkpoint_id": "1f1d2e2c-cf62-6f28-8000-27788c748c44",
+      "thread_id": "01a18317-2a87-7732-848f-9755345cc64a",
+      "checkpoint_ns": ""
+    },
+    "interrupts": [],
+    "checkpoint_id": "1f1d2e2c-d914-6329-8001-9791bf9f2f29",
+    "parent_checkpoint_id": "1f1d2e2c-cf62-6f28-8000-27788c748c44"
+  }
+}

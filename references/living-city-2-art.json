@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image generation",
+  "asset": "dist/assets/life-residents.png",
+  "reference": "dist/assets/cafe-residents.png",
+  "purpose": "Additional reading, page-turning, look-around and greeting frames, preserving existing walking and coffee art",
+  "layout": "four clothing rows; reading, page turn, look around, standing wave columns",
+  "frames": "dist/js/life-frames.js",
+  "prompt": "Use case: stylized-concept. Asset type: transparent game sprite atlas for Velqaryn Living City 2.0. Input image is STYLE AND CHARACTER IDENTITY REFERENCE ONLY, not an edit target. Create NEW 4 columns \u00d7 4 rows atlas, evenly spaced isolated sprites on truly transparent background with wide clear gutters. Pixel-art chibi residents, crisp nearest-neighbor pixels, same brown tousled hair, black trousers, dark cyber jackets and exact clothes/colors as reference. Rows: 1 orange researcher, 2 magenta designer, 3 cyan developer, 4 violet tester. Each row 4 front-facing frames in order: (1) seated holding an OPEN BOOK in lap and looking down, knees bent feet together; (2) same seated pose turning one page with hand, book remains open; (3) same seated pose looking up sideways, book remains in lap; (4) STANDING front facing greeting with one raised hand waving. All 16 complete sprites, no chairs, no backgrounds, no text, no mug or coffee cup, no ground shadows. No new clothing or character identities. True transparent alpha. Match head proportions, pixel density and dark warm orange/cyan city style. Each sprite centered in its own evenly sized rectangular cell, aligned feet baseline, consistent scale across frames. This supplements existing walking and coffee sprites."
+}

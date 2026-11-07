@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "task": "Phase 6 T07",
+  "status": "COMPLETE (locally verified role and migration contracts; no hosted production claim)",
+  "recovered_progress": "Audit/design only; previous approval-review usage-limit interruption had prevented Docker inspection. Approval succeeded during continuation.",
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "PASS: frontend syntax/runtime typecheck and backend typecheck"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "PASS: 307 unit/security/configuration tests"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "PASS: 221 PostgreSQL integration/regression tests, including real browser auth/city workflow"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 0,
+      "outcome": "PASS: 35 restricted-role, migration failure, adoption, native and mixed observation tests"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "PASS: 238 frontend unit/component/security regressions"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "PASS: production API TypeScript build"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "PASS: final pinned, non-root production API image rebuilt"
+    },
+    {
+      "command": "npm.cmd run test:edge",
+      "exit_code": 0,
+      "outcome": "PASS: production-like containers, TLS, browser auth/city, restricted credentials, private networking, Compose config, readiness/shutdown/restart and image secret checks"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 0,
+      "outcome": "PASS after authorized sandbox escalation: disposable production bundle, city source preserved"
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "exit_code": 0,
+      "outcome": "PASS after authorized sandbox escalation: offline Drizzle migration metadata check"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "PASS: 13 documents, local links, environment inventory and touched-file whitespace"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "UNAVAILABLE: checkout has no .git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "UNAVAILABLE: checkout has no .git metadata; independent touched-file whitespace/source hash checks used"
+    }
+  ],
+  "files_changed": [
+    "README.md",
+    "apps/api/.env.example",
+    "apps/api/src/database/access-policy.ts",
+    "apps/api/src/database/database-configuration.ts",
+    "apps/api/src/database/database.module.ts",
+    "apps/api/src/database/migrate.ts",
+    "apps/api/src/database/provision.ts",
+    "apps/api/src/main.ts",
+    "apps/api/test/database-access.test.cjs",
+    "apps/api/test/database-roles.integration.cjs",
+    "docker-compose.production.yml",
+    "docker/api-start.cjs",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/database-migrations.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/edge-network.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/database-role-verification.json",
+    "package.json",
+    "scripts/container-hardening.mjs",
+    "scripts/edge-network.mjs"
+  ],
+  "initial_failures_resolved": [
+    "Drizzle CREATE SCHEMA IF NOT EXISTS requires database CREATE: confined to migration role.",
+    "Catalog sequence check required CASE to avoid evaluation for non-sequences; populated adoption moved after role creation.",
+    "Restricted native tests identified participant UPDATE/row-lock requirement.",
+    "Container login exposed existing bounded auth_sessions DELETE requirement; granted only for that table and covered by new restricted login test.",
+    "Frontend build sandbox parent-directory access and offline Drizzle user-lookup failure: reran successfully with approved escalation."
+  ],
+  "postgresql": "Pinned official PostgreSQL 17.11; owned labelled disposable containers only",
+  "api_image": "sha256:1deab1c65df9941fd82362cc8250b539a61244f81da02b3ac9a30b1363a9b738",
+  "preservation": {
+    "baseline_files": 720,
+    "deleted_files": [],
+    "private_env_unchanged": true,
+    "unchanged_groups": {
+      "dist/": 87,
+      "apps/api/migrations/": 23,
+      "apps/api/src/runtime/": 46,
+      "apps/api/src/collaboration/": 16,
+      "apps/api/src/external-orchestrators/": 17,
+      "apps/api/src/auth/": 8
+    },
+    "lockfile_development_compose_dockerfile_unchanged": true,
+    "unrelated_source_changed": false
+  },
+  "limitations": [
+    "No Git index/staged/untracked audit possible without .git; file baseline and independent checks used.",
+    "Managed-provider permissions/private endpoint and operational approval remain deployment gates.",
+    "Restore-tested backups are T08, not implemented.",
+    "Single native writer and exact-release maintenance cutover remain required; arbitrary rolling compatibility is not claimed.",
+    "SQL/journal and post-batch grants are distinct transactions; failed grant phase stops deployment and requires a reviewed repair/forward fix.",
+    "No separate worker, broker, cache or public database endpoint exists. No production database was contacted or modified."
+  ],
+  "next_task": "T08 Backup, Restore & Recovery Readiness (not started)",
+  "resolved_attempts": [
+    {
+      "command": "node --test apps/api/test/database-roles.integration.cjs",
+      "exit_code": 1,
+      "reason": "Initial Drizzle database CREATE privilege failure; corrected and rerun successfully."
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 1,
+      "reason": "Initial catalog/adoption errors and incomplete participant grant; corrected. Latest run passes 35 tests."
+    },
+    {
+      "command": "npm.cmd run test:edge",
+      "exit_code": 1,
+      "reason": "Initial login returned 500 because auth_sessions cleanup lacked DELETE; corrected, added restricted auth test, final edge run passes."
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 1,
+      "reason": "Sandbox denied Vite/esbuild parent-directory access; approved escalation passes."
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "exit_code": 1,
+      "reason": "Sandbox Windows user lookup failed with uv_os_get_passwd ENOMEM; approved offline rerun passes."
+    }
+  ],
+  "final_review": "All 720 baseline files retained; no undeclared baseline modifications; no owned running verification containers remain. Git status/diff unavailable without metadata; independent hashes and whitespace checks pass."
+}

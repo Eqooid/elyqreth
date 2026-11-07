@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/155.0.8059.85",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "T10 real PostgreSQL / authorized HTTP / native browser fetch / genuine runtime / NPC inspection acceptance",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 200,
+  "exceptions": 0,
+  "cityAcceptance": {
+    "status": "PASS",
+    "checkpoints": [
+      "Actual Chrome CORS/preflight, separate read credential and denied operator access",
+      "Queued and simultaneous genuine coordinator work; B cancellation leaves A running",
+      "Genuine rule-based result persisted; actual completion displayed, then expired to idle",
+      "Controlled strategy failure and real execution deadline produce persisted FAILED/TIMED_OUT outcomes",
+      "Only API transport blocked; real backend finishes A while disconnected; shared polling recovers missed state",
+      "Actual API restart and frontend reload retain persisted identities; explicit trusted reauthorization restores data",
+      "Real credential rotation clears protected state; binding removal preserves Agent/history/NPC; no prompt or token in DOM/store"
+    ],
+    "persisted": {
+      "ruleResultPersisted": true,
+      "terminalEventsUnique": true,
+      "agentsPreserved": true,
+      "bindingRemoved": true,
+      "executions": 5
+    }
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

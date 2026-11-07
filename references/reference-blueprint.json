@@ -1,0 +1,717 @@
+{
+  "reference": "orange-city-reference.png",
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 1,
+  "camera": "elevated near-frontal front/down; no isometric rotation",
+  "agentHeight": 42,
+  "composition": [
+    "upper-left cat tower",
+    "City Hall left of Market; Cafe right of Market",
+    "Bar along left border; Clinic immediately east",
+    "Globe plaza below Clinic",
+    "central pedestrian spine separates plaza from canal",
+    "R&D east of canal; billboard lane at right edge",
+    "Station beneath lower canal bridge; residential silhouettes at foreground"
+  ],
+  "gameplayAdjustments": [
+    "16 px collision grid approximates silhouette bases",
+    "recessed workplace alcoves are traversable",
+    "clear a narrow route behind the station to connect canal and east lane",
+    "Protected 64px boulevard and station approach; 32px east service alley with named destination bays",
+    "Ground footprints exclude projected rooftop canopy without moving sprites, doors or working areas",
+    "Rail deck separately classified and blocked to pedestrian navigation"
+  ],
+  "landmarks": [
+    {
+      "id": "hall",
+      "atlas": "buildings",
+      "sprite": 0,
+      "referenceBounds": [
+        274,
+        -48,
+        330,
+        342
+      ],
+      "collision": {
+        "col": 20,
+        "row": 0,
+        "columns": 13,
+        "rows": 18
+      },
+      "collisionParts": [
+        {
+          "col": 18,
+          "row": 14,
+          "columns": 2,
+          "rows": 4
+        },
+        {
+          "col": 33,
+          "row": 14,
+          "columns": 3,
+          "rows": 4
+        }
+      ],
+      "depth": 260
+    },
+    {
+      "id": "develop",
+      "atlas": "buildings",
+      "sprite": 1,
+      "referenceBounds": [
+        653,
+        0,
+        306,
+        350
+      ],
+      "collision": {
+        "col": 41,
+        "row": 0,
+        "columns": 19,
+        "rows": 21
+      },
+      "collisionParts": [],
+      "depth": 308
+    },
+    {
+      "id": "design",
+      "atlas": "buildings",
+      "sprite": 2,
+      "referenceBounds": [
+        976,
+        0,
+        270,
+        351
+      ],
+      "collision": {
+        "col": 62,
+        "row": 0,
+        "columns": 15,
+        "rows": 21
+      },
+      "collisionParts": [],
+      "depth": 308
+    },
+    {
+      "id": "test",
+      "atlas": "buildings",
+      "sprite": 3,
+      "referenceBounds": [
+        333,
+        353,
+        196,
+        220
+      ],
+      "collision": {
+        "col": 21,
+        "row": 26,
+        "columns": 12,
+        "rows": 9
+      },
+      "collisionParts": [],
+      "depth": 532
+    },
+    {
+      "id": "research",
+      "atlas": "buildings",
+      "sprite": 4,
+      "referenceBounds": [
+        1034,
+        337,
+        225,
+        350
+      ],
+      "collision": {
+        "col": 66,
+        "row": 26,
+        "columns": 13,
+        "rows": 16
+      },
+      "collisionParts": [],
+      "depth": 644
+    },
+    {
+      "id": "station",
+      "atlas": "buildings",
+      "sprite": 5,
+      "referenceBounds": [
+        775,
+        708,
+        342,
+        246
+      ],
+      "collision": {
+        "col": 50,
+        "row": 46,
+        "columns": 19,
+        "rows": 11
+      },
+      "collisionParts": [],
+      "depth": 884
+    }
+  ],
+  "roads": [
+    {
+      "id": "civic-boulevard",
+      "from": "west-gate",
+      "to": "market-junction",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "west-gate",
+        "market-junction"
+      ],
+      "tiles": [
+        0,
+        22,
+        49,
+        4
+      ]
+    },
+    {
+      "id": "market-boulevard",
+      "from": "market-junction",
+      "to": "east-junction",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "market-junction",
+        "east-junction"
+      ],
+      "tiles": [
+        45,
+        22,
+        37,
+        4
+      ]
+    },
+    {
+      "id": "east-boulevard",
+      "from": "east-junction",
+      "to": "east-gate",
+      "width": 4,
+      "axis": "horizontal",
+      "orientation": "horizontal",
+      "roadType": "asphalt",
+      "connections": [
+        "east-junction",
+        "east-gate"
+      ],
+      "tiles": [
+        78,
+        22,
+        18,
+        4
+      ]
+    },
+    {
+      "id": "station-approach",
+      "from": "market-junction",
+      "to": "station-dropoff",
+      "width": 4,
+      "axis": "vertical",
+      "orientation": "vertical",
+      "roadType": "asphalt",
+      "connections": [
+        "market-junction",
+        "station-dropoff"
+      ],
+      "tiles": [
+        45,
+        22,
+        4,
+        21
+      ]
+    },
+    {
+      "id": "east-service-alley",
+      "from": "east-junction",
+      "to": "service-court",
+      "width": 2,
+      "axis": "vertical",
+      "orientation": "vertical",
+      "roadType": "alley",
+      "connections": [
+        "east-junction",
+        "service-court"
+      ],
+      "tiles": [
+        79,
+        23,
+        2,
+        22
+      ]
+    }
+  ],
+  "sidewalks": [
+    {
+      "id": "hall-promenade",
+      "tiles": [
+        15,
+        18,
+        27,
+        4
+      ]
+    },
+    {
+      "id": "market-frontage",
+      "tiles": [
+        41,
+        21,
+        38,
+        1
+      ]
+    },
+    {
+      "id": "clinic-garden-path",
+      "tiles": [
+        16,
+        25,
+        27,
+        12
+      ]
+    },
+    {
+      "id": "canal-west-bank",
+      "tiles": [
+        48,
+        27,
+        2,
+        20
+      ]
+    },
+    {
+      "id": "canal-east-bank",
+      "tiles": [
+        65,
+        27,
+        1,
+        19
+      ]
+    },
+    {
+      "id": "station-rear-walk",
+      "tiles": [
+        48,
+        43,
+        48,
+        3
+      ]
+    },
+    {
+      "id": "plaza-front",
+      "tiles": [
+        15,
+        49,
+        30,
+        3
+      ]
+    },
+    {
+      "id": "station-stairs",
+      "tiles": [
+        45,
+        47,
+        5,
+        17
+      ]
+    },
+    {
+      "id": "dock-front",
+      "tiles": [
+        69,
+        57,
+        27,
+        3
+      ]
+    }
+  ],
+  "publicSpaces": [
+    {
+      "id": "globe-plaza",
+      "tiles": [
+        16,
+        36,
+        28,
+        13
+      ],
+      "terrain": "PLAZA"
+    },
+    {
+      "id": "clinic-garden",
+      "tiles": [
+        16,
+        25,
+        6,
+        11
+      ],
+      "terrain": "GRASS"
+    },
+    {
+      "id": "clinic-east-garden",
+      "tiles": [
+        32,
+        25,
+        10,
+        10
+      ],
+      "terrain": "GRASS"
+    },
+    {
+      "id": "plaza-west-garden",
+      "tiles": [
+        16,
+        41,
+        5,
+        7
+      ],
+      "terrain": "GRASS"
+    },
+    {
+      "id": "plaza-east-garden",
+      "tiles": [
+        34,
+        37,
+        8,
+        12
+      ],
+      "terrain": "GRASS"
+    },
+    {
+      "id": "foreground-garden",
+      "tiles": [
+        18,
+        53,
+        8,
+        11
+      ],
+      "terrain": "GRASS"
+    }
+  ],
+  "water": [
+    [
+      50,
+      29,
+      16,
+      17
+    ],
+    [
+      50,
+      58,
+      21,
+      6
+    ],
+    [
+      84,
+      47,
+      12,
+      10
+    ]
+  ],
+  "bridges": [
+    [
+      50,
+      27,
+      16,
+      3
+    ],
+    [
+      50,
+      43,
+      16,
+      3
+    ]
+  ],
+  "props": [
+    {
+      "id": "station-wayfinding",
+      "referenceBounds": [
+        1110,
+        758,
+        172,
+        162
+      ],
+      "collision": {
+        "col": 70,
+        "row": 49,
+        "columns": 10,
+        "rows": 8
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "plaza-story-monument",
+      "referenceBounds": [
+        604,
+        607,
+        108,
+        179
+      ],
+      "collision": {
+        "col": 38,
+        "row": 41,
+        "columns": 6,
+        "rows": 7
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "dock-hover-truck",
+      "referenceBounds": [
+        1320,
+        723,
+        172,
+        129
+      ],
+      "collision": {
+        "col": 83,
+        "row": 47,
+        "columns": 10,
+        "rows": 6
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "canal-basin-rim",
+      "referenceBounds": [
+        792,
+        463,
+        270,
+        240
+      ],
+      "collision": null,
+      "collisionParts": [
+        {
+          "col": 50,
+          "row": 30,
+          "columns": 1,
+          "rows": 13
+        },
+        {
+          "col": 65,
+          "row": 30,
+          "columns": 1,
+          "rows": 13
+        },
+        {
+          "col": 51,
+          "row": 42,
+          "columns": 14,
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "id": "station-front-platform",
+      "referenceBounds": [
+        784,
+        893,
+        752,
+        67
+      ],
+      "collision": null,
+      "collisionParts": []
+    },
+    {
+      "id": "clinic-west-planter",
+      "referenceBounds": [
+        252,
+        466,
+        90,
+        72
+      ],
+      "collision": {
+        "col": 16,
+        "row": 32,
+        "columns": 5,
+        "rows": 2
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "clinic-east-planter",
+      "referenceBounds": [
+        535,
+        502,
+        119,
+        62
+      ],
+      "collision": {
+        "col": 34,
+        "row": 33,
+        "columns": 7,
+        "rows": 2
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "plaza-east-planter",
+      "referenceBounds": [
+        525,
+        712,
+        146,
+        71
+      ],
+      "collision": {
+        "col": 33,
+        "row": 47,
+        "columns": 9,
+        "rows": 2
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "plaza-front-planter",
+      "referenceBounds": [
+        346,
+        764,
+        220,
+        38
+      ],
+      "collision": {
+        "col": 22,
+        "row": 48,
+        "columns": 14,
+        "rows": 1
+      },
+      "collisionParts": []
+    },
+    {
+      "id": "upper-canal-footbridge",
+      "referenceBounds": [
+        784,
+        410,
+        286,
+        93
+      ],
+      "collision": null,
+      "collisionParts": [
+        {
+          "col": 50,
+          "row": 30,
+          "columns": 1,
+          "rows": 3
+        },
+        {
+          "col": 65,
+          "row": 30,
+          "columns": 1,
+          "rows": 3
+        }
+      ]
+    },
+    {
+      "id": "lower-canal-footbridge",
+      "referenceBounds": [
+        784,
+        682,
+        286,
+        64
+      ],
+      "collision": null,
+      "collisionParts": []
+    }
+  ],
+  "streetNodes": [
+    {
+      "id": "west-gate",
+      "col": 0,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "West continuation"
+    },
+    {
+      "id": "market-junction",
+      "col": 47,
+      "row": 24,
+      "name": "Market junction"
+    },
+    {
+      "id": "east-junction",
+      "col": 80,
+      "row": 24,
+      "name": "East junction"
+    },
+    {
+      "id": "east-gate",
+      "col": 96,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "East continuation"
+    },
+    {
+      "id": "station-dropoff",
+      "col": 47,
+      "row": 41,
+      "endpoint": "destination",
+      "name": "Station drop-off"
+    },
+    {
+      "id": "service-court",
+      "col": 80,
+      "row": 44,
+      "endpoint": "destination",
+      "name": "R&D service court"
+    }
+  ],
+  "crossings": [
+    {
+      "id": "hall-crossing",
+      "tiles": [
+        39,
+        22,
+        1,
+        4
+      ],
+      "axis": "horizontal"
+    },
+    {
+      "id": "cafe-crossing",
+      "tiles": [
+        63,
+        22,
+        1,
+        4
+      ],
+      "axis": "horizontal"
+    },
+    {
+      "id": "market-crossing",
+      "tiles": [
+        45,
+        27,
+        4,
+        1
+      ],
+      "axis": "vertical"
+    },
+    {
+      "id": "station-crossing",
+      "tiles": [
+        45,
+        39,
+        4,
+        1
+      ],
+      "axis": "vertical"
+    }
+  ],
+  "railways": [
+    {
+      "id": "station-track-deck",
+      "tiles": [
+        50,
+        55,
+        46,
+        2
+      ]
+    }
+  ]
+}

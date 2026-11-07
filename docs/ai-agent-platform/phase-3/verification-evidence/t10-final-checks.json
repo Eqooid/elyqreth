@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25 Asia/Bangkok",
+  "command": "npm.cmd run test:city:e2e",
+  "exitCode": 0,
+  "tests": 1,
+  "pass": 1,
+  "fail": 0,
+  "genuineExecutions": 5,
+  "durationMs": 39887.0547,
+  "logSha256": "7bd2d53e0b367cee4e0beb219c01ac2b1c322bd4f4d42568cb0633c599d260b7",
+  "otherFinalChecks": {
+    "lint": "PASS",
+    "javascriptSyntax": "4 files PASS",
+    "documentation": "5 files PASS",
+    "auditVulnerabilities": 0
+  },
+  "limitations": [
+    "No production identity/tenancy acceptance",
+    "Live provider probes NOT RUN",
+    "Hosted CI NOT RUN",
+    "No long-duration soak or visual-diff benchmark"
+  ]
+}

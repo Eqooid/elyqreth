@@ -1,0 +1,47 @@
+{
+    "name": "@elyqreth/api",
+    "version": "0.1.0",
+    "private": true,
+    "type": "commonjs",
+    "engines": {
+        "node": ">=24 <25"
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "check": "tsc -p tsconfig.json --noEmit",
+        "dev": "tsc-watch --onSuccess \"node dist/main.js\"",
+        "start": "node dist/main.js",
+        "test": "npm run build && node --test --test-concurrency=1 test/*.test.cjs",
+        "db:check": "drizzle-kit check",
+        "db:migrate": "npm run build && node dist/database/migrate.js",
+        "db:generate": "drizzle-kit generate",
+        "test:db": "npm run build && node --test test/database.integration.cjs",
+        "runtime:execute": "npm run build && node dist/runtime/local-command.js",
+        "city:bindings": "npm run build && node dist/city/local-command.js",
+        "test:ollama:live": "npm run build && node test/ollama.live.cjs",
+        "test:openai:live": "npm run build && node test/openai.live.cjs",
+        "test:langgraph:live": "npm run build && node test/langgraph.live.cjs",
+        "langgraph:observe": "npm run build && node dist/external-orchestrators/langgraph-command.js",
+        "test:keycloak:live": "npm run build && node test/keycloak.live.cjs",
+        "auth:account": "npm run build && node dist/auth/local-account-command.js"
+    },
+    "devDependencies": {
+        "@types/express": "5.0.6",
+        "@types/node": "24.19.2",
+        "@types/pg": "8.23.1",
+        "tsc-watch": "7.2.1",
+        "typescript": "5.9.3"
+    },
+    "dependencies": {
+        "@nestjs/common": "11.2.7",
+        "@nestjs/core": "11.2.7",
+        "@nestjs/platform-express": "11.2.7",
+        "class-transformer": "0.5.1",
+        "class-validator": "0.15.1",
+        "drizzle-orm": "0.45.4",
+        "jose": "6.2.14",
+        "pg": "8.23.1",
+        "reflect-metadata": "0.2.2",
+        "rxjs": "7.8.2"
+    }
+}

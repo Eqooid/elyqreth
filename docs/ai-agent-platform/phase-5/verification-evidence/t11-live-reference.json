@@ -1,0 +1,12 @@
+{
+  "liveLangGraph": "0.16.8",
+  "externalAssistant": "086d0f4b-ec9e-5e76-a38e-d13699219864",
+  "externalExecution": "01a1861e-8ba2-7300-b58f-54f00744eba5:01a1861e-8bcc-7008-9838-03975583172b",
+  "observedStatuses": [
+    "QUEUED",
+    "RUNNING",
+    "COMPLETED"
+  ],
+  "resultReferenceVerified": true,
+  "nativeRowsUnchanged": true
+}

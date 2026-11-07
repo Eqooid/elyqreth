@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-26 Asia/Bangkok",
+  "decision": "COMPLETE",
+  "scope": "Approved local interaction security, accessibility review/remediation and measured performance/resource hardening; T09/T10 and production release not accepted here",
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "result": "PASS",
+      "detail": "Backend TypeScript build"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "result": "PASS",
+      "detail": "Syntax, strict runtime-web TypeScript and backend no-emit"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "result": "PASS",
+      "tests": 198,
+      "fail": 0
+    },
+    {
+      "command": "npm.cmd test",
+      "result": "PASS",
+      "tests": 207,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[28]' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 9,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[34567]' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 9,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[56] real browser' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 2,
+      "fail": 0,
+      "detail": "Repeated subset after scoped modal/style fixes"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "result": "PASS",
+      "modules": 60,
+      "detail": "Disposable output; maintained source preserved"
+    },
+    {
+      "command": "$env:BROWSER_HARDENING_PHASE4='true'; $env:BROWSER_HARDENING_REPORT=\"$env:TEMP/elyqreth-p4-t08-browser-final.json\"; npm.cmd run test:browser",
+      "result": "PASS",
+      "browser": "Chrome/155.0.8059.85",
+      "exceptions": 0
+    },
+    {
+      "command": "$env:BROWSER_HARDENING_PHASE4='true'; $env:BROWSER_PROFILE_PHASE3='true'; $env:BROWSER_HARDENING_REPORT=\"$env:TEMP/elyqreth-p4-t08-browser-after.json\"; npm.cmd run test:browser",
+      "result": "PASS",
+      "detail": "Frame/heap profiling before final class scoping and stable post-connect heading refinement; final keyboard smoke rerun"
+    },
+    {
+      "command": "node --expose-gc scripts/phase3-profile.mjs --out \"$env:TEMP/elyqreth-p4-t08-sync-profile.json\"",
+      "result": "PASS"
+    },
+    {
+      "command": "node --expose-gc scripts/phase4-interaction-profile.mjs --out \"$env:TEMP/elyqreth-p4-t08-interaction-profile.json\"",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check scripts/interaction-hardening-browser.mjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check scripts/phase4-interaction-profile.mjs",
+      "result": "PASS"
+    },
+    {
+      "command": "node --check apps/api/test/interaction.integration.cjs",
+      "result": "PASS"
+    }
+  ],
+  "testCountsNote": "Nine security and nine compatibility cases are distinct. The two focus cases are repeated compatibility subsets, not two additional unique integration cases.",
+  "exploration": [
+    "Initial keyboard fixture required Enter text; duplicate component label ID isolated before baseline collection.",
+    "Modal Tab boundary check failed before scoped wrapping fix, then passed in both directions.",
+    "Initial profiling fixture lacked execution eligibility; corrected and RUNNING/result assertions added before final measurements."
+  ],
+  "preservation": {
+    "gitMetadata": false,
+    "baselineFiles": 370,
+    "modifiedExistingFiles": [
+      "dist/style.css",
+      "dist/js/agent-task-panel.js",
+      "dist/js/app.js",
+      "dist/js/execution-results-view.js",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/architecture.md",
+      "docs/ai-agent-platform/phase-4/decisions.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-4/README.md",
+      "docs/ai-agent-platform/phase-4/security-reliability.md",
+      "scripts/browser-smoke.mjs",
+      "scripts/task-panel-browser.mjs",
+      "apps/api/test/interaction.integration.cjs",
+      "README.md"
+    ],
+    "missingFiles": [],
+    "newFiles": [
+      "scripts/interaction-hardening-browser.mjs",
+      "scripts/phase4-interaction-profile.mjs",
+      "docs/ai-agent-platform/phase-4/interaction-hardening.md",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-verification.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-browser-before.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-browser-final.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-interaction-profile.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-sync-profile.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t08-render-profile.json"
+    ],
+    "unchangedProtectedSources": [
+      "backend production and migrations",
+      "Phase 3 runtime synchronization/renderer/simulation/movement/NPC entities",
+      "dependencies, CI and Docker configuration",
+      "Phase 1-3 historical documentation"
+    ]
+  },
+  "measurements": {
+    "before": {
+      "repeatedSelections": 100,
+      "domTextMutations": 600,
+      "elapsedMs": 7.5,
+      "additionalRequests": 0
+    },
+    "after": {
+      "repeatedSelections": 100,
+      "domTextMutations": 0,
+      "elapsedMs": 5,
+      "additionalRequests": 0
+    },
+    "contrastAgainstPanel182534": {
+      "text": 14.61,
+      "muted": 8.63,
+      "error": 6.51,
+      "borderBefore": 2.57,
+      "borderAfter": 4.76
+    },
+    "nativeIndependentAgents": "Existing T07 real Chrome/Nest/PostgreSQL case passed in compatibility suite; one primary and one existing secondary authorized instance, no runtime concurrency changes",
+    "profileScope": "Synthetic mocked observation up to 100 projections/20 linked slots; actual interaction owners at 1/5/20 scopes; real Chrome rAF with four visible residents; no production capacity claim"
+  },
+  "logs": [
+    {
+      "temporaryFile": "elyqreth-p4-t08-backend-build.log",
+      "sha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-backend-tests.log",
+      "sha256": "ae26fc36e44f50eea517637761e3e213760b24efde7bae71296c0a592cd53314"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-security.log",
+      "sha256": "874612f68604f0f599c2b31057f1e7a743ab5c57624236b8cfd0dfa34ad82787"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-native-regression.log",
+      "sha256": "5356862aec984be1a7536da803ef36c5ee8bb23efbb1d35ba43abe2d60e648b3"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-focus-final.log",
+      "sha256": "187823db30d8d279cc44c37cdf8fc47a5ee6451828057f67b4afd2d14799b254"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-frontend-tests.log",
+      "sha256": "58e172ad16b91512c6a93fdfc57e8bfc556fda6a97bb70edd6804490a9a90a28"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-lint.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-web-build.log",
+      "sha256": "f571dbc91930190e2109ff3b3dc704bebac58707579f0377784c63d719ae7100"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-browser-before.log",
+      "sha256": "191911e2620a21d7862e5fc73552e4baa4dc13e2e9f66d8b1ffbc9251fc3ac9b"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-browser-after.log",
+      "sha256": "b077169020ae56d84512d16b1f0132b5a6312bb7a68aade12672a53c2e478364"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-browser-final.log",
+      "sha256": "695f0524e95a09c35b1484201d7036889eab013491a31d91024d381b8c6e5bd7"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-interaction-profile.log",
+      "sha256": "9e0c7ebd19c20ebcd80bccc94813fa8c549841360143b80ed61f852b08d7a06b"
+    },
+    {
+      "temporaryFile": "elyqreth-p4-t08-sync-profile.log",
+      "sha256": "ec2c197d7be44e48ab407c52a90de6b0ee6a7a34b8d5e39af1384f0d967663b3"
+    }
+  ],
+  "notVerified": [
+    "Production human/tenant authentication (not implemented; public release blocked)",
+    "Manual NVDA/JAWS/VoiceOver operation or formal WCAG certification",
+    "Long-duration heap/native/GPU endurance or production capacity",
+    "Fresh real backend restart/live paid LLM providers in T08",
+    "Full PostgreSQL suite beyond the documented focused cases"
+  ],
+  "remainingRisks": [
+    {
+      "severity": "HIGH if publicly exposed",
+      "issue": "Local capability model is not production identity/deployment authorization",
+      "disposition": "Existing public-release blocker preserved"
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "No server per-caller request quotas/rate limiter",
+      "disposition": "Keep trusted loopback boundary; production follow-up"
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Text opt-in and pattern rejection are not general DLP/prompt-injection prevention",
+      "disposition": "Retain allow-lists and existing safe-tool/provider boundaries"
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "Navigation/cancellation can interrupt synchronous execution and preserve quarantine",
+      "disposition": "Authoritative recovery only; no detached-work promise"
+    }
+  ],
+  "documentation": {
+    "files": 16,
+    "localLinksAndAnchors": 178,
+    "mermaidSourceBlocks": 18,
+    "errors": [],
+    "mermaidRendering": "NOT RUN; existing source fences checked; no T08 diagrams added"
+  }
+}

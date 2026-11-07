@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "kind": "Real Chrome panel semantics, keyboard, untrusted name and deterministic repeated selections",
+  "escapeRestored": true,
+  "validationFocused": true,
+  "keyboardResidentSelection": true,
+  "modalTabContainment": true,
+  "stable": {
+    "repeatedSelections": 100,
+    "domTextMutations": 0,
+    "elapsedMs": 3.599999964237213,
+    "additionalRequests": 0
+  },
+  "targets": [
+    {
+      "label": "Disconnect interaction access",
+      "width": 181.34375,
+      "height": 34
+    },
+    {
+      "label": "Save Task",
+      "width": 75.90625,
+      "height": 34
+    },
+    {
+      "label": "Recheck access",
+      "width": 106.15625,
+      "height": 34
+    },
+    {
+      "label": "Close selection",
+      "width": 104.921875,
+      "height": 34
+    },
+    {
+      "label": "Restore context",
+      "width": 108.3125,
+      "height": 34
+    },
+    {
+      "label": "Start Execution",
+      "width": 104.671875,
+      "height": 34
+    },
+    {
+      "label": "Cancel Execution",
+      "width": 115.328125,
+      "height": 34
+    },
+    {
+      "label": "Refresh lifecycle",
+      "width": 110.40625,
+      "height": 34
+    },
+    {
+      "label": "Execution result",
+      "width": 1440,
+      "height": 24
+    },
+    {
+      "label": "Refresh result",
+      "width": 97.78125,
+      "height": 34
+    },
+    {
+      "label": "Execution history",
+      "width": 1440,
+      "height": 24
+    },
+    {
+      "label": "Refresh history from first page",
+      "width": 186,
+      "height": 34
+    },
+    {
+      "label": "Previous page",
+      "width": 100.53125,
+      "height": 34
+    },
+    {
+      "label": "Next page",
+      "width": 80.625,
+      "height": 34
+    }
+  ],
+  "axLabels": true,
+  "reducedMotion": true,
+  "reflow320": true
+}

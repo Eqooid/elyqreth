@@ -1,0 +1,140 @@
+{
+  "world": {
+    "width": 2048,
+    "height": 1536,
+    "columns": 64,
+    "rows": 48
+  },
+  "buildingCount": 24,
+  "method": "Union of building collision footprints, clipped to block bounds; major roads and designated public space excluded.",
+  "blocks": [
+    {
+      "id": "north",
+      "bounds": [
+        0,
+        0,
+        64,
+        13
+      ],
+      "excluded": [
+        [
+          16,
+          0,
+          3,
+          13
+        ],
+        [
+          31,
+          0,
+          2,
+          13
+        ],
+        [
+          48,
+          0,
+          2,
+          13
+        ]
+      ],
+      "eligibleCells": 741,
+      "buildingCells": 332,
+      "coverage": 44.8
+    },
+    {
+      "id": "central",
+      "bounds": [
+        0,
+        15,
+        47,
+        12
+      ],
+      "excluded": [
+        [
+          16,
+          15,
+          3,
+          12
+        ],
+        [
+          31,
+          15,
+          2,
+          12
+        ],
+        [
+          19,
+          15,
+          11,
+          11
+        ]
+      ],
+      "eligibleCells": 383,
+      "buildingCells": 186,
+      "coverage": 48.6
+    },
+    {
+      "id": "eastbank",
+      "bounds": [
+        50,
+        15,
+        14,
+        21
+      ],
+      "excluded": [
+        [
+          50,
+          27,
+          14,
+          2
+        ]
+      ],
+      "eligibleCells": 266,
+      "buildingCells": 132,
+      "coverage": 49.6
+    },
+    {
+      "id": "south",
+      "bounds": [
+        0,
+        39,
+        64,
+        9
+      ],
+      "excluded": [
+        [
+          16,
+          39,
+          3,
+          9
+        ],
+        [
+          31,
+          39,
+          2,
+          9
+        ],
+        [
+          48,
+          39,
+          2,
+          9
+        ]
+      ],
+      "eligibleCells": 513,
+      "buildingCells": 240,
+      "coverage": 46.8
+    }
+  ],
+  "map": {
+    "id": "entire-map",
+    "bounds": [
+      0,
+      0,
+      64,
+      48
+    ],
+    "eligibleCells": 3072,
+    "buildingCells": 1046,
+    "coverage": 34
+  }
+}

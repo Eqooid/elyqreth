@@ -1,0 +1,621 @@
+{
+  "task": "Phase6 T13 Isolated Staging/UAT Rehearsal",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "status": "PARTIAL",
+  "localExecutedChecks": "PASS",
+  "productionPromotionAuthorized": false,
+  "registryPublicationAuthorized": false,
+  "runId": "66e5253f-dce5-4c88-b131-289f124f68f0",
+  "startedAt": "2026-11-06T10:13:57.144Z",
+  "finishedAt": "2026-11-06T10:23:47.485Z",
+  "artifact": {
+    "version": 1,
+    "mode": "LOCAL_SIMULATION",
+    "images": {
+      "api": "sha256:ed38ea351193defc177bbf572d7f202fcfeea89c711be82196f23455b4afd900",
+      "web": "sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e",
+      "edge": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2"
+    },
+    "identityKind": "DOCKER_CONFIG_ID_NOT_REGISTRY_DIGEST",
+    "sourceBinding": "NOT_VERIFIED_PREBUILT_LOCAL_IMAGES"
+  },
+  "source": {
+    "kind": "WORKSPACE_CONTENT_SNAPSHOT_NOT_COMMIT",
+    "sha256": "5f2cd25cb465e0acbd5190f21ba2964b15280713ce68f1a7e9bd93b343934e1c"
+  },
+  "sourceFileCount": 445,
+  "sourceSnapshotLocation": "%TEMP%/elyqreth-t13-uat-20261106-b/uat.json",
+  "commands": [
+    {
+      "id": "build-api",
+      "command": "node node_modules/typescript/bin/tsc -p apps/api/tsconfig.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 10728,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputBytes": 0,
+      "tests": {},
+      "failedTests": []
+    },
+    {
+      "id": "typecheck-web",
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.runtime-web.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 4213,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputBytes": 0,
+      "tests": {},
+      "failedTests": []
+    },
+    {
+      "id": "syntax-web",
+      "command": "node scripts/check.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 5044,
+      "outputSha256": "e71133773aebf1b6b8246b87ea9f3ec0c2e166f40d8fa5ac82655ab163ed2a3d",
+      "outputBytes": 39,
+      "tests": {},
+      "failedTests": []
+    },
+    {
+      "id": "build-web",
+      "command": "node scripts/build-web.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 2058,
+      "outputSha256": "a7b382f79962a0c83130d27920f48363f0d23c192f6ff89eab4b992a612f0261",
+      "outputBytes": 931,
+      "tests": {},
+      "failedTests": []
+    },
+    {
+      "id": "backend-unit",
+      "command": "node --test-reporter=tap --test --test-concurrency=1 apps/api/test/activity.test.cjs apps/api/test/agents.test.cjs apps/api/test/authentication.test.cjs apps/api/test/backup.test.cjs apps/api/test/city-bindings.test.cjs apps/api/test/collaboration-activity.test.cjs apps/api/test/collaboration-api.test.cjs apps/api/test/collaboration-read.test.cjs apps/api/test/collaboration-recovery.test.cjs apps/api/test/collaboration.test.cjs apps/api/test/container-configuration.test.cjs apps/api/test/database-access.test.cjs apps/api/test/database-config.test.cjs apps/api/test/email-monitor.test.cjs apps/api/test/events.test.cjs apps/api/test/external-adapter.test.cjs apps/api/test/external-di.test.cjs apps/api/test/external-ingestion.test.cjs apps/api/test/external-security.test.cjs apps/api/test/external-tls.test.cjs apps/api/test/external-transport.test.cjs apps/api/test/foundation.test.cjs apps/api/test/interaction.test.cjs apps/api/test/langgraph.test.cjs apps/api/test/lifecycle.test.cjs apps/api/test/llm-agent.test.cjs apps/api/test/llm-providers.test.cjs apps/api/test/native-coordination.test.cjs apps/api/test/observability.test.cjs apps/api/test/ollama-http.test.cjs apps/api/test/ollama.test.cjs apps/api/test/openai-http.test.cjs apps/api/test/openai.test.cjs apps/api/test/operational-signals.test.cjs apps/api/test/parser-security.test.cjs apps/api/test/principal-authorization.test.cjs apps/api/test/production-configuration.test.cjs apps/api/test/providers.test.cjs apps/api/test/release-pipeline.test.cjs apps/api/test/runtime-api.test.cjs apps/api/test/runtime-contracts.test.cjs apps/api/test/runtime-coordinator.test.cjs apps/api/test/runtime-drain.test.cjs apps/api/test/runtime-interruption.test.cjs apps/api/test/staging-rehearsal.test.cjs apps/api/test/tasks.test.cjs apps/api/test/text-statistics.test.cjs apps/api/test/tools-di.test.cjs apps/api/test/tools.test.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 114507,
+      "outputSha256": "5a254f5c954ae7cdc9ddbbcc03dce88c9fd93bb9d43c2c867002f872cd3543f9",
+      "outputBytes": 144201,
+      "tests": {
+        "tests": 371,
+        "pass": 371,
+        "fail": 0,
+        "skipped": 0
+      },
+      "failedTests": []
+    },
+    {
+      "id": "frontend-unit",
+      "command": "node --test-reporter=tap --test tests/access-session.test.js tests/agent-inspection.test.js tests/collaboration.test.js tests/configuration-boundary.test.js tests/docker-config.test.js tests/execution-controls.test.js tests/execution-results.test.js tests/interaction-api.test.js tests/interaction-session.test.js tests/living-city.test.js tests/multi-agent-sync.test.js tests/npc-identity.test.js tests/npc-runtime-binding.test.js tests/npc-status.test.js tests/purposeful-city.test.js tests/runtime-api.test.js tests/runtime-sync.test.js tests/simulation.test.js tests/task-submission.test.js tests/theme.test.js",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 18132,
+      "outputSha256": "1e7a01e6ee413c5cc1ca361aa87488c6485310eb2508437d89284eacd3c7697b",
+      "outputBytes": 64203,
+      "tests": {
+        "tests": 238,
+        "pass": 238,
+        "fail": 0,
+        "skipped": 0
+      },
+      "failedTests": []
+    },
+    {
+      "id": "database-uat",
+      "command": "node --test-reporter=tap --test apps/api/test/database.integration.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 255263,
+      "outputSha256": "efc4626179e23c027905e9473aa987f9c6f0addc3aa9b837c17a01e546d5251e",
+      "outputBytes": 766023,
+      "tests": {
+        "tests": 232,
+        "pass": 232,
+        "fail": 0,
+        "skipped": 0
+      },
+      "failedTests": []
+    },
+    {
+      "id": "database-roles",
+      "command": "node --test-reporter=tap --test apps/api/test/database-roles.integration.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 26761,
+      "outputSha256": "689949a7d1fc50bfb8bcc9c6d70c595aa4ba43f79ab8e9dabf7a47f0e2d92135",
+      "outputBytes": 130424,
+      "tests": {
+        "tests": 45,
+        "pass": 45,
+        "fail": 0,
+        "skipped": 0
+      },
+      "failedTests": []
+    },
+    {
+      "id": "backup-restore",
+      "command": "node --test-reporter=tap --test apps/api/test/backup.test.cjs apps/api/test/backup.integration.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 14285,
+      "outputSha256": "a03d2f5e0551ef850d74713107a73e88d2729a67d8c1a16b2ec85f542d3fc39b",
+      "outputBytes": 14476,
+      "tests": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0
+      },
+      "failedTests": []
+    },
+    {
+      "id": "tls-city-drain",
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain --image-lock <evidence>/local-images.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 138674,
+      "outputSha256": "b781f98b8daeade2350dff90fd09bb3057056471acb6d0ab71e3d522fd6731a8",
+      "outputBytes": 2660,
+      "tests": {},
+      "failedTests": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "UAT-01",
+      "requirement": "Configuration, lint, type and production builds",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "build-api",
+        "typecheck-web",
+        "syntax-web",
+        "build-web",
+        "backend-unit"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Existing validators, startup/config denial fixtures; workspace build checks",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Existing validators, startup/config denial fixtures; workspace build checks"
+    },
+    {
+      "id": "UAT-02",
+      "requirement": "Runtime/migration roles and migration safety",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "database-roles"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Real disposable PostgreSQL positive/negative privileges, migration locks/failure/history",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Real disposable PostgreSQL positive/negative privileges, migration locks/failure/history"
+    },
+    {
+      "id": "UAT-03",
+      "requirement": "Authentication, sessions and object authorization",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "database-uat",
+        "tls-city-drain"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Real Nest/PostgreSQL guards, local-account HTTPS browser, owner isolation; OIDC uses signed fixtures, not a hosted issuer",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Real Nest/PostgreSQL guards, local-account HTTPS browser, owner isolation; OIDC uses signed fixtures, not a hosted issuer"
+    },
+    {
+      "id": "UAT-04",
+      "requirement": "Native execution lifecycle, admission and recovery",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "database-uat",
+        "tls-city-drain"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Real deterministic native work, cancellation/timeout/quarantine and persistence; no paid LLM API",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Real deterministic native work, cancellation/timeout/quarantine and persistence; no paid LLM API"
+    },
+    {
+      "id": "UAT-05",
+      "requirement": "Native and mixed collaboration/delegation",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "database-uat"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Real one-child work, durable correlation, cancellation/recovery and mixed read model; external observations fixture-based",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Real one-child work, durable correlation, cancellation/recovery and mixed read model; external observations fixture-based"
+    },
+    {
+      "id": "UAT-06",
+      "requirement": "External observation and failure handling",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "backend-unit",
+        "database-uat"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Existing deterministic reference transport/provider fixtures with actual database mappings/inbox; production activation closed",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Existing deterministic reference transport/provider fixtures with actual database mappings/inbox; production activation closed"
+    },
+    {
+      "id": "UAT-07",
+      "requirement": "Trusted ingestion isolation, replay and validation",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "backend-unit",
+        "database-uat"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Service authority and durable inbox contracts; no HTTP signed webhook or external dispatch capability exists",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Service authority and durable inbox contracts; no HTTP signed webhook or external dispatch capability exists"
+    },
+    {
+      "id": "UAT-08",
+      "requirement": "Frontend, city, Task/Execution and collaboration UAT",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "frontend-unit",
+        "database-uat",
+        "tls-city-drain"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Actual HTTPS browser Task save/native success and collaboration snapshot against PostgreSQL/Nest; production-edge session/city/reconnect; supplemental browser panel fixtures",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Actual HTTPS browser Task save/native success and collaboration snapshot against PostgreSQL/Nest; production-edge session/city/reconnect; supplemental browser panel fixtures"
+    },
+    {
+      "id": "UAT-09",
+      "requirement": "Drain, forced interruption, ownership and restart",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "database-uat",
+        "tls-city-drain"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Actual child-process hard crash and PID1 clean/deadline signals, readiness changes, durable state and one effective execution",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Actual child-process hard crash and PID1 clean/deadline signals, readiness changes, durable state and one effective execution"
+    },
+    {
+      "id": "UAT-10",
+      "requirement": "Encrypted backup and separate restore",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "backup-restore"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Real encrypted custom dump, integrity/relationship/journal/audit/replay verification in separate disposable target",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Real encrypted custom dump, integrity/relationship/journal/audit/replay verification in separate disposable target"
+    },
+    {
+      "id": "UAT-11",
+      "requirement": "Observability and incident safety contracts",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "backend-unit",
+        "database-uat",
+        "tls-city-drain"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "Redaction/correlation/private diagnostics, actual DB outage/readiness recovery, drain logs; other incident failpoints use fixtures",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "Redaction/correlation/private diagnostics, actual DB outage/readiness recovery, drain logs; other incident failpoints use fixtures"
+    },
+    {
+      "id": "UAT-12",
+      "requirement": "Rollback/promotion gate simulation",
+      "environment": "ISOLATED_LOCAL_UAT",
+      "artifactIdentity": "artifact.images; host workspace source snapshot is not source-to-image provenance",
+      "commandIds": [
+        "backend-unit"
+      ],
+      "expected": "All existing supported assertions exit 0",
+      "actual": "T12 synthetic manifests, tampering/approval/target/backup/schema/rollback/failure-stop contracts; PLAN ONLY",
+      "status": "PASS",
+      "evidence": "commands and containerChecks in this report; underlying test source files",
+      "limitations": "T12 synthetic manifests, tampering/approval/target/backup/schema/rollback/failure-stop contracts; PLAN ONLY"
+    },
+    {
+      "id": "UAT-13",
+      "requirement": "Approved immutable registry release deployment",
+      "environment": "NOT DESIGNATED",
+      "artifactIdentity": null,
+      "commandIds": [],
+      "expected": "Approved independent evidence before production readiness",
+      "actual": "No canonical Git metadata, approved candidate bundle, registry, hosted target or approvers. Local Docker config IDs are not registry digests.",
+      "status": "BLOCKED",
+      "evidence": "T11/T12 documented gates; no execution claimed",
+      "limitations": "No canonical Git metadata, approved candidate bundle, registry, hosted target or approvers. Local Docker config IDs are not registry digests."
+    },
+    {
+      "id": "UAT-14",
+      "requirement": "Actual previous known-good release rollback",
+      "environment": "NOT DESIGNATED",
+      "artifactIdentity": null,
+      "commandIds": [],
+      "expected": "Approved independent evidence before production readiness",
+      "actual": "No previous approved deployed artifact tuple/target; only the synthetic rollback gate was executed.",
+      "status": "BLOCKED",
+      "evidence": "T11/T12 documented gates; no execution claimed",
+      "limitations": "No previous approved deployed artifact tuple/target; only the synthetic rollback gate was executed."
+    },
+    {
+      "id": "UAT-15",
+      "requirement": "Human UAT, visual/accessibility acceptance and incident tabletop",
+      "environment": "NOT DESIGNATED",
+      "artifactIdentity": null,
+      "commandIds": [],
+      "expected": "Approved independent evidence before production readiness",
+      "actual": "No human acceptance owner/signoff supplied; browser automation is not manual screen-reader/visual UAT.",
+      "status": "NOT RUN",
+      "evidence": "T11/T12 documented gates; no execution claimed",
+      "limitations": "No human acceptance owner/signoff supplied; browser automation is not manual screen-reader/visual UAT."
+    },
+    {
+      "id": "UAT-16",
+      "requirement": "Operational alert delivery and incident ownership",
+      "environment": "NOT DESIGNATED",
+      "artifactIdentity": null,
+      "commandIds": [],
+      "expected": "Approved independent evidence before production readiness",
+      "actual": "T11 email fixture tests pass; no real approved sender/receiver, delivered notification or named responder.",
+      "status": "BLOCKED",
+      "evidence": "T11/T12 documented gates; no execution claimed",
+      "limitations": "T11 email fixture tests pass; no real approved sender/receiver, delivered notification or named responder."
+    }
+  ],
+  "containerChecks": [
+    "production missing schema fails before serving",
+    "T11 namespace diagnostics expose safe pool and runtime metadata; remote container denied",
+    "non-root read-only capability/process/resource limits; namespace-only readiness; public liveness",
+    "T10 external key file loads as non-root under production file permissions without enabling integration or printing its value; ambiguous direct/file input rejected",
+    "T06 verified TLS1.2/1.3, HTTP redirect/canonical host, static assets/CSP, actual bearer login/me/401/403/logout/reauth, native execution, polling after edge restart, CORS, body/page bounds and internal route rejection",
+    "T06 only edge publishes loopback test ports; edge/web cannot reach DB; web cannot directly reach API; readiness remains namespace-only",
+    "T06 real Chromium HTTPS CSP/city/login/session/polling/reconnect/logout regression",
+    "T06 protected TLS rotation, invalid pair leaves existing TLS intact, invalid host/unsafe key fail startup, production HSTS and maximum bearer/header bounds verified",
+    "T06 spoofed forwarding headers overwritten, canonical upstream Host, no implicit proxy trust, 429 login budget, safe outage/logging and merged Compose network/port checks",
+    "real local account session native Task/Execution success and logout; separate migrator/application credentials",
+    "T09 clean: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+    "T09 timeout: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+    "missing/world-readable secret files and TLS hostname mismatch rejected safely",
+    "database outage removes readiness without killing liveness; readiness recovers after durable PG restart",
+    "T11 actual PostgreSQL outage and recovery have categorized JSON transition logs; liveness remains available",
+    "bounded SIGTERM shutdown and API recreation preserve successful work and one execution",
+    "non-root static web assets/readiness; malformed public JSON fails startup; invalid live input cannot expose mounted secrets",
+    "production Compose configuration valid; no published API/database/worker ports; managed DB boundary retained",
+    "image content/history contain no test credentials, private env, host modules or build/test tooling"
+  ],
+  "supplemental": [
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": "%TEMP%/elyqreth-t13-lint.log"
+    },
+    {
+      "command": "node scripts/browser-smoke.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": "%TEMP%/elyqreth-t13-browser.log",
+      "result": {
+        "status": "PASS",
+        "browser": "Chrome/156.0.8078.80",
+        "checkpoints": [
+          "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+          "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+          "Shared runtime integration loads disabled and credential-free without city API requests",
+          "P4 T04 real browser fixture: existing inspector form, safe text, eligibility, validation, duplicate guard, close/reopen, saved-not-started reference, exact-key lost-response recovery and unbound preservation",
+          "P5 T10 collaboration DOM: memberships, multiple directed relationships, native detail permission, external freshness/XSS, history, outage/reconnect, focus, mobile, Agent/session isolation",
+          "T06 mocked transport: real T04/T05 pipeline, selected NPC inspector, Canvas running/waiting/completed/failed/stale/recovery and binding removal",
+          "T07 projection-only inspection: current/historical selection, single outcome timeline, expansion/focus preservation, NPC switch isolation and authorization cleanup",
+          "T08 mocked multi-Agent outage: independent A/B states, selection during disconnection and automatic authoritative poll reconciliation",
+          "NPC runtime binding sidecar indexes four stable slots without creating NPCs or backend requests",
+          "Camera zoom/focus/recenter and help/developer panels",
+          "Existing simulated mission start, pause, resume and reset",
+          "Mobile reload and viewport",
+          "T04 local login, /me, 403 isolation, 401 expiry, cleanup, late-response rejection, reauthentication, cross-tab logout and OIDC token-only UI"
+        ],
+        "resourceRequests": 166,
+        "exceptions": 0,
+        "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+      }
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/staging-rehearsal.test.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "tests": 4
+    },
+    {
+      "command": "node scripts/staging-rehearsal.mjs --deploy production",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "status": "PASS",
+      "reason": "Unsupported production invocation rejected before any resources are created"
+    },
+    {
+      "command": "node scripts/staging-rehearsal.mjs --run --output \"$env:TEMP\\elyqreth-t13-uat-20261106-a\"",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "status": "PASS",
+      "reason": "Existing evidence directory refused without overwrite"
+    },
+    {
+      "command": "git status --short",
+      "exitCode": 128,
+      "status": "BLOCKED",
+      "reason": "Supplied workspace has no .git"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 129,
+      "status": "BLOCKED",
+      "reason": "Supplied workspace has no .git; SHA inventory and offline whitespace review used instead"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "result": "20 documents, local links, environment inventory and changed-file whitespace"
+    }
+  ],
+  "failedAttempts": [
+    {
+      "command": "node scripts/staging-rehearsal.mjs --run --output \"$env:TEMP\\elyqreth-t13-uat-20261106-a\"",
+      "exitCode": 1,
+      "status": "FAIL",
+      "failedCommand": {
+        "id": "database-uat",
+        "command": "node --test apps/api/test/database.integration.cjs",
+        "exitCode": 1,
+        "status": "FAIL",
+        "durationMs": 256725,
+        "outputSha256": "1c24a4fb74b240c0f2a5f60ce4a5cc29028047d9b2935ffa579f8aa36d3a5dca",
+        "outputBytes": 723835,
+        "tests": {}
+      },
+      "limitation": "Original raw output not retained; do not claim its exact failing assertion from its hash alone"
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/database.integration.cjs",
+      "exitCode": 1,
+      "status": "FAIL",
+      "tests": 232,
+      "pass": 231,
+      "fail": 1,
+      "evidence": "%TEMP%/elyqreth-t13-db-diagnostic.log",
+      "confirmedCause": "Existing genuine npm CLI acceptance test requires npm_execpath; direct-node invocation omitted it",
+      "remediation": "Runner now derives the npm CLI from local Node installation. No application or legacy test was changed. Corrected full rerun has 232/232 PASS."
+    }
+  ],
+  "findings": [
+    {
+      "id": "H-01",
+      "severity": "High",
+      "releaseBlocking": true,
+      "status": "BLOCKED",
+      "finding": "No approved immutable source/registry candidate and staging deployment evidence",
+      "owner": "T12 release prerequisites"
+    },
+    {
+      "id": "H-02",
+      "severity": "High",
+      "releaseBlocking": true,
+      "status": "BLOCKED",
+      "finding": "No deployed previous-release rollback evidence",
+      "owner": "T12/T13 approved isolated target and prior release"
+    },
+    {
+      "id": "H-03",
+      "severity": "High",
+      "releaseBlocking": true,
+      "status": "BLOCKED",
+      "finding": "Alert delivery/incident ownership and actual environment protections unverified",
+      "owner": "T11 and deployment operators"
+    },
+    {
+      "id": "M-01",
+      "severity": "Medium",
+      "releaseBlocking": true,
+      "status": "NOT RUN",
+      "finding": "Human UAT/visual/accessibility and incident acceptance not signed off",
+      "owner": "UAT acceptance owner"
+    },
+    {
+      "id": "R-01",
+      "severity": "Medium",
+      "releaseBlocking": false,
+      "status": "RESOLVED",
+      "finding": "New runner omitted genuine npm CLI test context; corrected with bundled npm derivation and successful complete rerun"
+    }
+  ],
+  "cleanup": {
+    "status": "PASS",
+    "mechanism": "Existing suite finally blocks check exact generated names and run labels; no global cleanup",
+    "inspectedRunLabels": [
+      "elyqreth.t05.run=e82acd4afeca0729",
+      "elyqreth.test.run=fa60eba225598c7479ebbb2e"
+    ],
+    "remainingResourcesForInspectedLabels": 0
+  },
+  "notRun": [
+    "Registry publication or deployment",
+    "Native approved OCI candidate export/scanner/producer execution",
+    "Hosted GitHub environment protection/concurrency/promotion",
+    "Actual previous release deployment rollback",
+    "Production migrations/restores or live external dispatch",
+    "Hosted OIDC issuer integration",
+    "Human visual/accessibility UAT and incident tabletop",
+    "External email delivery"
+  ],
+  "files_changed": [
+    "scripts/rehearsal-contracts.mjs",
+    "scripts/staging-rehearsal.mjs",
+    "apps/api/test/staging-rehearsal.test.cjs",
+    "scripts/container-hardening.mjs",
+    "scripts/edge-network.mjs",
+    "README.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/immutable-promotion.md",
+    "docs/ai-agent-platform/phase-6/staging-uat.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/staging-uat-verification.json"
+  ],
+  "preservation": {
+    "baselineFiles": 5320,
+    "modified": [
+      "README.md",
+      "docs/ai-agent-platform/phase-6/immutable-promotion.md",
+      "docs/ai-agent-platform/phase-6/implementation-plan.md",
+      "docs/ai-agent-platform/phase-6/README.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "scripts/container-hardening.mjs",
+      "scripts/edge-network.mjs"
+    ],
+    "created": [
+      "apps/api/test/staging-rehearsal.test.cjs",
+      "docs/ai-agent-platform/phase-6/staging-uat.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/staging-uat-verification.json",
+      "scripts/rehearsal-contracts.mjs",
+      "scripts/staging-rehearsal.mjs"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "whitespaceOrPrivateKeyBlockViolations": [],
+    "applicationRuntimeFrontendSourceChanged": false,
+    "dockerfilesComposeLockfilesOrMigrationsChanged": false
+  },
+  "rehearsalCommand": "node scripts/staging-rehearsal.mjs --run --output \"$env:TEMP\\elyqreth-t13-uat-20261106-b\"",
+  "rehearsalExitCode": 0
+}

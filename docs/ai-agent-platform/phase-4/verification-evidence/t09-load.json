@@ -1,0 +1,82 @@
+{
+  "kind": "Synthetic concurrent RUNNING read contracts; actual interaction owners and controlled fetch, not provider executions or Canvas throughput",
+  "environment": {
+    "node": "v24.9.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "totalMemoryBytes": 16541872128
+  },
+  "measurements": [
+    {
+      "agents": 1,
+      "selections": 200,
+      "requests": {
+        "task": 2,
+        "history": 1,
+        "agent": 1,
+        "execution": 2,
+        "result": 1
+      },
+      "medianMs": 0.01120000000000232,
+      "p95Ms": 0.034300000000001774,
+      "cpuMs": 47,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 5,
+      "selections": 200,
+      "requests": {
+        "task": 205,
+        "history": 200,
+        "agent": 200,
+        "execution": 205,
+        "result": 200
+      },
+      "medianMs": 0.45529999999999404,
+      "p95Ms": 0.8543000000000234,
+      "cpuMs": 140,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 20,
+      "selections": 200,
+      "requests": {
+        "task": 220,
+        "history": 200,
+        "agent": 200,
+        "execution": 220,
+        "result": 200
+      },
+      "medianMs": 0.32970000000000255,
+      "p95Ms": 0.6699000000000126,
+      "cpuMs": 78,
+      "retainedHistoryRows": 1
+    }
+  ],
+  "heapCheckpoints": [
+    {
+      "cycles": 0,
+      "heapUsed": 8330512
+    },
+    {
+      "cycles": 25,
+      "heapUsed": 8197704
+    },
+    {
+      "cycles": 50,
+      "heapUsed": 8229464
+    },
+    {
+      "cycles": 75,
+      "heapUsed": 8234936
+    },
+    {
+      "cycles": 100,
+      "heapUsed": 8156192
+    }
+  ],
+  "cleanup": "100 create/select/open-history/dispose cycles: zero outstanding client timers after each",
+  "limits": "Short forced-GC investigation, no production capacity or leak-freedom claim; existing native T07 fixture covers real two-Agent execution observation."
+}

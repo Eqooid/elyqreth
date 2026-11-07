@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/155.0.8059.85",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "P4 T04 native browser and authorized Nest/PostgreSQL Task creation",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 159,
+  "exceptions": 0,
+  "taskPanelAcceptance": {
+    "status": "PASS",
+    "taskId": "33320acd-464d-49ef-a221-a7068c25af10",
+    "agentId": "342db718-e823-4955-a32c-fcee7f3b4b7f",
+    "results": {
+      "status": "PASS",
+      "structured": true,
+      "plainTextEscaped": true,
+      "restrictedTextWithheld": true,
+      "pages": [
+        10,
+        2
+      ],
+      "historyDoesNotAlterActivity": true,
+      "noPerRowResults": true,
+      "agentScopeReset": true,
+      "largeOutputScrolled": true
+    },
+    "checkpoints": [
+      "Actual Chrome CORS/native fetch and distinct interaction capability",
+      "Persisted binding to existing resident; backend eligibility verified",
+      "Double submit creates saved-not-started Task",
+      "Close/reopen preserves confirmed reference; unbound NPC has no Task section",
+      "Explicit disconnect clears protected form state"
+    ]
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

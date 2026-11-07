@@ -1,0 +1,2 @@
+CREATE INDEX "agent_events_collaboration_history_idx" ON "agent_events" USING btree ("owner_id","collaboration_id","created_at","id");--> statement-breakpoint
+CREATE INDEX "external_event_inbox_execution_history_idx" ON "external_event_inbox" USING btree ("owner_id","source_id",("event"->>'externalExecutionId'),"created_at","id") WHERE "external_event_inbox"."event"->>'kind' = 'execution.observed';

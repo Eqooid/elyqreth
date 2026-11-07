@@ -1,0 +1,229 @@
+{
+  "task": "Phase 6 T04 Frontend Production Access & Session Integration",
+  "date": "2026-10-30",
+  "timezone": "Asia/Bangkok",
+  "decision": "COMPLETE",
+  "scope": "Existing private single-owner local/OIDC bearer browser contract; no public tenancy, issuer redirect/refresh, production TLS deployment or infrastructure provisioning",
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "Frontend syntax, strict runtime/session and backend typechecks",
+      "temporary_log": "elyqreth-t04-lint-completed.log"
+    },
+    {
+      "command": "npm.cmd run check:runtime:web",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "Explicit frontend typecheck",
+      "temporary_log": "elyqreth-t04-typecheck-web.log"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "238/238 frontend tests",
+      "temporary_log": "elyqreth-t04-web-final.log"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "295/295 backend unit/security tests",
+      "temporary_log": "elyqreth-t04-api.log"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "220/220 PostgreSQL/Nest/browser tests",
+      "temporary_log": "elyqreth-t04-db-final.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='frontend account|authentication frontend' apps/api/test/database.integration.cjs",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "2/2 frontend client and HTTPS browser cases",
+      "temporary_log": "elyqreth-t04-contract-targeted.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='authentication frontend' apps/api/test/database.integration.cjs",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "1/1 mobile/desktop HTTPS browser case",
+      "temporary_log": "elyqreth-t04-https-browser.log"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "Chrome city/component/session smoke, zero exceptions",
+      "temporary_log": "elyqreth-t04-browser-final.log"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "Backend production build",
+      "temporary_log": "elyqreth-t04-build-api.log"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "Final disposable frontend bundle; maintained city source preserved",
+      "temporary_log": "elyqreth-t04-build-web-final.log"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "status": "PASSED",
+      "outcome": "10 documents, links, inventory and changed-file whitespace",
+      "temporary_log": "elyqreth-t04-docs.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "status": "BLOCKED",
+      "outcome": "Supplied workspace has no Git metadata; hash/whitespace fallback used",
+      "temporary_log": "elyqreth-t04-git-diff.log"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "status": "BLOCKED",
+      "outcome": "Supplied workspace has no Git metadata; no staged/untracked claim",
+      "temporary_log": "elyqreth-t04-git-status.log"
+    }
+  ],
+  "files_changed": [
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/interaction/interaction.interceptor.ts",
+    "apps/api/test/authentication.integration.cjs",
+    "dist/access-config.json",
+    "dist/js/access-panel.js",
+    "dist/js/agent-task-panel.js",
+    "dist/js/app.js",
+    "dist/js/collaboration-panel.js",
+    "dist/js/runtime/access/session.js",
+    "dist/js/runtime/api-client.js",
+    "dist/js/runtime/collaboration/api-client.js",
+    "dist/js/runtime/collaboration/contracts.d.ts",
+    "dist/js/runtime/contracts.d.ts",
+    "dist/js/runtime/http-transport.js",
+    "dist/js/runtime/interaction/api-client.js",
+    "dist/js/runtime/interaction/recovery-journal.js",
+    "dist/js/runtime/sync-controller.js",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/authentication-modes.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/principal-authorization.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/frontend-access-verification.json",
+    "scripts/access-panel-browser.mjs",
+    "scripts/authentication-browser.mjs",
+    "scripts/browser-smoke.mjs",
+    "scripts/task-panel-browser.mjs",
+    "tests/access-session.test.js"
+  ],
+  "created": [
+    "dist/access-config.json",
+    "dist/js/access-panel.js",
+    "dist/js/runtime/access/session.js",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/frontend-access-verification.json",
+    "scripts/access-panel-browser.mjs",
+    "scripts/authentication-browser.mjs",
+    "tests/access-session.test.js"
+  ],
+  "modified": [
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/src/interaction/interaction.interceptor.ts",
+    "apps/api/test/authentication.integration.cjs",
+    "dist/js/agent-task-panel.js",
+    "dist/js/app.js",
+    "dist/js/collaboration-panel.js",
+    "dist/js/runtime/api-client.js",
+    "dist/js/runtime/collaboration/api-client.js",
+    "dist/js/runtime/collaboration/contracts.d.ts",
+    "dist/js/runtime/contracts.d.ts",
+    "dist/js/runtime/http-transport.js",
+    "dist/js/runtime/interaction/api-client.js",
+    "dist/js/runtime/interaction/recovery-journal.js",
+    "dist/js/runtime/sync-controller.js",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/authentication-modes.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/principal-authorization.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "scripts/browser-smoke.mjs",
+    "scripts/task-panel-browser.mjs"
+  ],
+  "removed": [],
+  "preservation": {
+    "baseline_file_count": 692,
+    "unchanged_existing_count": 667,
+    "baseline_location": "OS TEMP/elyqreth-t04-baseline.json",
+    "renderer_npc_geometry_theme_and_assets_unchanged": true,
+    "all_prior_migrations_unchanged": true,
+    "Docker_Compose_CI_unchanged": true,
+    "no_deletions": true,
+    "no_dependency_changes": true,
+    "independently_checked_protected_files": 55,
+    "independent_protected_hash_check": "PASSED"
+  },
+  "security_review": {
+    "memory_only_credentials": true,
+    "no_secret_in_public_configuration": true,
+    "public_config_default_mode": "disabled",
+    "no_private_key_material_in_changed_files": true,
+    "no_real_production_credentials_created": true,
+    "no_production_db_migration": true,
+    "no_commit_push_release_or_deploy": true,
+    "same_origin_HTTPS_real_browser_verified": true,
+    "oidc_frontend_verification": "deterministic token-entry/me fixture, existing JWT verifier security tests; real Keycloak backend evidence remains dated T03, not rerun here",
+    "logout_cleanup_and_late_response_fencing": true,
+    "readonly_viewer_eligibility_verified": true,
+    "native_external_authority_unchanged": true
+  },
+  "historical_failures": [
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 1,
+      "log": "elyqreth-t04-db.log",
+      "outcome": "Docker Desktop stopped and sandbox lacked engine/config access; no tests passed; engine started for authorized disposable tests"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "exit_code": 1,
+      "log": "elyqreth-t04-browser.log",
+      "outcome": "New fixture found disabled-mode duplicate access button; fixed by removing unused button"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 1,
+      "log": "elyqreth-t04-db-retry.log",
+      "outcome": "214/219 passed; four access-dialog Escape test timing failures and one existing resident-roster reload readiness race; added full key-up/dismissal and roster-ready waits, no assertions removed"
+    }
+  ],
+  "cleanup": "Read-only Docker label inspection after final suites found no retained owned test containers or volumes; HTTPS test key/certificate and Chrome profile removed by fixture finalizers; no permanent test account/default password",
+  "limitations": [
+    "No automatic OIDC authorization-code/PKCE redirect, refresh or provider logout; existing API-token entry only",
+    "No public enrollment or new tenant/account ownership model; viewer/operator accounts share explicitly configured installation owner",
+    "Cold reload/page leave requires fresh sign-in; local credentials are not persisted",
+    "Production same-origin TLS/edge, secret injection and deployment remain T05/T06 work; local development separate-port account mode requires approved same-origin routing",
+    "Hosted IdP, production deployment, sustained load and manual assistive-technology review not executed",
+    "Git metadata absent; no Git staged/untracked/diff claims"
+  ],
+  "next_task": "Phase 6 T05 Container, Secret Injection & Readiness Hardening; not started"
+}

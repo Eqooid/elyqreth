@@ -1,0 +1,82 @@
+{
+  "kind": "Synthetic concurrent RUNNING read contracts; actual interaction owners and controlled fetch, not provider executions or Canvas throughput",
+  "environment": {
+    "node": "v24.9.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "totalMemoryBytes": 16541872128
+  },
+  "measurements": [
+    {
+      "agents": 1,
+      "selections": 200,
+      "requests": {
+        "task": 2,
+        "history": 1,
+        "agent": 1,
+        "execution": 2,
+        "result": 1
+      },
+      "medianMs": 0.018000000000000682,
+      "p95Ms": 0.05079999999998108,
+      "cpuMs": 78,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 5,
+      "selections": 200,
+      "requests": {
+        "task": 205,
+        "history": 200,
+        "agent": 200,
+        "execution": 205,
+        "result": 200
+      },
+      "medianMs": 0.8336999999999648,
+      "p95Ms": 1.7184000000000026,
+      "cpuMs": 266,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 20,
+      "selections": 200,
+      "requests": {
+        "task": 220,
+        "history": 200,
+        "agent": 200,
+        "execution": 220,
+        "result": 200
+      },
+      "medianMs": 0.5924999999999727,
+      "p95Ms": 1.0347999999999615,
+      "cpuMs": 141,
+      "retainedHistoryRows": 1
+    }
+  ],
+  "heapCheckpoints": [
+    {
+      "cycles": 0,
+      "heapUsed": 8330544
+    },
+    {
+      "cycles": 25,
+      "heapUsed": 8197736
+    },
+    {
+      "cycles": 50,
+      "heapUsed": 8229256
+    },
+    {
+      "cycles": 75,
+      "heapUsed": 8234968
+    },
+    {
+      "cycles": 100,
+      "heapUsed": 8155424
+    }
+  ],
+  "cleanup": "100 create/select/open-history/dispose cycles: zero outstanding client timers after each",
+  "limits": "Short forced-GC investigation, no production capacity or leak-freedom claim; existing native T07 fixture covers real two-Agent execution observation."
+}

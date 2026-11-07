@@ -1,0 +1,264 @@
+{
+  "task": "Phase 6 T05",
+  "decision": "COMPLETE",
+  "scope": "Locally verified container packaging, not production readiness/deployment acceptance",
+  "review_date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "continuation_work": "Finalized evidence and corrected stale documentation; application implementation preserved",
+  "checks": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend/backend type and syntax checks",
+      "log": "OS_TEMP/elyqreth-t05-lint-final.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "303/303",
+      "log": "OS_TEMP/elyqreth-t05-api-accepted.log",
+      "sha256": "ec1e76da9d6c09fc1e61a3ce0639e81f6cb17ec4a8a012fa69bd4cf3b68fbcc6",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238/238",
+      "log": "OS_TEMP/elyqreth-t05-web.log",
+      "sha256": "d7eb41481c8e90729edde1646ec0009fbb448cbe48fde2c1707c36cbb351540a",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "221/221",
+      "log": "OS_TEMP/elyqreth-t05-db-final.log",
+      "sha256": "e54553a57c407d36ce0c6a7fa44bc3962f474a54f81318afb56f97513d95caf2",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "Backend build",
+      "log": "OS_TEMP/elyqreth-t05-build-api-final.log",
+      "sha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exit_code": 0,
+      "outcome": "Frontend production build",
+      "log": "OS_TEMP/elyqreth-t05-build-web.log",
+      "sha256": "a12aa663c0e5d631ef5a387cb12fa64c51c2d147295ad794730c7d9c55304323",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "API image built",
+      "log": "OS_TEMP/elyqreth-t05-image-api-accepted.log",
+      "sha256": "693e4708457431b289d8e20fcf33d57eeade92a90c5ecf4bb335a91f3736d219",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "docker build --target web -t elyqreth-t05-web:verification .",
+      "exit_code": 0,
+      "outcome": "Web image built",
+      "log": "OS_TEMP/elyqreth-t05-image-web-accepted.log",
+      "sha256": "bbcda00ea681810ea6e735a81a7e4add2fe1670b3d84534864ae4e8075eaee42",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run test:containers",
+      "exit_code": 0,
+      "outcome": "Production configuration/TLS/secret/readiness/drain/recreation/Compose checks",
+      "log": "OS_TEMP/elyqreth-t05-containers-limits.log",
+      "sha256": "810f1902db3f6e4e3396444367c5e6557dd3dcbf5a30d932cf3d86ca5b62469c",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd run test:docker",
+      "exit_code": 0,
+      "outcome": "Development Compose/browser smoke; zero exceptions",
+      "log": "OS_TEMP/elyqreth-t05-dev-docker-final.log",
+      "sha256": "03a5c15a64d9d5d9c0b8ccc715bd172e165ea15616fe3afdf9e6bf7eba8747e5",
+      "execution": "Recovered passing evidence from interrupted T05; not repeated during continuation"
+    },
+    {
+      "command": "npm.cmd audit --omit=dev --json",
+      "exit_code": 0,
+      "outcome": "Zero production vulnerabilities"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: supplied workspace has no Git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: independent hash and whitespace checks used instead"
+    }
+  ],
+  "image_scans": [
+    {
+      "report": "OS_TEMP/elyqreth-t05-trivy-api-accepted.json",
+      "image_id": "sha256:6189331e7e71cabbabeb6bbea699943775442fda1b1d6c36759cce46086414b8",
+      "high_critical_findings": 0,
+      "exit_code": 0,
+      "sha256": "f07329e8794e5f0b41b86c48b3bd34e37b0aa0d1cefa4a5168e35e1922cdde06"
+    },
+    {
+      "report": "OS_TEMP/elyqreth-t05-trivy-web-final.json",
+      "image_id": "sha256:dcb11e867c59b6b99672dd66bd1d09a16e6618810657519eb3276859b590f85c",
+      "high_critical_findings": 0,
+      "exit_code": 0,
+      "sha256": "e4f28195200e7fc5cca2852956133bc76f5203ad2289dd1f1d551af76ae70a7c"
+    }
+  ],
+  "scanner": "aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
+  "scan_arguments": "image --input /image.tar --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --timeout 5m --format json",
+  "files_created": [
+    "apps/api/src/config/file-inputs.ts",
+    "apps/api/src/health/readiness-access.ts",
+    "apps/api/src/health/readiness.service.ts",
+    "apps/api/test/container-configuration.test.cjs",
+    "apps/api/test/readiness.integration.cjs",
+    "docker-compose.production.yml",
+    "docker/api-health.cjs",
+    "docker/production-api.env.example",
+    "docker/web-check.sh",
+    "docker/web-start.sh",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/container-hardening-verification.json",
+    "scripts/container-hardening.mjs"
+  ],
+  "files_modified": [
+    ".dockerignore",
+    "Dockerfile",
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/.env.example",
+    "apps/api/src/application.ts",
+    "apps/api/src/auth/auth.guard.ts",
+    "apps/api/src/common/http-foundation.ts",
+    "apps/api/src/config/configuration.ts",
+    "apps/api/src/database/database-configuration.ts",
+    "apps/api/src/database/database.module.ts",
+    "apps/api/src/database/pool.ts",
+    "apps/api/src/health/health.controller.ts",
+    "apps/api/src/health/health.module.ts",
+    "apps/api/src/main.ts",
+    "apps/api/test/database.integration.cjs",
+    "apps/api/test/helpers/production-configuration.cjs",
+    "docker/api-start.cjs",
+    "docker/nginx.conf",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "package.json",
+    "scripts/access-panel-browser.mjs"
+  ],
+  "files_changed": [
+    ".dockerignore",
+    "Dockerfile",
+    "README.md",
+    "WORKSPACE.md",
+    "apps/api/.env.example",
+    "apps/api/src/application.ts",
+    "apps/api/src/auth/auth.guard.ts",
+    "apps/api/src/common/http-foundation.ts",
+    "apps/api/src/config/configuration.ts",
+    "apps/api/src/config/file-inputs.ts",
+    "apps/api/src/database/database-configuration.ts",
+    "apps/api/src/database/database.module.ts",
+    "apps/api/src/database/pool.ts",
+    "apps/api/src/health/health.controller.ts",
+    "apps/api/src/health/health.module.ts",
+    "apps/api/src/health/readiness-access.ts",
+    "apps/api/src/health/readiness.service.ts",
+    "apps/api/src/main.ts",
+    "apps/api/test/container-configuration.test.cjs",
+    "apps/api/test/database.integration.cjs",
+    "apps/api/test/helpers/production-configuration.cjs",
+    "apps/api/test/readiness.integration.cjs",
+    "docker-compose.production.yml",
+    "docker/api-health.cjs",
+    "docker/api-start.cjs",
+    "docker/nginx.conf",
+    "docker/production-api.env.example",
+    "docker/web-check.sh",
+    "docker/web-start.sh",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/container-hardening.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/frontend-access.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/container-hardening-verification.json",
+    "package.json",
+    "scripts/access-panel-browser.mjs",
+    "scripts/container-hardening.mjs"
+  ],
+  "files_removed": [],
+  "preservation": {
+    "baseline_files": 701,
+    "groups": {
+      "city": {
+        "files_compared": 87,
+        "unchanged": true
+      },
+      "migrations": {
+        "files_compared": 23,
+        "unchanged": true
+      },
+      "runtime": {
+        "files_compared": 46,
+        "unchanged": true
+      },
+      "collaboration": {
+        "files_compared": 16,
+        "unchanged": true
+      },
+      "external": {
+        "files_compared": 17,
+        "unchanged": true
+      },
+      "compatibility": {
+        "files_compared": 5,
+        "unchanged": true
+      }
+    },
+    "method": "SHA256 against OS_TEMP/elyqreth-t05-baseline.json; no Git provenance"
+  },
+  "historical_failures": [
+    "Initial unit readiness mock/logging issues corrected; final 303/303",
+    "First database run 217/221: CLI drain logs and browser bootstrap race corrected; final 221/221",
+    "Scout required login; pinned Trivy used instead",
+    "Earlier scanner/cache failures and base-image package findings resolved without ignore rules"
+  ],
+  "continuation_verification": [
+    "Node syntax checks exit 0",
+    "Final documentation/link/inventory/whitespace check exit 0",
+    "Scan image IDs matched preserved final image IDs",
+    "Read-only Docker resource listing could not connect to engine in current sandbox; no container rerun claimed",
+    "Private-key marker scan found only an intentional malformed-input marker in configuration tests; no PEM private-key block"
+  ],
+  "limitations": [
+    "Time-specific image scans do not certify every binary/library or application path",
+    "T02 audience/DB operating decisions still open",
+    "T06 public edge/private network not implemented",
+    "T07/T08 DB operations and backup, T09 full active drain, T12 promotion remain deferred",
+    "No hosted service verification, remote deployment or cloud provisioning",
+    "Disposable scanner cache/archive files may remain in OS temp"
+  ],
+  "next_task": "T06 Edge & Private Network Configuration (not started)"
+}

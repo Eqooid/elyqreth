@@ -1,0 +1,167 @@
+{
+  "version": 2,
+  "purpose": "UNAPPROVED_PRIVATE_COPY_TEMPLATE_NOT_AUTHORIZATION",
+  "instructions": "Copy outside checkout into approved private configuration. Do not put real contacts, credentials or signatures in this public example. Format completion is not approval.",
+  "source": {
+    "repository": null,
+    "defaultBranch": null,
+    "sourceCommit": null,
+    "branchProtectionEvidenceRef": null,
+    "repositoryUrl": null,
+    "approvalEvidenceRef": null
+  },
+  "registry": {
+    "origin": null,
+    "imagePrefix": null,
+    "visibility": null,
+    "retentionPolicyRef": null,
+    "publisherIdentityRef": null,
+    "productionPullIdentityRef": null,
+    "digestRetentionEvidenceRef": null,
+    "approvalEvidenceRef": null
+  },
+  "candidate": {
+    "releaseManifestRef": null,
+    "expectedManifestSha256": null,
+    "apiDigest": null,
+    "webDigest": null,
+    "edgeDigest": null,
+    "producerEvidenceRef": null,
+    "stagingReceiptRef": null
+  },
+  "target": {
+    "environmentId": null,
+    "hostingRef": null,
+    "deploymentMechanismRef": null,
+    "privateDatabaseRef": null,
+    "dnsTlsOwnerRef": null,
+    "networkApprovalRef": null,
+    "secretInjectionRef": null,
+    "backupDestinationRef": null,
+    "monitoringRef": null,
+    "authenticationMode": null,
+    "containerRuntime": null,
+    "topologyEvidenceRef": null,
+    "persistentStorageRef": null,
+    "approvalEvidenceRef": null
+  },
+  "roles": {
+    "deploymentApprover": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "deploymentOperator": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "incidentPrimary": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "incidentBackup": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "databaseRecoveryOperator": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "backupKeyCustodian": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "securityEscalation": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    },
+    "monitoringOwner": {
+      "principalRef": null,
+      "privateContactRef": null,
+      "assignmentEvidenceRef": null,
+      "backupPrincipalRef": null,
+      "escalationProcedureRef": null
+    }
+  },
+  "capacity": {
+    "concurrentUsers": null,
+    "activeAgents": null,
+    "concurrentExecutions": null,
+    "taskSubmissionsPerSecond": null,
+    "collaborationWorkloadRef": null,
+    "externalEventsPerSecond": null,
+    "latencyRequirementRef": null,
+    "maximumErrorRate": null,
+    "resourceHeadroomRef": null,
+    "growthAssumptionsRef": null,
+    "approvalEvidenceRef": null
+  },
+  "recovery": {
+    "maximumDataLossSeconds": null,
+    "maximumRecoverySeconds": null,
+    "backupFrequencyRef": null,
+    "retentionPolicyRef": null,
+    "restoreVerificationCadenceRef": null,
+    "keyEscrowRef": null,
+    "sessionInvalidationProcedureRef": null,
+    "effectReconciliationProcedureRef": null,
+    "disasterEscalationRef": null,
+    "approvalEvidenceRef": null,
+    "backupSurvivesHostLoss": null,
+    "keyCustodySurvivesHostLoss": null,
+    "offHostStorageEvidenceRef": null,
+    "restoreEvidenceRef": null
+  },
+  "monitoring": {
+    "testChannelRef": null,
+    "deliveryReceiptRef": null,
+    "operatorAcknowledgementRef": null,
+    "alertPolicyRef": null,
+    "senderPolicyRef": null,
+    "emailTransportEvidenceRef": null,
+    "deliveryAuthorizationRef": null
+  },
+  "authorization": {
+    "protectedMechanismRef": null,
+    "manifestSha256": null,
+    "targetEnvironmentId": null,
+    "operation": null,
+    "window": null,
+    "rollbackAuthorityRef": null,
+    "authenticatedApprovalEvidenceRef": null
+  },
+  "transport": {
+    "kind": null,
+    "registryOrigin": null,
+    "targetEnvironmentId": null,
+    "digestPinned": null,
+    "hostIdentityEvidenceRef": null,
+    "leastPrivilegeEvidenceRef": null,
+    "credentialLifetimePolicyRef": null,
+    "auditPolicyRef": null,
+    "approvalIntegrationRef": null,
+    "concurrencyPolicyRef": null,
+    "rollbackCompatibilityRef": null,
+    "approvalEvidenceRef": null
+  }
+}

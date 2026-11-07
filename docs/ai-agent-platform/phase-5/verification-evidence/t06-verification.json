@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-28 Asia/Bangkok",
+  "task": "Phase 5 T06",
+  "decision": "COMPLETE",
+  "scope": "Provider-neutral backend adapter/configuration/capability/security foundation only. Empty production adapter registry; test-only reviewed fixtures; no real provider, dispatch/cancellation, mapping, external persistence, ingestion or frontend features.",
+  "repositoryAudit": {
+    "applicableAgentsFiles": [],
+    "gitStatusExitCode": 128,
+    "gitDiffExitCode": 129,
+    "gitStagedDiffExitCode": 129,
+    "gitMetadata": "Absent; no commit/push/tag/release/deploy or history operation performed. Git-based staged/untracked inspection unavailable; SHA-256 inventory used.",
+    "t01Decision": "domain-model.md explicitly assigns contracts only to T06; T07 owns external persistence/mapping/inbox. Reuse existing orchestrator UUID as trusted configuration identity, not a new connection table.",
+    "t02T05Prerequisites": "Reviewed actual source and verification evidence; all existing native-collaboration cases pass in current full regression suite.",
+    "baselineMaintainedFiles": 458
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t06-build-verified.log",
+      "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "result": "PASS latest backend production build."
+    },
+    {
+      "command": "npm.cmd run lint",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t06-lint-final3.log",
+      "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "result": "PASS maintained JS syntax, frontend contract typecheck and backend no-emit typecheck; no later application source changes."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t06-unit-verified.log",
+      "logSha256": "4959d700e7eaf02ac4218db9e1ff56f151314412143cf1b9adbc3f5cc5ff69e5",
+      "tests": 248,
+      "passed": 248,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 53717.1518,
+      "result": "PASS 217 prior cases plus 31 new adapter contract/security/transport/Nest DI tests; includes current source build."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t06-db-final.log",
+      "logSha256": "46b9be7dc42154ea8aa221181b2b2f55f7f66bd233c324fa7d4216dcbbb6625d",
+      "tests": 174,
+      "passed": 174,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 190471.8125,
+      "result": "PASS existing isolated PostgreSQL/backend/native/browser regressions with the adapter module installed and unconfigured. Later transport-only outbound concurrency limit does not alter tested unconfigured native/database paths; current transport code covered by final unit/security/DI run."
+    }
+  ],
+  "intermediateChecks": [
+    {
+      "command": "npm.cmd run build; node --test --test-concurrency=1 apps/api/test/external-adapter.test.cjs apps/api/test/external-transport.test.cjs apps/api/test/external-di.test.cjs",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t06-focused.log",
+      "logSha256": "41f0b17c0041a481647fd56e0da6db33e1a3c3c9ab0b870e7c78970b2357b29b",
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "result": "Initial focused contract/security/DI set passed before expanding to 31 cases; build log separately recorded in elyqreth-p5-t06-build2.log."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t06-unit.log",
+      "logSha256": "137602bebaa37590a2d1729c3ced133e319464d78e8d4a8dfc87a1997683fefa",
+      "tests": 245,
+      "passed": 244,
+      "failed": 1,
+      "result": "One test exposed synchronous pagination validation in a Promise-returning read operation. Public async read methods now consistently reject, with INVALID_INPUT for invalid caller data; provider output assertions retained. Final 248/248 supersedes."
+    }
+  ],
+  "testCases": {
+    "external-adapter.test.cjs": [
+      "external registry rejects ambiguous/untrusted/unknown adapters and missing optional methods",
+      "capabilities intersect implementation deployment and local policy without accepting stale generation",
+      "normalized observations preserve opaque scoped identities and external lifecycle instead of native state",
+      "observation-only and independently authorized controlled dispatch cannot invoke mutations in T06",
+      "ownership and operation authorization are checked before any adapter or health call",
+      "disabled connections return disabled health without IO and other operations reject",
+      "descriptors reject forged provenance unsupported metadata unsafe strings getters and invalid times",
+      "configuration rejects untrusted endpoint policy, invalid modes secrets TLS overrides and unknown fields",
+      "environment connection profiles are opt-in fixed-owner bounded and credentials redact inspection",
+      "known credentials raw errors and hostile error codes do not escape normalized responses or logs",
+      "health normalizes unavailable and authentication errors without affecting native work",
+      "deadline and cancellation races consume late rejections and remove caller listeners",
+      "service concurrency remains bounded when reviewed code ignores cancellation",
+      "fresh deployment capability revocation and expiration disable reads before optional methods run",
+      "controlled dispatch requires remote dedupe and lookup in addition to local authorization",
+      "minimal health-only adapters need no unsupported methods and emit only safe connection context",
+      "oversized pages forged result references and invalid configuration fail safely",
+      "actual service health deadline returns sanitized unavailable and releases cooperative resources"
+    ],
+    "external-di.test.cjs": [
+      "actual application boots and serves health with no external adapters configuration secrets or network",
+      "reviewed fixture registers through actual Nest DI validates configuration and negotiates safe health",
+      "configured unknown adapters fail application init safely without exposing credentials"
+    ],
+    "external-transport.test.cjs": [
+      "external transport pins DNS and peer IP while preserving TLS verification hostname and credentials at one origin",
+      "unsafe endpoint schemes private ranges metadata and IPv6 bypasses fail before transport",
+      "DNS rebinding mixed answers and family mismatches never open a request",
+      "peer mismatch blocks a socket even after approved DNS resolution",
+      "redirects never forward authorization and HTTP errors have safe provider-neutral codes",
+      "JSON response framing bounds bytes compression encoding and parser failure",
+      "cancelled and timed out DNS is bounded and late answers cannot open sockets",
+      "explicit trusted local fixture uses real bounded HTTP without becoming a public proxy",
+      "outbound fanout and unresolved DNS remain bounded independently of adapter operation slots",
+      "connection establishment has its own one-second bound and tears down the request"
+    ]
+  },
+  "security": {
+    "modes": "OBSERVATION_ONLY rejects mutation before adapter calls. CONTROLLED_DISPATCH requires permission/current capability/dedupe/lookup, then hard OPERATION_DISABLED; no real command execution.",
+    "credentials": "Private redacted server map, EXTERNAL_SECRET_* references only; no credential in adapter context or safe view. Known raw/JSON-escaped reflected values rejected.",
+    "transport": "Shared existing providerEndpoint policy; exact origin/admin IP pins; public HTTPS; explicit trusted local exception; every DNS answer validated; pinned connection and verified peer; original-host TLS/SNI; redirects refused; GET-only JSON.",
+    "resourceBounds": "5-second shared operation/DNS/request budget, 1-second connect budget, 64KiB response, 8KiB headers, 20-item page, independent 4-operation and 4-outbound-call caps. Ignoring abort retains a slot until settlement. No retries/polling loops.",
+    "authorization": "Future server-derived ExternalAccess; same owner and allowed operation checked before adapter invocation. No public management/invocation routes. Tenancy unsupported, not simulated.",
+    "errorBoundary": "Closed normalized codes; raw provider messages/stacks not copied. Retryable is advisory, not mutation retry permission."
+  },
+  "integrationEvidence": {
+    "actualNest": "Real application boot + HTTP health without external configuration; custom Nest application context with explicit fixture registration and service health/read; safe init failure for unknown configured adapter.",
+    "actualTransport": "Real pinned loopback HTTP server for GET/auth/redirect/abort; controlled native HTTPS seam tests TLS hostname options, IP pinning, peer verification, framing/status handling; no live public endpoint.",
+    "database": "Existing pinned official PostgreSQL Docker harness owns random isolated database/container/volume and credentials. No developer/production database is targeted.",
+    "fixturePolicy": "All adapter fixture implementations live under apps/api/test, never registered by default production module.",
+    "ci": "Existing verify:phase1 -> test:api/test:db includes new cases automatically. Hosted CI not executed.",
+    "environment": "Supported Node 24 / local Docker Desktop 27.4.0; Docker was stopped, started hidden and readiness checked before database run. No paid or real provider required."
+  },
+  "preservation": {
+    "method": "Maintained-file SHA-256 baseline plus final API source/test snapshot.",
+    "baselineFiles": 458,
+    "modified": [
+      "apps/api/src/app.module.ts",
+      "apps/api/src/config/configuration.ts",
+      "docs/ai-agent-platform/orchestration-contracts.md",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/api-frontend.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "docs/ai-agent-platform/phase-5/current-system-audit.md",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "docs/ai-agent-platform/phase-5/domain-model.md",
+      "docs/ai-agent-platform/phase-5/external-integration.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/security-reliability.md",
+      "README.md",
+      "WORKSPACE.md",
+      "apps/api/.env.example"
+    ],
+    "added": [
+      "apps/api/src/external-orchestrators/adapter-budget.ts",
+      "apps/api/src/external-orchestrators/adapter-registry.ts",
+      "apps/api/src/external-orchestrators/adapter.contract.ts",
+      "apps/api/src/external-orchestrators/adapter.error.ts",
+      "apps/api/src/external-orchestrators/adapter.validation.ts",
+      "apps/api/src/external-orchestrators/external-adapter.service.ts",
+      "apps/api/src/external-orchestrators/external-configuration.ts",
+      "apps/api/src/external-orchestrators/external-http.transport.ts",
+      "apps/api/src/external-orchestrators/external-orchestrators.module.ts",
+      "apps/api/test/external-adapter-fixtures.cjs",
+      "apps/api/test/external-adapter.test.cjs",
+      "apps/api/test/external-di.test.cjs",
+      "apps/api/test/external-transport.test.cjs",
+      "docs/ai-agent-platform/phase-5/adapter-foundation.md",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t06-verification.json"
+    ],
+    "missing": [],
+    "cityFilesUnchanged": 79,
+    "schemaAndMigrationFilesUnchanged": 16,
+    "nativeRegistryRuntimeTaskExecutionLifecycleCollaborationCityFilesUnchanged": 92,
+    "finalSourceFilesVerified": 196,
+    "packageAndDependencies": "Unchanged; Node/Nest/existing transport/security helpers reused.",
+    "scope": "No existing native runtime/provider/collaboration source, frontend/city source, schema, migration, CI or package changes."
+  },
+  "cleanup": {
+    "command": "docker ps -a --filter label=elyqreth.test.run --format '{{.Names}}'; docker volume ls --filter label=elyqreth.test.run --format '{{.Name}}'",
+    "exitCode": 0,
+    "testOwnedContainers": 0,
+    "testOwnedVolumes": 0
+  },
+  "limitations": [
+    "No production adapter is registered or real provider compatibility proven; provider choice remains open for T08.",
+    "No public connection/adapter management APIs; static server profiles only. Connection DB registration/type/FK/mapping checks are T07 prerequisites, not proven by profile configuration.",
+    "Production principal/tenant auth is not implemented; existing fixed-owner trusted loopback development/test boundary remains.",
+    "Controlled-dispatch is a gated contract only: actual mutations remain OPERATION_DISABLED pending reviewed durable remote intent/dedupe/recovery.",
+    "Read-only HTTP JSON/Bearer transport foundation only; no SDK/stdio, OAuth refresh, mTLS or WebSocket integration.",
+    "No external identity/Execution persistence, event inbox/consumers/webhooks/subscriptions/checkpoints, projection or UI.",
+    "Trusted backend adapters must cooperate with cancellation and use the facade; this is not an untrusted-code sandbox.",
+    "Hosted CI, real provider auth, live external discovery/dispatch/cancellation and Mermaid rendering are not claimed."
+  ],
+  "nextTask": "Phase 5 T07 ? External Identity Mapping & Event Ingestion (not begun)",
+  "documentationValidation": {
+    "markdownFiles": 17,
+    "localLinksAndAnchors": 94,
+    "issues": [],
+    "diagram": "Mermaid source/fence review; no renderer or formal diagram certification claimed."
+  }
+}

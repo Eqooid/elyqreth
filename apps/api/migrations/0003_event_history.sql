@@ -1,0 +1,3 @@
+CREATE UNIQUE INDEX "agent_events_contract_version_idx" ON "agent_events" USING btree ("owner_id","aggregate_type","aggregate_id","aggregate_version") WHERE "agent_events"."source" = 'elyqreth.contracts.v1';--> statement-breakpoint
+CREATE INDEX "agent_events_agent_order_idx" ON "agent_events" USING btree ("owner_id","agent_id","stream_position");--> statement-breakpoint
+CREATE INDEX "agent_events_execution_order_idx" ON "agent_events" USING btree ("owner_id","execution_id","stream_position");

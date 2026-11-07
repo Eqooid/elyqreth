@@ -1,0 +1,175 @@
+{
+  "task": "Phase 6 T08 Backup, Restore & Recovery Readiness",
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "status": "COMPLETE for locally verified backup/isolated recovery contracts; production operational gates remain",
+  "audit": {
+    "before": "No backup/restore tools or export login; existing PostgreSQL authority, migrations, native recovery and external inbox semantics reused.",
+    "git": "No metadata; staged/untracked classification unavailable.",
+    "applicable_agents": "None found."
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "PASS: syntax and backend/frontend typechecks"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "PASS: production backend build"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "PASS: 318 backend unit/config/security tests"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "PASS: 221 PostgreSQL regression/integration tests, including browser authentication/city"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 0,
+      "outcome": "PASS: 35 T07 role/migration/native/mixed regressions"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exit_code": 0,
+      "outcome": "PASS: 16 backup/restore/retention/security tests; real TLS dump/restore and SQL failure rollback"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "PASS: 238 frontend regressions"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "PASS: pinned non-root API image rebuilt"
+    },
+    {
+      "command": "npm.cmd run test:containers",
+      "exit_code": 0,
+      "outcome": "PASS: TLS, isolated credentials, readiness, DB outage/restart, API recreation, production Compose validation and image content"
+    },
+    {
+      "command": "docker run --rm -i --network none --read-only --cap-drop ALL --security-opt no-new-privileges:true --user 1000:1000 --memory 256m --pids-limit 64 --tmpfs /tmp:rw,noexec,nosuid,size=16m,mode=1777 elyqreth-t05-api:verification node -",
+      "exit_code": 0,
+      "outcome": "PASS: inline synthetic Unix permission smoke; 0700/0600 modes, world-readable files and symlinks rejected"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "PASS: 14 documents, local links, generated/private environment inventory and touched-file whitespace"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "UNAVAILABLE: no Git metadata; file baseline used"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "UNAVAILABLE: no Git metadata; independent whitespace/conflict checks used"
+    }
+  ],
+  "measurements": {
+    "backupMs": 1529,
+    "bytes": 155100,
+    "backupRestoreTLS": "verify-full with disposable CA; invalid client CA rejected",
+    "restoreMs": 2063,
+    "rows": 109,
+    "format": "PG17 custom archive / AES-256-GCM",
+    "scope": "synthetic isolated local restore; not a production RPO/RTO guarantee"
+  },
+  "application_tables_compared": 21,
+  "scenarios": {
+    "A API restart": "PASS: current container harness preserves durable terminal work and one execution",
+    "B worker restart": "NOT APPLICABLE: no separate worker/queue; in-process runtime regressions pass",
+    "C database outage": "PASS: current container readiness falls, liveness remains available and reconnect succeeds",
+    "D container recreation": "PASS: terminal work persists after API recreation and PostgreSQL restart",
+    "E corruption": "PASS: metadata/checksum/format/key/GCM/backup-identity substitution checks, hardlink and symlink protection",
+    "F isolated restore": "PASS: real PG17 dump/restore over verify-full TLS, all 21 tables compared row-for-row",
+    "G collaboration recovery": "PASS: parent/child/participant/execution/audit relationships restored; unfinished/pending states preserved without automatic work",
+    "H external replay": "PASS: one restored inbox identity, duplicate replay, unchanged native Execution IDs/status",
+    "SQL failure injection": "PASS: bootstrap-owned event trigger raises during post-data constraint DDL in actual pg_restore; SQL rollback leaves zero application/journal tables",
+    "Snapshot concurrency": "PASS: owner committed after snapshot export is excluded from recovered point",
+    "Dump failure": "PASS: client failure publishes no successful recovery point and blocks retention",
+    "Invalid client CA": "PASS: real libpq verify-full rejects the missing CA",
+    "Production cutover/off-host/PITR": "NOT RUN / NOT PROVISIONED: explicit operator and deployment gates"
+  },
+  "api_image": "sha256:4e1f0d2021876a104c3dae66aa77cfcffb9adbcfe1576cb88b8c9ee8bdea0733",
+  "resolved_initial_failures": [
+    "Negative grant test initially lost its read-only override when Pool.query replaced an errored connection; it now retains one client and proves actual permission denial.",
+    "Inbox test used source_event_id instead of actual event_id; corrected.",
+    "PostgreSQL reparses redundant CHECK parentheses/AND grouping; verification now fingerprints stable constraint structure and checks validation state rather than text formatting.",
+    "Windows refused fsync on a read-only copied-file descriptor; owned destination files now use a write-capable descriptor to flush.",
+    "Evidence extraction was updated for PowerShell UTF-16 logs before final documentation validation.",
+    "Documentation evidence creation initially encountered PowerShell log encoding; final UTF-16 decoding and all local links now pass."
+  ],
+  "preservation": {
+    "baseline_files": 5276,
+    "missing": [],
+    "unchanged_groups": {
+      "dist/": 87,
+      "apps/api/migrations/": 23,
+      "apps/api/src/runtime/": 46,
+      "apps/api/src/collaboration/": 16,
+      "apps/api/src/external-orchestrators/": 17,
+      "apps/api/src/auth/": 8
+    },
+    "private_env_lockfile_docker_compose_ci_preserved": true
+  },
+  "files_changed": [
+    ".gitignore",
+    "README.md",
+    "apps/api/.env.example",
+    "apps/api/src/database/backup-command.ts",
+    "apps/api/src/database/backup-files.ts",
+    "apps/api/src/database/backup.ts",
+    "apps/api/src/database/provision.ts",
+    "apps/api/test/backup.integration.cjs",
+    "apps/api/test/backup.test.cjs",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/backup-recovery.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/database-migrations.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/operations-recovery.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/backup-recovery-verification.json",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "package.json"
+  ],
+  "limitations": [
+    "No hosted/off-host storage, scheduler, PITR or production cutover was provisioned or verified.",
+    "Recovery objectives remain proposals, not approved SLAs; measurements cover 109 synthetic rows only.",
+    "Operator environment needs Node 24 and PostgreSQL 17 clients. API images deliberately do not include native database clients.",
+    "Windows ACLs, encrypted scratch storage and independent key recovery ownership require operator acceptance; Unix file modes were verified in a non-root Linux container.",
+    "Generic restoration only accepts confirmed empty isolated loopback databases.",
+    "Initial empty-schema preparation, pg_restore SQL transaction, grants and verification are distinct phases; failures keep the target isolated.",
+    "A recovery-point rollback may lose later receipts/revocations/effect evidence; reconcile and invalidate sessions before any separately approved cutover."
+  ],
+  "next_task": "T09 Native Runtime Drain, Restart & Admission Hardening - not started",
+  "final_review": {
+    "baseline_files_retained": 5276,
+    "undeclared_changes": [],
+    "new_files": [
+      "apps/api/src/database/backup-command.ts",
+      "apps/api/src/database/backup-files.ts",
+      "apps/api/src/database/backup.ts",
+      "apps/api/test/backup.integration.cjs",
+      "apps/api/test/backup.test.cjs",
+      "docs/ai-agent-platform/phase-6/backup-recovery.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/backup-recovery-verification.json"
+    ],
+    "private_recovery_artifacts_in_workspace": false,
+    "owned_backup_container_and_volumes_remaining": false,
+    "independent_whitespace_conflict_check": "PASS",
+    "production_database_contacted": false,
+    "production_deployment": false
+  }
+}

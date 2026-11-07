@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "graphNodes": 6,
+    "segments": 5,
+    "graphComponents": 1,
+    "surfaceComponents": 1,
+    "componentSizes": [
+      490
+    ],
+    "asphaltComponents": 1,
+    "overwritten": 0,
+    "blockedAsphalt": 0,
+    "errors": []
+  },
+  "decisions": {
+    "boulevard": "retain 64px continuous east-west alignment",
+    "station": "retain 64px branch; replace blunt bay marks with a turnaround",
+    "service": "retain 32px pedestrian/service alley; no car traffic",
+    "conflicts": "no asphalt collider overlaps; keep rail and canal unchanged",
+    "rendering": "clean curb joins, narrower crossing margins, continuous quiet markings"
+  }
+}

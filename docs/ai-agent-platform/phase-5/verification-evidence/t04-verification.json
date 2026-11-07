@@ -1,0 +1,253 @@
+{
+  "date": "2026-10-27 Asia/Bangkok",
+  "task": "Phase 5 T04",
+  "decision": "COMPLETE",
+  "scope": "Explicit fixed-owner local operator activation of a persisted native delegation, one existing-runtime child and result-reference return. No automatic parent continuation, advanced recovery, scheduler, external integration or frontend changes.",
+  "recoveryAudit": {
+    "gitStatus": 128,
+    "gitDiff": 129,
+    "gitStagedDiff": 129,
+    "reason": "No Git metadata in supplied workspace; no Git mutation performed.",
+    "applicableAgentsFiles": [],
+    "baselineFiles": 445,
+    "interruptionPoint": "Coordination source and tests saved; full verification used incorrect direct Node invocation; documentation and roadmap unfinished.",
+    "continuationSourceChanges": false
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t04-lint-final.log",
+      "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "reusedInterruptedSessionEvidence": true,
+      "result": "PASS: maintained JS syntax, frontend runtime contracts and backend no-emit typecheck."
+    },
+    {
+      "command": "npm.cmd run build",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t04-build-final.log",
+      "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460",
+      "reusedInterruptedSessionEvidence": true,
+      "result": "PASS at saved checkpoint; newest source additionally rebuilt successfully within final canonical npm.cmd run test:db (no further source changes)."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t04-unit-final.log",
+      "logSha256": "0b4c1692ae76f7ab84e5f6d508fd99350b583c94e89db91e64f99a06aa09e515",
+      "reusedInterruptedSessionEvidence": true,
+      "tests": 214,
+      "passed": 214,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS; includes build and 4 new coordination unit tests."
+    },
+    {
+      "command": "npm.cmd test",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t04-frontend-regression.log",
+      "logSha256": "9f3d3d5fe92ce8884c705e0944d2d5245a63f1998b07362c447c264d9aaa87eb",
+      "reusedInterruptedSessionEvidence": true,
+      "tests": 209,
+      "passed": 209,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS frontend/city regression suite."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 0,
+      "logFile": "elyqreth-p5-t04-db-canonical-final.log",
+      "logSha256": "4a90f977fe6bfcbced0a73e59ae870ab53e6efa66a4e62977b353fac38dbf604",
+      "reusedInterruptedSessionEvidence": false,
+      "tests": 159,
+      "passed": 159,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 159587.8454,
+      "result": "PASS fresh isolated PostgreSQL migrations, real NestJS/native-runtime E2E, 14 new coordination cases, prior Phase 1-4 integrations and actual browser regressions."
+    }
+  ],
+  "earlierAttempts": [
+    {
+      "command": "npm.cmd run test:api",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t04-unit.log",
+      "logSha256": "b0594dda813f2896914ecdba4b5445fee90cd877572a698b1c2e4eddf4a3e6c3",
+      "reusedInterruptedSessionEvidence": true,
+      "result": "Initial 202 pass / 3 fail, 205 reported. Corrected normal reflect-metadata bootstrap and restored standalone early Task validation; assertions unchanged. Final 214/214 supersedes."
+    },
+    {
+      "command": "node --test test/database.integration.cjs",
+      "workingDirectory": "apps/api",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t04-db-full.log",
+      "logSha256": "3b1d4e04b9e63854d347d3816284ad2e7753c579db62b42f4bca25c42ec620a0",
+      "reusedInterruptedSessionEvidence": true,
+      "result": "158/159 passed, all 14 new cases passed. Direct Node lacks npm_execpath required by existing CLI acceptance; canonical npm run supersedes."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t04-db-canonical.log",
+      "logSha256": "4177e5d7878f6eb433cfde1e883c369f55552776be85551cd399cda3acd1a691",
+      "reusedInterruptedSessionEvidence": false,
+      "result": "Environment failure: sandbox Docker access/daemon unavailable. No product conclusion."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "workingDirectory": "repository root",
+      "exitCode": 1,
+      "logFile": "elyqreth-p5-t04-db-canonical-approved.log",
+      "logSha256": "a5f72195c6eb72d7b7ebb0200553d9584d9c57e25c643a3698b31a98164de129",
+      "reusedInterruptedSessionEvidence": false,
+      "result": "Environment failure: Docker daemon stopped. Started installed Docker Desktop hidden, waited for version 27.4.0, then canonical final run passed."
+    }
+  ],
+  "nativeIntegrationScenarios": [
+    {
+      "scenario": "P5 T04 backend E2E genuinely runs one native child and exposes its canonical result without changing parent",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 strategy cannot run until child execution correlation commits; concurrent activation never redispatches",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 committed activation interrupted before dispatch survives restart without automatic work or generic-start bypass",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 a lost post-commit runtime acknowledgement observes success instead of starting another attempt",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 genuine native failure and deadline outcomes never fabricate delegation success",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 existing exact-target cancellation reconciles the child and preserves parent relationships",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 activation uses operator auth, blocks forged IDs and revalidates current eligibility",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 child creation and relation failures roll back atomically with native facts and outbox",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 admission correlation failure prevents dispatch and remains a terminal rejected activation",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 native admission rechecks eligibility after activation commits",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 the existing coordinator capacity bound rejects child dispatch without affecting unrelated work",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 cancellation racing child completion preserves the actual native winner",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 unresolved native finalization preserves identity without fabricated success or automatic retry",
+      "outcome": "PASS in canonical full suite"
+    },
+    {
+      "scenario": "P5 T04 a second independent API/coordinator instance observes the same activation without dispatching",
+      "outcome": "PASS in canonical full suite"
+    }
+  ],
+  "environment": {
+    "runtime": "Supported Node 24/npm; installed Docker Desktop Linux engine 27.4.0.",
+    "database": "Existing harness pinned PostgreSQL image; random database/password/container/volume, loopback only; ignores developer DATABASE_URL.",
+    "fixtures": "Real root/child TextStatisticsStrategy success E2E. Controlled barriers and fault injection supplement real runtime/persistence for races/rollback.",
+    "ci": "Existing verify.yml invokes verify:phase1 -> test:db; new cases registered in database.integration.cjs. Hosted CI not executed.",
+    "restartEvidence": "Committed prepare followed by API close/reopen before dispatch; no OS hard-kill claim for T04.",
+    "livePaidProviders": "Not required or executed."
+  },
+  "preservation": {
+    "method": "SHA-256 comparison against interrupted-session pre-edit maintained-file baseline.",
+    "baselineFiles": 445,
+    "modified": [
+      "apps/api/src/collaboration/collaboration-api.service.ts",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-5/delegation-lifecycle.md",
+      "docs/ai-agent-platform/phase-5/implementation-plan.md",
+      "apps/api/src/collaboration/collaboration.contract.ts",
+      "apps/api/src/collaboration/collaboration.dto.ts",
+      "docs/ai-agent-platform/phase-5/persistence.md",
+      "apps/api/src/runtime/runtime-command.ts",
+      "docs/ai-agent-platform/phase-5/README.md",
+      "docs/ai-agent-platform/phase-5/current-system-audit.md",
+      "apps/api/src/tasks/tasks.service.ts",
+      "apps/api/src/runtime/runtime-persistence.service.ts",
+      "docs/ai-agent-platform/phase-5/native-delegation-api.md",
+      "docs/ai-agent-platform/README.md",
+      "README.md",
+      "apps/api/src/collaboration/collaboration.module.ts",
+      "WORKSPACE.md",
+      "docs/ai-agent-platform/phase-5/architecture.md",
+      "apps/api/src/collaboration/collaboration.controller.ts",
+      "apps/api/test/database.integration.cjs",
+      "apps/api/src/runtime/runtime.module.ts",
+      "apps/api/src/collaboration/collaboration-http.guard.ts",
+      "docs/ai-agent-platform/phase-5/decisions.md",
+      "apps/api/test/collaboration-api.test.cjs",
+      "docs/ai-agent-platform/phase-5/api-frontend.md"
+    ],
+    "added": [
+      "apps/api/src/collaboration/native-coordination.service.ts",
+      "apps/api/src/collaboration/native-delegation.admission.ts",
+      "apps/api/src/collaboration/native-delegation.validation.ts",
+      "apps/api/test/native-coordination.test.cjs",
+      "apps/api/test/native-coordination.integration.cjs",
+      "docs/ai-agent-platform/phase-5/native-coordination.md",
+      "docs/ai-agent-platform/phase-5/verification-evidence/t04-verification.json"
+    ],
+    "missing": [],
+    "cityFilesUnchanged": 79,
+    "schemaMigrationFilesUnchanged": 14,
+    "runtimeCoordinatorStrategiesProvidersToolsLifecycle": "Unchanged; native RuntimePersistence admission has narrow correlation/authorization hook.",
+    "continuation": "Documentation, canonical verification and evidence only; no source/test changes.",
+    "recoveredCoordinationHashes": {
+      "apps/api/src/collaboration/native-coordination.service.ts": "5d6951732687dc75930ae5141de4edf68200665f0e67063f4aa9d267ab4985e4",
+      "apps/api/src/collaboration/native-delegation.admission.ts": "193d744eaea94c573e0549d8de02e2847cd1f28bacbd96101a8a37134707ea09",
+      "apps/api/src/collaboration/native-delegation.validation.ts": "d4e8b7c263a6a39ef570bdca4ab2523d7ca447c406c330dddacd4118aeddf412",
+      "apps/api/test/native-coordination.test.cjs": "eca19a2bdf19a2cd2b8de1e49d327125d283739e81c9f12bea4dc466f59d6ee0",
+      "apps/api/test/native-coordination.integration.cjs": "09eeb6f1c9e2cfc1e2507e83b87595e07b8d378ec79717dd5b9d88f0ed56645b"
+    },
+    "recoveredCoordinationUnchangedDuringContinuation": true
+  },
+  "cleanup": {
+    "command": "docker ps -a --filter label=elyqreth.test.run --format '{{.Names}}'; docker volume ls --filter label=elyqreth.test.run --format '{{.Name}}'",
+    "exitCode": 0,
+    "ownedContainers": 0,
+    "ownedVolumes": 0
+  },
+  "limitations": [
+    "Trusted fixed-owner loopback operator scope only; production users/tenant authentication not implemented.",
+    "No eventual dispatch or exactly-once external-effect guarantee. ACCEPTED/no-attempt and uncertain RUNNING identities remain inspectable without redispatch; explicit recovery and retry policy are T05.",
+    "No parent continuation/result merge, cascading cancellation or session outcome aggregation.",
+    "Request-bound native cancellation/deadline semantics retained; closing/aborting the activating HTTP request can signal native cancellation.",
+    "No new frontend collaboration E2E, paid live providers or hosted CI claimed."
+  ],
+  "nextTask": "Phase 5 T05 ? Collaboration Lifecycle, Failure & Recovery (not begun)",
+  "documentationValidation": {
+    "markdownFiles": 15,
+    "localLinksAndAnchors": 70,
+    "issues": [],
+    "mermaid": "Source/fence review only; no Mermaid renderer executed."
+  }
+}

@@ -1,0 +1,3396 @@
+{
+  "primary": "#F2F9FF",
+  "appErrors": [],
+  "samples": [
+    {
+      "time": 23.8830999999999,
+      "clock": {
+        "label": "08:57",
+        "day": 1,
+        "hour": 8.966101133333463,
+        "period": "Morning"
+      },
+      "population": {
+        "enabled": true,
+        "target": 5,
+        "spawned": 6,
+        "despawned": 0,
+        "offscreenTicks": 0,
+        "staff": 1,
+        "plaza": {
+          "active": false,
+          "remaining": 0,
+          "nextAt": 125,
+          "events": 0
+        }
+      },
+      "sessions": [],
+      "activityStats": {
+        "started": 5,
+        "seated": 1,
+        "sips": 0,
+        "conversations": 0,
+        "completed": 1,
+        "interrupted": 0,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {
+          "reading": {
+            "started": 1,
+            "completed": 0,
+            "interrupted": 0
+          },
+          "alighting": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "coffee": {
+            "started": 1,
+            "completed": 0,
+            "interrupted": 0
+          },
+          "courier": {
+            "started": 1,
+            "completed": 0,
+            "interrupted": 0
+          },
+          "cleaning": {
+            "started": 1,
+            "completed": 0,
+            "interrupted": 0
+          }
+        },
+        "encounters": 0,
+        "marketEntries": 0,
+        "homeReturns": 0,
+        "readingFrames": 946,
+        "orders": 0,
+        "drinksServed": 0,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 0,
+        "cleaningStops": 1,
+        "passengersBoarded": 0,
+        "passengersAlighted": 1,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 0,
+          "household": 0
+        }
+      },
+      "reservations": [
+        {
+          "id": "cafe-table-1-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-1-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-3-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-3-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 264,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 296,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 584,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 616,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 664,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 696,
+          "y": 584,
+          "reservedBy": 1,
+          "occupant": 1
+        },
+        {
+          "id": "market-entry",
+          "type": "entrance",
+          "locationId": "market-visit",
+          "x": 808,
+          "y": 328,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "west-residence-entry",
+          "type": "entrance",
+          "locationId": "west-residence",
+          "x": 312,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "central-residence-entry",
+          "type": "entrance",
+          "locationId": "central-residence",
+          "x": 456,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-staff",
+          "type": "staff",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 248,
+          "reservedBy": 9999,
+          "occupant": 9999
+        },
+        {
+          "id": "cafe-order",
+          "type": "counter",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-1",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1672,
+          "y": 264,
+          "reservedBy": 3,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-2",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1704,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-3",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1736,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-window",
+          "type": "browse",
+          "locationId": "market-visit",
+          "x": 776,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-pickup",
+          "type": "service",
+          "locationId": "market-visit",
+          "x": 840,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-delivery",
+          "type": "service",
+          "locationId": "lab-delivery",
+          "x": 1160,
+          "y": 680,
+          "reservedBy": 10004,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-1",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 472,
+          "reservedBy": 10005,
+          "occupant": 10005
+        },
+        {
+          "id": "cleaning-zone-2",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1832,
+          "y": 520,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-3",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-1",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 920,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-2",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 984,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-3",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 1032,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-gate",
+          "type": "boarding",
+          "locationId": "station-platform",
+          "x": 952,
+          "y": 920,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-1",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 472,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-2",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 488,
+          "y": 632,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-3",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 520,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        }
+      ],
+      "waterFrame": 11,
+      "train": {
+        "state": "waiting",
+        "x": 2040,
+        "speed": 0,
+        "arrivals": 1,
+        "departures": 1
+      },
+      "traffic": {
+        "spawned": 3,
+        "exited": 0,
+        "yields": 0,
+        "vehicles": [
+          {
+            "id": 1,
+            "route": "boulevard-east",
+            "x": 1019.0449743288425,
+            "y": 392,
+            "angle": 0,
+            "speed": 50.76606282640255,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 2,
+            "route": "boulevard-east",
+            "x": 654.4274723863756,
+            "y": 392,
+            "angle": 0,
+            "speed": 58.10410813629714,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 3,
+            "route": "boulevard-east",
+            "x": 48.05973787785547,
+            "y": 392,
+            "angle": 0,
+            "speed": 55.52277447444895,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "name": "Ada",
+          "role": "Researcher",
+          "appearance": "Researcher",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Curious",
+          "needs": {
+            "energy": 82.46575748332958,
+            "social": 67.78271257200808,
+            "hunger": 27.449151699998897
+          },
+          "workStatus": "Idle",
+          "x": 696,
+          "y": 584,
+          "state": "READING",
+          "direction": "down",
+          "frame": 2,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Circuit Park",
+          "activity": {
+            "definitionId": "reading",
+            "locationId": "globe-park",
+            "lifecycle": "PERFORMING",
+            "pointId": "park-reading-bench-seat-2",
+            "tableId": "park-reading-bench",
+            "seatRemaining": 42.76240596072457,
+            "pose": {
+              "kind": "reading",
+              "frame": 1,
+              "direction": "down"
+            },
+            "bubble": null
+          }
+        },
+        {
+          "id": 2,
+          "name": "Mika",
+          "role": "Designer",
+          "appearance": "Designer",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Relaxed",
+          "needs": {
+            "energy": 83.27542415000066,
+            "social": 76.78271257200808,
+            "hunger": 33.449151699998716
+          },
+          "workStatus": "Idle",
+          "x": 1288,
+          "y": 616,
+          "state": "IDLE",
+          "direction": "up",
+          "frame": 0,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "East pedestrian lane",
+          "activity": null
+        },
+        {
+          "id": 3,
+          "name": "Atlas",
+          "role": "Developer",
+          "appearance": "Developer",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Focused",
+          "needs": {
+            "energy": 87.27542415000066,
+            "social": 58.782712571997095,
+            "hunger": 39.449151699998716
+          },
+          "workStatus": "Idle",
+          "x": 1499.5777933026338,
+          "y": 728,
+          "state": "WALKING",
+          "direction": "right",
+          "frame": 2,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "East pedestrian lane",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "lifecycle": "NAVIGATING",
+            "pointId": "cafe-queue-1",
+            "seatRemaining": 0,
+            "stepId": "queue",
+            "stepPhase": "NAVIGATING",
+            "outcome": null,
+            "history": [],
+            "pose": null,
+            "bubble": null
+          }
+        },
+        {
+          "id": 4,
+          "name": "Finn",
+          "role": "Tester",
+          "appearance": "Tester",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Sociable",
+          "needs": {
+            "energy": 75.27542415000066,
+            "social": 67.78271257200808,
+            "hunger": 45.449151699998716
+          },
+          "workStatus": "Idle",
+          "x": 376,
+          "y": 968,
+          "state": "IDLE",
+          "direction": "down",
+          "frame": 2,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "South garden",
+          "activity": null
+        }
+      ],
+      "cafe": {
+        "name": "Ember Café",
+        "stats": {
+          "started": 5,
+          "seated": 1,
+          "sips": 0,
+          "conversations": 0,
+          "completed": 1,
+          "interrupted": 0,
+          "routeFailures": 0,
+          "routeDiagnostics": [],
+          "waits": 0,
+          "byActivity": {
+            "reading": {
+              "started": 1,
+              "completed": 0,
+              "interrupted": 0
+            },
+            "alighting": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "coffee": {
+              "started": 1,
+              "completed": 0,
+              "interrupted": 0
+            },
+            "courier": {
+              "started": 1,
+              "completed": 0,
+              "interrupted": 0
+            },
+            "cleaning": {
+              "started": 1,
+              "completed": 0,
+              "interrupted": 0
+            }
+          },
+          "encounters": 0,
+          "marketEntries": 0,
+          "homeReturns": 0,
+          "readingFrames": 946,
+          "orders": 0,
+          "drinksServed": 0,
+          "foodConsumed": 0,
+          "householdDeliveries": 0,
+          "courierDeliveries": 0,
+          "cleaningStops": 1,
+          "passengersBoarded": 0,
+          "passengersAlighted": 1,
+          "shoppingOutcomes": {
+            "window": 0,
+            "food": 0,
+            "household": 0
+          }
+        },
+        "seats": [
+          {
+            "id": "cafe-table-1-chair-north",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-1-chair-south",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-north",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-south",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-3-chair-south",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          }
+        ]
+      },
+      "camera": {
+        "x": 928,
+        "y": 512,
+        "zoom": 0.734375
+      },
+      "citizens": [
+        {
+          "id": 10001,
+          "visitorRole": "Café customer",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 812.6000000000028,
+          "y": 456,
+          "state": "WANDERING",
+          "activity": null
+        },
+        {
+          "id": 10002,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1048,
+          "y": 952,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10003,
+          "visitorRole": "Market visitor",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1576.6666666666706,
+          "y": 344,
+          "state": "WANDERING",
+          "activity": null
+        },
+        {
+          "id": 10004,
+          "visitorRole": "Courier",
+          "hidden": false,
+          "prop": {
+            "kind": "package",
+            "receivedAt": 28.116367333333162
+          },
+          "serving": false,
+          "exiting": false,
+          "x": 791.4000000000015,
+          "y": 344,
+          "state": "WALKING",
+          "activity": {
+            "definitionId": "courier",
+            "locationId": "lab-delivery",
+            "pointId": "courier-delivery",
+            "stepId": "deliver",
+            "stepPhase": "NAVIGATING",
+            "outcome": null,
+            "pose": null
+          }
+        },
+        {
+          "id": 10005,
+          "visitorRole": "Street cleaner",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1576,
+          "y": 472,
+          "state": "CLEANING",
+          "activity": {
+            "definitionId": "cleaning",
+            "locationId": "canal-promenade",
+            "pointId": "cleaning-zone-1",
+            "stepId": "sweep-0",
+            "stepPhase": "INTERACTING",
+            "outcome": null,
+            "pose": {
+              "kind": "cleaning",
+              "frame": 4,
+              "direction": "down"
+            }
+          }
+        },
+        {
+          "id": 10006,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": true,
+          "x": 744,
+          "y": 1016,
+          "state": "WALKING",
+          "activity": null
+        },
+        {
+          "id": 9999,
+          "visitorRole": "Barista",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1752,
+          "y": 248,
+          "state": "IDLE",
+          "activity": null
+        }
+      ],
+      "mission": {
+        "phase": "planning",
+        "done": 0
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          570
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 2012,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 10.079877013636033
+    },
+    {
+      "time": 38.0997999999991,
+      "clock": {
+        "label": "10:51",
+        "day": 1,
+        "hour": 10.861661133333355,
+        "period": "Morning"
+      },
+      "population": {
+        "enabled": true,
+        "target": 5,
+        "spawned": 6,
+        "despawned": 0,
+        "offscreenTicks": 0,
+        "staff": 1,
+        "plaza": {
+          "active": false,
+          "remaining": 0,
+          "nextAt": 125,
+          "events": 0
+        }
+      },
+      "sessions": [],
+      "activityStats": {
+        "started": 9,
+        "seated": 4,
+        "sips": 8,
+        "conversations": 1,
+        "completed": 3,
+        "interrupted": 2,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {
+          "reading": {
+            "started": 3,
+            "completed": 0,
+            "interrupted": 2
+          },
+          "alighting": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "coffee": {
+            "started": 2,
+            "completed": 0,
+            "interrupted": 0
+          },
+          "courier": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "cleaning": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "shopping": {
+            "started": 1,
+            "completed": 0,
+            "interrupted": 0
+          }
+        },
+        "encounters": 0,
+        "marketEntries": 1,
+        "homeReturns": 0,
+        "readingFrames": 2388,
+        "orders": 1,
+        "drinksServed": 1,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 1,
+        "cleaningStops": 3,
+        "passengersBoarded": 0,
+        "passengersAlighted": 1,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 1,
+          "household": 0
+        }
+      },
+      "reservations": [
+        {
+          "id": "cafe-table-1-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-1-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-3-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 280,
+          "reservedBy": 3,
+          "occupant": 3
+        },
+        {
+          "id": "cafe-table-3-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 264,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 296,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 584,
+          "y": 584,
+          "reservedBy": 10001,
+          "occupant": 10001
+        },
+        {
+          "id": "garden-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 616,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 664,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 696,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-entry",
+          "type": "entrance",
+          "locationId": "market-visit",
+          "x": 808,
+          "y": 328,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "west-residence-entry",
+          "type": "entrance",
+          "locationId": "west-residence",
+          "x": 312,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "central-residence-entry",
+          "type": "entrance",
+          "locationId": "central-residence",
+          "x": 456,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-staff",
+          "type": "staff",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 248,
+          "reservedBy": 9999,
+          "occupant": 9999
+        },
+        {
+          "id": "cafe-order",
+          "type": "counter",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-1",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1672,
+          "y": 264,
+          "reservedBy": 4,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-2",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1704,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-3",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1736,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-window",
+          "type": "browse",
+          "locationId": "market-visit",
+          "x": 776,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-pickup",
+          "type": "service",
+          "locationId": "market-visit",
+          "x": 840,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-delivery",
+          "type": "service",
+          "locationId": "lab-delivery",
+          "x": 1160,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-1",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 472,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-2",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1832,
+          "y": 520,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-3",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-1",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 920,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-2",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 984,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-3",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 1032,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-gate",
+          "type": "boarding",
+          "locationId": "station-platform",
+          "x": 952,
+          "y": 920,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-1",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 472,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-2",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 488,
+          "y": 632,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-3",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 520,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        }
+      ],
+      "waterFrame": 21,
+      "train": {
+        "state": "waiting",
+        "x": 2040,
+        "speed": 0,
+        "arrivals": 1,
+        "departures": 1
+      },
+      "traffic": {
+        "spawned": 4,
+        "exited": 0,
+        "yields": 11,
+        "vehicles": [
+          {
+            "id": 1,
+            "route": "boulevard-east",
+            "x": 1740.7708597129401,
+            "y": 392,
+            "angle": 0,
+            "speed": 50.76606282640255,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 2,
+            "route": "boulevard-east",
+            "x": 1480.476146527726,
+            "y": 392,
+            "angle": 0,
+            "speed": 58.10410813629714,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 3,
+            "route": "boulevard-east",
+            "x": 763.468809137191,
+            "y": 392,
+            "angle": 0,
+            "speed": 55.52277447444895,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 4,
+            "route": "station-loop",
+            "x": 371.3880728822495,
+            "y": 392,
+            "angle": 0,
+            "speed": 54.76010849128326,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "name": "Ada",
+          "role": "Researcher",
+          "appearance": "Researcher",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Curious",
+          "needs": {
+            "energy": 81.19142081666425,
+            "social": 65.39430697201365,
+            "hunger": 30.292491699999346
+          },
+          "workStatus": "Idle",
+          "x": 616,
+          "y": 413.32679318205066,
+          "state": "WANDERING",
+          "direction": "down",
+          "frame": 3,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "South garden",
+          "activity": null
+        },
+        {
+          "id": 2,
+          "name": "Mika",
+          "role": "Designer",
+          "appearance": "Designer",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Relaxed",
+          "needs": {
+            "energy": 84.891087483337,
+            "social": 77.59430697201365,
+            "hunger": 36.29249169999613
+          },
+          "workStatus": "Assigned",
+          "x": 432.3699854459827,
+          "y": 296,
+          "state": "WALKING",
+          "direction": "left",
+          "frame": 2,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Circuit Park",
+          "activity": null
+        },
+        {
+          "id": 3,
+          "name": "Atlas",
+          "role": "Developer",
+          "appearance": "Developer",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Focused",
+          "needs": {
+            "energy": 94.05775414999945,
+            "social": 56.3943069719966,
+            "hunger": 36.04182503333015
+          },
+          "workStatus": "Idle",
+          "x": 1800,
+          "y": 280,
+          "state": "DRINKING_COFFEE",
+          "direction": "down",
+          "frame": 2,
+          "prop": {
+            "kind": "coffee",
+            "receivedAt": 45.249834000000455
+          },
+          "crossingWait": 0,
+          "destination": "East pedestrian lane",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "lifecycle": "PERFORMING",
+            "pointId": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "seatRemaining": 5.7871712595198606,
+            "stepId": "drink",
+            "stepPhase": "INTERACTING",
+            "outcome": null,
+            "history": [
+              {
+                "step": "queue",
+                "time": 39.31650066666683,
+                "x": 1672,
+                "y": 264
+              },
+              {
+                "step": "order",
+                "time": 41.3831673333336,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "prepare",
+                "time": 42.649834000000325,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "receive",
+                "time": 45.249834000000455,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "drink",
+                "time": 46.78316733333386,
+                "x": 1800,
+                "y": 280
+              }
+            ],
+            "pose": {
+              "kind": "coffee",
+              "frame": 1,
+              "direction": "down"
+            },
+            "bubble": null
+          }
+        },
+        {
+          "id": 4,
+          "name": "Finn",
+          "role": "Tester",
+          "appearance": "Tester",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Sociable",
+          "needs": {
+            "energy": 73.85375415000192,
+            "social": 65.39430697201365,
+            "hunger": 48.29249169999613
+          },
+          "workStatus": "Idle",
+          "x": 806.1019896711354,
+          "y": 440,
+          "state": "WALKING",
+          "direction": "right",
+          "frame": 3,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Ember Café frontage",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "lifecycle": "NAVIGATING",
+            "pointId": "cafe-queue-1",
+            "seatRemaining": 0,
+            "stepId": "queue",
+            "stepPhase": "NAVIGATING",
+            "outcome": null,
+            "history": [],
+            "pose": null,
+            "bubble": null
+          }
+        }
+      ],
+      "cafe": {
+        "name": "Ember Café",
+        "stats": {
+          "started": 9,
+          "seated": 4,
+          "sips": 8,
+          "conversations": 1,
+          "completed": 3,
+          "interrupted": 2,
+          "routeFailures": 0,
+          "routeDiagnostics": [],
+          "waits": 0,
+          "byActivity": {
+            "reading": {
+              "started": 3,
+              "completed": 0,
+              "interrupted": 2
+            },
+            "alighting": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "coffee": {
+              "started": 2,
+              "completed": 0,
+              "interrupted": 0
+            },
+            "courier": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "cleaning": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "shopping": {
+              "started": 1,
+              "completed": 0,
+              "interrupted": 0
+            }
+          },
+          "encounters": 0,
+          "marketEntries": 1,
+          "homeReturns": 0,
+          "readingFrames": 2388,
+          "orders": 1,
+          "drinksServed": 1,
+          "foodConsumed": 0,
+          "householdDeliveries": 0,
+          "courierDeliveries": 1,
+          "cleaningStops": 3,
+          "passengersBoarded": 0,
+          "passengersAlighted": 1,
+          "shoppingOutcomes": {
+            "window": 0,
+            "food": 1,
+            "household": 0
+          }
+        },
+        "seats": [
+          {
+            "id": "cafe-table-1-chair-north",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-1-chair-south",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-north",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-south",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": 3,
+            "occupant": 3
+          },
+          {
+            "id": "cafe-table-3-chair-south",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          }
+        ]
+      },
+      "camera": {
+        "x": 928,
+        "y": 512,
+        "zoom": 0.734375
+      },
+      "citizens": [
+        {
+          "id": 10001,
+          "visitorRole": "Café customer",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 584,
+          "y": 584,
+          "state": "READING",
+          "activity": {
+            "definitionId": "reading",
+            "locationId": "globe-park",
+            "pointId": "garden-bench-seat-1",
+            "tableId": "garden-bench",
+            "pose": {
+              "kind": "reading",
+              "frame": 0,
+              "direction": "down"
+            }
+          }
+        },
+        {
+          "id": 10002,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1048,
+          "y": 952,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10003,
+          "visitorRole": "Market visitor",
+          "hidden": true,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 808,
+          "y": 328,
+          "state": "SHOPPING",
+          "activity": {
+            "definitionId": "shopping",
+            "locationId": "market-visit",
+            "pointId": null,
+            "tableId": null,
+            "stepId": "inside-market",
+            "stepPhase": "INTERACTING",
+            "outcome": "food",
+            "pose": null
+          }
+        },
+        {
+          "id": 10004,
+          "visitorRole": "Courier",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 840,
+          "y": 344,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10005,
+          "visitorRole": "Street cleaner",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1576,
+          "y": 680,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10006,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": true,
+          "x": 744,
+          "y": 1016,
+          "state": "WALKING",
+          "activity": null
+        },
+        {
+          "id": 9999,
+          "visitorRole": "Barista",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1752,
+          "y": 248,
+          "state": "IDLE",
+          "activity": null
+        }
+      ],
+      "mission": {
+        "phase": "collecting",
+        "done": 1
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          570
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 2012,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 8.773454341497189
+    },
+    {
+      "time": 92.06629999999602,
+      "clock": {
+        "label": "18:03",
+        "day": 1,
+        "hour": 18.057194466667095,
+        "period": "Evening"
+      },
+      "population": {
+        "enabled": true,
+        "target": 5,
+        "spawned": 6,
+        "despawned": 1,
+        "offscreenTicks": 0,
+        "staff": 1,
+        "plaza": {
+          "active": false,
+          "remaining": 0,
+          "nextAt": 375.9851361900352,
+          "events": 1
+        }
+      },
+      "sessions": [],
+      "activityStats": {
+        "started": 25,
+        "seated": 12,
+        "sips": 31,
+        "conversations": 2,
+        "completed": 18,
+        "interrupted": 3,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {
+          "reading": {
+            "started": 6,
+            "completed": 3,
+            "interrupted": 2
+          },
+          "alighting": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "coffee": {
+            "started": 4,
+            "completed": 2,
+            "interrupted": 1
+          },
+          "courier": {
+            "started": 3,
+            "completed": 3,
+            "interrupted": 0
+          },
+          "cleaning": {
+            "started": 4,
+            "completed": 4,
+            "interrupted": 0
+          },
+          "shopping": {
+            "started": 5,
+            "completed": 3,
+            "interrupted": 0
+          },
+          "passenger": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "plaza-event": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          }
+        },
+        "encounters": 0,
+        "marketEntries": 4,
+        "homeReturns": 0,
+        "readingFrames": 6085,
+        "orders": 4,
+        "drinksServed": 4,
+        "foodConsumed": 2,
+        "householdDeliveries": 1,
+        "courierDeliveries": 3,
+        "cleaningStops": 12,
+        "passengersBoarded": 1,
+        "passengersAlighted": 1,
+        "shoppingOutcomes": {
+          "window": 1,
+          "food": 2,
+          "household": 2
+        }
+      },
+      "reservations": [
+        {
+          "id": "cafe-table-1-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-1-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-3-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 280,
+          "reservedBy": 3,
+          "occupant": 3
+        },
+        {
+          "id": "cafe-table-3-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 264,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 296,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 584,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 616,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 664,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 696,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-entry",
+          "type": "entrance",
+          "locationId": "market-visit",
+          "x": 808,
+          "y": 328,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "west-residence-entry",
+          "type": "entrance",
+          "locationId": "west-residence",
+          "x": 312,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "central-residence-entry",
+          "type": "entrance",
+          "locationId": "central-residence",
+          "x": 456,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-staff",
+          "type": "staff",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 248,
+          "reservedBy": 9999,
+          "occupant": 9999
+        },
+        {
+          "id": "cafe-order",
+          "type": "counter",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-1",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1672,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-2",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1704,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-3",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1736,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-window",
+          "type": "browse",
+          "locationId": "market-visit",
+          "x": 776,
+          "y": 344,
+          "reservedBy": 10003,
+          "occupant": null
+        },
+        {
+          "id": "courier-pickup",
+          "type": "service",
+          "locationId": "market-visit",
+          "x": 840,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-delivery",
+          "type": "service",
+          "locationId": "lab-delivery",
+          "x": 1160,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-1",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 472,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-2",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1832,
+          "y": 520,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-3",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-1",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 920,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-2",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 984,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-3",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 1032,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-gate",
+          "type": "boarding",
+          "locationId": "station-platform",
+          "x": 952,
+          "y": 920,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-1",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 472,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-2",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 488,
+          "y": 632,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-3",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 520,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        }
+      ],
+      "waterFrame": 18,
+      "train": {
+        "state": "departing",
+        "x": 1018.6013984653183,
+        "speed": 61.52242203020939,
+        "arrivals": 3,
+        "departures": 3
+      },
+      "traffic": {
+        "spawned": 8,
+        "exited": 4,
+        "yields": 80,
+        "vehicles": [
+          {
+            "id": 5,
+            "route": "boulevard-west",
+            "x": -21.327290643713695,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 44.081034958877964,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 6,
+            "route": "boulevard-west",
+            "x": 252.68470595389817,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 45.458263825916674,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 7,
+            "route": "boulevard-west",
+            "x": 885.9193636068708,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 57.95741271983751,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 8,
+            "route": "boulevard-east",
+            "x": 125.77428134875609,
+            "y": 392,
+            "angle": 0,
+            "speed": 49.03658994693195,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "name": "Ada",
+          "role": "Researcher",
+          "appearance": "Researcher",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Curious",
+          "needs": {
+            "energy": 86.13077081667505,
+            "social": 56.32793497201528,
+            "hunger": 41.08579169999135
+          },
+          "workStatus": "Idle",
+          "x": 567.5215430266311,
+          "y": 744,
+          "state": "LEAVING_ACTIVITY",
+          "direction": "left",
+          "frame": 3,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Circuit Park",
+          "activity": {
+            "definitionId": "reading",
+            "locationId": "globe-park",
+            "lifecycle": "COMPLETED",
+            "pointId": null,
+            "tableId": "garden-bench",
+            "seatRemaining": -0.05032627441029773,
+            "pose": null,
+            "bubble": null
+          }
+        },
+        {
+          "id": 2,
+          "name": "Mika",
+          "role": "Designer",
+          "appearance": "Designer",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Relaxed",
+          "needs": {
+            "energy": 87.50710415001313,
+            "social": 71.72793497203476,
+            "hunger": 47.08579169998632
+          },
+          "workStatus": "Idle",
+          "x": 1320,
+          "y": 344,
+          "state": "WANDERING",
+          "direction": "left",
+          "frame": 0,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Residential stairs",
+          "activity": null
+        },
+        {
+          "id": 3,
+          "name": "Atlas",
+          "role": "Developer",
+          "appearance": "Developer",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Focused",
+          "needs": {
+            "energy": 94.47096415000257,
+            "social": 47.32793497199473,
+            "hunger": 42.408565033320826
+          },
+          "workStatus": "Idle",
+          "x": 1800,
+          "y": 280,
+          "state": "DRINKING_COFFEE",
+          "direction": "down",
+          "frame": 0,
+          "prop": {
+            "kind": "coffee",
+            "receivedAt": 278.3158339999892
+          },
+          "crossingWait": 0,
+          "destination": "Town sidewalk",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "lifecycle": "PERFORMING",
+            "pointId": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "seatRemaining": 13.495597588954963,
+            "stepId": "drink",
+            "stepPhase": "INTERACTING",
+            "outcome": null,
+            "history": [
+              {
+                "step": "queue",
+                "time": 272.31583399998954,
+                "x": 1672,
+                "y": 264
+              },
+              {
+                "step": "order",
+                "time": 274.3825006666561,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "prepare",
+                "time": 275.6491673333227,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "receive",
+                "time": 278.3158339999892,
+                "x": 1752,
+                "y": 280
+              },
+              {
+                "step": "drink",
+                "time": 279.84916733332244,
+                "x": 1800,
+                "y": 280
+              }
+            ],
+            "pose": {
+              "kind": "coffee",
+              "frame": 1,
+              "direction": "down"
+            },
+            "bubble": null
+          }
+        },
+        {
+          "id": 4,
+          "name": "Finn",
+          "role": "Tester",
+          "appearance": "Tester",
+          "homeId": "central-residence",
+          "hidden": true,
+          "personality": "Sociable",
+          "needs": {
+            "energy": 78.03310415000391,
+            "social": 56.32793497201528,
+            "hunger": 51.78979169998713
+          },
+          "workStatus": "Idle",
+          "x": 808,
+          "y": 328,
+          "state": "SHOPPING",
+          "direction": "up",
+          "frame": 0,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "City Hall stairs",
+          "activity": {
+            "definitionId": "shopping",
+            "locationId": "market-visit",
+            "lifecycle": "INTERACTING",
+            "pointId": null,
+            "tableId": null,
+            "seatRemaining": 3.815186406619783,
+            "stepId": "inside-market",
+            "stepPhase": "INTERACTING",
+            "outcome": "household",
+            "history": [
+              {
+                "step": "browse",
+                "time": 286.44916733332207,
+                "x": 776,
+                "y": 344
+              },
+              {
+                "step": "enter-market",
+                "time": 290.1158339999885,
+                "x": 808,
+                "y": 328
+              },
+              {
+                "step": "inside-market",
+                "time": 290.98250066665514,
+                "x": 808,
+                "y": 328
+              }
+            ],
+            "pose": null,
+            "bubble": null
+          }
+        }
+      ],
+      "cafe": {
+        "name": "Ember Café",
+        "stats": {
+          "started": 25,
+          "seated": 12,
+          "sips": 31,
+          "conversations": 2,
+          "completed": 18,
+          "interrupted": 3,
+          "routeFailures": 0,
+          "routeDiagnostics": [],
+          "waits": 0,
+          "byActivity": {
+            "reading": {
+              "started": 6,
+              "completed": 3,
+              "interrupted": 2
+            },
+            "alighting": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "coffee": {
+              "started": 4,
+              "completed": 2,
+              "interrupted": 1
+            },
+            "courier": {
+              "started": 3,
+              "completed": 3,
+              "interrupted": 0
+            },
+            "cleaning": {
+              "started": 4,
+              "completed": 4,
+              "interrupted": 0
+            },
+            "shopping": {
+              "started": 5,
+              "completed": 3,
+              "interrupted": 0
+            },
+            "passenger": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "plaza-event": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            }
+          },
+          "encounters": 0,
+          "marketEntries": 4,
+          "homeReturns": 0,
+          "readingFrames": 6085,
+          "orders": 4,
+          "drinksServed": 4,
+          "foodConsumed": 2,
+          "householdDeliveries": 1,
+          "courierDeliveries": 3,
+          "cleaningStops": 12,
+          "passengersBoarded": 1,
+          "passengersAlighted": 1,
+          "shoppingOutcomes": {
+            "window": 1,
+            "food": 2,
+            "household": 2
+          }
+        },
+        "seats": [
+          {
+            "id": "cafe-table-1-chair-north",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-1-chair-south",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-north",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-south",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": 3,
+            "occupant": 3
+          },
+          {
+            "id": "cafe-table-3-chair-south",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          }
+        ]
+      },
+      "camera": {
+        "x": 928,
+        "y": 512,
+        "zoom": 0.734375
+      },
+      "citizens": [
+        {
+          "id": 10001,
+          "visitorRole": "Café customer",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1082.8,
+          "y": 680,
+          "state": "WANDERING",
+          "activity": null
+        },
+        {
+          "id": 10003,
+          "visitorRole": "Market visitor",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 754.9999999999925,
+          "y": 344,
+          "state": "WALKING_TO_MARKET",
+          "activity": {
+            "definitionId": "shopping",
+            "locationId": "market-visit",
+            "pointId": "market-window",
+            "stepId": "browse",
+            "stepPhase": "NAVIGATING",
+            "outcome": "window",
+            "pose": null
+          }
+        },
+        {
+          "id": 10004,
+          "visitorRole": "Courier",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 840,
+          "y": 344,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10005,
+          "visitorRole": "Street cleaner",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1576,
+          "y": 680,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10006,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": true,
+          "x": 744,
+          "y": 1016,
+          "state": "WALKING",
+          "activity": null
+        },
+        {
+          "id": 9999,
+          "visitorRole": "Barista",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1752,
+          "y": 248,
+          "state": "IDLE",
+          "activity": null
+        }
+      ],
+      "mission": {
+        "phase": "complete",
+        "done": 4
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          570
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 2012,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 7.995890511032048
+    },
+    {
+      "time": 106.51629999999521,
+      "clock": {
+        "label": "19:59",
+        "day": 1,
+        "hour": 19.983861133335235,
+        "period": "Evening"
+      },
+      "population": {
+        "enabled": true,
+        "target": 5,
+        "spawned": 6,
+        "despawned": 1,
+        "offscreenTicks": 0,
+        "staff": 1,
+        "plaza": {
+          "active": false,
+          "remaining": 0,
+          "nextAt": 375.9851361900352,
+          "events": 1
+        }
+      },
+      "sessions": [],
+      "activityStats": {
+        "started": 31,
+        "seated": 13,
+        "sips": 37,
+        "conversations": 2,
+        "completed": 23,
+        "interrupted": 3,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {
+          "reading": {
+            "started": 7,
+            "completed": 4,
+            "interrupted": 2
+          },
+          "alighting": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "coffee": {
+            "started": 6,
+            "completed": 3,
+            "interrupted": 1
+          },
+          "courier": {
+            "started": 4,
+            "completed": 4,
+            "interrupted": 0
+          },
+          "cleaning": {
+            "started": 4,
+            "completed": 4,
+            "interrupted": 0
+          },
+          "shopping": {
+            "started": 7,
+            "completed": 5,
+            "interrupted": 0
+          },
+          "passenger": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          },
+          "plaza-event": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          }
+        },
+        "encounters": 0,
+        "marketEntries": 5,
+        "homeReturns": 0,
+        "readingFrames": 6085,
+        "orders": 5,
+        "drinksServed": 5,
+        "foodConsumed": 2,
+        "householdDeliveries": 2,
+        "courierDeliveries": 4,
+        "cleaningStops": 12,
+        "passengersBoarded": 1,
+        "passengersAlighted": 1,
+        "shoppingOutcomes": {
+          "window": 1,
+          "food": 3,
+          "household": 3
+        }
+      },
+      "reservations": [
+        {
+          "id": "cafe-table-1-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-1-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1576,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-2-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1688,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-table-3-chair-north",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 280,
+          "reservedBy": 10001,
+          "occupant": 10001
+        },
+        {
+          "id": "cafe-table-3-chair-south",
+          "type": "chair",
+          "locationId": "east-terrace",
+          "x": 1800,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 264,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 296,
+          "y": 744,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 584,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "garden-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 616,
+          "y": 584,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-1",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 664,
+          "y": 584,
+          "reservedBy": 2,
+          "occupant": null
+        },
+        {
+          "id": "park-reading-bench-seat-2",
+          "type": "benchSeat",
+          "locationId": "globe-park",
+          "x": 696,
+          "y": 584,
+          "reservedBy": 10003,
+          "occupant": null
+        },
+        {
+          "id": "market-entry",
+          "type": "entrance",
+          "locationId": "market-visit",
+          "x": 808,
+          "y": 328,
+          "reservedBy": 3,
+          "occupant": null
+        },
+        {
+          "id": "west-residence-entry",
+          "type": "entrance",
+          "locationId": "west-residence",
+          "x": 312,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "central-residence-entry",
+          "type": "entrance",
+          "locationId": "central-residence",
+          "x": 456,
+          "y": 824,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-staff",
+          "type": "staff",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 248,
+          "reservedBy": 9999,
+          "occupant": 9999
+        },
+        {
+          "id": "cafe-order",
+          "type": "counter",
+          "locationId": "east-terrace",
+          "x": 1752,
+          "y": 280,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-1",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1672,
+          "y": 264,
+          "reservedBy": 1,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-2",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1704,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cafe-queue-3",
+          "type": "queue",
+          "locationId": "east-terrace",
+          "x": 1736,
+          "y": 264,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "market-window",
+          "type": "browse",
+          "locationId": "market-visit",
+          "x": 776,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-pickup",
+          "type": "service",
+          "locationId": "market-visit",
+          "x": 840,
+          "y": 344,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "courier-delivery",
+          "type": "service",
+          "locationId": "lab-delivery",
+          "x": 1160,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-1",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 472,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-2",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1832,
+          "y": 520,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "cleaning-zone-3",
+          "type": "cleaning",
+          "locationId": "canal-promenade",
+          "x": 1576,
+          "y": 680,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-1",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 920,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-2",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 984,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-wait-3",
+          "type": "platform",
+          "locationId": "station-platform",
+          "x": 1032,
+          "y": 936,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "station-gate",
+          "type": "boarding",
+          "locationId": "station-platform",
+          "x": 952,
+          "y": 920,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-1",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 472,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-2",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 488,
+          "y": 632,
+          "reservedBy": null,
+          "occupant": null
+        },
+        {
+          "id": "plaza-watch-3",
+          "type": "gathering",
+          "locationId": "central-plaza",
+          "x": 520,
+          "y": 616,
+          "reservedBy": null,
+          "occupant": null
+        }
+      ],
+      "waterFrame": 6,
+      "train": {
+        "state": "waiting",
+        "x": 2040,
+        "speed": 0,
+        "arrivals": 3,
+        "departures": 3
+      },
+      "traffic": {
+        "spawned": 9,
+        "exited": 6,
+        "yields": 97,
+        "vehicles": [
+          {
+            "id": 7,
+            "route": "boulevard-west",
+            "x": 48.43474980520682,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 57.95741271983751,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 8,
+            "route": "boulevard-east",
+            "x": 779.761614195136,
+            "y": 392,
+            "angle": 0,
+            "speed": 49.03658994693195,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 9,
+            "route": "station-loop",
+            "x": 537.1825083572271,
+            "y": 392,
+            "angle": 0,
+            "speed": 50.18468176853763,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "name": "Ada",
+          "role": "Researcher",
+          "appearance": "Researcher",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Curious",
+          "needs": {
+            "energy": 84.68577081667634,
+            "social": 53.90033497201478,
+            "hunger": 43.97579169998872
+          },
+          "workStatus": "Idle",
+          "x": 1060.0989946201387,
+          "y": 728,
+          "state": "WALKING",
+          "direction": "right",
+          "frame": 2,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Residential stairs",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "lifecycle": "NAVIGATING",
+            "pointId": "cafe-queue-1",
+            "seatRemaining": 0,
+            "stepId": "queue",
+            "stepPhase": "NAVIGATING",
+            "outcome": null,
+            "history": [],
+            "pose": null,
+            "bubble": null
+          }
+        },
+        {
+          "id": 2,
+          "name": "Mika",
+          "role": "Designer",
+          "appearance": "Designer",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Relaxed",
+          "needs": {
+            "energy": 86.06210415001442,
+            "social": 69.3003349720404,
+            "hunger": 49.975791699983695
+          },
+          "workStatus": "Idle",
+          "x": 924.2990151130484,
+          "y": 344,
+          "state": "WALKING_TO_PARK",
+          "direction": "right",
+          "frame": 3,
+          "prop": {
+            "kind": "food",
+            "receivedAt": 356.9827673333181
+          },
+          "crossingWait": 0,
+          "destination": "Residential stairs",
+          "activity": {
+            "definitionId": "shopping",
+            "locationId": "globe-park",
+            "lifecycle": "NAVIGATING",
+            "pointId": "park-reading-bench-seat-1",
+            "tableId": "park-reading-bench",
+            "seatRemaining": 17.07878314250182,
+            "stepId": "eat",
+            "stepPhase": "NAVIGATING",
+            "outcome": "food",
+            "history": [
+              {
+                "step": "browse",
+                "time": 337.1161006666526,
+                "x": 776,
+                "y": 344
+              },
+              {
+                "step": "enter-market",
+                "time": 340.8494339999857,
+                "x": 808,
+                "y": 328
+              },
+              {
+                "step": "inside-market",
+                "time": 341.7161006666523,
+                "x": 808,
+                "y": 328
+              },
+              {
+                "step": "exit-market",
+                "time": 357.1827673333181,
+                "x": 808,
+                "y": 344
+              }
+            ],
+            "pose": null,
+            "bubble": null
+          }
+        },
+        {
+          "id": 3,
+          "name": "Atlas",
+          "role": "Developer",
+          "appearance": "Developer",
+          "homeId": "west-residence",
+          "hidden": false,
+          "personality": "Focused",
+          "needs": {
+            "energy": 95.86802015000303,
+            "social": 44.90033497199423,
+            "hunger": 43.13318903331844
+          },
+          "workStatus": "Idle",
+          "x": 792,
+          "y": 336.2412434927637,
+          "state": "ENTERING_MARKET",
+          "direction": "up",
+          "frame": 1,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Market frontage",
+          "activity": {
+            "definitionId": "shopping",
+            "locationId": "market-visit",
+            "lifecycle": "NAVIGATING",
+            "pointId": "market-entry",
+            "seatRemaining": 0.8,
+            "stepId": "enter-market",
+            "stepPhase": "NAVIGATING",
+            "outcome": "household",
+            "history": [
+              {
+                "step": "browse",
+                "time": 356.18276733331817,
+                "x": 776,
+                "y": 344
+              }
+            ],
+            "pose": null,
+            "bubble": null
+          }
+        },
+        {
+          "id": 4,
+          "name": "Finn",
+          "role": "Tester",
+          "appearance": "Tester",
+          "homeId": "central-residence",
+          "hidden": false,
+          "personality": "Sociable",
+          "needs": {
+            "energy": 76.5881041500052,
+            "social": 53.90033497201478,
+            "hunger": 54.6797916999845
+          },
+          "workStatus": "Idle",
+          "x": 1003.0541807620237,
+          "y": 952,
+          "state": "WANDERING",
+          "direction": "right",
+          "frame": 3,
+          "prop": null,
+          "crossingWait": 0,
+          "destination": "Dock promenade",
+          "activity": null
+        }
+      ],
+      "cafe": {
+        "name": "Ember Café",
+        "stats": {
+          "started": 31,
+          "seated": 13,
+          "sips": 37,
+          "conversations": 2,
+          "completed": 23,
+          "interrupted": 3,
+          "routeFailures": 0,
+          "routeDiagnostics": [],
+          "waits": 0,
+          "byActivity": {
+            "reading": {
+              "started": 7,
+              "completed": 4,
+              "interrupted": 2
+            },
+            "alighting": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "coffee": {
+              "started": 6,
+              "completed": 3,
+              "interrupted": 1
+            },
+            "courier": {
+              "started": 4,
+              "completed": 4,
+              "interrupted": 0
+            },
+            "cleaning": {
+              "started": 4,
+              "completed": 4,
+              "interrupted": 0
+            },
+            "shopping": {
+              "started": 7,
+              "completed": 5,
+              "interrupted": 0
+            },
+            "passenger": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            },
+            "plaza-event": {
+              "started": 1,
+              "completed": 1,
+              "interrupted": 0
+            }
+          },
+          "encounters": 0,
+          "marketEntries": 5,
+          "homeReturns": 0,
+          "readingFrames": 6085,
+          "orders": 5,
+          "drinksServed": 5,
+          "foodConsumed": 2,
+          "householdDeliveries": 2,
+          "courierDeliveries": 4,
+          "cleaningStops": 12,
+          "passengersBoarded": 1,
+          "passengersAlighted": 1,
+          "shoppingOutcomes": {
+            "window": 1,
+            "food": 3,
+            "household": 3
+          }
+        },
+        "seats": [
+          {
+            "id": "cafe-table-1-chair-north",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-1-chair-south",
+            "tableId": "cafe-table-1",
+            "x": 1576,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-north",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-2-chair-south",
+            "tableId": "cafe-table-2",
+            "x": 1688,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          },
+          {
+            "id": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 280,
+            "direction": "down",
+            "reservedBy": 10001,
+            "occupant": 10001
+          },
+          {
+            "id": "cafe-table-3-chair-south",
+            "tableId": "cafe-table-3",
+            "x": 1800,
+            "y": 344,
+            "direction": "up",
+            "reservedBy": null,
+            "occupant": null
+          }
+        ]
+      },
+      "camera": {
+        "x": 928,
+        "y": 512,
+        "zoom": 0.6119791666666667
+      },
+      "citizens": [
+        {
+          "id": 10001,
+          "visitorRole": "Café customer",
+          "hidden": false,
+          "prop": {
+            "kind": "coffee",
+            "receivedAt": 342.8494339999856
+          },
+          "serving": false,
+          "exiting": false,
+          "x": 1800,
+          "y": 280,
+          "state": "DRINKING_COFFEE",
+          "activity": {
+            "definitionId": "coffee",
+            "locationId": "east-terrace",
+            "pointId": "cafe-table-3-chair-north",
+            "tableId": "cafe-table-3",
+            "stepId": "drink",
+            "stepPhase": "INTERACTING",
+            "outcome": null,
+            "pose": {
+              "kind": "coffee",
+              "frame": 0,
+              "direction": "down"
+            }
+          }
+        },
+        {
+          "id": 10003,
+          "visitorRole": "Market visitor",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 860.3466666666529,
+          "y": 696,
+          "state": "WALKING_TO_PARK",
+          "activity": {
+            "definitionId": "reading",
+            "locationId": "globe-park",
+            "pointId": "park-reading-bench-seat-2",
+            "tableId": "park-reading-bench",
+            "pose": null
+          }
+        },
+        {
+          "id": 10004,
+          "visitorRole": "Courier",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 840,
+          "y": 344,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10005,
+          "visitorRole": "Street cleaner",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1576,
+          "y": 680,
+          "state": "IDLE",
+          "activity": null
+        },
+        {
+          "id": 10006,
+          "visitorRole": "Station passenger",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": true,
+          "x": 744,
+          "y": 1016,
+          "state": "WALKING",
+          "activity": null
+        },
+        {
+          "id": 9999,
+          "visitorRole": "Barista",
+          "hidden": false,
+          "prop": null,
+          "serving": false,
+          "exiting": false,
+          "x": 1752,
+          "y": 248,
+          "state": "IDLE",
+          "activity": null
+        }
+      ],
+      "mission": {
+        "phase": "complete",
+        "done": 4
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          570
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 2012,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 7.123057476052051
+    }
+  ]
+}

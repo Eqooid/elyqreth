@@ -1,0 +1,160 @@
+{
+  "civic": {
+    "path": "/workspace/scratch/b8e339b953ba/blueprint-assets/civic-atlas.png",
+    "width": 1536,
+    "height": 1024,
+    "columns": 3,
+    "rows": 2,
+    "sprites": [
+      {
+        "id": "city-hall",
+        "row": 0,
+        "col": 0,
+        "x": 58,
+        "y": 10,
+        "w": 437,
+        "h": 501
+      },
+      {
+        "id": "market",
+        "row": 0,
+        "col": 1,
+        "x": 560,
+        "y": 40,
+        "w": 440,
+        "h": 444
+      },
+      {
+        "id": "cafe",
+        "row": 0,
+        "col": 2,
+        "x": 1078,
+        "y": 38,
+        "w": 403,
+        "h": 454
+      },
+      {
+        "id": "clinic",
+        "row": 1,
+        "col": 0,
+        "x": 75,
+        "y": 554,
+        "w": 384,
+        "h": 401
+      },
+      {
+        "id": "rd",
+        "row": 1,
+        "col": 1,
+        "x": 603,
+        "y": 487,
+        "w": 285,
+        "h": 513
+      },
+      {
+        "id": "station",
+        "row": 1,
+        "col": 2,
+        "x": 947,
+        "y": 600,
+        "w": 575,
+        "h": 393
+      }
+    ]
+  },
+  "skyline": {
+    "path": "/workspace/scratch/b8e339b953ba/blueprint-assets/skyline-atlas.png",
+    "width": 1536,
+    "height": 1024,
+    "columns": 4,
+    "rows": 2,
+    "sprites": [
+      {
+        "id": "cat",
+        "row": 0,
+        "col": 0,
+        "x": 55,
+        "y": 5,
+        "w": 269,
+        "h": 556
+      },
+      {
+        "id": "bar",
+        "row": 0,
+        "col": 1,
+        "x": 410,
+        "y": 20,
+        "w": 298,
+        "h": 542
+      },
+      {
+        "id": "stories",
+        "row": 0,
+        "col": 2,
+        "x": 802,
+        "y": 1,
+        "w": 339,
+        "h": 563
+      },
+      {
+        "id": "humanity",
+        "row": 0,
+        "col": 3,
+        "x": 1224,
+        "y": 1,
+        "w": 284,
+        "h": 561
+      },
+      {
+        "id": "residential",
+        "row": 1,
+        "col": 0,
+        "x": 44,
+        "y": 601,
+        "w": 284,
+        "h": 377
+      },
+      {
+        "id": "north-utility",
+        "row": 1,
+        "col": 1,
+        "x": 427,
+        "y": 576,
+        "w": 208,
+        "h": 402
+      },
+      {
+        "id": "industrial",
+        "row": 1,
+        "col": 2,
+        "x": 683,
+        "y": 729,
+        "w": 351,
+        "h": 249
+      },
+      {
+        "id": "footbridge",
+        "row": 1,
+        "col": 3,
+        "x": 1072,
+        "y": 688,
+        "w": 455,
+        "h": 280
+      }
+    ]
+  },
+  "alpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      254
+    ],
+    "genuineTransparentBackground": true,
+    "people": "none visible",
+    "note": "Generated spacing differs from requested regular cell boundaries; use inspected source rectangles."
+  },
+  "prompts": {
+    "A": "Use case: stylized-concept. Asset type: transparent pixel-art building sprite atlas for an interactive recreation of the supplied Orange City reference. Input image is a REFERENCE for the exact architecture, not an edit target. Recreate the individual buildings closely, extracting their characteristic forms into six separate sprites. Output a 1536x1024 landscape PNG with true alpha transparency, a precise 3-column x 2-row regular grid (six 512x512 cells). One complete isolated sprite centered in each cell, at least 35px fully transparent gutters on every side. No labels outside the buildings, no gridlines. Match the reference's nearfrontal elevated front/down perspective: straight horizontal facade fronts with shallow visible flat rooftops; charcoal graphite pixel outlines, warm orange/amber windows and neon, occasional cyan and magenta, dense intentional crisp pixel clusters like the reference. No diamond-isometric camera. Each sprite includes only the building and its integral structural stairs/platform. Background and gaps completely transparent. NO people, humans, faces, window silhouettes, characters, ground, roads, canals, landscape or surroundings.\n\nCell positions and exact design:\nTOP LEFT: CITY HALL from reference, a tall narrow central civic facade: charcoal frame, tall recessed amber compass emblem panel with four-point compass and CITY HALL in orange below, vertical amber light strips flanking facade, glowing amber double entrance doors, WIDE stairs below entrance, two flanking orange hanging compass banners and their tiny structural planters. Rectangular flat upper building, faithfully preserve tall sign-over-doors proportions.\nTOP CENTER: MARKET from upper center reference: compact rectangular block building with a shallow flat roof covered in vents, AC boxes, conduits; large orange MARKET sign over front, pink and orange vertically striped scalloped awning, warm storefront windows and door, side narrow vending/utility details.\nTOP RIGHT: CAFE reference building with rooftop AC and chimney/vents, a horizontal dark amber outlined sign showing orange cup icon and CAFE over glowing entrance; a NARROW vertical black panel along its RIGHT SIDE containing four stacked coral pink lines IDEAS / CODE / COFFEE / PEOPLE. This side panel is tall black signage, NOT an awning.\nBOTTOM LEFT: CLINIC from reference: narrow squat charcoal square block, shallow roof with large rectangular vent inset, thin orange accent strips, cyan glowing cross + and CLINIC on horizontal black sign above warm glowing paired doors and windows.\nBOTTOM CENTER: R&D from reference: TALL NARROW industrial building, slim roof with vents/pipes. Dominant NARROW amber illuminated vertical right-side sign: flask icon and R&D at top, then RESEARCH / BUILD / LEARN / IMPROVE stacked vertically below. Empty glowing orange windows in left strip, doorway UNDER the tall sign. Maintain the reference's tall vertical lab silhouette; NOT a squat square lab.\nBOTTOM RIGHT: CENTRAL STATION from foreground reference: LOW WIDE rectangular train bay, LOW FLAT station roof, charcoal glass facade and glowing orange-white horizontal train visible behind glass facing RIGHT in side profile, elongated carriage windows and curved right cab nose. Dark horizontal sign above bay reading CENTRAL STATION with small compass icon. Visible rails and platform at front integral to station. No arched terminal, no front-facing locomotive.\n\nRequire all six sprites accurately grouped inside their designated cells with wide alpha gutters. Original pixel density and architecture. Transparent alpha, no baked checkerboard. No people in doors or windows. No invented skyline shapes.",
+    "B": "Use case: stylized-concept. Asset type: transparent pixel-art architecture sprite atlas for interactive recreation of supplied Orange City image. Input image is REFERENCE for exact architecture, not an edit target. Closely recreate eight individual architecture pieces from reference rather than redesign. Output 1536x1024 landscape PNG with TRUE ALPHA transparency and precise 4-column x 2-row regular grid (8 cells each 384x512). Exactly one complete isolated sprite centered in each cell with at least 25px fully transparent gutters on every side. No external captions, no grid. Match reference's elevated nearfrontal front/down pixel perspective: straight horizontal facade fronts with shallow flat rooftops and graphite structural pixel outlines. Dark charcoal industrial architecture; amber orange neon, tiny cyan window details and magenta billboard. Crisp clustered dense reference-style pixel art. NOT diamond isometric.\n\nTOP LEFT: Reference's far-left tall CAT billboard tower. Narrow dark blocky tower with flat roof machinery and orange edge conduits, dominant tall vertical dark billboard: exact amber outline of a cat head above stacked words GOOD / PEOPLE / BETTER / TOMORROW. Keep reference billboard proportions and outline. Small glowing base details, no person in doorway.\nTOP SECOND: Reference's left BAR / PLAY RELAX REPEAT tower. Tall narrow industrial graphite facade, shallow rooftop vent and pipes. Orange horizontal beer mug icon and BAR illuminated sign in upper facade, BELOW it dominant vertical dark magenta billboard with pink gamepad outline, and exact stacked text PLAY / RELAX / REPEAT. A few cyan window rectangles on left side, faithful layered tower form.\nTOP THIRD: Upper-right reference SAME CITY DIFFERENT STORIES billboard tower. Tall rectangular dark flat roof building with amber doorway below; dominant broad rectangular billboard attached upper front with exact orange text SAME CITY / DIFFERENT / STORIES and right arrow; bottom half illustrated amber sunset and graphite skyline silhouettes. Keep reference's rectangular shape and graphite trim.\nTOP FOURTH: Lower-right reference BRIGHTER HUMANITY TOGETHER billboard tower. Tall narrow blocky industrial building with glowing doorway below and dominant VERTICAL illuminated orange panel with exact text BRIGHTER / HUMANITY / TOGETHER over sunset and dark skyline silhouette. Charcoal panel border, thin amber side strips. Match original rectangular panel and structure.\n\nBOTTOM LEFT: Reference foreground residential utility block near lower left/center, compact squared flat roof block with roof equipment, vents and conduits, dark graphite facade with a single VERTICAL orange illuminated window stripe, small amber doorway and cyan small window. No billboard.\nBOTTOM SECOND: Reference left north side narrow dark utility building (beside the city hall left side), slender flat roof dark industrial graphite block with rooftop AC, orange vertical strips and conduits and small empty windows. No new signs, no invented tower shape.\nBOTTOM THIRD: Small foreground-right industrial utility building from reference near docks/station edge: low narrow squat rectangular block, flat roof pipes and vent equipment, small cyan horizontal windows with orange accent edge light; no ship, no billboard, no people.\nBOTTOM FOURTH: The reference canal overhead FOOTBRIDGE: wide and shallow straight horizontal bridge, gray pavement top, dark steel supports and underside structure, amber edge lights, short structural legs and visible open alpha underneath its central span. No water, no people, no road connecting around it. Its own arch/underside gap fully transparent. Elevated nearfrontal angle; wide horizontal rectangle, not diagonal diamond.\n\nEach sprite only architecture, no surroundings, no ground, no landscape, no opaque backdrop, no checkerboard baked. NO human figures, silhouettes, faces or people in windows or doors. Reference's specific dimensions/proportions and pixel density; no generic redesigned skyscrapers. Keep all eight separate in designated cells."
+  }
+}

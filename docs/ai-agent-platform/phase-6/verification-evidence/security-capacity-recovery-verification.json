@@ -1,0 +1,2002 @@
+{
+  "task": "Phase6 T14 Security, Capacity & Disaster-Recovery Verification",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "status": "PARTIAL",
+  "releaseReadiness": "NOT READY",
+  "command": "node scripts/security-capacity.mjs --output \"$env:TEMP\\elyqreth-t14-verification-20261106-a\"",
+  "exitCode": 0,
+  "startedAt": "2026-11-06T15:24:52.731Z",
+  "finishedAt": "2026-11-06T15:37:10.194Z",
+  "environment": "DISPOSABLE LOCAL SIMULATION; no production access/publication/deployment",
+  "tools": {
+    "hostNode": "24.9.0",
+    "hostNpm": "11.6.2",
+    "docker": "\"27.4.0\" 12 8014450688",
+    "workflowValidator": "PyYAML6.0.2; three workflows parsed",
+    "containerScanner": {
+      "status": "BLOCKED",
+      "version": null,
+      "database": null,
+      "reason": "No installed trivy/grype command or Trivy image; no approved scanner selected"
+    }
+  },
+  "artifact": {
+    "version": 1,
+    "mode": "LOCAL_SIMULATION",
+    "images": {
+      "api": "sha256:ed38ea351193defc177bbf572d7f202fcfeea89c711be82196f23455b4afd900",
+      "web": "sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e",
+      "edge": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2"
+    },
+    "identityKind": "DOCKER_CONFIG_ID_NOT_REGISTRY_DIGEST",
+    "sourceBinding": "NOT_VERIFIED_PREBUILT_LOCAL_IMAGES"
+  },
+  "measurementSource": {
+    "kind": "WORKSPACE_CONTENT_SNAPSHOT_NOT_COMMIT",
+    "sha256": "13b61cb921af7e5d12506791818c81919537ea197041d26106a4132afc42b91a"
+  },
+  "finalSource": {
+    "kind": "WORKSPACE_CONTENT_SNAPSHOT_NOT_COMMIT",
+    "sha256": "8aebcd43531dd4eeca491b4e34dfd60ac308f40be15773993e9fc794c5e4915c"
+  },
+  "postMeasurementChanges": {
+    "paths": [
+      "apps/api/test/rehearsal-output.test.cjs",
+      "scripts/rehearsal-output.mjs",
+      "scripts/security-capacity.mjs"
+    ],
+    "reason": "Runner-only outside-checkout guard and two dedicated regression tests; no application/runtime/frontend code changed",
+    "validation": "Focused helper/path tests5/5; no claim that original measured wrapper was rerun after this validation-only change"
+  },
+  "commands": [
+    {
+      "id": "docker-preflight",
+      "command": "docker info --format {{json .ServerVersion}} {{.NCPU}} {{.MemTotal}}",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "524b18461792642e20a167865257b24c5055a5cdc0bd0a73fe1256333754cdc7",
+      "failedTests": [],
+      "executable": "docker",
+      "argv": [
+        "info",
+        "--format",
+        "{{json .ServerVersion}} {{.NCPU}} {{.MemTotal}}"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {}
+    },
+    {
+      "id": "security-resilience-restore",
+      "command": "node scripts/staging-rehearsal.mjs --run --output C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t14-verification-20261106-a\\uat",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "2e242eb1ba9913ad3742f9b7f170b216664560265f8a5dd01c3f98ed9c9d4ac4",
+      "failedTests": [],
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "argv": [
+        "scripts/staging-rehearsal.mjs",
+        "--run",
+        "--output",
+        "C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t14-verification-20261106-a\\uat"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {}
+    },
+    {
+      "id": "capacity",
+      "command": "node --test-reporter=tap --test --test-name-pattern=T14 bounded isolated apps/api/test/database.integration.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "412a0aa0f7b07b4e54555c8146034bf85e219ee9a6d893b1e53b887cb828cd78",
+      "failedTests": [],
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "argv": [
+        "--test-reporter=tap",
+        "--test",
+        "--test-name-pattern=T14 bounded isolated",
+        "apps/api/test/database.integration.cjs"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {
+        "ELYQRETH_CAPACITY": "true"
+      }
+    },
+    {
+      "id": "source-loss-restore",
+      "command": "node --test-reporter=tap --test apps/api/test/backup.integration.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "dbd001c25db78dd9ec8b4f0ba5c11dc9368dcd9dc9ef5d18d7e8bd68b3ba6b64",
+      "failedTests": [],
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "argv": [
+        "--test-reporter=tap",
+        "--test",
+        "apps/api/test/backup.integration.cjs"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {
+        "ELYQRETH_DISASTER": "true"
+      }
+    },
+    {
+      "id": "frontend-profile",
+      "command": "node --expose-gc scripts/phase5-collaboration-profile.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "3bf5f0f01f50b8b9a0ae4cc46e9f187d2c479548a26868d4398ce92585f481b7",
+      "failedTests": [],
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "argv": [
+        "--expose-gc",
+        "scripts/phase5-collaboration-profile.mjs"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {}
+    },
+    {
+      "id": "production-dependency-audit",
+      "command": "node C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js audit --omit=dev --audit-level=high --json",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputSha256": "41b6ef87b69067d9e8476d28e0cc2841918e2516850e92d75806a0739daf5749",
+      "failedTests": [],
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "audit",
+        "--omit=dev",
+        "--audit-level=high",
+        "--json"
+      ],
+      "invocation": "execFile without shell",
+      "testEnvironment": {}
+    }
+  ],
+  "qualityRerun": {
+    "version": 1,
+    "runId": "e80c53fc-4879-44fe-9504-22754b3ea023",
+    "environment": "ISOLATED_LOCAL_UAT",
+    "mode": "LOCAL_SIMULATION",
+    "status": "PARTIAL",
+    "startedAt": "2026-11-06T15:24:53.357Z",
+    "productionAccess": false,
+    "publication": false,
+    "commands": [
+      {
+        "id": "build-api",
+        "command": "node node_modules/typescript/bin/tsc -p apps/api/tsconfig.json",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 7848,
+        "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "outputBytes": 0,
+        "tests": {},
+        "failedTests": []
+      },
+      {
+        "id": "typecheck-web",
+        "command": "node node_modules/typescript/bin/tsc -p tsconfig.runtime-web.json",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 1845,
+        "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "outputBytes": 0,
+        "tests": {},
+        "failedTests": []
+      },
+      {
+        "id": "syntax-web",
+        "command": "node scripts/check.mjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 3459,
+        "outputSha256": "e71133773aebf1b6b8246b87ea9f3ec0c2e166f40d8fa5ac82655ab163ed2a3d",
+        "outputBytes": 39,
+        "tests": {},
+        "failedTests": []
+      },
+      {
+        "id": "build-web",
+        "command": "node scripts/build-web.mjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 1554,
+        "outputSha256": "d5ce6777e15292a206f98da206339b92e0321d77c753a6f7d2f11f7a380fa4fe",
+        "outputBytes": 1111,
+        "tests": {},
+        "failedTests": []
+      },
+      {
+        "id": "backend-unit",
+        "command": "node --test-reporter=tap --test --test-concurrency=1 apps/api/test/activity.test.cjs apps/api/test/agents.test.cjs apps/api/test/authentication.test.cjs apps/api/test/backup.test.cjs apps/api/test/capacity-tools.test.cjs apps/api/test/city-bindings.test.cjs apps/api/test/collaboration-activity.test.cjs apps/api/test/collaboration-api.test.cjs apps/api/test/collaboration-read.test.cjs apps/api/test/collaboration-recovery.test.cjs apps/api/test/collaboration.test.cjs apps/api/test/container-configuration.test.cjs apps/api/test/database-access.test.cjs apps/api/test/database-config.test.cjs apps/api/test/email-monitor.test.cjs apps/api/test/events.test.cjs apps/api/test/external-adapter.test.cjs apps/api/test/external-di.test.cjs apps/api/test/external-ingestion.test.cjs apps/api/test/external-security.test.cjs apps/api/test/external-tls.test.cjs apps/api/test/external-transport.test.cjs apps/api/test/foundation.test.cjs apps/api/test/interaction.test.cjs apps/api/test/langgraph.test.cjs apps/api/test/lifecycle.test.cjs apps/api/test/llm-agent.test.cjs apps/api/test/llm-providers.test.cjs apps/api/test/native-coordination.test.cjs apps/api/test/observability.test.cjs apps/api/test/ollama-http.test.cjs apps/api/test/ollama.test.cjs apps/api/test/openai-http.test.cjs apps/api/test/openai.test.cjs apps/api/test/operational-signals.test.cjs apps/api/test/parser-security.test.cjs apps/api/test/principal-authorization.test.cjs apps/api/test/production-configuration.test.cjs apps/api/test/providers.test.cjs apps/api/test/release-pipeline.test.cjs apps/api/test/runtime-api.test.cjs apps/api/test/runtime-contracts.test.cjs apps/api/test/runtime-coordinator.test.cjs apps/api/test/runtime-drain.test.cjs apps/api/test/runtime-interruption.test.cjs apps/api/test/staging-rehearsal.test.cjs apps/api/test/tasks.test.cjs apps/api/test/text-statistics.test.cjs apps/api/test/tools-di.test.cjs apps/api/test/tools.test.cjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 127816,
+        "outputSha256": "2f452648ce1e0d67316d8fb9f8b27b651e7ee9f7d6cb9a9caaf3c8ed78c814c2",
+        "outputBytes": 144869,
+        "tests": {
+          "tests": 374,
+          "pass": 374,
+          "fail": 0,
+          "skipped": 0
+        },
+        "failedTests": []
+      },
+      {
+        "id": "frontend-unit",
+        "command": "node --test-reporter=tap --test tests/access-session.test.js tests/agent-inspection.test.js tests/collaboration.test.js tests/configuration-boundary.test.js tests/docker-config.test.js tests/execution-controls.test.js tests/execution-results.test.js tests/interaction-api.test.js tests/interaction-session.test.js tests/living-city.test.js tests/multi-agent-sync.test.js tests/npc-identity.test.js tests/npc-runtime-binding.test.js tests/npc-status.test.js tests/purposeful-city.test.js tests/runtime-api.test.js tests/runtime-sync.test.js tests/simulation.test.js tests/task-submission.test.js tests/theme.test.js",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 21682,
+        "outputSha256": "0ec386cda66de9f378e6c7a35bee7771c2f78ea8d35d5ecf3433e11b8ef88387",
+        "outputBytes": 64238,
+        "tests": {
+          "tests": 238,
+          "pass": 238,
+          "fail": 0,
+          "skipped": 0
+        },
+        "failedTests": []
+      },
+      {
+        "id": "database-uat",
+        "command": "node --test-reporter=tap --test apps/api/test/database.integration.cjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 348425,
+        "outputSha256": "d997658e70604933b4700b7c29fed0c6a5c8f4c6b908875dacd0d8a6188776a0",
+        "outputBytes": 764380,
+        "tests": {
+          "tests": 232,
+          "pass": 232,
+          "fail": 0,
+          "skipped": 0
+        },
+        "failedTests": []
+      },
+      {
+        "id": "database-roles",
+        "command": "node --test-reporter=tap --test apps/api/test/database-roles.integration.cjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 27364,
+        "outputSha256": "8d6544d4873edb9dca40f0f5c2847b641396e71b3c190e597cfb1b9b4608143f",
+        "outputBytes": 130429,
+        "tests": {
+          "tests": 45,
+          "pass": 45,
+          "fail": 0,
+          "skipped": 0
+        },
+        "failedTests": []
+      },
+      {
+        "id": "backup-restore",
+        "command": "node --test-reporter=tap --test apps/api/test/backup.test.cjs apps/api/test/backup.integration.cjs",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 14302,
+        "outputSha256": "1f15edfbd6beafa9f13e079204772d511f4363349c0915c4af55f25d1d33821f",
+        "outputBytes": 14475,
+        "tests": {
+          "tests": 16,
+          "pass": 16,
+          "fail": 0,
+          "skipped": 0
+        },
+        "failedTests": []
+      },
+      {
+        "id": "tls-city-drain",
+        "command": "node scripts/container-hardening.mjs --edge --runtime-drain --image-lock <evidence>/local-images.json",
+        "exitCode": 0,
+        "status": "PASS",
+        "durationMs": 140798,
+        "outputSha256": "b781f98b8daeade2350dff90fd09bb3057056471acb6d0ab71e3d522fd6731a8",
+        "outputBytes": 2660,
+        "tests": {},
+        "failedTests": []
+      }
+    ],
+    "scenarios": [],
+    "limitations": [
+      "No registry promotion or Git provenance verification",
+      "No previous deployed release rollback",
+      "No external production target, alert delivery or human UAT approval"
+    ],
+    "source": {
+      "kind": "WORKSPACE_CONTENT_SNAPSHOT_NOT_COMMIT",
+      "sha256": "13b61cb921af7e5d12506791818c81919537ea197041d26106a4132afc42b91a"
+    },
+    "artifact": {
+      "version": 1,
+      "mode": "LOCAL_SIMULATION",
+      "images": {
+        "api": "sha256:ed38ea351193defc177bbf572d7f202fcfeea89c711be82196f23455b4afd900",
+        "web": "sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e",
+        "edge": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2"
+      },
+      "identityKind": "DOCKER_CONFIG_ID_NOT_REGISTRY_DIGEST",
+      "sourceBinding": "NOT_VERIFIED_PREBUILT_LOCAL_IMAGES"
+    },
+    "containerChecks": [
+      "production missing schema fails before serving",
+      "T11 namespace diagnostics expose safe pool and runtime metadata; remote container denied",
+      "non-root read-only capability/process/resource limits; namespace-only readiness; public liveness",
+      "T10 external key file loads as non-root under production file permissions without enabling integration or printing its value; ambiguous direct/file input rejected",
+      "T06 verified TLS1.2/1.3, HTTP redirect/canonical host, static assets/CSP, actual bearer login/me/401/403/logout/reauth, native execution, polling after edge restart, CORS, body/page bounds and internal route rejection",
+      "T06 only edge publishes loopback test ports; edge/web cannot reach DB; web cannot directly reach API; readiness remains namespace-only",
+      "T06 real Chromium HTTPS CSP/city/login/session/polling/reconnect/logout regression",
+      "T06 protected TLS rotation, invalid pair leaves existing TLS intact, invalid host/unsafe key fail startup, production HSTS and maximum bearer/header bounds verified",
+      "T06 spoofed forwarding headers overwritten, canonical upstream Host, no implicit proxy trust, 429 login budget, safe outage/logging and merged Compose network/port checks",
+      "real local account session native Task/Execution success and logout; separate migrator/application credentials",
+      "T09 clean: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+      "T09 timeout: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+      "missing/world-readable secret files and TLS hostname mismatch rejected safely",
+      "database outage removes readiness without killing liveness; readiness recovers after durable PG restart",
+      "T11 actual PostgreSQL outage and recovery have categorized JSON transition logs; liveness remains available",
+      "bounded SIGTERM shutdown and API recreation preserve successful work and one execution",
+      "non-root static web assets/readiness; malformed public JSON fails startup; invalid live input cannot expose mounted secrets",
+      "production Compose configuration valid; no published API/database/worker ports; managed DB boundary retained",
+      "image content/history contain no test credentials, private env, host modules or build/test tooling"
+    ],
+    "executedChecks": "PASS",
+    "finishedAt": "2026-11-06T15:36:29.698Z"
+  },
+  "matrix": [
+    {
+      "id": "SEC-01",
+      "requirement": "Authentication and session security",
+      "status": "VERIFIED",
+      "actualEvidence": "Real local-account HTTP/PG/HTTPS browser; OIDC signed fixtures; no hosted issuer acceptance",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-02",
+      "requirement": "Owner/object authorization",
+      "status": "VERIFIED",
+      "actualEvidence": "Negative foreign-owner/header/viewer/Task/Execution/delegation/mapping/admin tests in actual guards and PG; private operator scope, not public multitenancy",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-03",
+      "requirement": "Input/error/resource bounds",
+      "status": "VERIFIED",
+      "actualEvidence": "Bounded malformed/unknown/oversized/page/cursor/login probes; no destructive external payload",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-04",
+      "requirement": "Container edge/private network",
+      "status": "VERIFIED",
+      "actualEvidence": "Locked prebuilt IDs; real TLS/private-port/forwarding/CORS/readiness/non-root/filesystem probes",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-05",
+      "requirement": "External connectivity",
+      "status": "VERIFIED",
+      "actualEvidence": "Local DNS/peer/TLS/redirect/byte/timeout transport fixtures; production external activation remains closed",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-06",
+      "requirement": "Trusted ingestion",
+      "status": "VERIFIED",
+      "actualEvidence": "Actual inbox/identity constraints, authority/revocation/duplicates/order/replay tests; no public signed webhook exists",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "SEC-07",
+      "requirement": "Supply chain",
+      "status": "PARTIALLY VERIFIED",
+      "actualEvidence": "npm prod audit and static YAML/SHA/read-only policy pass; container scanner/signatures/hosted protection unverified",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-01",
+      "requirement": "Authenticated Agent reads",
+      "status": "VERIFIED",
+      "actualEvidence": "Measured 32-operation closed-loop bursts at concurrency 1/4/8",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-02",
+      "requirement": "Task submission",
+      "status": "VERIFIED",
+      "actualEvidence": "Measured 16-operation bursts at concurrency 1/4/8 using restricted runtime credentials",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-03",
+      "requirement": "Native dispatch and polling",
+      "status": "VERIFIED",
+      "actualEvidence": "Measured 8 dispatches at concurrency 1/2/4 plus polls; 409 must be CAPACITY_EXCEEDED; one execution per Task and no remaining RUNNING",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-04",
+      "requirement": "Collaboration workload",
+      "status": "VERIFIED",
+      "actualEvidence": "4 parents, exactly 2 participants/session and fanout1; duplicate concurrency4; one child each; snapshot reads",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-05",
+      "requirement": "External event throughput",
+      "status": "VERIFIED",
+      "actualEvidence": "Service-level trusted observations with actual PG, no HTTP/provider network throughput claim",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-06",
+      "requirement": "Pool saturation and recovery",
+      "status": "VERIFIED",
+      "actualEvidence": "Owned three-client hold for 200ms, observed waiting, finite successful read burst, zero remaining waiters",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "CAP-07",
+      "requirement": "Frontend/city observations",
+      "status": "PARTIALLY VERIFIED",
+      "actualEvidence": "Actual headless rAF/heap/DOM and Node forced-GC fixtures; no sustained real-user or maximum visible-NPC claim",
+      "severityIfFailed": "MEDIUM",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "RES-01",
+      "requirement": "Runtime races/crash/drain",
+      "status": "VERIFIED",
+      "actualEvidence": "Actual isolated child crash and PID1 signals; durable quarantine/ownership/terminal invariants",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "RES-02",
+      "requirement": "Dependency interruption",
+      "status": "VERIFIED",
+      "actualEvidence": "Actual owned database stop/start and edge restart; external outage simulated; no cluster or region destruction",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "DR-01",
+      "requirement": "Backup integrity and restore",
+      "status": "VERIFIED",
+      "actualEvidence": "Encrypted custom dump, checksum/corruption/retention/failure gates plus actual separate restore",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "DR-02",
+      "requirement": "Source database loss",
+      "status": "PARTIALLY VERIFIED",
+      "actualEvidence": "Exact owned source database dropped; new target/roles restored all21 runtime tables and read API; server survives/native admission disabled",
+      "severityIfFailed": "CRITICAL",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "DR-03",
+      "requirement": "Recovery objectives",
+      "status": "PARTIALLY VERIFIED",
+      "actualEvidence": "Observed continuous local recovery and snapshot ages; no approved RPO/RTO or objective-met decision",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "OPS-01",
+      "requirement": "Observability/runbooks",
+      "status": "PARTIALLY VERIFIED",
+      "actualEvidence": "Real readiness/drain/recovery logs and monitor fixtures; no delivered alert or human incident tabletop",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "automated local"
+    },
+    {
+      "id": "GATE-01",
+      "requirement": "Approved artifact/deployment/rollback",
+      "status": "BLOCKED",
+      "actualEvidence": "No canonical Git source/candidate/registry/target/approvers; fixture plan-only gates are not deployment",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "infrastructure/manual gate"
+    },
+    {
+      "id": "GATE-02",
+      "requirement": "Operational acceptance",
+      "status": "BLOCKED",
+      "actualEvidence": "No approved workload/recovery/cost targets, off-host/key drill, responder/alert delivery or human signoff",
+      "severityIfFailed": "HIGH",
+      "environment": "ISOLATED LOCAL; synthetic data only",
+      "preconditions": "Local Docker, fresh run-labelled database/container; no production target",
+      "procedureReference": "security-capacity-recovery.md verification matrix and commands",
+      "expected": "Existing security/data-integrity invariants hold; measurements are accurately scoped",
+      "evidenceRequirements": "Actual command, exit code, counts, observations; do not infer unexecuted operations",
+      "cleanup": "Owning harness validates exact random labels/names and removes only its resources",
+      "type": "infrastructure/manual gate"
+    }
+  ],
+  "capacity": {
+    "status": "PASS",
+    "environment": "T13_DISPOSABLE_DATABASE_HARNESS",
+    "startedAt": "2026-11-06T15:36:36.203Z",
+    "hardware": {
+      "platform": "win32",
+      "architecture": "x64",
+      "hostCpuModel": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+      "hostLogicalCpus": 12,
+      "hostMemoryBytes": 16541872128
+    },
+    "limits": {
+      "postgresCpu": 1,
+      "postgresMemoryBytes": 536870912,
+      "pids": 128,
+      "apiPool": 3,
+      "maxConcurrency": 8,
+      "maxOperationsPerStage": 64,
+      "stageDeadlineMs": 20000,
+      "nodeRssStopBytes": 805306368
+    },
+    "stages": [
+      {
+        "name": "agent-reads-c1",
+        "startedAt": "2026-11-06T15:36:38.318Z",
+        "finishedAt": "2026-11-06T15:36:38.470Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 151.8724000000002,
+        "requestsPerSecond": 210.70319557733967,
+        "successfulRequestsPerSecond": 210.70319557733967,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 2.9007000000001426,
+          "p95Ms": 9.07129999999961,
+          "maxMs": 38.977999999999156
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 2.9007000000001426,
+          "p95Ms": 9.07129999999961,
+          "maxMs": 38.977999999999156
+        },
+        "cpuCorePercent": 154.07671176592962,
+        "peakRssBytes": 139501568,
+        "maxPoolConnections": 1,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "agent-reads-c4",
+        "startedAt": "2026-11-06T15:36:38.470Z",
+        "finishedAt": "2026-11-06T15:36:38.535Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 64.90800000000127,
+        "requestsPerSecond": 493.0054846860075,
+        "successfulRequestsPerSecond": 493.0054846860075,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 6.871999999999389,
+          "p95Ms": 26.33140000000094,
+          "maxMs": 27.659499999999753
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 6.871999999999389,
+          "p95Ms": 26.33140000000094,
+          "maxMs": 27.659499999999753
+        },
+        "cpuCorePercent": 120.17008689221433,
+        "peakRssBytes": 129761280,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "agent-reads-c8",
+        "startedAt": "2026-11-06T15:36:38.535Z",
+        "finishedAt": "2026-11-06T15:36:38.594Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 59.07370000000083,
+        "requestsPerSecond": 541.6962201453363,
+        "successfulRequestsPerSecond": 541.6962201453363,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 14.316899999999805,
+          "p95Ms": 19.086699999999837,
+          "maxMs": 21.024499999999534
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 14.316899999999805,
+          "p95Ms": 19.086699999999837,
+          "maxMs": 21.024499999999534
+        },
+        "cpuCorePercent": 132.03845366042572,
+        "peakRssBytes": 140558336,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 2,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "task-submit-c1",
+        "startedAt": "2026-11-06T15:36:38.594Z",
+        "finishedAt": "2026-11-06T15:36:38.923Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "201": 16
+        },
+        "elapsedMs": 328.259399999999,
+        "requestsPerSecond": 48.741940063255,
+        "successfulRequestsPerSecond": 48.741940063255,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 17.723700000000463,
+          "p95Ms": 60.440200000000914,
+          "maxMs": 60.440200000000914
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 17.723700000000463,
+          "p95Ms": 60.440200000000914,
+          "maxMs": 60.440200000000914
+        },
+        "cpuCorePercent": 52.39758556799913,
+        "peakRssBytes": 147484672,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "task-submit-c4",
+        "startedAt": "2026-11-06T15:36:38.923Z",
+        "finishedAt": "2026-11-06T15:36:39.071Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "201": 16
+        },
+        "elapsedMs": 148.02160000000003,
+        "requestsPerSecond": 108.09233247039619,
+        "successfulRequestsPerSecond": 108.09233247039619,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 33.83760000000075,
+          "p95Ms": 52.50680000000102,
+          "maxMs": 52.50680000000102
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 33.83760000000075,
+          "p95Ms": 52.50680000000102,
+          "maxMs": 52.50680000000102
+        },
+        "cpuCorePercent": 106.06560123657627,
+        "peakRssBytes": 156438528,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "task-submit-c8",
+        "startedAt": "2026-11-06T15:36:39.071Z",
+        "finishedAt": "2026-11-06T15:36:39.207Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "201": 16
+        },
+        "elapsedMs": 136.2484999999997,
+        "requestsPerSecond": 117.43248549525343,
+        "successfulRequestsPerSecond": 117.43248549525343,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 57.987700000001496,
+          "p95Ms": 78.77160000000003,
+          "maxMs": 78.77160000000003
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 57.987700000001496,
+          "p95Ms": 78.77160000000003,
+          "maxMs": 78.77160000000003
+        },
+        "cpuCorePercent": 91.01017625882139,
+        "peakRssBytes": 159543296,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 5,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "native-dispatch-c1",
+        "startedAt": "2026-11-06T15:36:39.207Z",
+        "finishedAt": "2026-11-06T15:36:40.242Z",
+        "requested": 8,
+        "completed": 8,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "200": 8
+        },
+        "elapsedMs": 1034.6844,
+        "requestsPerSecond": 7.731826245761508,
+        "successfulRequestsPerSecond": 7.731826245761508,
+        "latency": {
+          "samples": 8,
+          "p50Ms": 122.68379999999888,
+          "p95Ms": 151.09779999999955,
+          "maxMs": 151.09779999999955
+        },
+        "acceptedLatency": {
+          "samples": 8,
+          "p50Ms": 122.68379999999888,
+          "p95Ms": 151.09779999999955,
+          "maxMs": 151.09779999999955
+        },
+        "cpuCorePercent": 45.327831365776845,
+        "peakRssBytes": 164958208,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "native-dispatch-c2",
+        "startedAt": "2026-11-06T15:36:40.242Z",
+        "finishedAt": "2026-11-06T15:36:40.381Z",
+        "requested": 8,
+        "completed": 8,
+        "concurrency": 2,
+        "peakConcurrent": 2,
+        "statuses": {
+          "200": 1,
+          "409": 7
+        },
+        "elapsedMs": 139.5049999999992,
+        "requestsPerSecond": 57.34561485251457,
+        "successfulRequestsPerSecond": 7.1682018565643215,
+        "latency": {
+          "samples": 8,
+          "p50Ms": 5.585499999999229,
+          "p95Ms": 139.41489999999976,
+          "maxMs": 139.41489999999976
+        },
+        "acceptedLatency": {
+          "samples": 1,
+          "p50Ms": 139.41489999999976,
+          "p95Ms": 139.41489999999976,
+          "maxMs": 139.41489999999976
+        },
+        "cpuCorePercent": 45.15967169635523,
+        "peakRssBytes": 165699584,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "native-dispatch-c4",
+        "startedAt": "2026-11-06T15:36:40.381Z",
+        "finishedAt": "2026-11-06T15:36:40.513Z",
+        "requested": 8,
+        "completed": 8,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 1,
+          "409": 7
+        },
+        "elapsedMs": 131.3667000000005,
+        "requestsPerSecond": 60.898233722853426,
+        "successfulRequestsPerSecond": 7.612279215356678,
+        "latency": {
+          "samples": 8,
+          "p50Ms": 8.045899999999165,
+          "p95Ms": 131.29500000000007,
+          "maxMs": 131.29500000000007
+        },
+        "acceptedLatency": {
+          "samples": 1,
+          "p50Ms": 131.29500000000007,
+          "p95Ms": 131.29500000000007,
+          "maxMs": 131.29500000000007
+        },
+        "cpuCorePercent": 71.5554246243528,
+        "peakRssBytes": 167657472,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "execution-poll-c8",
+        "startedAt": "2026-11-06T15:36:40.513Z",
+        "finishedAt": "2026-11-06T15:36:40.577Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 64.59170000000086,
+        "requestsPerSecond": 495.41969014594093,
+        "successfulRequestsPerSecond": 495.41969014594093,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 15.786099999999351,
+          "p95Ms": 17.543499999999767,
+          "maxMs": 18.452400000000125
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 15.786099999999351,
+          "p95Ms": 17.543499999999767,
+          "maxMs": 18.452400000000125
+        },
+        "cpuCorePercent": 95.98756496577606,
+        "peakRssBytes": 167272448,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 5,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "delegation-duplicate-burst-0",
+        "startedAt": "2026-11-06T15:36:40.844Z",
+        "finishedAt": "2026-11-06T15:36:41.206Z",
+        "requested": 4,
+        "completed": 4,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 2,
+          "202": 2
+        },
+        "elapsedMs": 361.9421000000002,
+        "requestsPerSecond": 11.051491384948028,
+        "successfulRequestsPerSecond": 11.051491384948028,
+        "latency": {
+          "samples": 4,
+          "p50Ms": 284.78310000000056,
+          "p95Ms": 361.84749999999985,
+          "maxMs": 361.84749999999985
+        },
+        "acceptedLatency": {
+          "samples": 4,
+          "p50Ms": 284.78310000000056,
+          "p95Ms": 361.84749999999985,
+          "maxMs": 361.84749999999985
+        },
+        "cpuCorePercent": 56.36260606323494,
+        "peakRssBytes": 164265984,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "delegation-duplicate-burst-1",
+        "startedAt": "2026-11-06T15:36:41.462Z",
+        "finishedAt": "2026-11-06T15:36:41.807Z",
+        "requested": 4,
+        "completed": 4,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 2,
+          "202": 2
+        },
+        "elapsedMs": 345.23649999999907,
+        "requestsPerSecond": 11.586260433065481,
+        "successfulRequestsPerSecond": 11.586260433065481,
+        "latency": {
+          "samples": 4,
+          "p50Ms": 272.40779999999904,
+          "p95Ms": 345.1349000000009,
+          "maxMs": 345.1349000000009
+        },
+        "acceptedLatency": {
+          "samples": 4,
+          "p50Ms": 272.40779999999904,
+          "p95Ms": 345.1349000000009,
+          "maxMs": 345.1349000000009
+        },
+        "cpuCorePercent": 45.18641568895537,
+        "peakRssBytes": 165462016,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "delegation-duplicate-burst-2",
+        "startedAt": "2026-11-06T15:36:42.039Z",
+        "finishedAt": "2026-11-06T15:36:42.381Z",
+        "requested": 4,
+        "completed": 4,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 2,
+          "202": 2
+        },
+        "elapsedMs": 342.5426000000007,
+        "requestsPerSecond": 11.677379689416709,
+        "successfulRequestsPerSecond": 11.677379689416709,
+        "latency": {
+          "samples": 4,
+          "p50Ms": 274.52640000000065,
+          "p95Ms": 342.41369999999915,
+          "maxMs": 342.41369999999915
+        },
+        "acceptedLatency": {
+          "samples": 4,
+          "p50Ms": 274.52640000000065,
+          "p95Ms": 342.41369999999915,
+          "maxMs": 342.41369999999915
+        },
+        "cpuCorePercent": 31.528925161425114,
+        "peakRssBytes": 166621184,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "delegation-duplicate-burst-3",
+        "startedAt": "2026-11-06T15:36:42.625Z",
+        "finishedAt": "2026-11-06T15:36:42.987Z",
+        "requested": 4,
+        "completed": 4,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 2,
+          "202": 2
+        },
+        "elapsedMs": 361.7515000000003,
+        "requestsPerSecond": 11.057314206022633,
+        "successfulRequestsPerSecond": 11.057314206022633,
+        "latency": {
+          "samples": 4,
+          "p50Ms": 295.85089999999946,
+          "p95Ms": 361.6718000000001,
+          "maxMs": 361.6718000000001
+        },
+        "acceptedLatency": {
+          "samples": 4,
+          "p50Ms": 295.85089999999946,
+          "p95Ms": 361.6718000000001,
+          "maxMs": 361.6718000000001
+        },
+        "cpuCorePercent": 64.6852881052324,
+        "peakRssBytes": 169672704,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "collaboration-snapshot-c1",
+        "startedAt": "2026-11-06T15:36:43.020Z",
+        "finishedAt": "2026-11-06T15:36:43.437Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 417.1697000000004,
+        "requestsPerSecond": 76.70739269894236,
+        "successfulRequestsPerSecond": 76.70739269894236,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 12.659599999999045,
+          "p95Ms": 15.039099999999962,
+          "maxMs": 15.3153999999995
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 12.659599999999045,
+          "p95Ms": 15.039099999999962,
+          "maxMs": 15.3153999999995
+        },
+        "cpuCorePercent": 52.49662187833868,
+        "peakRssBytes": 170135552,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "collaboration-snapshot-c4",
+        "startedAt": "2026-11-06T15:36:43.437Z",
+        "finishedAt": "2026-11-06T15:36:43.606Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 168.68149999999878,
+        "requestsPerSecond": 189.70663647169505,
+        "successfulRequestsPerSecond": 189.70663647169505,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 17.998900000000503,
+          "p95Ms": 28.5583000000006,
+          "maxMs": 29.722799999999552
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 17.998900000000503,
+          "p95Ms": 28.5583000000006,
+          "maxMs": 29.722799999999552
+        },
+        "cpuCorePercent": 111.45264892712086,
+        "peakRssBytes": 184725504,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 1,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "collaboration-snapshot-c8",
+        "startedAt": "2026-11-06T15:36:43.606Z",
+        "finishedAt": "2026-11-06T15:36:43.791Z",
+        "requested": 32,
+        "completed": 32,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 32
+        },
+        "elapsedMs": 185.03490000000056,
+        "requestsPerSecond": 172.94034801002354,
+        "successfulRequestsPerSecond": 172.94034801002354,
+        "latency": {
+          "samples": 32,
+          "p50Ms": 43.265800000001036,
+          "p95Ms": 52.584100000000035,
+          "maxMs": 54.1346999999987
+        },
+        "acceptedLatency": {
+          "samples": 32,
+          "p50Ms": 43.265800000001036,
+          "p95Ms": 52.584100000000035,
+          "maxMs": 54.1346999999987
+        },
+        "cpuCorePercent": 101.0620158683575,
+        "peakRssBytes": 199761920,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 5,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "ingestion-service-c1",
+        "startedAt": "2026-11-06T15:36:43.827Z",
+        "finishedAt": "2026-11-06T15:36:44.327Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "200": 16
+        },
+        "elapsedMs": 499.452299999999,
+        "requestsPerSecond": 32.0350912389432,
+        "successfulRequestsPerSecond": 32.0350912389432,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 30.15520000000106,
+          "p95Ms": 54.68970000000081,
+          "maxMs": 54.68970000000081
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 30.15520000000106,
+          "p95Ms": 54.68970000000081,
+          "maxMs": 54.68970000000081
+        },
+        "cpuCorePercent": 21.823905906530054,
+        "peakRssBytes": 204267520,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "ingestion-service-c4",
+        "startedAt": "2026-11-06T15:36:44.327Z",
+        "finishedAt": "2026-11-06T15:36:44.780Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 4,
+        "peakConcurrent": 4,
+        "statuses": {
+          "200": 16
+        },
+        "elapsedMs": 452.9932000000008,
+        "requestsPerSecond": 35.32061849935048,
+        "successfulRequestsPerSecond": 35.32061849935048,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 109.16680000000088,
+          "p95Ms": 120.66319999999905,
+          "maxMs": 120.66319999999905
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 109.16680000000088,
+          "p95Ms": 120.66319999999905,
+          "maxMs": 120.66319999999905
+        },
+        "cpuCorePercent": 24.282925218303454,
+        "peakRssBytes": 225099776,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 3,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "ingestion-service-c8",
+        "startedAt": "2026-11-06T15:36:44.780Z",
+        "finishedAt": "2026-11-06T15:36:45.223Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 16
+        },
+        "elapsedMs": 442.9944999999989,
+        "requestsPerSecond": 36.117829905337516,
+        "successfulRequestsPerSecond": 36.117829905337516,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 218.59319999999934,
+          "p95Ms": 227.3132999999998,
+          "maxMs": 227.3132999999998
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 218.59319999999934,
+          "p95Ms": 227.3132999999998,
+          "maxMs": 227.3132999999998
+        },
+        "cpuCorePercent": 38.60093071132947,
+        "peakRssBytes": 233676800,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 7,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "ingestion-identical-replay-c8",
+        "startedAt": "2026-11-06T15:36:45.223Z",
+        "finishedAt": "2026-11-06T15:36:45.514Z",
+        "requested": 16,
+        "completed": 16,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 16
+        },
+        "elapsedMs": 291.22360000000117,
+        "requestsPerSecond": 54.94060234129354,
+        "successfulRequestsPerSecond": 54.94060234129354,
+        "latency": {
+          "samples": 16,
+          "p50Ms": 141.54730000000018,
+          "p95Ms": 158.8809000000001,
+          "maxMs": 158.8809000000001
+        },
+        "acceptedLatency": {
+          "samples": 16,
+          "p50Ms": 141.54730000000018,
+          "p95Ms": 158.8809000000001,
+          "maxMs": 158.8809000000001
+        },
+        "cpuCorePercent": 42.92234557913559,
+        "peakRssBytes": 233873408,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 7,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "controlled-pool-saturation",
+        "startedAt": "2026-11-06T15:36:45.516Z",
+        "finishedAt": "2026-11-06T15:36:45.746Z",
+        "requested": 24,
+        "completed": 24,
+        "concurrency": 8,
+        "peakConcurrent": 8,
+        "statuses": {
+          "200": 24
+        },
+        "elapsedMs": 230.25940000000082,
+        "requestsPerSecond": 104.2302724666177,
+        "successfulRequestsPerSecond": 104.2302724666177,
+        "latency": {
+          "samples": 24,
+          "p50Ms": 8.881999999999607,
+          "p95Ms": 214.11529999999948,
+          "maxMs": 215.1988999999994
+        },
+        "acceptedLatency": {
+          "samples": 24,
+          "p50Ms": 8.881999999999607,
+          "p95Ms": 214.11529999999948,
+          "maxMs": 215.1988999999994
+        },
+        "cpuCorePercent": 26.926153720542906,
+        "peakRssBytes": 231489536,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 8,
+        "stopped": false,
+        "status": "PASS"
+      },
+      {
+        "name": "after-load-recovery",
+        "startedAt": "2026-11-06T15:36:45.746Z",
+        "finishedAt": "2026-11-06T15:36:45.761Z",
+        "requested": 8,
+        "completed": 8,
+        "concurrency": 1,
+        "peakConcurrent": 1,
+        "statuses": {
+          "200": 8
+        },
+        "elapsedMs": 14.953800000001138,
+        "requestsPerSecond": 534.9810750444296,
+        "successfulRequestsPerSecond": 534.9810750444296,
+        "latency": {
+          "samples": 8,
+          "p50Ms": 1.85740000000078,
+          "p95Ms": 2.1152000000001863,
+          "maxMs": 2.1152000000001863
+        },
+        "acceptedLatency": {
+          "samples": 8,
+          "p50Ms": 1.85740000000078,
+          "p95Ms": 2.1152000000001863,
+          "maxMs": 2.1152000000001863
+        },
+        "cpuCorePercent": 213.99243001777185,
+        "peakRssBytes": 232484864,
+        "maxPoolConnections": 3,
+        "maxPoolWaiting": 0,
+        "stopped": false,
+        "status": "PASS"
+      }
+    ],
+    "scope": "Host API and closed-loop generator share one Node process; not production-edge throughput, steady-state capacity or whole-host CPU. PostgreSQL is a limited disposable container. No broker/cache/worker exists.",
+    "postgresBefore": {
+      "cpuPercent": "3.37%",
+      "memory": "53.79MiB / 512MiB",
+      "pids": "9",
+      "scope": "One Docker statistics interval, not a sampled peak"
+    },
+    "collaborationShape": {
+      "parents": 4,
+      "participantsPerSession": 2,
+      "fanoutPerParent": 1,
+      "duplicateActivationConcurrency": 4,
+      "duplicateEffectiveChildren": 0
+    },
+    "postgresAfter": {
+      "cpuPercent": "3.83%",
+      "memory": "69.2MiB / 512MiB",
+      "pids": "10",
+      "scope": "One Docker statistics interval, not a sampled peak"
+    },
+    "databaseGrowth": {
+      "beforeBytes": 9442995,
+      "afterBytes": 11122355,
+      "scope": "Whole synthetic database physical size; not a per-user growth forecast"
+    },
+    "runtimePool": {
+      "configured": true,
+      "total": 3,
+      "idle": 3,
+      "waiting": 0,
+      "ended": false
+    },
+    "finishedAt": "2026-11-06T15:36:47.328Z"
+  },
+  "backupObservations": {
+    "backupMs": 1060,
+    "bytes": 155025,
+    "backupRestoreTLS": "verify-full with disposable CA; invalid client CA rejected",
+    "restoreMs": 800,
+    "rows": 109,
+    "format": "PG17 custom archive / AES-256-GCM",
+    "scope": "synthetic isolated local restore; not a production RPO/RTO guarantee"
+  },
+  "disasterRecovery": {
+    "startedAt": "2026-11-06T15:37:01.173Z",
+    "approvedRpo": null,
+    "approvedRto": null,
+    "snapshotAt": "2026-11-06T15:36:56.276Z",
+    "sourceDatabaseDeleted": true,
+    "lossConfirmedAt": "2026-11-06T15:37:02.026Z",
+    "snapshotAgeAtLossMs": 5750,
+    "provisionAndRestoreMs": 1819,
+    "applicationReadReadyMs": 1935,
+    "finishedAt": "2026-11-06T15:37:03.108Z",
+    "snapshotAgeAtReadReadyMs": 6832,
+    "observedPostSnapshotMarkerRowsLost": 1,
+    "backupBytes": 155025,
+    "restoredTables": 21,
+    "status": "PASS",
+    "scope": "Continuous host-clock interval: close source pool, delete only labelled synthetic source database, create target/roles, decrypt/restore, compare every runtime table and read API. Same PG server survives; not host/region loss, browser access, native resume or an approved production RPO/RTO. One known post-snapshot marker is absent; no zero-data-loss claim."
+  },
+  "frontend": {
+    "nodeFixtureProfile": {
+      "status": "PASS",
+      "platform": "win32",
+      "arch": "x64",
+      "node": "v24.9.0",
+      "fixture": "Actual frontend owner/client with deterministic HTTP boundary and forced GC; not browser FPS or production throughput",
+      "scenarios": [
+        {
+          "mappedAgents": 1,
+          "selections": 20,
+          "duplicateSweepSignals": 20,
+          "requests": {
+            "agent": 25,
+            "snapshot": 24,
+            "events": 16
+          },
+          "notifications": 163,
+          "postDisposeNotifications": 0,
+          "pendingRequestTimers": 0,
+          "durationMs": 87.08,
+          "retainedHeapDeltaBytes": 2721984
+        },
+        {
+          "mappedAgents": 5,
+          "selections": 100,
+          "duplicateSweepSignals": 100,
+          "requests": {
+            "agent": 200,
+            "snapshot": 100,
+            "events": 100
+          },
+          "notifications": 1001,
+          "postDisposeNotifications": 0,
+          "pendingRequestTimers": 0,
+          "durationMs": 80.14,
+          "retainedHeapDeltaBytes": 185904
+        },
+        {
+          "mappedAgents": 20,
+          "selections": 400,
+          "duplicateSweepSignals": 400,
+          "requests": {
+            "agent": 800,
+            "snapshot": 400,
+            "events": 400
+          },
+          "notifications": 4001,
+          "postDisposeNotifications": 0,
+          "pendingRequestTimers": 0,
+          "durationMs": 275.82,
+          "retainedHeapDeltaBytes": 471312
+        }
+      ],
+      "limits": "Observed memory/time only, no capacity/zero-allocation claim. One selected NPC at a time; no per-NPC connection."
+    },
+    "browserProfile": {
+      "status": "PASS",
+      "browser": "Chrome/156.0.8078.80",
+      "checkpoints": [
+        "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+        "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+        "Shared runtime integration loads disabled and credential-free without city API requests",
+        "P4 T04 real browser fixture: existing inspector form, safe text, eligibility, validation, duplicate guard, close/reopen, saved-not-started reference, exact-key lost-response recovery and unbound preservation",
+        "P5 T10 collaboration DOM: memberships, multiple directed relationships, native detail permission, external freshness/XSS, history, outage/reconnect, focus, mobile, Agent/session isolation",
+        "T06 mocked transport: real T04/T05 pipeline, selected NPC inspector, Canvas running/waiting/completed/failed/stale/recovery and binding removal",
+        "T07 projection-only inspection: current/historical selection, single outcome timeline, expansion/focus preservation, NPC switch isolation and authorization cleanup",
+        "T08 mocked multi-Agent outage: independent A/B states, selection during disconnection and automatic authoritative poll reconciliation",
+        "NPC runtime binding sidecar indexes four stable slots without creating NPCs or backend requests",
+        "Camera zoom/focus/recenter and help/developer panels",
+        "Existing simulated mission start, pause, resume and reset",
+        "Mobile reload and viewport",
+        "T09 measured frame/heap/DOM samples and 300 integration mount/dispose cycles",
+        "T04 local login, /me, 403 isolation, 401 expiry, cleanup, late-response rejection, reauthentication, cross-tab logout and OIDC token-only UI"
+      ],
+      "resourceRequests": 214,
+      "exceptions": 0,
+      "phase3Profile": {
+        "kind": "Headless Chromium; sampled rAF intervals, CDP task/heap/DOM counters; mocked provider-neutral activity transport",
+        "samples": [
+          {
+            "projectionAgents": 0,
+            "boundExistingNpcs": 0,
+            "sampledFrames": 120,
+            "meanFrameMs": 29.16583333333333,
+            "p95FrameMs": 41.600000000000364,
+            "sampledFps": 34.28669390554016,
+            "simulationTime": 5.4498999999999915,
+            "decorativeNpcCount": 7,
+            "camera": {
+              "x": 888,
+              "y": 728,
+              "zoom": 0.7758620689655172
+            },
+            "sceneRenderMsEwma": 2.818710332922113,
+            "taskDurationSeconds": 0.6751019999999999,
+            "scriptDurationSeconds": 0.559102,
+            "heapUsedBytes": 50273016,
+            "dom": {
+              "documents": 3,
+              "nodes": 1890,
+              "jsEventListeners": 126
+            },
+            "applicationFpsReadout": 37
+          },
+          {
+            "projectionAgents": 1,
+            "boundExistingNpcs": 1,
+            "sampledFrames": 120,
+            "meanFrameMs": 29.02833333333333,
+            "p95FrameMs": 41.69999999999891,
+            "sampledFps": 34.449101452603784,
+            "simulationTime": 8.925000000000027,
+            "decorativeNpcCount": 7,
+            "camera": {
+              "x": 888,
+              "y": 728,
+              "zoom": 0.7758620689655172
+            },
+            "sceneRenderMsEwma": 3.2276479418030974,
+            "taskDurationSeconds": 0.6630099999999999,
+            "scriptDurationSeconds": 0.5148199999999999,
+            "heapUsedBytes": 42978992,
+            "dom": {
+              "documents": 3,
+              "nodes": 3412,
+              "jsEventListeners": 146
+            },
+            "applicationFpsReadout": 36
+          },
+          {
+            "projectionAgents": 10,
+            "boundExistingNpcs": 4,
+            "sampledFrames": 120,
+            "meanFrameMs": 26.041666666666668,
+            "p95FrameMs": 33.400000000001455,
+            "sampledFps": 38.4,
+            "simulationTime": 12.150000000000146,
+            "decorativeNpcCount": 7,
+            "camera": {
+              "x": 888,
+              "y": 728,
+              "zoom": 0.7758620689655172
+            },
+            "sceneRenderMsEwma": 2.7911823935042666,
+            "taskDurationSeconds": 0.5742900000000004,
+            "scriptDurationSeconds": 0.45375200000000016,
+            "heapUsedBytes": 56659980,
+            "dom": {
+              "documents": 3,
+              "nodes": 4591,
+              "jsEventListeners": 158
+            },
+            "applicationFpsReadout": 37
+          },
+          {
+            "projectionAgents": 20,
+            "boundExistingNpcs": 4,
+            "sampledFrames": 120,
+            "meanFrameMs": 28.19416666666666,
+            "p95FrameMs": 33.400000000001455,
+            "sampledFps": 35.4683297372388,
+            "simulationTime": 15.633400000000279,
+            "decorativeNpcCount": 7,
+            "camera": {
+              "x": 888,
+              "y": 728,
+              "zoom": 0.7758620689655172
+            },
+            "sceneRenderMsEwma": 2.8297793386355905,
+            "taskDurationSeconds": 0.6542240000000001,
+            "scriptDurationSeconds": 0.4824569999999997,
+            "heapUsedBytes": 14772936,
+            "dom": {
+              "documents": 1,
+              "nodes": 2004,
+              "jsEventListeners": 132
+            },
+            "applicationFpsReadout": 34
+          }
+        ],
+        "requestsDuringForegroundSamples": 7,
+        "heap": [
+          {
+            "cycles": 0,
+            "usedSize": 5352956,
+            "totalSize": 6443008,
+            "embedderHeapUsedSize": 2847952,
+            "backingStorageSize": 2313834,
+            "dom": {
+              "documents": 1,
+              "nodes": 1077,
+              "jsEventListeners": 124
+            }
+          },
+          {
+            "cycles": 100,
+            "usedSize": 5231148,
+            "totalSize": 5918720,
+            "embedderHeapUsedSize": 2558032,
+            "backingStorageSize": 2313834,
+            "dom": {
+              "documents": 1,
+              "nodes": 927,
+              "jsEventListeners": 124
+            }
+          },
+          {
+            "cycles": 200,
+            "usedSize": 5253360,
+            "totalSize": 5918720,
+            "embedderHeapUsedSize": 2564056,
+            "backingStorageSize": 2313834,
+            "dom": {
+              "documents": 1,
+              "nodes": 927,
+              "jsEventListeners": 124
+            }
+          },
+          {
+            "cycles": 300,
+            "usedSize": 5267076,
+            "totalSize": 6180864,
+            "embedderHeapUsedSize": 2522736,
+            "backingStorageSize": 2313834,
+            "dom": {
+              "documents": 1,
+              "nodes": 927,
+              "jsEventListeners": 124
+            }
+          }
+        ],
+        "limitations": "Four existing visible residents; up to 20 projections. No 25/50/100 linked NPC capacity, long soak, native/GPU memory, or strict comparable-world FPS guarantee."
+      },
+      "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+    },
+    "browserProfileCommand": "$env:BROWSER_PROFILE_PHASE3='true'; node scripts/browser-smoke.mjs",
+    "browserProfileExitCode": 0,
+    "scope": "Finite headless synthetic projection run with concurrent background verification; not production FPS/capacity"
+  },
+  "dependencyAudit": {
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 121,
+        "dev": 129,
+        "optional": 80,
+        "peer": 4,
+        "peerOptional": 0,
+        "total": 252
+      }
+    },
+    "vulnerabilities": []
+  },
+  "findings": [
+    {
+      "id": "H-01",
+      "category": "Supply chain",
+      "severity": "HIGH",
+      "affectedComponent": "Supply chain",
+      "finding": "Container CVE and signed release provenance unverified",
+      "reproduction": "No trivy/grype executable or installed Trivy image; no approved T12 scanner/candidate",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "Unknown container/base/build-tool advisories and source-to-image trust",
+      "recommendedRemediation": "Use approved scanner/version/database and canonical candidate; review findings before promotion",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "H-02",
+      "category": "Release",
+      "severity": "HIGH",
+      "affectedComponent": "Release",
+      "finding": "Actual target/rollback/protection evidence missing",
+      "reproduction": "T12/T13 remain closed; synthetic rollback manifest tests only",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "Cannot accept production artifact replacement/recovery",
+      "recommendedRemediation": "Approve isolated target, prior compatible tuple and reviewer protection; rehearse real replacement",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "H-03",
+      "category": "Capacity",
+      "severity": "HIGH",
+      "affectedComponent": "Capacity",
+      "finding": "No approved workload/latency/storage/cost targets or steady-state soak",
+      "reproduction": "Only finite closed-loop bursts and controlled pool saturation executed",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "No production sizing or capacity acceptance possible",
+      "recommendedRemediation": "Approve D10 workload and budgets, then run representative isolated steady-state/soak tests",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "H-04",
+      "category": "Disaster recovery",
+      "severity": "HIGH",
+      "affectedComponent": "Disaster recovery",
+      "finding": "Off-host/full-host/key recovery and objectives unapproved",
+      "reproduction": "DR test retains same PostgreSQL server and local encrypted mirror; approvedRpo/Rto null",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "Host loss and backup/key availability remain unproven",
+      "recommendedRemediation": "Approve recovery objectives, protection/key custody and exercise actual hosting failure domain",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "H-05",
+      "category": "Operations",
+      "severity": "HIGH",
+      "affectedComponent": "Operations",
+      "finding": "Responder ownership and external alert delivery missing",
+      "reproduction": "T11 SMTP fixtures only; no approved live receiver/owner",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "Incidents may not be detected/escalated operationally",
+      "recommendedRemediation": "Name responders, configure protected sender/receiver, verify receipt and incident runbooks",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "H-06",
+      "category": "Recovery security",
+      "severity": "HIGH",
+      "affectedComponent": "Recovery security",
+      "finding": "Post-restore revocation/effect reconciliation cutover not rehearsed",
+      "reproduction": "Restored auth state may roll back revocation; native admission is intentionally disabled in drill",
+      "evidence": "verification matrix and recorded scope/tool results",
+      "impact": "Unsafe reopening could revive access or duplicate uncertain effects",
+      "recommendedRemediation": "Keep access/admission closed; approve and exercise session invalidation/effect reconciliation before cutover",
+      "releaseBlocking": true,
+      "status": "OPEN / EVIDENCE GAP"
+    },
+    {
+      "id": "M-01",
+      "category": "Human acceptance",
+      "severity": "MEDIUM",
+      "affectedComponent": "UAT/incident response",
+      "finding": "No manual visual/accessibility/incident acceptance; no browser read on the particular source-loss target",
+      "reproduction": "No manual owner/signoff or post-loss browser test recorded",
+      "evidence": "notRun",
+      "impact": "Manual and complete cutover acceptance incomplete",
+      "recommendedRemediation": "Named operator UAT/tabletop plus isolated recovery browser signoff",
+      "releaseBlocking": true,
+      "status": "NOT VERIFIED"
+    },
+    {
+      "id": "R-01",
+      "category": "Verification harness",
+      "severity": "MEDIUM",
+      "affectedComponent": "T14 output-path guard",
+      "finding": "Two-dot checkout child could pass startsWith parent test",
+      "reproduction": "Checkout parent named ..t14-output-test-*",
+      "evidence": "rehearsal-output.test.cjs; five focused helper/guard tests passed after measurement",
+      "impact": "Could place synthetic scratch/evidence inside source checkout; no actual exposure occurred",
+      "recommendedRemediation": "Exact parent component check with realpath; implemented",
+      "releaseBlocking": false,
+      "status": "RESOLVED"
+    }
+  ],
+  "exploratoryFailedRuns": [
+    {
+      "command": "opt-in probe; see log/test source",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": "%TEMP%/elyqreth-t14-capacity-debug.log",
+      "cause": "Provisioning setup omitted the existing dedicated migrator grant step; strict runtime access check rejected startup",
+      "remediation": "Corrected only new test inputs/workflow; existing guards unchanged"
+    },
+    {
+      "command": "opt-in probe; see log/test source",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": "%TEMP%/elyqreth-t14-capacity-debug2.log",
+      "cause": "New fixture requested three participants; existing native API permits exactly two",
+      "remediation": "Corrected only new test inputs/workflow; existing guards unchanged"
+    },
+    {
+      "command": "opt-in probe; see log/test source",
+      "exitCode": 1,
+      "status": "FAIL",
+      "evidence": "%TEMP%/elyqreth-t14-dr-debug.log",
+      "cause": "New target name violated the existing isolated restore regex; guard rejected it",
+      "remediation": "Corrected only new test inputs/workflow; existing guards unchanged"
+    }
+  ],
+  "supplemental": [
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "status": "PASS",
+      "evidence": "%TEMP%/elyqreth-t14-lint.log"
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/rehearsal-output.test.cjs apps/api/test/capacity-tools.test.cjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "tests": 5,
+      "evidence": "%TEMP%/elyqreth-t14-final-guards.log"
+    },
+    {
+      "command": "node scripts/security-capacity.mjs --target production",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "status": "PASS",
+      "reason": "Unsupported production invocation rejected"
+    },
+    {
+      "command": "<temporary PyYAML6.0.2 venv python> scripts/check-release-workflows.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "result": "Three workflows parsed; SHA pins/read-only permissions/closed triggers/concurrency/shell boundaries"
+    },
+    {
+      "command": "git status --short",
+      "exitCode": 128,
+      "status": "BLOCKED",
+      "reason": "No .git metadata"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 129,
+      "status": "BLOCKED",
+      "reason": "No .git metadata; offline whitespace/preservation review used"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "result": "21 documents, local links, consumed environment inventory and changed-file whitespace"
+    }
+  ],
+  "notRun": [
+    "Container OS/build-tool CVE scanner and signed provenance acceptance",
+    "Canonical registry promotion, target deployment and previous release rollback",
+    "Approved steady-state/soak, CPU/memory exhaustion or production capacity acceptance",
+    "Live external provider/hosted OIDC verification or external dispatch",
+    "Broker/cache/dedicated-worker tests: components absent",
+    "Full cluster/host/region/off-host key recovery",
+    "Safe production native re-admission/session-revocation reconciliation after restored checkpoint",
+    "Browser verification on this particular source-loss target",
+    "External email delivery and human incident/UAT/accessibility acceptance"
+  ],
+  "files_changed": [
+    "apps/api/test/capacity-tools.cjs",
+    "apps/api/test/capacity-tools.test.cjs",
+    "apps/api/test/capacity.integration.cjs",
+    "apps/api/test/rehearsal-output.test.cjs",
+    "scripts/security-capacity.mjs",
+    "scripts/rehearsal-output.mjs",
+    "docs/ai-agent-platform/phase-6/security-capacity-recovery.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/security-capacity-recovery-verification.json",
+    "apps/api/test/database.integration.cjs",
+    "apps/api/test/backup.integration.cjs",
+    "README.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py"
+  ],
+  "preservation": {
+    "baselineFiles": 5325,
+    "modified": [
+      "README.md",
+      "apps/api/test/backup.integration.cjs",
+      "apps/api/test/database.integration.cjs",
+      "docs/ai-agent-platform/phase-6/implementation-plan.md",
+      "docs/ai-agent-platform/phase-6/README.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py"
+    ],
+    "created": [
+      "apps/api/test/capacity-tools.cjs",
+      "apps/api/test/capacity-tools.test.cjs",
+      "apps/api/test/capacity.integration.cjs",
+      "apps/api/test/rehearsal-output.test.cjs",
+      "docs/ai-agent-platform/phase-6/security-capacity-recovery.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/security-capacity-recovery-verification.json",
+      "scripts/rehearsal-output.mjs",
+      "scripts/security-capacity.mjs"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "whitespaceOrPrivateKeyBlockViolations": [],
+    "applicationRuntimeFrontendSourceChanged": false,
+    "dockerfilesComposeLockfilesMigrationsChanged": false,
+    "secretReviewScope": "Manual changed-file review, private-key block/whitespace scan and baseline .env hashes; no comprehensive secret-scanner certification or tracked-file classification without Git"
+  },
+  "artifactScope": "Docker config IDs apply to container security rehearsal; measured capacity API is host-compiled workspace code. No Git provenance or source-to-image binding is claimed.",
+  "cleanup": "Successful owning test after/finally hooks verified exact generated labels/names and closed/removed only disposable resources; no global prune or shared database deletion."
+}

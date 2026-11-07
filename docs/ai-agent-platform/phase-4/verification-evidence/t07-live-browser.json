@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/155.0.8059.85",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "P4 T04 native browser and authorized Nest/PostgreSQL Task creation",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 533,
+  "exceptions": 0,
+  "taskPanelAcceptance": {
+    "status": "PASS",
+    "taskId": "55ea8504-e5d9-4d2f-8284-c804d1cbc021",
+    "agentId": "fdd19f83-e00d-4180-a169-a8457c2176f7",
+    "lifecycle": {
+      "status": "PASS",
+      "executionId": "bc861578-34f1-48d5-bb9e-c5fbe6e2b37c",
+      "terminalStatuses": [
+        "SUCCEEDED",
+        "CANCELLED"
+      ],
+      "reloadRecovered": true,
+      "confirmationBackVerified": true,
+      "selectionClosePreserved": true
+    },
+    "synchronization": {
+      "status": "PASS",
+      "unstartedTaskReloadRecovered": true,
+      "identifiersOnly": true,
+      "multiAgentIsolation": true,
+      "networkReconciled": true,
+      "historyInvalidated": true,
+      "activeReloadRecovered": true,
+      "activeReloadBackendStatus": "CANCELLED"
+    },
+    "checkpoints": [
+      "Actual Chrome CORS/native fetch and distinct interaction capability",
+      "Persisted binding to existing resident; backend eligibility verified",
+      "Double submit creates saved-not-started Task",
+      "Close/reopen preserves confirmed reference; unbound NPC has no Task section",
+      "Explicit disconnect clears protected form state"
+    ]
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

@@ -1,0 +1,33 @@
+Use case: stylized-concept
+Asset type: production pixel-art game sprite atlas for an elevated city map.
+Primary request: exactly eight COMPLETE independent decorative building sprites in a precise 4 columns by 2 rows equal-cell atlas, 1536x1024 landscape canvas. Transparent background with real alpha, no opaque backdrop.
+Input images: orange-city-reference.png is a palette and chunky pixel-art style reference only; buildings.png is a camera and architectural style reference only. Do not reproduce their scene or their sheet layout.
+Style/medium: crisp chunky detailed pixel art, dark navy/black stepped pixel outlines, dark graphite steel structures, small roof vents and pipes, visible roofs, flat frontal facade with a slight visible right side, viewed from above looking down 3/4. Match the supplied existing art's warm orange illuminated windows, cyan accents and magenta neon, gritty playful cyberpunk town. No smooth brushwork, no vector art.
+Composition/framing: 4 columns x 2 rows, eight equal rectangular cells. One standalone building centered in each cell. Keep each complete roof and base contained with generous transparent margins and no overlap. All buildings sit on the same baseline within their row. At least 30 pixels transparent clearance from every cell edge. Vary height but consistent pixel scale. Cell boundaries are invisible.
+Subjects in exact row-major order:
+Top row cell 1: small orange-lit apartment building with two compact water tanks on roof.
+Top row cell 2: narrow tall cyan-window office tower.
+Top row cell 3: pink-accent convenience shop with striped awning.
+Top row cell 4: amber illuminated compact corner cafe.
+Bottom row cell 1: warm compact futuristic house.
+Bottom row cell 2: low lavender-accent warehouse.
+Bottom row cell 3: cyan utility/service building.
+Bottom row cell 4: orange two-storey commercial shop.
+Constraints: only buildings and attached architectural features. Actual transparent empty space between and around every sprite. No ground planes, pavement, roads, plazas, scene, people, cast shadows or glow outside outlines, city silhouettes, labels, text, gridlines, borders, watermark, or background color. A usable cutout game atlas, never an illustration.
+
+Use case: stylized-concept
+Asset type: production pixel-art game environmental prop sprite atlas for an elevated city map.
+Primary request: exactly eight COMPLETE independent tiny environmental prop sprites in a precise 4 columns by 2 rows equal-cell atlas, 1536x1024 landscape canvas. Transparent background with real alpha, no opaque backdrop.
+Input images: orange-city-reference.png and terrain-props.png are palette, pixel texture and elevated camera style references only. Do not reproduce their scenes or terrain tiles.
+Style/medium: crisp chunky detailed pixel art, thick dark navy/black stepped outlines, graphite metal, warm orange lights and small cyan/magenta neon accents. Roof/top surfaces visible, flat front and slight right side, elevated front/down three-quarter view matching supplied city assets. Same consistent pixel scale for all props; tiny map decorations, not huge monuments. No smooth brushwork or vector appearance.
+Composition/framing: exactly 4 columns x2 rows, one isolated complete prop centered in each equal cell, same baseline within each row. Generous transparent empty margins, at least 40 pixels clearance to cell edges. All sprites fully contained, no overlap, invisible cell boundaries.
+Subjects in exact row-major order:
+Top row cell 1: compact orange/cyan vending machine.
+Top row cell 2: dark steel trash bin.
+Top row cell 3: small street signpost with two direction arrow plates, no readable lettering.
+Top row cell 4: magenta and amber freestanding neon sign on a compact support.
+Bottom row cell 1: squat rooftop ventilation unit.
+Bottom row cell 2: compact cylindrical rooftop water tank.
+Bottom row cell 3: rectangular concrete planter with green foliage and a few orange flowers.
+Bottom row cell 4: simple compact dark bench with orange-brown slats.
+Constraints: only the eight objects, true transparent alpha between and around them. No ground, pavement, roads, people, silhouettes, scene, terrain, buildings, extra props, cast shadows or glow outside cutout edges, labels, readable text, gridlines, border, watermark or background color. Usable cutout game sprites.

@@ -1,0 +1,278 @@
+{
+  "task": "Phase 6 T10 External Production Connectivity & Ingestion Security",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "status": "COMPLETE for the user-approved local hardening and closed-production contracts; hosted activation remains unverified and disabled",
+  "approved_scope": {
+    "production_target": "No target yet; keep production activation closed (explicit user answer)",
+    "delivered_contract": "Existing observation-only LangGraph development/test tier hardening and fail-closed production gate; no new source principal, provider protocol or activation bypass",
+    "hosted_target_verified": false,
+    "production_activation_enabled": false
+  },
+  "audit": {
+    "agents": "No applicable AGENTS.md found",
+    "git": "No metadata; SHA256/source snapshots protect existing work",
+    "baseline_files": 5291,
+    "missing_original_files": []
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run build",
+      "exit_code": 0,
+      "outcome": "Backend production TypeScript build passes"
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exit_code": 0,
+      "outcome": "Frontend syntax/runtime-web and backend typechecks pass"
+    },
+    {
+      "command": "node --test apps/api/test/external-security.test.cjs apps/api/test/external-tls.test.cjs",
+      "exit_code": 0,
+      "outcome": "11 endpoint, closed-production, credential/binding/revocation/capacity and actual trusted/untrusted TLS tests pass"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 0,
+      "outcome": "334 backend unit/security/configuration tests pass on final complete rerun, including post-await operator-grant revocation; 0 skipped"
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 0,
+      "outcome": "43 PostgreSQL role/migration/runtime/security tests pass, including new revocation rollback/rotation/concurrent ingestion during drain"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 0,
+      "outcome": "230 PostgreSQL/API/native/collaboration/external/auth/browser/drain tests pass on clean rerun"
+    },
+    {
+      "command": "npm.cmd test",
+      "exit_code": 0,
+      "outcome": "238 frontend regression tests pass"
+    },
+    {
+      "command": "docker build --target api -t elyqreth-t05-api:verification .",
+      "exit_code": 0,
+      "outcome": "Final API image sha256:585aa06c453d6ada8111716bc43403b3fe94fe93e69d970bdc6c423df5a0f9dc"
+    },
+    {
+      "command": "node --check scripts/container-hardening.mjs",
+      "exit_code": 0,
+      "outcome": "Changed harness syntax passes"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 128,
+      "outcome": "BLOCKED: no Git metadata in supplied workspace"
+    },
+    {
+      "command": "git diff --cached --stat",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no Git metadata; cannot classify staged changes"
+    },
+    {
+      "command": "node --test --test-name-pattern='P5 T08' apps/api/test/database.integration.cjs",
+      "exit_code": 0,
+      "outcome": "7 focused real-PostgreSQL LangGraph fixture/CLI/restart tests pass against final observation service; not a hosted live provider run"
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain",
+      "exit_code": 0,
+      "outcome": "Final rebuilt API non-root/read-only/private TLS edge/Chromium/city/session/Compose/drain/restart checks PASS; external key-file production permission/ambiguity/history proof without activation"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 0,
+      "outcome": "16 documents, local links, consumed environment inventory and touched-file whitespace pass"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no Git metadata; independent whitespace/preservation review used"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exit_code": 0,
+      "outcome": "16 encrypted backup/isolated restore/integrity/external replay tests pass with final source-grant validation"
+    },
+    {
+      "command": "git diff --stat",
+      "exit_code": 129,
+      "outcome": "BLOCKED: no Git metadata; actual changed files reviewed using pre-edit source snapshots and SHA256 manifest"
+    }
+  ],
+  "earlier_attempts": [
+    {
+      "command": "node --test apps/api/test/external-security.test.cjs",
+      "exit_code": 1,
+      "outcome": "All six initial regression tests reproduced pre-fix gaps."
+    },
+    {
+      "command": "focused external security/adapters/transport/ingestion unit run",
+      "exit_code": 1,
+      "outcome": "41/42; new capacity test attached its rejection assertion after yielding. Assertion attached immediately; final focused run passes without changing production behavior."
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exit_code": 1,
+      "outcome": "332/333 against an intermediate build while port/metadata test changes were in progress. Rebuilt current source; subsequent 333 pass and final post-await-check rerun recorded separately."
+    },
+    {
+      "command": "npm.cmd run test:database-roles",
+      "exit_code": 1,
+      "outcome": "A pre-existing native multi-instance timing test failed; lingering owned test child was stopped after fixture cleanup. Failed log retained, no assertion or unrelated source altered. Clean rerun passes 43/43."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exit_code": 1,
+      "outcome": "228/230; native concurrent request hit 503 after a long wait and browser cancellation timing failed. No native/browser assertions or source changed to mask failures. Clean full rerun passes 230/230."
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exit_code": 1,
+      "outcome": "Draft evidence file was still being created; link check was started too early. Writer completed, final check rerun below; no source workaround."
+    }
+  ],
+  "not_run_or_not_applicable": [
+    {
+      "area": "Hosted production LangGraph/auth/service-principal acceptance",
+      "status": "NOT RUN / CLOSED",
+      "reason": "User explicitly has no approved target and requests activation remain closed."
+    },
+    {
+      "area": "Signed webhook/raw-body signature/expiry/nonce tests",
+      "status": "NOT APPLICABLE",
+      "reason": "No webhook or signed delivery protocol exists; unsupported routes remain rejected."
+    },
+    {
+      "area": "Provider dispatch/cancel retries",
+      "status": "NOT APPLICABLE",
+      "reason": "No such capability is implemented/enabled."
+    },
+    {
+      "area": "Real LangGraph server live rerun",
+      "status": "NOT RUN",
+      "reason": "Current evidence is deterministic captured-provider shapes plus actual local HTTPS sockets and PostgreSQL. Prior-phase live evidence is not claimed as a new T10 live run."
+    }
+  ],
+  "files_changed": [
+    "README.md",
+    "apps/api/.env.example",
+    "apps/api/src/external-orchestrators/adapter-budget.ts",
+    "apps/api/src/external-orchestrators/external-adapter.service.ts",
+    "apps/api/src/external-orchestrators/external-configuration.ts",
+    "apps/api/src/external-orchestrators/external-http.transport.ts",
+    "apps/api/src/external-orchestrators/external-ingestion.service.ts",
+    "apps/api/src/external-orchestrators/ingestion-authority.ts",
+    "apps/api/src/external-orchestrators/langgraph-observation.service.ts",
+    "apps/api/src/runtime/providers/provider-configuration.ts",
+    "apps/api/test/database-roles.integration.cjs",
+    "apps/api/test/external-adapter.test.cjs",
+    "apps/api/test/external-ingestion.integration.cjs",
+    "apps/api/test/external-security.test.cjs",
+    "apps/api/test/external-tls.test.cjs",
+    "apps/api/test/external-transport.test.cjs",
+    "apps/api/test/fixtures/external-tls-child.cjs",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/configuration-contracts.md",
+    "docs/ai-agent-platform/phase-6/configuration-inventory.md",
+    "docs/ai-agent-platform/phase-6/decisions.md",
+    "docs/ai-agent-platform/phase-6/external-connectivity.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/external-connectivity-verification.json",
+    "scripts/container-hardening.mjs"
+  ],
+  "limits": [
+    "Production external configuration and legacy source grants remain closed for production/named account modes.",
+    "No public webhook/adapter/management endpoint, external dispatch/cancel, automatic poll scheduler, additional provider or worker was introduced.",
+    "Concurrency is process-local: four total and two per connection. Multiple stalled connections can exhaust total capacity; slots remain held until actual settlement.",
+    "Zero automatic retries; provider-side key issuance/revocation and future source-principal policy require target-specific operational approval.",
+    "No remote deployment, production database mutation, migrations/schema redesign, CI/CD, city rendering or NPC changes."
+  ],
+  "verification_matrix": [
+    {
+      "area": "Production target/access gate",
+      "status": "CLOSED BY USER DECISION",
+      "evidence": "No target supplied; production external configuration and named-account legacy source approval still rejected. No activation bypass."
+    },
+    {
+      "area": "Endpoint, SSRF and private policy",
+      "status": "VERIFIED",
+      "evidence": "Canonical origins, supported schemes/ports, exact pins, all-answer DNS, actual peer, metadata/platform/IPv6 exclusions and approved private TLS tests"
+    },
+    {
+      "area": "TLS and provider authentication",
+      "status": "VERIFIED",
+      "evidence": "Actual HTTPS child fixtures validate trusted CA/hostname, untrusted/mismatched rejection, LangGraph X-Api-Key, redirect refusal and one-attempt 429/auth behavior"
+    },
+    {
+      "area": "Connection credentials and rotation",
+      "status": "VERIFIED",
+      "evidence": "Distinct configured references/values, missing credential denial, captured credential/full policy binding and stale operation/grant rejection"
+    },
+    {
+      "area": "Trusted ingestion authentication",
+      "status": "VERIFIED FOR EXISTING INTERNAL TIER",
+      "evidence": "Opaque expiring connection-bound local approvals; no forge/copy/escalation, no generic webhook, production/named-account source gate closed"
+    },
+    {
+      "area": "Payload limits and isolation",
+      "status": "VERIFIED",
+      "evidence": "Closed bounded field validation, configured-secret filtering, connection/incarnation/owner mapping and correlation policy; full ingestion tests"
+    },
+    {
+      "area": "Durable replay, ordering and receipt/projection separation",
+      "status": "VERIFIED",
+      "evidence": "PostgreSQL duplicate/concurrent/restart/order/terminal/inbox/audit tests; 230 full and 43 restricted-role suites"
+    },
+    {
+      "area": "Authorization at asynchronous cuts",
+      "status": "VERIFIED",
+      "evidence": "Precommit disable rolls back receipt/audit; post-await discovery/result revocation does not return stale-authorized data"
+    },
+    {
+      "area": "Failure isolation and retry policy",
+      "status": "VERIFIED",
+      "evidence": "Four process-global and two per-connection operation/request slots; uncooperative slots retained until settlement, no unbounded queue or automatic retry"
+    },
+    {
+      "area": "Native drain and authority separation",
+      "status": "VERIFIED",
+      "evidence": "Native admission closed while connection-scoped duplicate ingestion persists; no native Execution created; existing runtime/collaboration regressions pass"
+    },
+    {
+      "area": "Hosted production provider, public webhook signatures and dispatch",
+      "status": "NOT CLAIMED",
+      "evidence": "No target; signatures/nonces/remote commands unsupported. No signed-webhook or hosted live test claimed."
+    },
+    {
+      "area": "Frontend and city regression",
+      "status": "VERIFIED",
+      "evidence": "238 frontend tests and full PostgreSQL/browser regression pass; rendering/NPC/session source unchanged"
+    },
+    {
+      "area": "Container/edge and secret-file compatibility",
+      "status": "VERIFIED",
+      "evidence": "Final rebuilt API/image history and actual non-root file input; existing private TLS/Chromium/Compose/drain/restart harness PASS"
+    },
+    {
+      "area": "Documentation and preservation",
+      "status": "VERIFIED",
+      "evidence": "16-doc checker passes; final SHA256/secret/source preservation review recorded below"
+    }
+  ],
+  "final_review": {
+    "status": "PASS",
+    "baseline_files": 5291,
+    "modified_files": 21,
+    "created_files": 5,
+    "missing_original_files": 0,
+    "unexpected_changed_files": 0,
+    "private_env_unchanged": true,
+    "renderer_npcs_sessions_native_collaboration_and_migrations_unchanged": true,
+    "private_key_blocks_added": 0,
+    "whitespace_or_conflict_markers": 0
+  }
+}

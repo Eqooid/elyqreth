@@ -1,0 +1,93 @@
+{
+  "browser": {
+    "mission": {
+      "phase": "complete",
+      "done": 4
+    },
+    "agentsResumedWandering": true,
+    "pauseVerified": true,
+    "cameraZoomPanFitVerified": true,
+    "visitorInspector": "Jun \u00b7 Visitor / Decorative pedestrian, no AI assignments",
+    "applicationErrorsAfterFinalReload": [],
+    "roadComponents": 1,
+    "blockedAsphalt": 0,
+    "overwrittenTiles": 0,
+    "laneValidation": {
+      "routes": 3,
+      "samples": 1692,
+      "errors": []
+    },
+    "times": [
+      31.99999999999944,
+      63.333199999997646,
+      129.58319999999514
+    ],
+    "waterFrames": [
+      0,
+      18,
+      11
+    ],
+    "trainSnapshots": [
+      {
+        "state": "waiting",
+        "x": 1720,
+        "speed": 0,
+        "arrivals": 1,
+        "departures": 1
+      },
+      {
+        "state": "departing",
+        "x": 1373.0545136185287,
+        "speed": 124.5551045106886,
+        "arrivals": 2,
+        "departures": 2
+      },
+      {
+        "state": "waiting",
+        "x": 1720,
+        "speed": 0,
+        "arrivals": 3,
+        "departures": 3
+      }
+    ],
+    "movedVehicles": [
+      {
+        "id": 1,
+        "before": [
+          744,
+          554.4603326088765
+        ],
+        "after": [
+          1011.7674999742585,
+          392
+        ]
+      }
+    ],
+    "trafficExited": 7,
+    "canvasDrawMs": [
+      8.218575974328523,
+      9.11739457643447,
+      8.722386360368255
+    ],
+    "performanceLimit": "Cloud preview throttles requestAnimationFrame (observed ~1 fps); canvas draws ~8\u201310 ms, not a validated 60 FPS desktop benchmark."
+  },
+  "automated": {
+    "tests": 16,
+    "passed": 16,
+    "trafficCoexistence": "300 simulation seconds each at 1x and 4x, no contacts, missions complete, at least 8 vehicle exits per speed"
+  },
+  "visualComparison": {
+    "buildingPositions": "unchanged",
+    "referenceRoadComposition": "retained horizontal civic corridor and central station branch, service alley remains pedestrian",
+    "changes": [
+      "continuous one-pixel curb and quiet gutters",
+      "crossings with equal margins",
+      "station turnaround marker",
+      "independent compact-car, van and taxi sprites",
+      "fully animated water and pier ripples",
+      "eased station train cycle",
+      "three separate cosmetic visitors",
+      "cached independent lighting and pixel-snapped canopy movement"
+    ]
+  }
+}

@@ -1,0 +1,373 @@
+{
+  "title": "Velqaryn · A Living AI City",
+  "branding": "Velqaryn",
+  "tagline": "A Living AI City",
+  "checks": {
+    "welcome": "Welcome to Velqaryn",
+    "syntax": "passed",
+    "simulationTests": 16,
+    "missionStagesDelivered": 4
+  },
+  "frames": [
+    {
+      "time": 17.283100000000278,
+      "waterFrame": 9,
+      "train": {
+        "state": "departing",
+        "x": 1389.314084821963,
+        "speed": 124.02609763166713,
+        "arrivals": 1,
+        "departures": 1
+      },
+      "traffic": {
+        "spawned": 2,
+        "exited": 0,
+        "yields": 422,
+        "vehicles": [
+          {
+            "id": 1,
+            "route": "boulevard-west",
+            "x": 1079.573356169707,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 0,
+            "stopped": false,
+            "yielding": true
+          },
+          {
+            "id": 2,
+            "route": "station-loop",
+            "x": 362.5138228419033,
+            "y": 392,
+            "angle": 0,
+            "speed": 56.80730927274361,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "x": 568,
+          "y": 664.5607126007593,
+          "state": "WANDERING",
+          "direction": "down",
+          "frame": 2,
+          "destination": "South garden"
+        },
+        {
+          "id": 2,
+          "x": 546.5550063274746,
+          "y": 744,
+          "state": "WANDERING",
+          "direction": "left",
+          "frame": 2,
+          "destination": "Globe plaza"
+        },
+        {
+          "id": 3,
+          "x": 526.1365602836348,
+          "y": 344,
+          "state": "WANDERING",
+          "direction": "right",
+          "frame": 1,
+          "destination": "R&D doorway"
+        },
+        {
+          "id": 4,
+          "x": 792,
+          "y": 460.8379052623621,
+          "state": "WANDERING",
+          "direction": "down",
+          "frame": 2,
+          "destination": "Lower canal bridge"
+        }
+      ],
+      "citizens": [
+        {
+          "id": 10001,
+          "x": 1032,
+          "y": 442.0999999999999,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10002,
+          "x": 792,
+          "y": 712,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10003,
+          "x": 690.4999999999984,
+          "y": 584,
+          "state": "WANDERING"
+        }
+      ],
+      "mission": {
+        "phase": "idle",
+        "done": 0
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          490
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 1692,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 9.475193252264788
+    },
+    {
+      "time": 45.832899999998666,
+      "waterFrame": 7,
+      "train": {
+        "state": "approaching",
+        "x": 557.1295456872431,
+        "speed": 64.9393757326972,
+        "arrivals": 1,
+        "departures": 1
+      },
+      "traffic": {
+        "spawned": 4,
+        "exited": 1,
+        "yields": 1256,
+        "vehicles": [
+          {
+            "id": 2,
+            "route": "station-loop",
+            "x": 744,
+            "y": 635.9999999999999,
+            "angle": 1.5707963267948966,
+            "speed": 0,
+            "stopped": true,
+            "yielding": false
+          },
+          {
+            "id": 3,
+            "route": "boulevard-west",
+            "x": 754.6277256393812,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 8.799999999999969,
+            "stopped": false,
+            "yielding": false
+          },
+          {
+            "id": 4,
+            "route": "boulevard-west",
+            "x": 1270.8892025187424,
+            "y": 368,
+            "angle": 3.141592653589793,
+            "speed": 50.292872269319666,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "x": 792,
+          "y": 712,
+          "state": "WANDERING",
+          "direction": "up",
+          "frame": 1,
+          "destination": "Upper canal bridge"
+        },
+        {
+          "id": 2,
+          "x": 632,
+          "y": 324.39109655246153,
+          "state": "WALKING",
+          "direction": "up",
+          "frame": 3,
+          "destination": "Residential stairs"
+        },
+        {
+          "id": 3,
+          "x": 1288,
+          "y": 616,
+          "state": "IDLE",
+          "direction": "left",
+          "frame": 2,
+          "destination": "East pedestrian lane"
+        },
+        {
+          "id": 4,
+          "x": 537.9526184220545,
+          "y": 744,
+          "state": "WANDERING",
+          "direction": "left",
+          "frame": 1,
+          "destination": "Globe plaza"
+        }
+      ],
+      "citizens": [
+        {
+          "id": 10001,
+          "x": 984,
+          "y": 920,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10002,
+          "x": 580.6666666666724,
+          "y": 824,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10003,
+          "x": 1067.500000000004,
+          "y": 680,
+          "state": "WANDERING"
+        }
+      ],
+      "mission": {
+        "phase": "delivering",
+        "done": 1
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          490
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 1692,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 12.07641027730694
+    },
+    {
+      "time": 78.96589999999678,
+      "waterFrame": 16,
+      "train": {
+        "state": "waiting",
+        "x": 1720,
+        "speed": 0,
+        "arrivals": 2,
+        "departures": 2
+      },
+      "traffic": {
+        "spawned": 5,
+        "exited": 4,
+        "yields": 1925,
+        "vehicles": [
+          {
+            "id": 5,
+            "route": "boulevard-east",
+            "x": 1206.2966527367425,
+            "y": 392,
+            "angle": 0,
+            "speed": 49.61060710288615,
+            "stopped": false,
+            "yielding": false
+          }
+        ]
+      },
+      "agents": [
+        {
+          "id": 1,
+          "x": 920,
+          "y": 456,
+          "state": "IDLE",
+          "direction": "up",
+          "frame": 0,
+          "destination": "Upper canal bridge"
+        },
+        {
+          "id": 2,
+          "x": 638.0570237475251,
+          "y": 568,
+          "state": "WANDERING",
+          "direction": "right",
+          "frame": 1,
+          "destination": "Market frontage"
+        },
+        {
+          "id": 3,
+          "x": 1304,
+          "y": 952,
+          "state": "IDLE",
+          "direction": "up",
+          "frame": 2,
+          "destination": "Dock promenade"
+        },
+        {
+          "id": 4,
+          "x": 792,
+          "y": 806.987219409222,
+          "state": "WANDERING",
+          "direction": "up",
+          "frame": 2,
+          "destination": "Clinic forecourt"
+        }
+      ],
+      "citizens": [
+        {
+          "id": 10001,
+          "x": 792,
+          "y": 744,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10002,
+          "x": 624.4333333333332,
+          "y": 568,
+          "state": "WANDERING"
+        },
+        {
+          "id": 10003,
+          "x": 424,
+          "y": 936,
+          "state": "WANDERING"
+        }
+      ],
+      "mission": {
+        "phase": "complete",
+        "done": 4
+      },
+      "roads": {
+        "graphNodes": 6,
+        "segments": 5,
+        "graphComponents": 1,
+        "surfaceComponents": 1,
+        "componentSizes": [
+          490
+        ],
+        "asphaltComponents": 1,
+        "overwritten": 0,
+        "blockedAsphalt": 0,
+        "errors": []
+      },
+      "lanes": {
+        "routes": 3,
+        "samples": 1692,
+        "errors": []
+      },
+      "fps": 1,
+      "renderMs": 12.578069184224553
+    }
+  ]
+}

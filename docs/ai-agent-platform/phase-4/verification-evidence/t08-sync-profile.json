@@ -1,0 +1,118 @@
+{
+  "kind": "synthetic RUNNING projections + synchronization/binding/selected-inspector processing; not actual executions or render throughput",
+  "environment": {
+    "node": "v24.9.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "totalMemoryBytes": 16541872128
+  },
+  "assumptions": {
+    "visibleSlotLimit": 20,
+    "largerCases": "unbound projection rows beyond 20; not linked NPC capacity",
+    "gc": "forced at memory checkpoints",
+    "network": "mocked Responses",
+    "timing": "performance.now; no pass/fail latency threshold"
+  },
+  "measurements": [
+    {
+      "agents": 1,
+      "linked": 1,
+      "iterations": 100,
+      "pagesPerSweep": 1,
+      "requests": 100,
+      "medianMs": 0.3275999999999897,
+      "p95Ms": 0.7073999999999785,
+      "cpuMs": 94,
+      "heapBefore": 7780288,
+      "heapAfter": 8287976,
+      "inspectorReferences": 1
+    },
+    {
+      "agents": 10,
+      "linked": 10,
+      "iterations": 100,
+      "pagesPerSweep": 1,
+      "requests": 100,
+      "medianMs": 0.6062999999999761,
+      "p95Ms": 1.153099999999995,
+      "cpuMs": 172,
+      "heapBefore": 8362272,
+      "heapAfter": 8574616,
+      "inspectorReferences": 1
+    },
+    {
+      "agents": 20,
+      "linked": 20,
+      "iterations": 100,
+      "pagesPerSweep": 1,
+      "requests": 100,
+      "medianMs": 0.7780999999999949,
+      "p95Ms": 1.0325000000000273,
+      "cpuMs": 109,
+      "heapBefore": 8611544,
+      "heapAfter": 8717272,
+      "inspectorReferences": 1
+    },
+    {
+      "agents": 25,
+      "linked": 20,
+      "iterations": 100,
+      "pagesPerSweep": 2,
+      "requests": 200,
+      "medianMs": 1.1334000000000515,
+      "p95Ms": 1.7915000000000418,
+      "cpuMs": 125,
+      "heapBefore": 8610120,
+      "heapAfter": 8771136,
+      "inspectorReferences": 1
+    },
+    {
+      "agents": 50,
+      "linked": 20,
+      "iterations": 100,
+      "pagesPerSweep": 3,
+      "requests": 300,
+      "medianMs": 1.8141000000000531,
+      "p95Ms": 2.9645000000000437,
+      "cpuMs": 219,
+      "heapBefore": 8802344,
+      "heapAfter": 8993392,
+      "inspectorReferences": 1
+    },
+    {
+      "agents": 100,
+      "linked": 20,
+      "iterations": 100,
+      "pagesPerSweep": 5,
+      "requests": 500,
+      "medianMs": 3.0778999999999996,
+      "p95Ms": 4.332499999999982,
+      "cpuMs": 485,
+      "heapBefore": 8982648,
+      "heapAfter": 9061424,
+      "inspectorReferences": 1
+    }
+  ],
+  "heapCheckpoints": [
+    {
+      "cycles": 0,
+      "heapUsed": 8911448
+    },
+    {
+      "cycles": 100,
+      "heapUsed": 9101408
+    },
+    {
+      "cycles": 200,
+      "heapUsed": 9059832
+    },
+    {
+      "cycles": 300,
+      "heapUsed": 9101480
+    }
+  ],
+  "limits": "Short synthetic investigation; heap/RSS variability and native/browser memory are not leak-freedom or production capacity guarantees."
+}

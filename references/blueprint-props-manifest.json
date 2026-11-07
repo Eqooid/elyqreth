@@ -1,0 +1,71 @@
+{
+  "path": "/workspace/scratch/b8e339b953ba/blueprint-assets/props-atlas.png",
+  "width": 1536,
+  "height": 1024,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    254
+  ],
+  "zeroAlphaPixels": 1076049,
+  "basinCenterAlpha": 0,
+  "people": "none visible",
+  "sprites": [
+    {
+      "id": "wayfinding",
+      "row": 0,
+      "col": 0,
+      "x": 60,
+      "y": 137,
+      "w": 430,
+      "h": 359
+    },
+    {
+      "id": "story-monument",
+      "row": 0,
+      "col": 1,
+      "x": 610,
+      "y": 74,
+      "w": 287,
+      "h": 436
+    },
+    {
+      "id": "basin",
+      "row": 0,
+      "col": 2,
+      "x": 983,
+      "y": 144,
+      "w": 524,
+      "h": 399
+    },
+    {
+      "id": "hover-truck",
+      "row": 1,
+      "col": 0,
+      "x": 27,
+      "y": 632,
+      "w": 465,
+      "h": 266
+    },
+    {
+      "id": "rail-platform",
+      "row": 1,
+      "col": 1,
+      "x": 548,
+      "y": 713,
+      "w": 582,
+      "h": 165
+    },
+    {
+      "id": "garden",
+      "row": 1,
+      "col": 2,
+      "x": 1183,
+      "y": 714,
+      "w": 326,
+      "h": 165
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: a transparent pixel-art prop sprite atlas for recreating the supplied Orange City reference. Input image is a REFERENCE for exact forms/palette/pixel density. Create SIX isolated props accurately matching individual objects in that reference. Output 1536x1024 landscape PNG, TRUE transparent alpha background. 3 columns x 2 rows, six regular 512x512 cells, one centered complete isolated sprite per cell, generous at least 40px transparent gutters. No cell labels or gridlines. Nearfrontal elevated front/down perspective exactly like reference, straight horizontal fronts, shallow visible tops. Crisp dense pixel clusters, graphite darksteel outlines, warm amber/orange glow, tiny cyan detail. No diagonal diamond isometric perspective. Keep props independent and cut out with transparent gaps. NO people, faces, characters, driver, window silhouettes, surrounding ground, street, water or buildings.\n\nTOP LEFT: Large freestanding wayfinding sign beside reference station: sturdy steel dark rectangular vertical panel with charcoal frame and slim support base. Three clear stacked text rows, exact pale gray uppercase RESIDENTIAL / COMMERCIAL / DOCKS, each preceded by an amber RIGHT arrow. Industrial graphite framing and small orange edge details. This prop will occupy ~160x175 in world, preserve this moderately broad vertical proportion.\nTOP MIDDLE: Tall plaza story monument from reference at x608 y613: darksteel upright rectangular panel with a SMALL orange compass emblem at top, then exact stacked uppercase amber text A SMALL / CITY FOR / BRIGHTER / DAYS. Low concrete base/planter supporting panel with little greenery at bottom edges. Preserve reference's narrow tall ~100x170 world proportion.\nTOP RIGHT: Canal U-shaped steel basin edge from reference: ONLY dark graphite structural railings and rim, with left vertical metal railing and short posts, angled lower/front corners transitioning to a low horizontal FRONT railing, plus RIGHT side rim. Nearfrontal elevated perspective, broad rectangular U basin outline, approximately 256x245 world proportions. True alpha-transparent wide OPEN CENTER and top opening for separately drawn water; NO WATER, NO BRIDGE. Steel edge amber accent lights, dark short supports. Empty center must be genuinely transparent, no dark fill.\n\nBOTTOM LEFT: The reference static orange-white/graphite cargo hover truck at RIGHT DOCKS. Compact wide and squat transport vehicle, angled shallow front/down view with broad horizontal front facing viewer/slightly right, charcoal industrial body, steel flat roof equipment/vents, small orange rear/side lights, thin warm white-orange stripe, tiny cyan lamps below front. Reference truck's ~170x120 world proportion, not tall van, not boat, no wheel shadows or ground, no driver.\nBOTTOM MIDDLE: Wide shallow station-front rail platform/fence spanning station to dock in reference. LONG straight horizontal darkmetal structural rail platform with layered railings, parallel steel rails, short sparse supports and warm amber edge lighting. No train, NO WATER, no ground. ~750x70 world ratio, extremely wide and shallow. Fit wholly within cell with length nearly 440px and height about 45px, leave lots of alpha above and below.\nBOTTOM RIGHT: Raised garden planter near reference globe plaza. Compact wide low rectangular graphite border with paved concrete rim, inset small leafy dark green/yellowgreen bushes and tiny amber blooms. ~150x65 world ratio. Shallow visible top and straight front edge. No tree, no people, no statue/globe, no surrounding ground.\n\nAll six faithfully referenced, not generic redesigned props. Background fully transparent, not opaque or baked checkerboard. No shadow planes or scene backgrounds. No humans. Keep every prop in designated cell with generous fully transparent gutters.",
+  "note": "Use inspected source rectangles; generated objects exceed some requested uniform cell boundaries. Raster pixels untouched."
+}

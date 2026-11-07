@@ -1,0 +1,130 @@
+{
+  "time": 31.99999999999944,
+  "waterFrame": 0,
+  "train": {
+    "state": "waiting",
+    "x": 1720,
+    "speed": 0,
+    "arrivals": 1,
+    "departures": 1
+  },
+  "traffic": {
+    "spawned": 3,
+    "exited": 0,
+    "yields": 444,
+    "vehicles": [
+      {
+        "id": 1,
+        "route": "station-loop",
+        "x": 744,
+        "y": 554.4603326088765,
+        "angle": 1.5707963267948966,
+        "speed": 9.59999999999997,
+        "stopped": false,
+        "yielding": false
+      },
+      {
+        "id": 2,
+        "route": "boulevard-west",
+        "x": 923.8957027313913,
+        "y": 368,
+        "angle": 3.141592653589793,
+        "speed": 56.16297214128325,
+        "stopped": false,
+        "yielding": false
+      },
+      {
+        "id": 3,
+        "route": "boulevard-east",
+        "x": 183.41277585933628,
+        "y": 392,
+        "angle": 0,
+        "speed": 58.624258619779056,
+        "stopped": false,
+        "yielding": false
+      }
+    ]
+  },
+  "agents": [
+    {
+      "id": 1,
+      "x": 792,
+      "y": 776,
+      "state": "WANDERING",
+      "direction": "down",
+      "frame": 0,
+      "destination": "Station forecourt"
+    },
+    {
+      "id": 2,
+      "x": 1272,
+      "y": 120,
+      "state": "IDLE",
+      "direction": "up",
+      "frame": 0,
+      "destination": "Town sidewalk"
+    },
+    {
+      "id": 3,
+      "x": 792,
+      "y": 680,
+      "state": "WANDERING",
+      "direction": "up",
+      "frame": 0,
+      "destination": "City Hall stairs"
+    },
+    {
+      "id": 4,
+      "x": 1128,
+      "y": 712.5271348351055,
+      "state": "WANDERING",
+      "direction": "down",
+      "frame": 2,
+      "destination": "Dock promenade"
+    }
+  ],
+  "citizens": [
+    {
+      "id": 10001,
+      "x": 632,
+      "y": 312,
+      "state": "WANDERING"
+    },
+    {
+      "id": 10002,
+      "x": 1079.333333333333,
+      "y": 920,
+      "state": "WANDERING"
+    },
+    {
+      "id": 10003,
+      "x": 680,
+      "y": 824,
+      "state": "WANDERING"
+    }
+  ],
+  "mission": {
+    "phase": "planning",
+    "done": 0
+  },
+  "roads": {
+    "graphNodes": 6,
+    "segments": 5,
+    "graphComponents": 1,
+    "surfaceComponents": 1,
+    "componentSizes": [
+      490
+    ],
+    "asphaltComponents": 1,
+    "overwritten": 0,
+    "blockedAsphalt": 0,
+    "errors": []
+  },
+  "lanes": {
+    "routes": 3,
+    "samples": 1692,
+    "errors": []
+  },
+  "fps": 1,
+  "renderMs": 8.218575974328523
+}

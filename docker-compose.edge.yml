@@ -1,0 +1,41 @@
+# Explicit T06 overlay for docker-compose.production.yml; not development Compose.
+services:
+  api:
+    networks: [application, edge_api]
+  web:
+    networks: [presentation]
+  edge:
+    image: ${EDGE_IMAGE:?Set a reviewed immutable edge image reference}
+    user: "101:101"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=32m,mode=1777"]
+    mem_limit: 128m
+    cpus: 0.5
+    restart: "on-failure:3"
+    stop_grace_period: 15s
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+    environment:
+      EDGE_HOST: ${EDGE_HOST:?Set the approved canonical DNS hostname}
+      EDGE_HTTPS_PORT: "443"
+      EDGE_HSTS: "on"
+    secrets:
+      - {source: tls_certificate, target: tls_certificate}
+      - {source: tls_private_key, target: tls_private_key}
+    ports: ["80:8080", "443:8443"]
+    networks: [ingress, edge_api, presentation]
+    depends_on:
+      api: {condition: service_healthy}
+      web: {condition: service_healthy}
+secrets:
+  tls_certificate:
+    file: ${EDGE_TLS_CERTIFICATE_FILE:?Set the reviewed full-chain PEM file}
+  tls_private_key:
+    file: ${EDGE_TLS_PRIVATE_KEY_FILE:?Set the protected unencrypted PEM private key file}
+networks:
+  ingress: {}
+  edge_api: {internal: true}

@@ -1,0 +1,73 @@
+name: Elyqreth quality verification
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
+      # test:db owns a disposable PostgreSQL container/volume with random credentials,
+      # applies migrations, restarts it, and verifies labels before cleanup.
+      # Hosted runners provide Docker and Chrome. No developer database or secrets.
+      - run: npm run verify:phase1
+        env:
+          BROWSER_PATH: /usr/bin/google-chrome
+          BROWSER_HARDENING_PHASE4: 'true'
+          TMPDIR: ${{ runner.temp }}
+      - run: npm run test:database-roles
+      - run: npm run test:backup
+      - name: Validate release workflow grammar and policy
+        run: |
+          python3 -m venv "$RUNNER_TEMP/release-yaml"
+          "$RUNNER_TEMP/release-yaml/bin/python" -m pip install PyYAML==6.0.2
+          "$RUNNER_TEMP/release-yaml/bin/python" scripts/check-release-workflows.py
+      # Verification images are disposable test assets, not promotable release candidates.
+      - run: docker build --target api -t elyqreth-t05-api:verification .
+      - run: docker build --target web -t elyqreth-t05-web:verification .
+      - run: docker build --target edge -t elyqreth-t06-edge:verification .
+      - run: node scripts/container-hardening.mjs --edge --runtime-drain
+      - run: python3 docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py
+      # T11 uses deterministic transport fixtures; no provider keys or external service required.
+      - run: node --expose-gc scripts/phase5-collaboration-profile.mjs
+        env:
+          TMPDIR: ${{ runner.temp }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: phase5-collaboration-evidence
+          path: |
+            ${{ runner.temp }}/elyqreth-p5-t11-profile.json
+            ${{ runner.temp }}/elyqreth-p5-t11-mixed.json
+            ${{ runner.temp }}/elyqreth-p5-t11-crash.json
+            ${{ runner.temp }}/elyqreth-p5-t10-live-browser.json
+          if-no-files-found: ignore
+          retention-days: 7
+      # Dedicated opt-in tier owns its PostgreSQL and child processes, including a hard runtime crash.
+      - run: npm run test:interaction:e2e
+        env:
+          BROWSER_PATH: /usr/bin/google-chrome
+          INTERACTION_E2E_ARTIFACT_DIR: ${{ runner.temp }}/elyqreth-interaction
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: phase4-interaction-evidence
+          path: ${{ runner.temp }}/elyqreth-interaction/elyqreth-p4-t09-*
+          if-no-files-found: ignore
+          retention-days: 7
+      - run: npm run test:city:e2e
+        env:
+          BROWSER_PATH: /usr/bin/google-chrome

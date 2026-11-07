@@ -1,0 +1,1938 @@
+{
+  "task": "Phase6 T15 continuation: blocker closure",
+  "date": "2026-11-07",
+  "timezone": "Asia/Bangkok",
+  "closureStatus": "PARTIAL",
+  "productionReadiness": "NOT READY",
+  "goNoGo": "BLOCKED",
+  "authorizationStatus": "AWAITING PRODUCTION AUTHORIZATION",
+  "promotionExecutionStatus": "NOT STARTED",
+  "scope": "Repository-actionable tooling, actual isolated local verification and unapproved decision records only. No production access/mutation/publication/notification/Git commit/push/tag/release.",
+  "recoveredProgress": {
+    "priorAssessment": "production-readiness-verification.json",
+    "priorFindingsPreserved": [
+      "H01",
+      "H02",
+      "H03",
+      "H04",
+      "H05",
+      "H06"
+    ],
+    "priorT13T14EvidenceUnmodified": true,
+    "canonicalGitAvailable": false
+  },
+  "canonicalReleaseIdentity": {
+    "repository": null,
+    "defaultBranch": null,
+    "currentBranch": null,
+    "sourceSha": null,
+    "applicationRegistry": null,
+    "releaseManifest": null,
+    "publishedImageDigests": null,
+    "migrationImage": "Shares API candidate; no verified candidate exists",
+    "workerImage": "Not applicable: native runtime lives in API",
+    "publicationAuthorized": false,
+    "productionEligible": false
+  },
+  "scanner": {
+    "version": 1,
+    "scope": "LOCAL_UNPUBLISHED_VERIFICATION_IMAGES",
+    "status": "SCANNED_NO_HIGH_CRITICAL",
+    "startedAt": "2026-11-07T00:12:28.317Z",
+    "scanner": {
+      "image": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+      "expectedVersion": "0.76.2",
+      "actualVersion": "Version: 0.76.2",
+      "database": {
+        "Version": 2,
+        "NextUpdate": "2026-11-07T18:59:52.855177045Z",
+        "UpdatedAt": "2026-11-06T18:59:52.855177206Z",
+        "DownloadedAt": "2026-11-07T00:13:13.416108785Z"
+      },
+      "databaseMetadataSha256": "86d7b57d91ba2381a67016a9e8b36e52c7f327f1a413114c2b1b6889821a10cb",
+      "databaseSha256": "112895ef5c65cfe71007fc6d1ba8df0b6652412cd5c869f95e3d4723b4912508"
+    },
+    "images": [
+      {
+        "target": "api",
+        "imageId": "sha256:ed38ea351193defc177bbf572d7f202fcfeea89c711be82196f23455b4afd900",
+        "os": {
+          "Family": "alpine",
+          "Name": "3.24.3"
+        },
+        "coverage": [
+          {
+            "target": "/input/api.tar (alpine 3.24.3)",
+            "class": "os-pkgs",
+            "type": "alpine",
+            "packages": 19
+          },
+          {
+            "target": "Node.js",
+            "class": "lang-pkgs",
+            "type": "node-pkg",
+            "packages": 122
+          }
+        ],
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0,
+          "UNKNOWN": 0
+        },
+        "findings": [],
+        "exceptions": [],
+        "releaseBlocking": false,
+        "scope": "Local Docker archive/config identity only; not published registry verification. Secret matches/snippets are intentionally omitted.",
+        "archiveSha256": "5a735de12baf922f240a4fea2f300ef06fd6e6e32df4b8b6b9803788c00bffb1",
+        "archiveBytes": 225016832,
+        "rawReportSha256": "28889ad5339d91ade0aa9c44ab38d8a2740420e147510c3e49f1afa0a14e4ff3",
+        "scannedAt": "2026-11-07T00:14:16.230Z"
+      },
+      {
+        "target": "web",
+        "imageId": "sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e",
+        "os": {
+          "Family": "alpine",
+          "Name": "3.24.3"
+        },
+        "coverage": [
+          {
+            "target": "/input/web.tar (alpine 3.24.3)",
+            "class": "os-pkgs",
+            "type": "alpine",
+            "packages": 21
+          }
+        ],
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0,
+          "UNKNOWN": 0
+        },
+        "findings": [],
+        "exceptions": [],
+        "releaseBlocking": false,
+        "scope": "Local Docker archive/config identity only; not published registry verification. Secret matches/snippets are intentionally omitted.",
+        "archiveSha256": "5dc344e50794d8842322157ba99df21514c1e7419bf3bc8b74afce2bd4f39cab",
+        "archiveBytes": 42547712,
+        "rawReportSha256": "a3ca56ad20f4b70eeea0126a7523b94821122f08884b28b570725bfdb21fde14",
+        "scannedAt": "2026-11-07T00:14:27.559Z"
+      },
+      {
+        "target": "edge",
+        "imageId": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2",
+        "os": {
+          "Family": "alpine",
+          "Name": "3.24.3"
+        },
+        "coverage": [
+          {
+            "target": "/input/edge.tar (alpine 3.24.3)",
+            "class": "os-pkgs",
+            "type": "alpine",
+            "packages": 21
+          }
+        ],
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0,
+          "UNKNOWN": 0
+        },
+        "findings": [],
+        "exceptions": [],
+        "releaseBlocking": false,
+        "scope": "Local Docker archive/config identity only; not published registry verification. Secret matches/snippets are intentionally omitted.",
+        "archiveSha256": "e3f97b19baf9f28947af66af860ae1635a3a8e829ebe19c7743d9d0944f7fe88",
+        "archiveBytes": 13537792,
+        "rawReportSha256": "68958b5eb26168f18174695f50fa4014d43386c6caf182322490b0b5be4cf5b1",
+        "scannedAt": "2026-11-07T00:14:31.834Z"
+      }
+    ],
+    "finishedAt": "2026-11-07T00:14:35.365Z",
+    "commandEvidence": [
+      {
+        "operation": "version",
+        "executable": "docker",
+        "argv": [
+          "run",
+          "--rm",
+          "--name",
+          "elyqreth_scan_9e0c9dc4d0134985b8b4e2108ce2cf94_version",
+          "--label",
+          "elyqreth.scan.run=9e0c9dc4-d013-4985-b8b4-e2108ce2cf94",
+          "--network",
+          "none",
+          "--read-only",
+          "--cap-drop=ALL",
+          "--security-opt=no-new-privileges:true",
+          "--user",
+          "1000:1000",
+          "--pids-limit",
+          "128",
+          "--memory",
+          "1g",
+          "--cpus",
+          "2",
+          "--tmpfs",
+          "/tmp:rw,noexec,nosuid,size=512m",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\archives,dst=/input,readonly",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\reports,dst=/output",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\cache,dst=/cache",
+          "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+          "--cache-dir",
+          "/cache",
+          "--version"
+        ],
+        "network": "none"
+      },
+      {
+        "operation": "database",
+        "executable": "docker",
+        "argv": [
+          "run",
+          "--rm",
+          "--name",
+          "elyqreth_scan_9e0c9dc4d0134985b8b4e2108ce2cf94_database",
+          "--label",
+          "elyqreth.scan.run=9e0c9dc4-d013-4985-b8b4-e2108ce2cf94",
+          "--network",
+          "bridge",
+          "--read-only",
+          "--cap-drop=ALL",
+          "--security-opt=no-new-privileges:true",
+          "--user",
+          "1000:1000",
+          "--pids-limit",
+          "128",
+          "--memory",
+          "1g",
+          "--cpus",
+          "2",
+          "--tmpfs",
+          "/tmp:rw,noexec,nosuid,size=512m",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\archives,dst=/input,readonly",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\reports,dst=/output",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\cache,dst=/cache",
+          "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+          "--cache-dir",
+          "/cache",
+          "image",
+          "--download-db-only",
+          "--no-progress",
+          "--timeout",
+          "5m"
+        ],
+        "network": "bridge"
+      },
+      {
+        "operation": "api",
+        "executable": "docker",
+        "argv": [
+          "run",
+          "--rm",
+          "--name",
+          "elyqreth_scan_9e0c9dc4d0134985b8b4e2108ce2cf94_api",
+          "--label",
+          "elyqreth.scan.run=9e0c9dc4-d013-4985-b8b4-e2108ce2cf94",
+          "--network",
+          "none",
+          "--read-only",
+          "--cap-drop=ALL",
+          "--security-opt=no-new-privileges:true",
+          "--user",
+          "1000:1000",
+          "--pids-limit",
+          "128",
+          "--memory",
+          "1g",
+          "--cpus",
+          "2",
+          "--tmpfs",
+          "/tmp:rw,noexec,nosuid,size=512m",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\archives,dst=/input,readonly",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\reports,dst=/output",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\cache,dst=/cache",
+          "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+          "--cache-dir",
+          "/cache",
+          "image",
+          "--input",
+          "/input/api.tar",
+          "--skip-db-update",
+          "--skip-java-db-update",
+          "--offline-scan",
+          "--scanners",
+          "vuln,secret",
+          "--format",
+          "json",
+          "--output",
+          "/output/api.json",
+          "--no-progress",
+          "--timeout",
+          "5m"
+        ],
+        "network": "none"
+      },
+      {
+        "operation": "web",
+        "executable": "docker",
+        "argv": [
+          "run",
+          "--rm",
+          "--name",
+          "elyqreth_scan_9e0c9dc4d0134985b8b4e2108ce2cf94_web",
+          "--label",
+          "elyqreth.scan.run=9e0c9dc4-d013-4985-b8b4-e2108ce2cf94",
+          "--network",
+          "none",
+          "--read-only",
+          "--cap-drop=ALL",
+          "--security-opt=no-new-privileges:true",
+          "--user",
+          "1000:1000",
+          "--pids-limit",
+          "128",
+          "--memory",
+          "1g",
+          "--cpus",
+          "2",
+          "--tmpfs",
+          "/tmp:rw,noexec,nosuid,size=512m",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\archives,dst=/input,readonly",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\reports,dst=/output",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\cache,dst=/cache",
+          "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+          "--cache-dir",
+          "/cache",
+          "image",
+          "--input",
+          "/input/web.tar",
+          "--skip-db-update",
+          "--skip-java-db-update",
+          "--offline-scan",
+          "--scanners",
+          "vuln,secret",
+          "--format",
+          "json",
+          "--output",
+          "/output/web.json",
+          "--no-progress",
+          "--timeout",
+          "5m"
+        ],
+        "network": "none"
+      },
+      {
+        "operation": "edge",
+        "executable": "docker",
+        "argv": [
+          "run",
+          "--rm",
+          "--name",
+          "elyqreth_scan_9e0c9dc4d0134985b8b4e2108ce2cf94_edge",
+          "--label",
+          "elyqreth.scan.run=9e0c9dc4-d013-4985-b8b4-e2108ce2cf94",
+          "--network",
+          "none",
+          "--read-only",
+          "--cap-drop=ALL",
+          "--security-opt=no-new-privileges:true",
+          "--user",
+          "1000:1000",
+          "--pids-limit",
+          "128",
+          "--memory",
+          "1g",
+          "--cpus",
+          "2",
+          "--tmpfs",
+          "/tmp:rw,noexec,nosuid,size=512m",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\archives,dst=/input,readonly",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\reports,dst=/output",
+          "--mount",
+          "type=bind,src=C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-t15-closure-scan-20261107-b\\cache,dst=/cache",
+          "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+          "--cache-dir",
+          "/cache",
+          "image",
+          "--input",
+          "/input/edge.tar",
+          "--skip-db-update",
+          "--skip-java-db-update",
+          "--offline-scan",
+          "--scanners",
+          "vuln,secret",
+          "--format",
+          "json",
+          "--output",
+          "/output/edge.json",
+          "--no-progress",
+          "--timeout",
+          "5m"
+        ],
+        "network": "none"
+      }
+    ],
+    "normalizationNote": "Actual execution used aquasec/trivy@digest; code now spells docker.io/aquasec/trivy@same digest. Canonical alias resolves same tool image; namespace-only normalization was contract-tested, not represented as another full scan.",
+    "toolImageConfigId": "sha256:52389f537db07a4dc0d289f61893ec791a3244d2f5cf21c819a2e874d72f3764",
+    "publishedCandidateGate": "NOT VERIFIED",
+    "sources": [
+      "https://github.com/aquasecurity/trivy/releases/tag/v0.76.2",
+      "https://www.trivy.dev/docs/latest/getting-started/installation/",
+      "https://www.docker.com/blog/trivy-supply-chain-compromise-what-docker-hub-users-should-know/"
+    ],
+    "trustLimitation": "Official release/source checked and content pinned; no independent cryptographic image-signature verification or production-policy approval claimed."
+  },
+  "rollback": {
+    "finalActualReport": {
+      "status": "PASS",
+      "checks": [
+        "production missing schema fails before serving",
+        "T11 namespace diagnostics expose safe pool and runtime metadata; remote container denied",
+        "non-root read-only capability/process/resource limits; namespace-only readiness; public liveness",
+        "T10 external key file loads as non-root under production file permissions without enabling integration or printing its value; ambiguous direct/file input rejected",
+        "T06 verified TLS1.2/1.3, HTTP redirect/canonical host, static assets/CSP, actual bearer login/me/401/403/logout/reauth, native execution, polling after edge restart, CORS, body/page bounds and internal route rejection",
+        "T06 only edge publishes loopback test ports; edge/web cannot reach DB; web cannot directly reach API; readiness remains namespace-only",
+        "T06 real Chromium HTTPS CSP/city/login/session/polling/reconnect/logout regression",
+        "T06 protected TLS rotation, invalid pair leaves existing TLS intact, invalid host/unsafe key fail startup, production HSTS and maximum bearer/header bounds verified",
+        "T06 spoofed forwarding headers overwritten, canonical upstream Host, no implicit proxy trust, 429 login budget, safe outage/logging and merged Compose network/port checks",
+        "real local account session native Task/Execution success and logout; separate migrator/application credentials",
+        "T15 actual local A/B/A API-web-edge metadata-variant replacement, native drain, private TLS/account smoke and one durable Execution; not a previous published release rollback",
+        "T09 clean: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+        "T09 timeout: real PID1 signals, in-flight HTTP outcome, non-root drain and durable state; no duplicate effective execution",
+        "missing/world-readable secret files and TLS hostname mismatch rejected safely",
+        "database outage removes readiness without killing liveness; readiness recovers after durable PG restart",
+        "T11 actual PostgreSQL outage and recovery have categorized JSON transition logs; liveness remains available",
+        "bounded SIGTERM shutdown and API recreation preserve successful work and one execution",
+        "non-root static web assets/readiness; malformed public JSON fails startup; invalid live input cannot expose mounted secrets",
+        "production Compose configuration valid; no published API/database/worker ports; managed DB boundary retained",
+        "image content/history contain no test credentials, private env, host modules or build/test tooling"
+      ],
+      "images": {
+        "api": "elyqreth-t05-api:verification",
+        "web": "elyqreth-t05-web:verification"
+      },
+      "worker": "NOT_APPLICABLE: no dedicated worker/queue exists",
+      "localRollback": {
+        "status": "LOCAL_VARIANT_ROLLBACK_VERIFIED",
+        "mode": "LOCAL_METADATA_VARIANTS",
+        "scope": "Real A-to-B-to-A API/web/edge container replacement using committed metadata-only variants of the same existing base images. No previous published release, code/schema downgrade, registry digest, provenance or production rollback is claimed.",
+        "baseImages": {
+          "api": "sha256:ed38ea351193defc177bbf572d7f202fcfeea89c711be82196f23455b4afd900",
+          "web": "sha256:ee9782e2aa24660c4bf66463a551ecfd91572120540e08e427b5ffbd196e033e",
+          "edge": "sha256:c61be9fd4aa0c568942bc103a41779502d35392e8db8d5084efef904074099f2"
+        },
+        "selections": [
+          {
+            "version": 1,
+            "mode": "LOCAL_METADATA_VARIANTS",
+            "variant": "A",
+            "images": {
+              "api": "sha256:0280855db669561e9a407c3df72025fd68aeb8fd13aedd9c13b6511c3fdd40c4",
+              "web": "sha256:904a47fe85dd5a72ba2057eab0ee8518a4062c48271b3bf9d3c79eb515f49eaf",
+              "edge": "sha256:0c0a6327de4c11635be5a31b11577866d4745417fbc3ec614e132bc4d3adcbe7"
+            },
+            "schemaHash": "70d1e8b434e5a87313d8d1cbd017e1cf8a4b8ff1ec9871ea6a14dbfc62370b85"
+          },
+          {
+            "version": 1,
+            "mode": "LOCAL_METADATA_VARIANTS",
+            "variant": "B",
+            "images": {
+              "api": "sha256:4c761189cbe21cae2977be0bdb094e1a73ce09de88814bdce23acc754e31f3d0",
+              "web": "sha256:9c333e716d11037f4efe62dbf46276cb147279d8cccb464b30497de606a98826",
+              "edge": "sha256:353cf631a4947158bf6211a6befffe004444f0b8387240e37358a7b1d2014b63"
+            },
+            "schemaHash": "70d1e8b434e5a87313d8d1cbd017e1cf8a4b8ff1ec9871ea6a14dbfc62370b85"
+          }
+        ],
+        "transitions": [
+          {
+            "variant": "A",
+            "images": {
+              "api": "sha256:0280855db669561e9a407c3df72025fd68aeb8fd13aedd9c13b6511c3fdd40c4",
+              "web": "sha256:904a47fe85dd5a72ba2057eab0ee8518a4062c48271b3bf9d3c79eb515f49eaf",
+              "edge": "sha256:0c0a6327de4c11635be5a31b11577866d4745417fbc3ec614e132bc4d3adcbe7"
+            },
+            "apiReady": true,
+            "webReady": true,
+            "edgeReady": true,
+            "authenticatedTlsSmoke": true,
+            "schemaUnchanged": true,
+            "oneDurableExecution": true,
+            "observedAt": "2026-11-07T00:26:58.130Z"
+          },
+          {
+            "variant": "B",
+            "images": {
+              "api": "sha256:4c761189cbe21cae2977be0bdb094e1a73ce09de88814bdce23acc754e31f3d0",
+              "web": "sha256:9c333e716d11037f4efe62dbf46276cb147279d8cccb464b30497de606a98826",
+              "edge": "sha256:353cf631a4947158bf6211a6befffe004444f0b8387240e37358a7b1d2014b63"
+            },
+            "apiReady": true,
+            "webReady": true,
+            "edgeReady": true,
+            "authenticatedTlsSmoke": true,
+            "schemaUnchanged": true,
+            "oneDurableExecution": true,
+            "observedAt": "2026-11-07T00:27:20.041Z"
+          },
+          {
+            "variant": "A",
+            "images": {
+              "api": "sha256:0280855db669561e9a407c3df72025fd68aeb8fd13aedd9c13b6511c3fdd40c4",
+              "web": "sha256:904a47fe85dd5a72ba2057eab0ee8518a4062c48271b3bf9d3c79eb515f49eaf",
+              "edge": "sha256:0c0a6327de4c11635be5a31b11577866d4745417fbc3ec614e132bc4d3adcbe7"
+            },
+            "apiReady": true,
+            "webReady": true,
+            "edgeReady": true,
+            "authenticatedTlsSmoke": true,
+            "schemaUnchanged": true,
+            "oneDurableExecution": true,
+            "observedAt": "2026-11-07T00:27:40.285Z"
+          }
+        ],
+        "negativeChecks": [
+          "Unavailable local image fails identity preflight without changing current API",
+          "Mismatched schema fingerprint rejected before replacement",
+          "Invalid candidate configuration exits before readiness; current A remains healthy"
+        ]
+      }
+    },
+    "finalRawLogSha256": "ac54a17925185fe0bf0aba29ebedd701daaa776e165ba174749244a7af2c677b",
+    "finalProcessExitCode": null,
+    "firstProcessExitCode": 0,
+    "actualReleasedVersionRollback": "NOT VERIFIED",
+    "failureOracle": "Seven isolated contract step failures are simulated, not actual deployed rollback failures",
+    "cleanup": "Harness validates exact random fixture labels before removing only its resources; original fixture API restored; no existing user database/volume targeted",
+    "cleanupFinalIndependentRecheck": {
+      "status": "VERIFIED",
+      "method": "Restarted installed Docker Desktop hidden; read-only local labelled resource queries; no deletions",
+      "ownedT05ContainersRemaining": 0,
+      "ownedScannerContainersRemaining": 0,
+      "rollbackVariantImagesRemaining": 0,
+      "exitCode": 0
+    }
+  },
+  "backupAndKeys": {
+    "mechanism": "Encrypted custom-format dump, authenticated metadata/checksums, target guard, safe retention and isolated restore",
+    "currentTests": "16/16 including real isolated PostgreSQL restore and synthetic wrong-key/corruption checks",
+    "testOnlyCorrection": "TCP readiness instead of Unix socket; initialization socket cannot satisfy final TCP-client readiness. Original failure exact cause not proven.",
+    "externalNotVerified": [
+      "Off-host durability",
+      "Escrow/key ACLs and custodian availability",
+      "Hosting/provider/key-loss recovery",
+      "Approved restored-session revocation and uncertain-effect cutover"
+    ],
+    "runbook": "../t15-blocker-closure.md#backup-secrets-and-key-recovery-runbook"
+  },
+  "monitoring": {
+    "instrumentationImplemented": true,
+    "localSignalsAndTlsSmtpFixtureVerified": true,
+    "currentTests": 21,
+    "productionBackendConfigured": null,
+    "externalTestReceiver": null,
+    "externalDeliveryReceipt": null,
+    "operatorAcknowledgement": null,
+    "externalNotificationSent": false,
+    "namedOperatorAssignments": null
+  },
+  "capacityAndRecovery": {
+    "evidence": "security-capacity-recovery-verification.json",
+    "newCapacityMeasurementThisContinuation": false,
+    "historicalMeasurements": {
+      "agentReadsPerSecond": 541.7,
+      "readConcurrency": 8,
+      "readP95Ms": 19.09,
+      "taskSubmissionsPerSecond": 117.43,
+      "nativeSuccessesPerSecond": 7.73,
+      "nativeConcurrency": 1,
+      "nodePeakRssMiB": 223.04,
+      "postgresCpuLimit": 1,
+      "postgresMemoryMiB": 512,
+      "dbPool": 3,
+      "headlessFpsRange": [
+        34,
+        38
+      ],
+      "maxProjections": 20,
+      "visibleBoundNpcs": 4,
+      "sourceDbLossReadRecoveryMs": 1935,
+      "snapshotAgeAtSourceLossMs": 5750,
+      "knownPostSnapshotMarkersLost": 1
+    },
+    "limitations": "Finite synthetic staging bursts; same PostgreSQL server survives source DB loss; no production guarantee, hosting-loss/key/offhost/native/browser cutover measurement",
+    "approvedCapacityExpectations": null,
+    "approvedRpo": null,
+    "approvedRto": null,
+    "comparison": "AWAITING APPROVAL",
+    "sustainedHostingFailureComparison": "NOT MEASURED"
+  },
+  "blockerClosureMatrix": [
+    {
+      "id": "CANONICAL_SOURCE",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "No .git; git status/remotes/branch/SHA exit128",
+      "missingRequirement": "Approved repository URL, protected default branch, clean committed candidate",
+      "requiredOwner": "Repository owner",
+      "resolutionAction": "Supply approved canonical checkout; do not invent Git history",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B01"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "APPLICATION_REGISTRY",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "T12 OCI contracts and closed read-only workflows",
+      "missingRequirement": "Registry namespace, access/retention, publisher and production pull policy",
+      "requiredOwner": "Release/security owner",
+      "resolutionAction": "Select GHCR/private OCI/Docker Hub policy; authorize publication separately",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B02"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "RELEASE_CANDIDATE",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "Manifest identity, producer and source validation fixtures pass",
+      "missingRequirement": "Actual source SHA, published digest tuple, provenance and matching staging receipts",
+      "requiredOwner": "Release owner",
+      "resolutionAction": "Build and verify approved candidate through reviewed workflow after source/registry decisions",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B03"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "TARGET_AND_APPROVER",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "T01/T02-T10 topology/configuration; protected gate remains closed",
+      "missingRequirement": "Approved target/network/DNS/TLS/DB/storage/secrets, approver and deployment window",
+      "requiredOwner": "Infrastructure and release approval authorities",
+      "resolutionAction": "Complete private checklist with authenticated approval references; this task is not approval",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B04",
+        "B05"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "CONTAINER_SECURITY",
+      "status": "PARTIALLY RESOLVED",
+      "existingEvidence": "Three actual local images scanned; zero findings, frozen DB and archive/report hashes",
+      "missingRequirement": "Exact published candidate scan, tool policy and provenance approval",
+      "requiredOwner": "Security/release owner",
+      "resolutionAction": "Approve pinned tool and scan actual published candidate; no implicit vulnerability exceptions",
+      "releaseBlocking": true,
+      "decisionIds": []
+    },
+    {
+      "id": "ROLLBACK",
+      "status": "PARTIALLY RESOLVED",
+      "existingEvidence": "Actual local metadata-variant A/B/A, exact IDs, unchanged schema, auth/readiness and one durable Execution",
+      "missingRequirement": "Previous known-good approved release; real software/schema compatibility and target adapter rehearsal",
+      "requiredOwner": "Release/database operator",
+      "resolutionAction": "Retain previous manifest/digests and execute isolated release-specific rollback after prerequisites",
+      "releaseBlocking": true,
+      "decisionIds": []
+    },
+    {
+      "id": "EXECUTION_TRANSPORT",
+      "status": "BLOCKED_TECHNICAL",
+      "existingEvidence": "T12 mode PLAN_ONLY_NO_DEPLOYMENT; no publisher/deployment transport exists",
+      "missingRequirement": "Reviewed registry/target-specific execution transport under protected approval",
+      "requiredOwner": "Release/infrastructure owners",
+      "resolutionAction": "Implement after target/registry/mechanism approved; never improvise direct production commands",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B06"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "BACKUP_KEY_RECOVERY",
+      "status": "PARTIALLY RESOLVED",
+      "existingEvidence": "Encrypted isolated restore and wrong-key/corruption/retention tests; recovery runbook",
+      "missingRequirement": "Off-host/key escrow ACL/custodian/hosting-loss exercise and approved session/effect cutover",
+      "requiredOwner": "Recovery/security/key custodian",
+      "resolutionAction": "Approve custody and independent storage, verify recovery dependency chain and cutover in isolation",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B09"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "MONITORING_OWNERSHIP",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "21 actual local SMTP/observability/signal tests; private runtime/DB signals",
+      "missingRequirement": "Backend/receiver config, authorized delivery receipt, acknowledgement and eight named assignments",
+      "requiredOwner": "Monitoring/incident/release owners",
+      "resolutionAction": "Provide private contacts/channel and authorize test delivery; no external notification sent",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B07",
+        "B08"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    },
+    {
+      "id": "CAPACITY_RECOVERY_EXPECTATIONS",
+      "status": "BLOCKED_EXTERNAL",
+      "existingEvidence": "T14 finite capacity and source-DB-loss observations retained",
+      "missingRequirement": "Approved workload/error/headroom/RPO/RTO/retention/cadence; sustained hosting-loss evidence",
+      "requiredOwner": "Product/operations/recovery approval authorities",
+      "resolutionAction": "Approve private acceptance records then compare with measured workloads and recovery",
+      "releaseBlocking": true,
+      "decisionIds": [
+        "B10",
+        "B11"
+      ],
+      "decisionConfiguration": "Version2 template plus offline diagnostic available; no actual decisions/approval supplied; blocker not resolved by documentation."
+    }
+  ],
+  "localCapabilityClosures": [
+    {
+      "id": "LOCAL_SCAN_TOOL",
+      "status": "RESOLVED",
+      "scope": "Actual three fixed local image scans; published candidate not covered"
+    },
+    {
+      "id": "LOCAL_ROLLBACK_TOOL",
+      "status": "RESOLVED",
+      "scope": "Actual metadata-only A/B/A; previous approved released version not covered"
+    },
+    {
+      "id": "FRONTEND_INTERMITTENT_TEST",
+      "status": "NOT VERIFIED",
+      "severity": "MEDIUM",
+      "scope": "Initial handoff/error retry failure; repeat passed; cause remains unknown; no city change"
+    }
+  ],
+  "approvalPackage": {
+    "decisionRecord": "docker/production-prerequisites.example.json",
+    "purpose": "Unpopulated private-copy template; never approval/deployment input",
+    "requiredDecisions": [
+      "CANONICAL_SOURCE",
+      "APPLICATION_REGISTRY",
+      "RELEASE_CANDIDATE",
+      "TARGET_AND_APPROVER",
+      "CONTAINER_SECURITY",
+      "ROLLBACK",
+      "EXECUTION_TRANSPORT",
+      "BACKUP_KEY_RECOVERY",
+      "MONITORING_OWNERSHIP",
+      "CAPACITY_RECOVERY_EXPECTATIONS"
+    ],
+    "requiredNamedRoles": [
+      "Deployment approver",
+      "Deployment operator",
+      "Primary incident responder",
+      "Backup incident responder",
+      "Database recovery operator",
+      "Backup/key custodian",
+      "Security escalation owner",
+      "Monitoring/alert owner"
+    ],
+    "exceptionsApproved": [],
+    "stopCondition": "No promotion/publication/production preflight or mutation without approved infrastructure/access and separate exact-manifest authorization"
+  },
+  "verificationCommands": [
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "outcome": "City syntax and frontend/backend TypeScript checks passed",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-lint.log"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "exitCode": 0,
+      "outcome": "383/383 passed before final scanner reference normalization and rollback immutable-base hardening; focused final tests passed afterward",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-api.log"
+    },
+    {
+      "command": "npm.cmd test",
+      "exitCode": 1,
+      "outcome": "Initial run237/238; simulation error-retry handoff test stuck in ERROR; cause not established; no city source/test edit",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-web.log"
+    },
+    {
+      "command": "npm.cmd test",
+      "exitCode": 0,
+      "outcome": "Repeat238/238; initial intermittent observation remains visible",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-web-retry.log"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exitCode": 0,
+      "outcome": "Disposable frontend production build passed; maintained dist source preserved",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-web-build.log"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exitCode": 1,
+      "outcome": "Initial11 unit pass/5 integration setup failures: Connection terminated unexpectedly during CREATE DATABASE; exact cause unproven",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-backup.log"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exitCode": 0,
+      "outcome": "Isolated unchanged retry16/16 passed",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-backup-retry.log"
+    },
+    {
+      "command": "npm.cmd run test:backup",
+      "exitCode": 0,
+      "outcome": "Backend production build and16/16 passed after test-only TCP readiness correction",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-backup-final.log"
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/email-monitor.test.cjs apps/api/test/observability.test.cjs apps/api/test/operational-signals.test.cjs",
+      "exitCode": 0,
+      "outcome": "21/21; actual local SMTPS fixture, redaction, state and bounded retry; no external receiver",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-monitor.log"
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/container-scan.test.cjs apps/api/test/local-rollback.test.cjs apps/api/test/release-pipeline.test.cjs apps/api/test/production-readiness.test.cjs",
+      "exitCode": 0,
+      "outcome": "19/19 final focused contract/gate tests",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-final-gates.log"
+    },
+    {
+      "command": "node scripts/scan-local-images.mjs --output \"$env:TEMP\\elyqreth-t15-closure-scan-20261107-b\"",
+      "exitCode": 0,
+      "outcome": "All three local images scanned; zero findings; published artifact gate NOT VERIFIED",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-scan-20261107-b/scan-evidence.json"
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain --rollback",
+      "exitCode": 0,
+      "outcome": "First full fixture PASS: actual metadata A/B/A and existing TLS/browser/drain/outage checks",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-rollback.log"
+    },
+    {
+      "command": "node scripts/container-hardening.mjs --edge --runtime-drain --rollback",
+      "exitCode": null,
+      "outcome": "Final immutable-base run produced complete PASS JSON; shell session lost across usage-limit interruption, numeric process exit not retained. Do not infer exit code from PASS JSON",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-rollback-final.log"
+    },
+    {
+      "command": "node scripts/check-production-compose.mjs",
+      "exitCode": 0,
+      "outcome": "Offline inert fixture validates Compose structure, not actual production credentials/TLS"
+    },
+    {
+      "command": "& \"$env:TEMP\\elyqreth-t12-yaml-env\\Scripts\\python.exe\" scripts/check-release-workflows.py",
+      "exitCode": 0,
+      "outcome": "Three workflows pass grammar/policy checks; protected remote settings unavailable"
+    },
+    {
+      "command": "node scripts/production-readiness.mjs --output \"$env:TEMP\\elyqreth-t15-closure-resumed-readiness-2\"",
+      "exitCode": 2,
+      "outcome": "Expected fail-closed BLOCKED; AWAITING PRODUCTION AUTHORIZATION; NOT STARTED"
+    },
+    {
+      "command": "git status --short",
+      "exitCode": 128,
+      "outcome": "Unavailable: workspace has no .git; no Git cleanliness/source identity claimed"
+    },
+    {
+      "command": "git remote -v",
+      "exitCode": 128,
+      "outcome": "Unavailable: workspace has no .git; no Git cleanliness/source identity claimed"
+    },
+    {
+      "command": "git branch --show-current",
+      "exitCode": 128,
+      "outcome": "Unavailable: workspace has no .git; no Git cleanliness/source identity claimed"
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "exitCode": 128,
+      "outcome": "Unavailable: workspace has no .git; no Git cleanliness/source identity claimed"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 129,
+      "outcome": "Unavailable: workspace has no .git; no Git cleanliness/source identity claimed"
+    },
+    {
+      "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "exitCode": 0,
+      "outcome": "23 documents, local links, configuration inventory and touched-file whitespace passed"
+    },
+    {
+      "command": "node --test --test-reporter=tap apps/api/test/container-scan.test.cjs apps/api/test/local-rollback.test.cjs apps/api/test/release-pipeline.test.cjs apps/api/test/production-readiness.test.cjs",
+      "exitCode": 0,
+      "outcome": "Resumed-session final19/19 passed",
+      "localEvidence": "%TEMP%/elyqreth-t15-closure-resumed-gates.log"
+    },
+    {
+      "command": "docker info",
+      "exitCode": 1,
+      "outcome": "Final independent daemon/cleanup recheck unavailable: Docker Desktop Linux engine pipe absent. Earlier actual scans and full PASS fixture reports are retained; failed Docker queries do not prove zero leftover resources."
+    },
+    {
+      "command": "docker ps -aq --filter label=elyqreth.t05.run; docker ps -aq --filter label=elyqreth.scan.run; docker image ls -q --filter label=org.elyqreth.local-rehearsal",
+      "exitCode": 0,
+      "outcome": "After local Docker Desktop restart: zero rehearsal-labelled containers and zero metadata-variant images; existing user resources untouched"
+    },
+    {
+      "command": "node --check scripts/scan-local-images.mjs; node --check scripts/local-rollback.mjs; node --check scripts/container-hardening.mjs",
+      "exitCode": 0,
+      "outcome": "All three syntax checks passed"
+    }
+  ],
+  "files_changed": [
+    "scripts/release/scan.mjs",
+    "scripts/scan-local-images.mjs",
+    "scripts/local-rollback.mjs",
+    "scripts/container-hardening.mjs",
+    "apps/api/test/container-scan.test.cjs",
+    "apps/api/test/local-rollback.test.cjs",
+    "apps/api/test/backup.integration.cjs",
+    "docker/production-prerequisites.example.json",
+    "README.md",
+    "docs/ai-agent-platform/phase-6/README.md",
+    "docs/ai-agent-platform/phase-6/implementation-plan.md",
+    "docs/ai-agent-platform/phase-6/production-readiness.md",
+    "docs/ai-agent-platform/phase-6/t15-blocker-closure.md",
+    "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+    "docs/ai-agent-platform/phase-6/verification-evidence/production-readiness-verification.json",
+    "docs/ai-agent-platform/phase-6/verification-evidence/t15-blocker-closure-verification.json",
+    "scripts/production-decision-contracts.mjs",
+    "scripts/production-decisions.mjs",
+    "apps/api/test/production-decisions.test.cjs"
+  ],
+  "preservation": {
+    "baselineFileCount": 5339,
+    "comparison": "Full initial comparison of5339 baseline files found no missing files and only seven expected modifications before the assessment supplement; final focused protected-file comparison passed after supplement. No Git diff is available.",
+    "applicationSourceChanged": false,
+    "citySourceChanged": false,
+    "lockfilesDockerfilesComposeMigrationsChanged": false,
+    "finalProtectedFilesVerified": 288,
+    "protectedMismatches": [],
+    "newFilesAndExpectedModifications": [
+      "scripts/release/scan.mjs",
+      "scripts/scan-local-images.mjs",
+      "scripts/local-rollback.mjs",
+      "scripts/container-hardening.mjs",
+      "apps/api/test/container-scan.test.cjs",
+      "apps/api/test/local-rollback.test.cjs",
+      "apps/api/test/backup.integration.cjs",
+      "docker/production-prerequisites.example.json",
+      "README.md",
+      "docs/ai-agent-platform/phase-6/README.md",
+      "docs/ai-agent-platform/phase-6/implementation-plan.md",
+      "docs/ai-agent-platform/phase-6/production-readiness.md",
+      "docs/ai-agent-platform/phase-6/t15-blocker-closure.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+      "docs/ai-agent-platform/phase-6/verification-evidence/production-readiness-verification.json",
+      "docs/ai-agent-platform/phase-6/verification-evidence/t15-blocker-closure-verification.json"
+    ],
+    "review": "No private-key blocks or trailing whitespace in changed files; synthetic examples and identities only. This is not a comprehensive secret scanner or proof of Git cleanliness.",
+    "newFilesVerified": [
+      "apps/api/test/container-scan.test.cjs",
+      "apps/api/test/local-rollback.test.cjs",
+      "docker/production-prerequisites.example.json",
+      "docs/ai-agent-platform/phase-6/t15-blocker-closure.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/t15-blocker-closure-verification.json",
+      "scripts/local-rollback.mjs",
+      "scripts/release/scan.mjs",
+      "scripts/scan-local-images.mjs"
+    ],
+    "unexpectedNewFiles": []
+  },
+  "notRun": [
+    "Published candidate build/source/provenance/registry verification",
+    "Actual previous approved release rollback",
+    "Live production preflight",
+    "External alert delivery/acknowledgement",
+    "Off-host/key/provider disaster recovery",
+    "Production capacity/SLA acceptance",
+    "Production promotion"
+  ],
+  "decisionReview": {
+    "date": "2026-11-07",
+    "timezone": "Asia/Bangkok",
+    "request": "Approved Infrastructure Decisions & Release Candidate Verification",
+    "userDirection": "User elected self-configuration through config/environment rather than providing decision details. No actual approved values or external approval records were supplied.",
+    "status": "PARTIAL",
+    "technicalClosure": "PARTIAL",
+    "productionReadiness": "NOT READY",
+    "productionAuthorization": "AWAITING PRODUCTION AUTHORIZATION",
+    "productionPromotion": "CLOSED",
+    "configuration": {
+      "example": "docker/production-prerequisites.example.json",
+      "version": 2,
+      "privateCopyRequired": true,
+      "loadedByApplicationOrWorkflows": false,
+      "valuesSupplied": false,
+      "validator": "scripts/production-decisions.mjs",
+      "offlineReview": {
+        "version": 1,
+        "status": "INCOMPLETE",
+        "missing": [
+          {
+            "path": "source.repository",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "source.repositoryUrl",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "source.defaultBranch",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "source.sourceCommit",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "source.branchProtectionEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "source.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.origin",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.imagePrefix",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.visibility",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.retentionPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.publisherIdentityRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.productionPullIdentityRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.digestRetentionEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "registry.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.releaseManifestRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.expectedManifestSha256",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.apiDigest",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.webDigest",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.edgeDigest",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.producerEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "candidate.stagingReceiptRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.environmentId",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.hostingRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.deploymentMechanismRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.privateDatabaseRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.dnsTlsOwnerRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.networkApprovalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.secretInjectionRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.backupDestinationRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.monitoringRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.authenticationMode",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.containerRuntime",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.topologyEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.persistentStorageRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "target.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.kind",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.registryOrigin",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.targetEnvironmentId",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.digestPinned",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.hostIdentityEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.leastPrivilegeEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.credentialLifetimePolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.auditPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.approvalIntegrationRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.concurrencyPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.rollbackCompatibilityRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "transport.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentApprover.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentApprover.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentApprover.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentApprover.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentApprover.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentOperator.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentOperator.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentOperator.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentOperator.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.deploymentOperator.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentPrimary.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentPrimary.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentPrimary.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentPrimary.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentPrimary.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentBackup.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentBackup.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentBackup.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentBackup.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.incidentBackup.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.databaseRecoveryOperator.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.databaseRecoveryOperator.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.databaseRecoveryOperator.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.databaseRecoveryOperator.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.databaseRecoveryOperator.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.backupKeyCustodian.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.backupKeyCustodian.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.backupKeyCustodian.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.backupKeyCustodian.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.backupKeyCustodian.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.securityEscalation.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.securityEscalation.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.securityEscalation.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.securityEscalation.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.securityEscalation.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.monitoringOwner.principalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.monitoringOwner.privateContactRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.monitoringOwner.assignmentEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.monitoringOwner.backupPrincipalRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "roles.monitoringOwner.escalationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.concurrentUsers",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.activeAgents",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.concurrentExecutions",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.taskSubmissionsPerSecond",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.collaborationWorkloadRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.externalEventsPerSecond",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.latencyRequirementRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.maximumErrorRate",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.resourceHeadroomRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.growthAssumptionsRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "capacity.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.maximumDataLossSeconds",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.maximumRecoverySeconds",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.backupFrequencyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.retentionPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.restoreVerificationCadenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.keyEscrowRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.sessionInvalidationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.effectReconciliationProcedureRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.disasterEscalationRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.approvalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.backupSurvivesHostLoss",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.keyCustodySurvivesHostLoss",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.offHostStorageEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "recovery.restoreEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.testChannelRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.deliveryReceiptRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.operatorAcknowledgementRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.alertPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.senderPolicyRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.emailTransportEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "monitoring.deliveryAuthorizationRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.protectedMechanismRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.manifestSha256",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.targetEnvironmentId",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.operation",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.window",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.rollbackAuthorityRef",
+            "code": "REQUIRED_DECISION"
+          },
+          {
+            "path": "authorization.authenticatedApprovalEvidenceRef",
+            "code": "REQUIRED_DECISION"
+          }
+        ],
+        "invalid": [],
+        "conflicts": [],
+        "manifestStatus": "NOT_PROVIDED",
+        "trust": "Operator-supplied claims only. References are not dereferenced; no identities, approvals, remote settings, artifacts or infrastructure are authenticated.",
+        "promotion": "CLOSED",
+        "authorization": "AWAITING PRODUCTION AUTHORIZATION",
+        "productionReadiness": "NOT READY",
+        "publicationPerformed": false,
+        "networkAccessPerformed": false
+      },
+      "completeRecordStatus": "COMPLETE_UNAUTHENTICATED_WORKSHEET",
+      "completeRecordExitCode": 2,
+      "authority": "No approval authentication or publication/deployment operation; even complete records leave promotion closed",
+      "migration": "Preserve version1 private copy and manually transfer reviewed non-secret values to version2"
+    },
+    "previousEvidenceValidation": {
+      "scanRerun": false,
+      "rollbackRerun": false,
+      "reason": "Same stored local artifacts/evidence; no changed candidate or supplied published artifacts. New changes are isolated administrative tooling, not runtime image inputs.",
+      "retainedSectionHashes": {
+        "scanner": "a7abd74ecc0dabe68a83a088f26dd4ee5db574d45d97799ba0bf192e1c08706c",
+        "rollback": "b3c392b6d7159eed93724e955266f28536e439721b9a74d1cd94abc7c6595c14"
+      },
+      "localScan": "Three specific local Docker config IDs; scanner0.76.2/frozen2026-11-06 DB evidence; no published-candidate/provenance/freshness guarantee",
+      "rollback": "Actual A/B/A metadata variants of identical application code with real container replacement, native drain, unchanged journal and one durable Execution; not genuine prior-version/full staging rollback",
+      "T13T14": "Historical local staging/security/capacity/DR evidence retained; no production acceptance inferred"
+    },
+    "crossDecisionValidation": {
+      "implemented": [
+        "Exact version2 schema/types",
+        "Unknown-field/private-value suppression",
+        "Source GitHub URL/repository match",
+        "HTTPS registry origin/image prefix match",
+        "Transport registry/target match",
+        "Authorization candidate/target match",
+        "Digest-pinning and independent backup/key host-loss assertions",
+        "Optional candidate canonical hash/source/component namespace/digest/migration consistency via T12 validator"
+      ],
+      "actualApprovedContradictions": "NOT VERIFIED: no approved values supplied",
+      "optionalManifest": "Not supplied; real candidate remains blocked. Synthetic manifests only in labelled tests; no real artifact identity invented."
+    },
+    "ownership": {
+      "assignments": "BLOCKED_EXTERNAL",
+      "roles": "Existing eight roles; combined backupKeyCustodian covers backup and key custody; each requires accepted principal/team, backup and escalation evidence",
+      "contacts": "Private references only; no names/contacts invented"
+    },
+    "email": {
+      "localTransport": "Current focused tests passed with real local TLS SMTP fixture; existing bounded retries/redaction/uncertainty handling retained",
+      "externalProviderConfigured": false,
+      "externalDeliveryVerified": false,
+      "recipientAcknowledged": false,
+      "notificationSent": false,
+      "procedure": "See existing email-monitoring.md and current guide; separate explicit notification authorization required"
+    },
+    "backupKeys": {
+      "integrityAndRestore": "Existing encrypted real isolated restore evidence retained; current backup units passed",
+      "newRestorePerformed": false,
+      "offHostStorageApproved": false,
+      "independentEscrowApproved": false,
+      "hostLossRecoveryVerified": false,
+      "productionKeysAccessed": false,
+      "procedure": "Existing T08 CLI and current key-recovery guide; no provider/scheduler/key generated"
+    },
+    "capacityRecovery": {
+      "measurementSource": "security-capacity-recovery-verification.json; historical measurements in parent capacityAndRecovery retained",
+      "newMeasurements": false,
+      "approvedExpectations": null,
+      "approvedRpoRto": null,
+      "comparison": "AWAITING APPROVAL",
+      "hostingLossComparison": "NOT MEASURED"
+    },
+    "blockers": [
+      {
+        "id": "B01",
+        "registerId": "CANONICAL_SOURCE",
+        "blocker": "Canonical repository",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "No .git; git status/remotes/branch/SHA exit128",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved owner/repository URL, branch and actual committed SHA; provide clean checkout and protection evidence",
+        "requiredApprovingRole": "Repository owner",
+        "requiredNextAction": "Configure approved owner/repository URL, branch and actual committed SHA; provide clean checkout and protection evidence",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B02",
+        "registerId": "APPLICATION_REGISTRY",
+        "blocker": "Approved registry",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "T12 OCI contracts and closed read-only workflows",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved HTTPS registry origin/image prefix, retention and scoped publisher/pull references",
+        "requiredApprovingRole": "Release/security owner",
+        "requiredNextAction": "Configure approved HTTPS registry origin/image prefix, retention and scoped publisher/pull references",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B03",
+        "registerId": "RELEASE_CANDIDATE",
+        "blocker": "Immutable release candidate",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "Manifest identity, producer and source validation fixtures pass",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Supply actual T12 candidate manifest and source/digest/provenance/staging evidence; no fabricated candidate",
+        "requiredApprovingRole": "Release owner",
+        "requiredNextAction": "Supply actual T12 candidate manifest and source/digest/provenance/staging evidence; no fabricated candidate",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B04",
+        "registerId": "TARGET_AND_APPROVER",
+        "blocker": "Approved production target",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "T01/T02-T10 topology/configuration; protected gate remains closed",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved target/runtime/private topology/storage/DNS/TLS/database/secrets and evidence",
+        "requiredApprovingRole": "Infrastructure/release authorities",
+        "requiredNextAction": "Configure approved target/runtime/private topology/storage/DNS/TLS/database/secrets and evidence",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B05",
+        "registerId": "TARGET_AND_APPROVER",
+        "blocker": "Production approver",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "T01/T02-T10 topology/configuration; protected gate remains closed",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure actual accepted approver and protected mechanism evidence; self-filled record is not authentication",
+        "requiredApprovingRole": "Deployment approval authority",
+        "requiredNextAction": "Configure actual accepted approver and protected mechanism evidence; self-filled record is not authentication",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B06",
+        "registerId": "EXECUTION_TRANSPORT",
+        "blocker": "Approved deployment transport",
+        "previousStatus": "BLOCKED_TECHNICAL",
+        "currentStatus": "BLOCKED_TECHNICAL",
+        "classification": "Technical; depends on external decisions",
+        "existingEvidence": "T12 mode PLAN_ONLY_NO_DEPLOYMENT; no publisher/deployment transport exists",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Select reviewed transport and registry/target identities; only then implement audited protected execution separately",
+        "requiredApprovingRole": "Release/infrastructure authorities",
+        "requiredNextAction": "Select reviewed transport and registry/target identities; only then implement audited protected execution separately",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B07",
+        "registerId": "MONITORING_OWNERSHIP",
+        "blocker": "Named operators",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "21 actual local SMTP/observability/signal tests; private runtime/DB signals",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure accepted principal/team, private contact and assignment/backup/escalation references for eight roles",
+        "requiredApprovingRole": "Operations/recovery/security owners",
+        "requiredNextAction": "Configure accepted principal/team, private contact and assignment/backup/escalation references for eight roles",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B08",
+        "registerId": "MONITORING_OWNERSHIP",
+        "blocker": "External email delivery",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "21 actual local SMTP/observability/signal tests; private runtime/DB signals",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved sender/channel and separately authorize isolated acceptance/delivery/acknowledgement verification",
+        "requiredApprovingRole": "Monitoring/incident owner",
+        "requiredNextAction": "Configure approved sender/channel and separately authorize isolated acceptance/delivery/acknowledgement verification",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B09",
+        "registerId": "BACKUP_KEY_RECOVERY",
+        "blocker": "Off-host backup and independent key recovery",
+        "previousStatus": "PARTIALLY RESOLVED",
+        "currentStatus": "PARTIALLY RESOLVED",
+        "classification": "External",
+        "existingEvidence": "Encrypted isolated restore and wrong-key/corruption/retention tests; recovery runbook",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure independent storage/key custody; separately authorize host-loss/restore/session/effect verification",
+        "requiredApprovingRole": "Recovery/key/security owners",
+        "requiredNextAction": "Configure independent storage/key custody; separately authorize host-loss/restore/session/effect verification",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B10",
+        "registerId": "CAPACITY_RECOVERY_EXPECTATIONS",
+        "blocker": "Approved capacity expectations",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "T14 finite capacity and source-DB-loss observations retained",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved workload/latency/error/headroom/growth and compare with measured representative workloads",
+        "requiredApprovingRole": "Product/operations approval authorities",
+        "requiredNextAction": "Configure approved workload/latency/error/headroom/growth and compare with measured representative workloads",
+        "releaseBlocking": true
+      },
+      {
+        "id": "B11",
+        "registerId": "CAPACITY_RECOVERY_EXPECTATIONS",
+        "blocker": "Approved RPO/RTO",
+        "previousStatus": "BLOCKED_EXTERNAL",
+        "currentStatus": "BLOCKED_EXTERNAL",
+        "classification": "External",
+        "existingEvidence": "T14 finite capacity and source-DB-loss observations retained",
+        "technicalChanges": "Version2 private-copy worksheet and offline schema/cross-decision diagnostics; no approval or deployment authority",
+        "remainingExternalDecision": "Configure approved maximum loss/duration, schedule/retention/cadence and custody; compare measured hosting-loss recovery",
+        "requiredApprovingRole": "Recovery/operations approval authorities",
+        "requiredNextAction": "Configure approved maximum loss/duration, schedule/retention/cadence and custody; compare measured hosting-loss recovery",
+        "releaseBlocking": true
+      }
+    ],
+    "verificationCommands": [
+      {
+        "command": "npm.cmd run lint",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "City syntax plus frontend/backend TypeScript checks passed",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-lint.log",
+        "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+      },
+      {
+        "command": "npm.cmd run test:api",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "390/390 passed, including7 new decision tests",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-api.log",
+        "logSha256": "99986d6bcb8b9c575743dfe1313c4e76611eb006dc381499b5f8a54758e469f4"
+      },
+      {
+        "command": "npm.cmd test",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "238/238 passed",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-web.log",
+        "logSha256": "4d1b6a57789a6123aa51d2143b3aab1b74ab4f9c7450c176a5c1f108ade237d4"
+      },
+      {
+        "command": "npm.cmd run build",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "Backend production build passed",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-build.log",
+        "logSha256": "f5e95203aeb5aba801133f0974703e5180eb46eff4f795dfc6b8133976347460"
+      },
+      {
+        "command": "npm.cmd run build:web",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "Disposable frontend production build passed; maintained city source preserved",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-web-build.log",
+        "logSha256": "a220fc9d20c039a5fec4786095fde12ca3cba7aac105db357ce1a298b376f760"
+      },
+      {
+        "command": "node --test --test-reporter=tap apps/api/test/production-decisions.test.cjs apps/api/test/release-pipeline.test.cjs apps/api/test/production-readiness.test.cjs apps/api/test/email-monitor.test.cjs apps/api/test/observability.test.cjs apps/api/test/operational-signals.test.cjs apps/api/test/backup.test.cjs",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "54/54 local tests passed; no external email or actual registry operations",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-focused.log",
+        "logSha256": "5bb717599b19b167fcdef083d6d5a0b07911ec654b770bb0ce90427cc1ad90e6"
+      },
+      {
+        "command": "node scripts/production-decisions.mjs --config docker/production-prerequisites.example.json --output \"$env:TEMP\\elyqreth-t15-decisions-empty-review-2\"",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 2,
+        "outcome": "Expected INCOMPLETE,126 missing fields,0 invalid,0 conflicts, promotion CLOSED. Native exit captured explicitly using exit $LASTEXITCODE",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "node scripts/check-production-compose.mjs",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "Inert offline Compose validation passed; no services started",
+        "limitations": "Local/non-production only",
+        "localEvidence": "%TEMP%/elyqreth-t15-decisions-compose.log",
+        "logSha256": "aca19331cd4aecb4eae4195cc0a9127f725660c6d9f01824501f8340e05c6f5d"
+      },
+      {
+        "command": "& \"$env:TEMP\\elyqreth-t12-yaml-env\\Scripts\\python.exe\" scripts/check-release-workflows.py",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "Three workflows parsed; closed manual triggers/read-only permissions/SHA pins/concurrency",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git status --short",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 128,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git remote -v",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 128,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git branch --show-current",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 128,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git rev-parse HEAD",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 128,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git diff --cached --stat",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 129,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git diff --stat",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 129,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git ls-files --others --exclude-standard",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 128,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "git diff --check",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 129,
+        "outcome": "Unavailable: this workspace export has no .git; no committed source identity or Git-clean claim",
+        "limitations": "Local/non-production only"
+      },
+      {
+        "command": "python docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "23 documents, local links, environment inventory and touched-file whitespace passed",
+        "limitations": "Offline static check"
+      },
+      {
+        "command": "node --check scripts/production-decisions.mjs; node --check scripts/production-decision-contracts.mjs",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 0,
+        "outcome": "Both syntax checks passed",
+        "limitations": "Syntax only"
+      },
+      {
+        "command": "node scripts/production-readiness.mjs --output \"$env:TEMP\\elyqreth-t15-decisions-final-readiness\"",
+        "workingDirectory": "C:\\Users\\user\\Desktop\\Project\\Elyqreth",
+        "exitCode": 2,
+        "outcome": "Expected BLOCKED; AWAITING PRODUCTION AUTHORIZATION; NOT STARTED",
+        "limitations": "Fixed offline T13/T14 inputs; no production access"
+      }
+    ],
+    "filesChangedThisContinuation": [
+      "scripts/production-decision-contracts.mjs",
+      "scripts/production-decisions.mjs",
+      "apps/api/test/production-decisions.test.cjs",
+      "docker/production-prerequisites.example.json",
+      "docs/ai-agent-platform/phase-6/t15-blocker-closure.md",
+      "docs/ai-agent-platform/phase-6/README.md",
+      "docs/ai-agent-platform/phase-6/verification-evidence/t15-blocker-closure-verification.json"
+    ],
+    "safety": {
+      "productionAccess": false,
+      "productionMutation": false,
+      "remoteGitOrRegistryContact": false,
+      "publication": false,
+      "deployment": false,
+      "externalNotifications": false,
+      "commitPushTagRelease": false,
+      "T16Implemented": false
+    },
+    "nextAction": "Privately configure approved repository/registry/target/transport/ownership/objectives using version2, run offline checker, and obtain authenticated independent review. Do not publish/deploy automatically.",
+    "preservation": {
+      "baselineFiles": 797,
+      "modified": [
+        "docker/production-prerequisites.example.json",
+        "docs/ai-agent-platform/phase-6/README.md",
+        "docs/ai-agent-platform/phase-6/t15-blocker-closure.md",
+        "docs/ai-agent-platform/phase-6/verification-evidence/t15-blocker-closure-verification.json"
+      ],
+      "created": [
+        "apps/api/test/production-decisions.test.cjs",
+        "scripts/production-decision-contracts.mjs",
+        "scripts/production-decisions.mjs"
+      ],
+      "missing": [],
+      "unexpectedChanges": [],
+      "originalT12T13T14AndRuntimeSourceUnchanged": true,
+      "scanAndRollbackSectionsUnchanged": true,
+      "check": "SHA256 comparison, private-key-block/whitespace review, actual .git unavailable; not a comprehensive secret scanner or Git-clean proof"
+    },
+    "releaseCandidateLevels": {
+      "SOURCE_IDENTIFIED": "NOT VERIFIED: no .git or supplied approved source",
+      "LOCAL_BUILD_VERIFIED": "Historical local builds only, plus current source production builds; not a committed candidate",
+      "LOCAL_IMAGE_SCANNED": "Retained scan of three exact historical local config IDs only",
+      "REGISTRY_ARTIFACT_VERIFIED": "NOT VERIFIED: none supplied; no registry access",
+      "STAGING_ARTIFACT_VERIFIED": "NOT VERIFIED for approved candidate; original local T13 fixture retained",
+      "PROMOTION_ELIGIBLE": false
+    }
+  }
+}

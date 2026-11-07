@@ -1,0 +1,200 @@
+{
+  "world": {
+    "width": 2048,
+    "height": 1152,
+    "columns": 64,
+    "rows": 36
+  },
+  "buildingCount": 24,
+  "method": "Union of collision footprints, clipped to street-bounded parcels. Excludes one-tile major streets and the named globe pocket public space. Includes sidewalks, setbacks and alleys. Entrance alcoves remain part of the gross architectural footprint.",
+  "blocks": [
+    {
+      "id": "north-0",
+      "name": "Civic frontage",
+      "tiles": [
+        0,
+        0,
+        16,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 176,
+      "buildingCells": 106,
+      "coverage": 60.2
+    },
+    {
+      "id": "north-1",
+      "name": "Market street",
+      "tiles": [
+        17,
+        0,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 104,
+      "coverage": 63
+    },
+    {
+      "id": "north-2",
+      "name": "Studio street",
+      "tiles": [
+        33,
+        0,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 92,
+      "coverage": 55.8
+    },
+    {
+      "id": "north-3",
+      "name": "Office frontage",
+      "tiles": [
+        49,
+        0,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 112,
+      "coverage": 67.9
+    },
+    {
+      "id": "middle-0",
+      "name": "Clinic apartments",
+      "tiles": [
+        0,
+        12,
+        16,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 176,
+      "buildingCells": 120,
+      "coverage": 68.2
+    },
+    {
+      "id": "middle-1",
+      "name": "Globe commercial block",
+      "tiles": [
+        17,
+        12,
+        15,
+        11
+      ],
+      "publicSpaces": [
+        [
+          17,
+          19,
+          6,
+          3
+        ]
+      ],
+      "eligibleCells": 147,
+      "buildingCells": 98,
+      "coverage": 66.7
+    },
+    {
+      "id": "middle-2",
+      "name": "Research offices",
+      "tiles": [
+        33,
+        12,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 112,
+      "coverage": 67.9
+    },
+    {
+      "id": "middle-3",
+      "name": "Eastbank residences",
+      "tiles": [
+        49,
+        12,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 105,
+      "coverage": 63.6
+    },
+    {
+      "id": "south-0",
+      "name": "Residential workshops",
+      "tiles": [
+        0,
+        24,
+        16,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 176,
+      "buildingCells": 112,
+      "coverage": 63.6
+    },
+    {
+      "id": "south-1",
+      "name": "Station block",
+      "tiles": [
+        17,
+        24,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 104,
+      "coverage": 63
+    },
+    {
+      "id": "south-2",
+      "name": "Dock workshops",
+      "tiles": [
+        33,
+        24,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 98,
+      "coverage": 59.4
+    },
+    {
+      "id": "south-3",
+      "name": "Southbank homes",
+      "tiles": [
+        49,
+        24,
+        15,
+        11
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 165,
+      "buildingCells": 112,
+      "coverage": 67.9
+    }
+  ],
+  "map": {
+    "id": "entire-map",
+    "tiles": [
+      0,
+      0,
+      64,
+      36
+    ],
+    "publicSpaces": [],
+    "eligibleCells": 2304,
+    "buildingCells": 1275,
+    "coverage": 55.3
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "width": 1536,
+  "height": 1024,
+  "format": "RGBA PNG",
+  "alpha": true,
+  "note": "Do not slice at y512: complete top-row buildings end at y531. Six independent alpha silhouettes; generous outer column gaps. Low-alpha generation residue can remain around some silhouettes.",
+  "sprites": [
+    {
+      "id": "bar_arcade",
+      "crop": [
+        48,
+        0,
+        544,
+        535
+      ],
+      "opaqueBBox": [
+        77,
+        14,
+        485,
+        531
+      ]
+    },
+    {
+      "id": "commercial_billboard",
+      "crop": [
+        560,
+        0,
+        1040,
+        535
+      ],
+      "opaqueBBox": [
+        590,
+        15,
+        948,
+        531
+      ]
+    },
+    {
+      "id": "apartments",
+      "crop": [
+        1056,
+        0,
+        1512,
+        535
+      ],
+      "opaqueBBox": [
+        1078,
+        26,
+        1484,
+        531
+      ]
+    },
+    {
+      "id": "warehouse",
+      "crop": [
+        24,
+        535,
+        552,
+        1024
+      ],
+      "opaqueBBox": [
+        51,
+        555,
+        537,
+        997
+      ]
+    },
+    {
+      "id": "market_offices",
+      "crop": [
+        560,
+        535,
+        1040,
+        1024
+      ],
+      "opaqueBBox": [
+        584,
+        538,
+        1020,
+        995
+      ]
+    },
+    {
+      "id": "corner_hotel",
+      "crop": [
+        1056,
+        535,
+        1512,
+        1024
+      ],
+      "opaqueBBox": [
+        1080,
+        538,
+        1485,
+        997
+      ]
+    }
+  ]
+}

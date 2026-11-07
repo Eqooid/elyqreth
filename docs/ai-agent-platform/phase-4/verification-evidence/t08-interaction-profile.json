@@ -1,0 +1,82 @@
+{
+  "kind": "Synthetic concurrent RUNNING read contracts; actual interaction owners and controlled fetch, not provider executions or Canvas throughput",
+  "environment": {
+    "node": "v24.9.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "totalMemoryBytes": 16541872128
+  },
+  "measurements": [
+    {
+      "agents": 1,
+      "selections": 200,
+      "requests": {
+        "task": 2,
+        "history": 1,
+        "agent": 1,
+        "execution": 2,
+        "result": 1
+      },
+      "medianMs": 0.02039999999999509,
+      "p95Ms": 0.052600000000012415,
+      "cpuMs": 93,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 5,
+      "selections": 200,
+      "requests": {
+        "task": 205,
+        "history": 200,
+        "agent": 200,
+        "execution": 205,
+        "result": 200
+      },
+      "medianMs": 0.8625999999999863,
+      "p95Ms": 1.9128000000000043,
+      "cpuMs": 219,
+      "retainedHistoryRows": 1
+    },
+    {
+      "agents": 20,
+      "selections": 200,
+      "requests": {
+        "task": 220,
+        "history": 200,
+        "agent": 200,
+        "execution": 220,
+        "result": 200
+      },
+      "medianMs": 0.6275000000000546,
+      "p95Ms": 1.06959999999998,
+      "cpuMs": 125,
+      "retainedHistoryRows": 1
+    }
+  ],
+  "heapCheckpoints": [
+    {
+      "cycles": 0,
+      "heapUsed": 8511728
+    },
+    {
+      "cycles": 25,
+      "heapUsed": 8205360
+    },
+    {
+      "cycles": 50,
+      "heapUsed": 8237056
+    },
+    {
+      "cycles": 75,
+      "heapUsed": 8242592
+    },
+    {
+      "cycles": 100,
+      "heapUsed": 8163096
+    }
+  ],
+  "cleanup": "100 create/select/open-history/dispose cycles: zero outstanding client timers after each",
+  "limits": "Short forced-GC investigation, no production capacity or leak-freedom claim; existing native T07 fixture covers real two-Agent execution observation."
+}

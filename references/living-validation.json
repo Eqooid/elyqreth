@@ -1,0 +1,101 @@
+{
+  "comparison": "Original reference and prior city screenshot inspected before editing. Architecture, building positions, canal, station and character scale preserved. Asphalt follows the market cross street, central spine and east lane. Plaza, station stairs and docks retain pedestrian paving.",
+  "water": {
+    "frames": 24,
+    "tileSize": 64,
+    "loopSeconds": 3.2,
+    "directions": [
+      "down",
+      "left"
+    ],
+    "separateLayer": true,
+    "wholeBackgroundTranslated": false,
+    "reflections": "independent moving broken orange bands and bright cores; clipped edge wavelets",
+    "pixelComparison": {
+      "region": [
+        752,
+        454,
+        134,
+        108
+      ],
+      "screenshots": [
+        "living-empty.jpg",
+        "living-atStation.jpg"
+      ],
+      "changedPixelsAboveRGBDifference12": 6995,
+      "pixelCount": 14472
+    },
+    "loopValidation": "Frame clock returns to the same phase after 3.2 seconds; wrapped surface coordinates join the last frame to the first."
+  },
+  "train": {
+    "asset": "central-station-train.png",
+    "independentFromStation": true,
+    "transparentStationBay": true,
+    "route": {
+      "start": 530,
+      "stop": 958,
+      "exit": 1720,
+      "baseline": 896,
+      "speed": 125,
+      "visibleRailClip": [
+        784,
+        822,
+        752,
+        74
+      ]
+    },
+    "states": [
+      "approaching",
+      "stopped",
+      "departing",
+      "waiting"
+    ],
+    "dwellSeconds": [
+      5,
+      8
+    ],
+    "randomWaitSeconds": [
+      7,
+      15
+    ],
+    "observedNoseScreenXApproximate": {
+      "atStation": 918,
+      "departing": 1228
+    },
+    "occlusion": "Train draws before station at depth879, station pillars/sign/roof and platform railings draw in front. Visible train clipped to the actual rail deck.",
+    "screenshots": [
+      "living-atStation.jpg",
+      "living-departing.jpg",
+      "living-empty.jpg"
+    ]
+  },
+  "ambient": "Independent ID phases and periods for neon signs, window activity, electronic billboards, lamps, canopy bending and particles. Ambient uses real delta time; mission speed affects residents only. Pause freezes both.",
+  "browser": {
+    "mission": "All four stages delivered after final rail boundary correction; 4/4.",
+    "agents": "All four residents observed Wandering after completion.",
+    "camera": "Zoom, keyboard pan and fit verified after changes.",
+    "applicationErrors": [],
+    "performance": "Motion remained responsive during browser observations; terrain and water atlas cached, no per-frame image creation or per-pixel readbacks. No numerical FPS benchmark claimed.",
+    "evidence": [
+      "orange-city-rail-empty-1791455766167.jpg",
+      "orange-city-rail-stopped-1791455779406.jpg",
+      "orange-city-water-rail-a-1791455514733.jpg",
+      "orange-city-living-final-1791456001606.jpg"
+    ]
+  },
+  "automatedTests": {
+    "passed": 9,
+    "failed": 0,
+    "checks": [
+      "all module syntax",
+      "connected A* navigation",
+      "safe wandering and animations",
+      "task interruption and full handoffs",
+      "retry/removal/replacement",
+      "independent reference sprites",
+      "train repeat and large/split delta equivalence",
+      "water frame loop",
+      "asphalt/paving distinction"
+    ]
+  }
+}

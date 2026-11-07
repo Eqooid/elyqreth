@@ -1,0 +1,1293 @@
+{
+  "world": {
+    "width": 1856,
+    "height": 1024,
+    "columns": 116,
+    "rows": 64
+  },
+  "original": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 96,
+    "rows": 64
+  },
+  "location": {
+    "id": "east-terrace",
+    "name": "Ember Café",
+    "bounds": [
+      1536,
+      64,
+      320,
+      672
+    ],
+    "exit": {
+      "col": 98,
+      "row": 44
+    },
+    "entry": {
+      "col": 106,
+      "row": 26
+    }
+  },
+  "activity": {
+    "id": "coffee",
+    "locationId": "east-terrace",
+    "label": "Coffee break",
+    "chance": 0.62,
+    "maxAgents": 3,
+    "maxVisitors": 1,
+    "admissionGap": 8,
+    "decisionDelay": [
+      12,
+      23
+    ],
+    "seatDuration": [
+      38,
+      64
+    ],
+    "cooldown": [
+      45,
+      95
+    ],
+    "afterWorkCooldown": 20,
+    "routeTimeout": 95,
+    "waitTimeout": 5,
+    "sipPeriod": 5.2
+  },
+  "objects": [
+    {
+      "id": "cafe-counter",
+      "type": "counter",
+      "atlas": "cafe",
+      "sprite": 0,
+      "x": 1696,
+      "y": 248,
+      "width": 202,
+      "height": 174,
+      "layer": "world",
+      "collision": {
+        "col": 100,
+        "row": 10,
+        "columns": 12,
+        "rows": 5
+      }
+    },
+    {
+      "id": "cafe-table-1",
+      "type": "table",
+      "atlas": "cafe",
+      "sprite": 1,
+      "x": 1608,
+      "y": 504,
+      "width": 58,
+      "height": 48,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "collision": {
+        "col": 99,
+        "row": 29,
+        "columns": 3,
+        "rows": 3
+      },
+      "center": {
+        "x": 1608,
+        "y": 488
+      }
+    },
+    {
+      "id": "cafe-table-2",
+      "type": "table",
+      "atlas": "cafe",
+      "sprite": 1,
+      "x": 1752,
+      "y": 504,
+      "width": 58,
+      "height": 48,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "collision": {
+        "col": 108,
+        "row": 29,
+        "columns": 3,
+        "rows": 3
+      },
+      "center": {
+        "x": 1752,
+        "y": 488
+      }
+    },
+    {
+      "id": "cafe-table-3",
+      "type": "table",
+      "atlas": "cafe",
+      "sprite": 1,
+      "x": 1608,
+      "y": 664,
+      "width": 58,
+      "height": 48,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "collision": {
+        "col": 99,
+        "row": 39,
+        "columns": 3,
+        "rows": 3
+      },
+      "center": {
+        "x": 1608,
+        "y": 648
+      }
+    },
+    {
+      "id": "cafe-table-4",
+      "type": "table",
+      "atlas": "cafe",
+      "sprite": 1,
+      "x": 1752,
+      "y": 664,
+      "width": 58,
+      "height": 48,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "collision": {
+        "col": 108,
+        "row": 39,
+        "columns": 3,
+        "rows": 3
+      },
+      "center": {
+        "x": 1752,
+        "y": 648
+      }
+    },
+    {
+      "id": "cafe-table-1-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1560,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "right",
+      "position": {
+        "x": 1560,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1560,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 97,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-1-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1656,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "left",
+      "position": {
+        "x": 1656,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1656,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 103,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-1-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1608,
+      "y": 447,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "down",
+      "position": {
+        "x": 1608,
+        "y": 440
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 440
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 27
+      },
+      "depth": 439
+    },
+    {
+      "id": "cafe-table-1-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1608,
+      "y": 543,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "up",
+      "position": {
+        "x": 1608,
+        "y": 536
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 536
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 33
+      },
+      "depth": 535
+    },
+    {
+      "id": "cafe-table-2-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1704,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "right",
+      "position": {
+        "x": 1704,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1704,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 106,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-2-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1800,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "left",
+      "position": {
+        "x": 1800,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1800,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 112,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-2-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1752,
+      "y": 447,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "down",
+      "position": {
+        "x": 1752,
+        "y": 440
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 440
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 27
+      },
+      "depth": 439
+    },
+    {
+      "id": "cafe-table-2-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1752,
+      "y": 543,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "up",
+      "position": {
+        "x": 1752,
+        "y": 536
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 536
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 33
+      },
+      "depth": 535
+    },
+    {
+      "id": "cafe-table-3-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1560,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "right",
+      "position": {
+        "x": 1560,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1560,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 97,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-3-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1656,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "left",
+      "position": {
+        "x": 1656,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1656,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 103,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-3-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1608,
+      "y": 607,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "down",
+      "position": {
+        "x": 1608,
+        "y": 600
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 600
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 37
+      },
+      "depth": 599
+    },
+    {
+      "id": "cafe-table-3-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1608,
+      "y": 703,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "up",
+      "position": {
+        "x": 1608,
+        "y": 696
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 696
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 43
+      },
+      "depth": 695
+    },
+    {
+      "id": "cafe-table-4-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1704,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "right",
+      "position": {
+        "x": 1704,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1704,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 106,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-4-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1800,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "left",
+      "position": {
+        "x": 1800,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1800,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 112,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-4-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1752,
+      "y": 607,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "down",
+      "position": {
+        "x": 1752,
+        "y": 600
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 600
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 37
+      },
+      "depth": 599
+    },
+    {
+      "id": "cafe-table-4-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1752,
+      "y": 703,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "up",
+      "position": {
+        "x": 1752,
+        "y": 696
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 696
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 43
+      },
+      "depth": 695
+    },
+    {
+      "id": "cafe-table-1-cup",
+      "type": "cup",
+      "atlas": "cafe",
+      "sprite": 8,
+      "x": 1619,
+      "y": 472,
+      "width": 10,
+      "height": 10,
+      "layer": "world",
+      "depth": 505,
+      "tableId": "cafe-table-1"
+    },
+    {
+      "id": "cafe-table-2-cup",
+      "type": "cup",
+      "atlas": "cafe",
+      "sprite": 8,
+      "x": 1763,
+      "y": 472,
+      "width": 10,
+      "height": 10,
+      "layer": "world",
+      "depth": 505,
+      "tableId": "cafe-table-2"
+    },
+    {
+      "id": "cafe-table-3-cup",
+      "type": "cup",
+      "atlas": "cafe",
+      "sprite": 8,
+      "x": 1619,
+      "y": 632,
+      "width": 10,
+      "height": 10,
+      "layer": "world",
+      "depth": 665,
+      "tableId": "cafe-table-3"
+    },
+    {
+      "id": "cafe-table-4-cup",
+      "type": "cup",
+      "atlas": "cafe",
+      "sprite": 8,
+      "x": 1763,
+      "y": 632,
+      "width": 10,
+      "height": 10,
+      "layer": "world",
+      "depth": 665,
+      "tableId": "cafe-table-4"
+    },
+    {
+      "id": "cafe-umbrella-north",
+      "type": "umbrella",
+      "atlas": "cafe",
+      "sprite": 6,
+      "x": 1816,
+      "y": 305,
+      "width": 66,
+      "height": 92,
+      "layer": "world",
+      "collision": {
+        "col": 113,
+        "row": 18,
+        "columns": 1,
+        "rows": 1
+      }
+    },
+    {
+      "id": "cafe-planter-0",
+      "type": "planter",
+      "atlas": "cafe",
+      "sprite": 7,
+      "x": 1560,
+      "y": 264,
+      "width": 45,
+      "height": 42,
+      "layer": "world",
+      "collision": {
+        "col": 97,
+        "row": 15,
+        "columns": 1,
+        "rows": 2
+      }
+    },
+    {
+      "id": "cafe-planter-1",
+      "type": "planter",
+      "atlas": "cafe",
+      "sprite": 7,
+      "x": 1832,
+      "y": 264,
+      "width": 45,
+      "height": 42,
+      "layer": "world",
+      "collision": {
+        "col": 114,
+        "row": 15,
+        "columns": 1,
+        "rows": 2
+      }
+    },
+    {
+      "id": "cafe-planter-2",
+      "type": "planter",
+      "atlas": "cafe",
+      "sprite": 7,
+      "x": 1560,
+      "y": 744,
+      "width": 45,
+      "height": 42,
+      "layer": "world",
+      "collision": {
+        "col": 97,
+        "row": 45,
+        "columns": 1,
+        "rows": 2
+      }
+    },
+    {
+      "id": "cafe-planter-3",
+      "type": "planter",
+      "atlas": "cafe",
+      "sprite": 7,
+      "x": 1816,
+      "y": 744,
+      "width": 45,
+      "height": 42,
+      "layer": "world",
+      "collision": {
+        "col": 113,
+        "row": 45,
+        "columns": 1,
+        "rows": 2
+      }
+    }
+  ],
+  "interactionPoints": [
+    {
+      "id": "cafe-table-1-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1560,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "right",
+      "position": {
+        "x": 1560,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1560,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 97,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-1-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1656,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "left",
+      "position": {
+        "x": 1656,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1656,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 103,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-1-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1608,
+      "y": 447,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "down",
+      "position": {
+        "x": 1608,
+        "y": 440
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 440
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 27
+      },
+      "depth": 439
+    },
+    {
+      "id": "cafe-table-1-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1608,
+      "y": 543,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-1",
+      "direction": "up",
+      "position": {
+        "x": 1608,
+        "y": 536
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 536
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 33
+      },
+      "depth": 535
+    },
+    {
+      "id": "cafe-table-2-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1704,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "right",
+      "position": {
+        "x": 1704,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1704,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 106,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-2-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1800,
+      "y": 495,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "left",
+      "position": {
+        "x": 1800,
+        "y": 488
+      },
+      "interactionPosition": {
+        "x": 1800,
+        "y": 488
+      },
+      "interactionCell": {
+        "col": 112,
+        "row": 30
+      },
+      "depth": 487
+    },
+    {
+      "id": "cafe-table-2-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1752,
+      "y": 447,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "down",
+      "position": {
+        "x": 1752,
+        "y": 440
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 440
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 27
+      },
+      "depth": 439
+    },
+    {
+      "id": "cafe-table-2-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1752,
+      "y": 543,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-2",
+      "direction": "up",
+      "position": {
+        "x": 1752,
+        "y": 536
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 536
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 33
+      },
+      "depth": 535
+    },
+    {
+      "id": "cafe-table-3-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1560,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "right",
+      "position": {
+        "x": 1560,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1560,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 97,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-3-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1656,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "left",
+      "position": {
+        "x": 1656,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1656,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 103,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-3-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1608,
+      "y": 607,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "down",
+      "position": {
+        "x": 1608,
+        "y": 600
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 600
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 37
+      },
+      "depth": 599
+    },
+    {
+      "id": "cafe-table-3-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1608,
+      "y": 703,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-3",
+      "direction": "up",
+      "position": {
+        "x": 1608,
+        "y": 696
+      },
+      "interactionPosition": {
+        "x": 1608,
+        "y": 696
+      },
+      "interactionCell": {
+        "col": 100,
+        "row": 43
+      },
+      "depth": 695
+    },
+    {
+      "id": "cafe-table-4-chair-left",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 4,
+      "x": 1704,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "right",
+      "position": {
+        "x": 1704,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1704,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 106,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-4-chair-right",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 3,
+      "x": 1800,
+      "y": 655,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "left",
+      "position": {
+        "x": 1800,
+        "y": 648
+      },
+      "interactionPosition": {
+        "x": 1800,
+        "y": 648
+      },
+      "interactionCell": {
+        "col": 112,
+        "row": 40
+      },
+      "depth": 647
+    },
+    {
+      "id": "cafe-table-4-chair-north",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 2,
+      "x": 1752,
+      "y": 607,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "down",
+      "position": {
+        "x": 1752,
+        "y": 600
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 600
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 37
+      },
+      "depth": 599
+    },
+    {
+      "id": "cafe-table-4-chair-south",
+      "type": "chair",
+      "atlas": "cafe",
+      "sprite": 5,
+      "x": 1752,
+      "y": 703,
+      "width": 27,
+      "height": 34,
+      "layer": "world",
+      "locationId": "east-terrace",
+      "tableId": "cafe-table-4",
+      "direction": "up",
+      "position": {
+        "x": 1752,
+        "y": 696
+      },
+      "interactionPosition": {
+        "x": 1752,
+        "y": 696
+      },
+      "interactionCell": {
+        "col": 109,
+        "row": 43
+      },
+      "depth": 695
+    }
+  ],
+  "unchangedLandmarkBounds": [
+    {
+      "id": "hall",
+      "referenceBounds": [
+        274,
+        -48,
+        330,
+        342
+      ]
+    },
+    {
+      "id": "develop",
+      "referenceBounds": [
+        653,
+        0,
+        306,
+        350
+      ]
+    },
+    {
+      "id": "design",
+      "referenceBounds": [
+        976,
+        0,
+        270,
+        351
+      ]
+    },
+    {
+      "id": "test",
+      "referenceBounds": [
+        333,
+        353,
+        196,
+        220
+      ]
+    },
+    {
+      "id": "research",
+      "referenceBounds": [
+        1034,
+        337,
+        225,
+        350
+      ]
+    },
+    {
+      "id": "station",
+      "referenceBounds": [
+        775,
+        708,
+        342,
+        246
+      ]
+    }
+  ],
+  "extendedSidewalks": [
+    {
+      "id": "terrace-frontage",
+      "tiles": [
+        96,
+        19,
+        20,
+        3
+      ]
+    },
+    {
+      "id": "terrace-counter-court",
+      "tiles": [
+        99,
+        9,
+        14,
+        10
+      ]
+    },
+    {
+      "id": "terrace-promenade",
+      "tiles": [
+        96,
+        26,
+        20,
+        19
+      ]
+    }
+  ],
+  "streetEndpoints": [
+    {
+      "id": "west-gate",
+      "col": 0,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "West continuation"
+    },
+    {
+      "id": "east-gate",
+      "col": 116,
+      "row": 24,
+      "endpoint": "boundary",
+      "name": "East continuation"
+    },
+    {
+      "id": "station-dropoff",
+      "col": 47,
+      "row": 41,
+      "endpoint": "destination",
+      "name": "Station drop-off"
+    },
+    {
+      "id": "service-court",
+      "col": 80,
+      "row": 44,
+      "endpoint": "destination",
+      "name": "R&D service court"
+    }
+  ],
+  "railDeck": [
+    {
+      "id": "station-track-deck",
+      "tiles": [
+        50,
+        55,
+        66,
+        2
+      ]
+    }
+  ]
+}

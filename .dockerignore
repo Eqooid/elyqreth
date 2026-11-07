@@ -1,0 +1,33 @@
+# Allowlist context: root dist/ is maintained source, never a generated output.
+**
+!package.json
+!package-lock.json
+!apps/
+!apps/api/
+!apps/api/package.json
+!apps/api/tsconfig.json
+!apps/api/src/
+!apps/api/src/**
+!apps/api/migrations/
+!apps/api/migrations/**
+!docker/
+!docker/*.cjs
+!docker/*.sh
+!docker/nginx.conf
+!docker/edge/
+!docker/edge/**
+!dist/
+!dist/**
+# Last-match exclusions also protect accidentally placed private files inside allowed source directories.
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/node_modules
+**/.git
+**/.aws
+**/.codex
+**/.agents
+**/*.log

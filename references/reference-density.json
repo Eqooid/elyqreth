@@ -1,0 +1,81 @@
+{
+  "world": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 96,
+    "rows": 64
+  },
+  "buildingCount": 15,
+  "method": "Union of collision footprints, clipped to street-bounded parcels. Reference-aligned district bounds include setbacks and alleys. Public spaces are excluded only where explicitly named. Entrance alcoves remain part of the gross architectural footprint.",
+  "blocks": [
+    {
+      "id": "civic-market",
+      "name": "Civic / market frontage",
+      "tiles": [
+        0,
+        0,
+        82,
+        22
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 1804,
+      "buildingCells": 1305,
+      "coverage": 72.3
+    },
+    {
+      "id": "bar-quarter",
+      "name": "Bar / arcade quarter",
+      "tiles": [
+        0,
+        19,
+        18,
+        27
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 486,
+      "buildingCells": 288,
+      "coverage": 59.3
+    },
+    {
+      "id": "east-signage",
+      "name": "East billboard blocks",
+      "tiles": [
+        82,
+        0,
+        14,
+        46
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 644,
+      "buildingCells": 520,
+      "coverage": 80.7
+    },
+    {
+      "id": "foreground",
+      "name": "Foreground residential blocks",
+      "tiles": [
+        0,
+        47,
+        45,
+        17
+      ],
+      "publicSpaces": [],
+      "eligibleCells": 765,
+      "buildingCells": 474,
+      "coverage": 62
+    }
+  ],
+  "map": {
+    "id": "entire-map",
+    "tiles": [
+      0,
+      0,
+      96,
+      64
+    ],
+    "publicSpaces": [],
+    "eligibleCells": 6144,
+    "buildingCells": 3160,
+    "coverage": 51.4
+  }
+}

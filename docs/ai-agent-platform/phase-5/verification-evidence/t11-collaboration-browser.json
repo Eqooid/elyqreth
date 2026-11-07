@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/156.0.8078.48",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "P5 T10 real browser / Nest / PostgreSQL collaboration inspection and recovery",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport"
+  ],
+  "resourceRequests": 124,
+  "exceptions": 0,
+  "collaborationAcceptance": {
+    "status": "PASS",
+    "nativeExecutedDelegations": 1,
+    "persistedRelationshipFixtureCount": 2,
+    "relatedExecutionVerified": true,
+    "externalOwnershipVerified": true,
+    "identityCollisionSeparated": true,
+    "networkReconciled": true,
+    "logoutCleared": true
+  },
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}

@@ -1,0 +1,140 @@
+{
+  "time": 129.58319999999514,
+  "waterFrame": 11,
+  "train": {
+    "state": "waiting",
+    "x": 1720,
+    "speed": 0,
+    "arrivals": 3,
+    "departures": 3
+  },
+  "traffic": {
+    "spawned": 11,
+    "exited": 7,
+    "yields": 4898,
+    "vehicles": [
+      {
+        "id": 8,
+        "route": "boulevard-west",
+        "x": 619.9109407501735,
+        "y": 368,
+        "angle": 3.141592653589793,
+        "speed": 0,
+        "stopped": false,
+        "yielding": true
+      },
+      {
+        "id": 9,
+        "route": "boulevard-west",
+        "x": 684.8792016824195,
+        "y": 368,
+        "angle": 3.141592653589793,
+        "speed": 0,
+        "stopped": false,
+        "yielding": true
+      },
+      {
+        "id": 10,
+        "route": "boulevard-east",
+        "x": 570.3147807025678,
+        "y": 392,
+        "angle": 0,
+        "speed": 0,
+        "stopped": false,
+        "yielding": true
+      },
+      {
+        "id": 11,
+        "route": "boulevard-west",
+        "x": 1477.9329413369258,
+        "y": 368,
+        "angle": 3.141592653589793,
+        "speed": 54.50944726946177,
+        "stopped": false,
+        "yielding": false
+      }
+    ]
+  },
+  "agents": [
+    {
+      "id": 1,
+      "x": 744,
+      "y": 936.2266331244654,
+      "state": "WANDERING",
+      "direction": "up",
+      "frame": 2,
+      "destination": "East pedestrian lane"
+    },
+    {
+      "id": 2,
+      "x": 850.0193477506905,
+      "y": 696,
+      "state": "WANDERING",
+      "direction": "right",
+      "frame": 2,
+      "destination": "East pedestrian lane"
+    },
+    {
+      "id": 3,
+      "x": 1315.0959848024036,
+      "y": 920,
+      "state": "WANDERING",
+      "direction": "right",
+      "frame": 3,
+      "destination": "Town sidewalk"
+    },
+    {
+      "id": 4,
+      "x": 1016,
+      "y": 696,
+      "state": "WANDERING",
+      "direction": "left",
+      "frame": 2,
+      "destination": "City Hall stairs"
+    }
+  ],
+  "citizens": [
+    {
+      "id": 10001,
+      "x": 632,
+      "y": 344,
+      "state": "IDLE"
+    },
+    {
+      "id": 10002,
+      "x": 883.6666666666683,
+      "y": 696,
+      "state": "WANDERING"
+    },
+    {
+      "id": 10003,
+      "x": 552.3333333333329,
+      "y": 296,
+      "state": "WANDERING"
+    }
+  ],
+  "mission": {
+    "phase": "complete",
+    "done": 4
+  },
+  "roads": {
+    "graphNodes": 6,
+    "segments": 5,
+    "graphComponents": 1,
+    "surfaceComponents": 1,
+    "componentSizes": [
+      490
+    ],
+    "asphaltComponents": 1,
+    "overwritten": 0,
+    "blockedAsphalt": 0,
+    "errors": []
+  },
+  "lanes": {
+    "routes": 3,
+    "samples": 1692,
+    "errors": []
+  },
+  "fps": 1,
+  "renderMs": 8.722386360368255
+}

@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-26 Asia/Bangkok",
+  "decision": "COMPLETE",
+  "scope": "Existing NPC Task panel: read-only results, bounded Agent history and independent historical selection; no new backend runtime or polling",
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "result": "PASS",
+      "details": "JS syntax, strict runtime-web TypeScript, backend no-emit check"
+    },
+    {
+      "command": "npm.cmd run check:runtime:web",
+      "result": "PASS"
+    },
+    {
+      "command": "node --test tests/execution-results.test.js",
+      "result": "PASS",
+      "tests": 18
+    },
+    {
+      "command": "npm.cmd test",
+      "result": "PASS",
+      "tests": 190,
+      "fail": 0
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "result": "PASS",
+      "modules": 58,
+      "details": "Disposable Vite production bundle; maintained source preserved"
+    },
+    {
+      "command": "npm.cmd run test:browser",
+      "result": "PASS",
+      "browser": "Chrome/155.0.8059.85",
+      "exceptions": 0,
+      "details": "Existing Task form, city, NPC, phase3 synchronization/status/inspection, camera and mobile smoke"
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T06' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 1,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[3456]' apps/api/test/database.integration.cjs",
+      "result": "PASS",
+      "tests": 7,
+      "fail": 0,
+      "details": "Actual clients/owners against owned PostgreSQL/Nest plus native T04/T05/T06 Chrome workflows"
+    }
+  ],
+  "nativeBrowser": {
+    "status": "PASS",
+    "structured": true,
+    "plainTextEscaped": true,
+    "restrictedTextWithheld": true,
+    "pages": [
+      10,
+      2
+    ],
+    "historyDoesNotAlterActivity": true,
+    "noPerRowResults": true,
+    "agentScopeReset": true,
+    "largeOutputScrolled": true,
+    "exceptions": 0,
+    "ruleBasedExecutions": 12,
+    "fakeLlmExecutions": 2
+  },
+  "bounds": {
+    "historyPage": 10,
+    "retainedPages": 1,
+    "maxCursorPages": 20,
+    "selectedResults": 1,
+    "plainTextMaxUtf8Bytes": 65536,
+    "httpMaxBytes": 131072,
+    "outputMaxHeightCssPx": 220
+  },
+  "preservation": {
+    "baselineFiles": 467,
+    "changedExisting": [
+      "README.md",
+      "dist/style.css",
+      "scripts/task-panel-browser.mjs",
+      "dist/js/agent-task-panel.js",
+      "apps/api/test/interaction.integration.cjs",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/README.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-4/execution-lifecycle-controls.md",
+      "docs/ai-agent-platform/phase-4/decisions.md"
+    ],
+    "removed": [],
+    "protectedChanges": []
+  },
+  "filesCreated": [
+    "dist/js/execution-results-view.js",
+    "dist/js/runtime/interaction/results-owner.js",
+    "dist/js/runtime/interaction/result-presentation.js",
+    "tests/execution-results.test.js",
+    "docs/ai-agent-platform/phase-4/execution-results-history.md",
+    "docs/ai-agent-platform/phase-4/verification-evidence/t06-verification.json",
+    "docs/ai-agent-platform/phase-4/verification-evidence/t06-live-browser.json"
+  ],
+  "resolvedIssues": [
+    "Docker Desktop initially stopped; started installed local engine and isolated tests passed.",
+    "Initial failed history read could follow ordinary view notifications; narrowed auto scheduling and added regression proving 50 identical notifications do not retry."
+  ],
+  "logs": [
+    {
+      "name": "elyqreth-p4-t06-tests.log",
+      "sha256": "510e8005661da3aec223b9ec4691ae5e929d2457981efc9351a9bf679ee56e5c"
+    },
+    {
+      "name": "elyqreth-p4-t06-lint.log",
+      "sha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287"
+    },
+    {
+      "name": "elyqreth-p4-t06-contracts.log",
+      "sha256": "19865069f72eb03f7741c37f6f5171569121caf1758295aa38ee34c37ad0c6ca"
+    },
+    {
+      "name": "elyqreth-p4-t06-compatibility-final.log",
+      "sha256": "ec26371e8882ccd777f94214f4d74c99faa2c9745b02e48a0fecc0066fec7ab3"
+    }
+  ],
+  "limitations": [
+    "Local delegated capability only; no production person/tenant login.",
+    "Only actual plain text and typed numeric statistics; arbitrary JSON, HTML, Markdown and tool payloads unsupported.",
+    "One history snapshot page at a time, maximum 20 navigation pages per browsing window.",
+    "No durable private result/history selection across reload; T07 remains planned.",
+    "No live LLM, full backend suite, FPS/heap endurance or visual-diff run.",
+    "Git metadata absent; no clean-tree claim."
+  ],
+  "documentation": {
+    "files": 14,
+    "localLinksAndAnchors": 135,
+    "mermaidSourceBlocks": 18,
+    "errors": [],
+    "mermaidRendering": "NOT RUN; balanced source fences checked"
+  }
+}

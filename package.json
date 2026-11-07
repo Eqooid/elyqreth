@@ -1,0 +1,65 @@
+{
+    "name": "orange-city-ai-town",
+    "description": "Elyqreth \u2014 A Living AI City. A cyberpunk pixel-art AI town simulator.",
+    "private": true,
+    "type": "module",
+    "engines": {
+        "node": ">=24 <25"
+    },
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "dev": "vite --config vite.config.js",
+        "check": "node scripts/check.mjs",
+        "test": "node --test tests/*.test.js",
+        "dev:web": "npm run dev",
+        "dev:api": "npm run dev --workspace @elyqreth/api",
+        "start:api": "npm run start --workspace @elyqreth/api",
+        "build": "npm run build --workspace @elyqreth/api",
+        "build:web": "node scripts/build-web.mjs",
+        "check:api": "npm run check --workspace @elyqreth/api",
+        "check:runtime:web": "tsc -p tsconfig.runtime-web.json",
+        "lint": "npm run check && npm run check:runtime:web && npm run check:api",
+        "test:api": "npm run test --workspace @elyqreth/api",
+        "test:all": "npm test && npm run test:api",
+        "db:check": "npm run db:check --workspace @elyqreth/api",
+        "db:migrate": "npm run db:migrate --workspace @elyqreth/api",
+        "db:generate": "npm run db:generate --workspace @elyqreth/api",
+        "test:backup": "npm run build && node --test apps/api/test/backup.test.cjs apps/api/test/backup.integration.cjs",
+        "db:recovery": "npm run build && node apps/api/dist/database/backup-command.js",
+        "test:database-roles": "npm run build && node --test apps/api/test/database-roles.integration.cjs",
+        "test:db": "npm run test:db --workspace @elyqreth/api",
+        "test:browser": "node scripts/browser-smoke.mjs",
+        "test:docker": "node scripts/docker-smoke.mjs",
+        "test:containers": "node scripts/container-hardening.mjs",
+        "test:city:e2e": "npm run build && node scripts/city-acceptance.mjs",
+        "test:interaction:e2e": "npm run build && node scripts/interaction-acceptance.mjs",
+        "profile:phase3": "node --expose-gc scripts/phase3-profile.mjs",
+        "verify:phase1": "npm run lint && npm run build && npm run build:web && npm run db:check && npm run test:all && npm run test:db && npm run test:browser",
+        "runtime:execute": "npm run runtime:execute --workspace @elyqreth/api --",
+        "city:bindings": "npm run city:bindings --workspace @elyqreth/api --",
+        "test:ollama:live": "npm run test:ollama:live --workspace @elyqreth/api",
+        "test:openai:live": "npm run test:openai:live --workspace @elyqreth/api",
+        "test:langgraph:live": "npm run test:langgraph:live --workspace @elyqreth/api",
+        "langgraph:observe": "npm run langgraph:observe --workspace @elyqreth/api --",
+        "test:keycloak:live": "npm run test:keycloak:live --workspace @elyqreth/api",
+        "test:edge": "node scripts/container-hardening.mjs --edge"
+    },
+    "dependencies": {
+        "@nestjs/platform-express": "11.2.7"
+    },
+    "devDependencies": {
+        "drizzle-kit": "0.31.11",
+        "vite": "^6.4.1"
+    },
+    "overrides": {
+        "body-parser": "2.4.0",
+        "@nestjs/platform-express": {
+            "multer": "2.5.0"
+        },
+        "@esbuild-kit/core-utils": {
+            "esbuild": "0.25.12"
+        }
+    }
+}

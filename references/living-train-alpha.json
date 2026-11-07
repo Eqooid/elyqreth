@@ -1,0 +1,72 @@
+{
+  "station_left_bay": {
+    "rect": [
+      215,
+      530,
+      220,
+      120
+    ],
+    "min_alpha": 0,
+    "max_alpha": 6,
+    "zero_fraction": 0.9892424242424243,
+    "mean_alpha": 0.02912878787878788,
+    "alpha_le_10_fraction": 1.0
+  },
+  "station_right_bay": {
+    "rect": [
+      495,
+      530,
+      205,
+      120
+    ],
+    "min_alpha": 0,
+    "max_alpha": 1,
+    "zero_fraction": 0.9998780487804878,
+    "mean_alpha": 0.00012195121951219512,
+    "alpha_le_10_fraction": 1.0
+  },
+  "between_sprites": {
+    "rect": [
+      922,
+      380,
+      35,
+      370
+    ],
+    "min_alpha": 0,
+    "max_alpha": 0,
+    "zero_fraction": 1.0,
+    "mean_alpha": 0.0,
+    "alpha_le_10_fraction": 1.0
+  },
+  "outer_corner": {
+    "rect": [
+      0,
+      0,
+      150,
+      150
+    ],
+    "min_alpha": 0,
+    "max_alpha": 1,
+    "zero_fraction": 0.9994666666666666,
+    "mean_alpha": 0.0005333333333333334,
+    "alpha_le_10_fraction": 1.0
+  },
+  "station_solid_bbox_xywh": [
+    21,
+    196,
+    893,
+    600
+  ],
+  "train_solid_bbox_xywh": [
+    974,
+    511,
+    527,
+    172
+  ],
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "total_zero_fraction": 0.7066637674967448
+}

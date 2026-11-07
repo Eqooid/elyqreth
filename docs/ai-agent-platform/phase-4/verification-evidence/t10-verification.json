@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-27 Asia/Bangkok",
+  "task": "Phase 4 T10",
+  "decision": "READY",
+  "scope": "Approved trusted single-backend loopback local development/test only. Public production exposure is NOT READY; no human/tenant identity, distributed worker or automatic hard-crash execution repair is claimed.",
+  "commands": [
+    {
+      "command": "$env:BROWSER_HARDENING_PHASE4='true'; npm.cmd run verify:phase1",
+      "exitCode": 1,
+      "logFile": "elyqreth-p4-t10-verification.log",
+      "logSha256": "1c4985daba28570f5b72958087419ebf6a2ddc05203fe9cb3e3c4482c2ef0159",
+      "result": "ENVIRONMENT FAILURE at database setup; completed prefix PASS",
+      "frontendUnitTests": 209,
+      "backendUnitTests": 198,
+      "details": "Lint, both typechecks/builds, migration consistency and unit suites passed; Docker engine unavailable, zero database application assertions executed. Wrapper not claimed PASS."
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-postgres.log",
+      "logSha256": "665cc66d2f2685814f48fea5ccffa0a95f8c623a809365984aeb47949a2f49aa",
+      "result": "PASS",
+      "tests": 122,
+      "details": "Isolated real PostgreSQL/API integration and native browser cases, after installed Docker engine started. Before final narrow focus fallback; affected native cases rerun below."
+    },
+    {
+      "command": "npm.cmd run test:city:e2e",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-city.log",
+      "logSha256": "34f4927977899f51bb0c046318c1b4fff26197935fad17680d25234b3ba7339f",
+      "result": "PASS",
+      "tests": 1,
+      "details": "Real Phase 3 city/backend/coordinator/PostgreSQL E2E; five actual persisted executions."
+    },
+    {
+      "command": "npm.cmd run test:interaction:e2e",
+      "exitCode": 1,
+      "logFile": "elyqreth-p4-t10-interaction.log",
+      "logSha256": "01c73bef9bebc038850f7224f450acb6f9e4e18874f6793f3e72903860138e2f",
+      "result": "FAIL then fixed",
+      "details": "Readiness/click race in browser harness; Start could become disabled between separate evaluations. No dispatch occurred for the missed click."
+    },
+    {
+      "command": "npm.cmd run test:interaction:e2e",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-interaction-final.log",
+      "logSha256": "2c55efdd11ec339b392f78122d21b075c3c8c8802d7b48c52b3c27d3be5c0ff5",
+      "result": "PASS",
+      "tests": 1,
+      "details": "Atomic readiness plus one click fixes harness; exact five Task POSTs, four Execution POSTs and four dispatches. No mutation replay."
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T05 real browser' apps/api/test/database.integration.cjs",
+      "exitCode": 1,
+      "logFile": "elyqreth-p4-t10-focus.log",
+      "logSha256": "8e8682c43372efb61191ad98c0e30c52b74f8292f4803e0035589a427040300a",
+      "result": "FAIL then fixed",
+      "details": "New regression assertion confirmed actual post-cancellation focus loss when both return controls were disabled."
+    },
+    {
+      "command": "node --test --test-name-pattern='P4 T0[2345678]' apps/api/test/database.integration.cjs",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-affected-final.log",
+      "logSha256": "3dc329e309fd9ad6dbbef2669054ca08d60a34025d447b78aca29a0750fff2ce",
+      "result": "PASS",
+      "tests": 18,
+      "details": "Affected compatibility/security/native cases after stable heading focus fallback; subset of the 122, not additional unique cases."
+    },
+    {
+      "command": "$env:BROWSER_HARDENING_PHASE4='true'; $env:BROWSER_HARDENING_REPORT=Join-Path $env:TEMP 'elyqreth-p4-t10-accessibility-final.json'; npm.cmd run test:browser",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-browser-final.log",
+      "logSha256": "ac6ab16644f3504bb1e0af2a33da3a8e415f142168982d82c28c8c78db96d8e3",
+      "result": "PASS",
+      "details": "Real Chrome city smoke and Phase 4 semantics/keyboard/reflow/motion checks; zero exceptions. Not formal/manual WCAG certification."
+    },
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-lint-final.log",
+      "logSha256": "61d29364959d5ceff6951fe60c600c0d0efd305893d3774271169f25c4187287",
+      "result": "PASS",
+      "details": "Final source syntax, strict runtime-web TypeScript and backend no-emit."
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-build-final.log",
+      "logSha256": "bb2d1897740e44db46f736fdb4f37aca8e51d67e2f4892bfcee1863555204022",
+      "result": "PASS",
+      "details": "Final disposable production build, 60 modules; maintained dist source preserved."
+    },
+    {
+      "command": "node --expose-gc scripts/phase4-interaction-profile.mjs --out \"$env:TEMP/elyqreth-p4-t10-load.json\"",
+      "exitCode": 0,
+      "logFile": "elyqreth-p4-t10-load.log",
+      "logSha256": "2818550eda15b5aae9dcffd657921f1031742932832e116d4550f4e93b24e087",
+      "result": "PASS",
+      "details": "Actual interaction owners with controlled read fixtures at 1/5/20 Agent scopes, 200 selections each; 100 cleanup cycles with zero outstanding timers. Not native provider or Canvas throughput."
+    }
+  ],
+  "environment": {
+    "node": "v24.9.0",
+    "postgres": "Isolated owned ephemeral Docker PostgreSQL; no production data",
+    "browser": "Installed real Chrome via CDP; exact version in browser artifacts",
+    "paidLLM": "NOT RUN; deterministic existing rule-based runtime used",
+    "remoteCI": "NOT VERIFIED; local workflow-equivalent components executed",
+    "git": "Unavailable: supplied workspace has no .git metadata. No branch/diff/clean-working-tree claim or Git mutation."
+  },
+  "cleanup": {
+    "command": "docker ps -a --filter label=elyqreth.test.run --format '{{.Names}}'; docker volume ls --filter label=elyqreth.test.run --format '{{.Name}}'; Get-CimInstance Win32_Process (filter owned elyqreth-browser Chrome and interaction-runtime-child Node)",
+    "exitCode": 0,
+    "ownedContainers": 0,
+    "ownedVolumes": 0,
+    "ownedBrowserOrRuntimeProcesses": 0,
+    "details": "Installed Docker Desktop engine left running; no unrelated process/container removal."
+  },
+  "evidence": {
+    "t10-interaction-browser.json": "Fresh T10 test:interaction:e2e output using reusable T09 scenario; legacy temporary source name elyqreth-p4-t09-live-browser.json. Prior repository T09 artifact preserved.",
+    "t10-city-browser.json": "Fresh T10 test:city:e2e output using reusable P3 T10 native scenario; prior repository Phase 3 evidence preserved.",
+    "t10-accessibility.json": "Final fresh real Chrome hardening report.",
+    "t10-load.json": "Fresh bounded synthetic owner profiling and resource cleanup observations."
+  },
+  "architectureDeviations": [
+    "No automatic shared-origin/fingerprint pinning between independently configured read/interaction loopback clients; accepted operator runbook uses one trusted backend. Disclosed as P4-R08, not falsely claimed implemented."
+  ],
+  "limitations": [
+    "Public production identity/tenant deployment blocked (P4-R01).",
+    "Hard crash preserves RUNNING identity with expired-lease UNKNOWN and native quarantine, not automatic repair/resume.",
+    "No distributed worker, broker or Redis implementation to test.",
+    "No fresh paid OpenAI/live LLM probe required for deterministic acceptance.",
+    "Manual screen-reader/device certification, long browser/GPU heap soak and remote CI not performed."
+  ],
+  "fixes": [
+    "Atomic browser readiness/click closes test harness race without replay.",
+    "Cancellation confirmation returns focus to stable inspector heading when both action buttons are disabled; assertion reproduced failure and passes after correction."
+  ],
+  "documentationValidation": {
+    "markdownFiles": 22,
+    "localLinksAndAnchors": 253,
+    "mermaidBlocks": 19,
+    "issues": [],
+    "mermaid": "Fences/links checked; new diagram source manually reviewed. No Mermaid rendering/parser tool installed; diagram not rendered.",
+    "jsonEvidenceFiles": 5
+  },
+  "preservation": {
+    "baselineFiles": 406,
+    "modified": [
+      "dist/js/agent-task-panel.js",
+      "docs/ai-agent-platform/README.md",
+      "docs/ai-agent-platform/phase-4/api-contracts.md",
+      "docs/ai-agent-platform/phase-4/architecture.md",
+      "docs/ai-agent-platform/phase-4/decisions.md",
+      "docs/ai-agent-platform/phase-4/frontend-interaction-client.md",
+      "docs/ai-agent-platform/phase-4/implementation-plan.md",
+      "docs/ai-agent-platform/phase-4/README.md",
+      "docs/ai-agent-platform/phase-4/security-reliability.md",
+      "docs/ai-agent-platform/phase-4/testing-acceptance.md",
+      "scripts/interaction-reliability-browser.mjs",
+      "scripts/task-panel-browser.mjs",
+      "README.md",
+      "WORKSPACE.md"
+    ],
+    "new": [
+      "docs/ai-agent-platform/phase-4/acceptance.md",
+      "docs/ai-agent-platform/phase-4/operations.md",
+      "docs/ai-agent-platform/phase-4/release-notes.md",
+      "docs/ai-agent-platform/phase-4/risk-register.md",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t10-accessibility.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t10-city-browser.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t10-interaction-browser.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t10-load.json",
+      "docs/ai-agent-platform/phase-4/verification-evidence/t10-verification.json"
+    ],
+    "missing": [],
+    "method": "SHA-256 compared with pre-modification maintained-file baseline; no Git metadata available.",
+    "limitations": "Metadata/permissions and files outside inventoried maintained roots are not a Git diff.",
+    "finalSourceHashes": {
+      "dist/js/agent-task-panel.js": "d749b1c0579d4707abb08bb060ef152c3f1bdbff13ffb66bf58b9bc6b1da339e",
+      "scripts/interaction-reliability-browser.mjs": "043e05c9699e285ee671fcfb04d44b245a99266c9e45fa26079f531fbd2e6c60",
+      "scripts/task-panel-browser.mjs": "0d4d0f3fa0ee6aa80bda2599d7318f960114a971f052a90364a71af8a2859d20"
+    }
+  },
+  "evidenceSha256": {
+    "t10-accessibility.json": "e9838eaed827d63049d04fa8f5b44bac993b8d37fa8d881e38416b238b72f493",
+    "t10-city-browser.json": "ce9614863160229175366d3c096387cbaa258dff8ca5131ec794fab2b451d3f2",
+    "t10-interaction-browser.json": "01ed4388b23ef621b04fb824f41a6f6858fd0d45fb334d56e7567fe2d9cf5207",
+    "t10-load.json": "d17bcf8f6833613ff79e7e050d462dbaac4e5b67b0f3696d29aec8541f2051fe"
+  }
+}
