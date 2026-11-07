@@ -10,7 +10,7 @@ DOCUMENTS = [PHASE / name for name in (
     "README.md", "implementation-plan.md", "configuration-contracts.md",
     "configuration-inventory.md", "t02-verification.md",
     "principal-authorization.md", "t03-verification.md", "authentication-modes.md", "decisions.md", "frontend-access.md", "container-hardening.md", "edge-network.md", "database-migrations.md", "backup-recovery.md", "runtime-drain.md", "external-connectivity.md", "observability.md", "email-monitoring.md", "immutable-promotion.md", "staging-uat.md", "security-capacity-recovery.md", "production-readiness.md", "t15-blocker-closure.md", "operations-handover.md", "local-operations.md", "handover-evidence.md",
-)]
+)] + [ROOT / "docs/user-guide.md"]
 
 
 def check():
@@ -112,11 +112,12 @@ def check_handover(evidence, errors):
     if not set(evidence["runbookScriptNames"]) <= set(scripts):
         errors.append("T16 runbook references an absent package script")
     # Check every npm script in the new local guide against the actual package manifest.
-    content = (PHASE / "local-operations.md").read_text(encoding="utf-8")
-    for script in re.findall(r"npm(?:\.cmd)? run ([a-zA-Z0-9:_-]+)", content):
-        if script not in scripts:
-            errors.append(f"Unknown local-guide package script: {script}")
-    for path in (PHASE / "operations-handover.md", PHASE / "local-operations.md", PHASE / "handover-evidence.md"):
+    for path in (PHASE / "local-operations.md", ROOT / "docs/user-guide.md"):
+        content = path.read_text(encoding="utf-8")
+        for script in re.findall(r"npm(?:\.cmd)? run ([a-zA-Z0-9:_-]+)", content):
+            if script not in scripts:
+                errors.append(f"Unknown guide package script: {script}")
+    for path in (PHASE / "operations-handover.md", PHASE / "local-operations.md", PHASE / "handover-evidence.md", ROOT / "docs/user-guide.md"):
         content = path.read_text(encoding="utf-8")
         for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", content):
             if "#" not in target or re.match(r"[a-z]+://", target):
