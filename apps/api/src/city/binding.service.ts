@@ -24,9 +24,10 @@ export class AgentNpcBindingService {
     if(await tx.find('npcId',npc,true))throw new BindingError('CONFLICT');
     return tx.insert(agentId,npc);
   }
-  async create(value:unknown) {
+  async create(value:unknown,authorize?:()=>void) {
     const owner=this.scope(),command=createCommand(value);
-    return this.repository.run(owner,true,tx=>this.createIn(tx,command.agentId,command.npcId));
+    authorize?.();
+    return this.repository.run(owner,true,async tx=>{authorize?.();const result=await this.createIn(tx,command.agentId,command.npcId);authorize?.();return result;});
   }
   async remove(value:unknown) {
     const owner=this.scope(),command=removeCommand(value);

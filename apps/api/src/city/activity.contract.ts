@@ -3,8 +3,17 @@ import { isUUID } from 'class-validator';
 import type { TaskStatus, ExecutionStatus } from '../lifecycle/lifecycle-policy';
 
 export type ActivityStatus='IDLE'|'QUEUED'|'RUNNING'|'UNKNOWN';
+export interface ExternalActivityObservation {
+  readonly source: 'Hermes'; readonly connectionId: string; readonly connectionName: string;
+  readonly externalAgentId: string; readonly externalExecutionId: string | null;
+  readonly mappingId: string | null; readonly version: number;
+  readonly status: 'UNKNOWN'|'QUEUED'|'RUNNING'|'COMPLETED'|'FAILED'|'CANCELLED'; readonly sourceStatus: string | null;
+  readonly observedAt: string | null; readonly lastSynchronizedAt: string | null;
+  readonly freshness: 'UNKNOWN'|'RECENT_OBSERVATION'|'STALE'|'RETIRED'; readonly connectionHealth: 'UNKNOWN'|'DISABLED';
+}
 export interface ActivityQuery {readonly limit:number;readonly after?:string;readonly ids?:readonly string[];readonly boundOnly:boolean}
 export interface AgentActivityProjection {
+  readonly externalObservation?: ExternalActivityObservation;
   readonly schemaVersion:1;readonly agentId:string;readonly name:string;readonly agentType:'RULE_BASED'|'LLM'|'EXTERNAL';
   readonly availability:'ACTIVE'|'DISABLED'|'ARCHIVED';readonly agentVersion:number;
   readonly npcId:string|null;readonly bindingId:string|null;readonly activityStatus:ActivityStatus;

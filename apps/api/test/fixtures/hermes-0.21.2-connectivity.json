@@ -1,0 +1,16 @@
+{
+  "evidence": {
+    "kind": "Source-derived synthetic minimal fixture; not a captured Hermes response",
+    "commit": "fa425c942ead972b7dd192fba82c9ef93d45e688",
+    "source": "https://github.com/NousResearch/hermes-agent/blob/fa425c942ead972b7dd192fba82c9ef93d45e688/gateway/platforms/api_server.py",
+    "methods": ["_handle_health", "_handle_capabilities"]
+  },
+  "health": { "status": "ok", "platform": "hermes-agent", "version": "0.21.2" },
+  "capabilities": {
+    "object": "hermes.api_server.capabilities",
+    "platform": "hermes-agent",
+    "model": "hermes-agent",
+    "auth": { "type": "bearer", "required": true },
+    "features": { "run_status": true, "run_events_sse": true }
+  }
+}

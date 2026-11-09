@@ -5,6 +5,7 @@ import type { RegistryConfiguration } from '../agents/registry-configuration';
 import { Connection } from './adapter.contract';
 import { capabilityList, object, uuid, key, number, text } from './adapter.validation';
 import { AdapterError } from './adapter.error';
+import { agentRegistrations } from './agent-registration.configuration';
 
 export class ExternalCredentials {
   readonly #values: ReadonlyMap<string,string>;
@@ -22,15 +23,17 @@ export function connectionBinding(value:Connection,credentials:ExternalCredentia
   if(c.credentialRef&&(!secret||!/^[\x21-\x7e]{8,4096}$/.test(secret)))throw new AdapterError('INVALID_CONFIGURATION');
   return createHash('sha256').update(JSON.stringify({id:c.id,ownerId:c.ownerId,adapterType:c.adapterType,namespace:c.namespace,generation:c.generation,
     mode:c.mode,enabled:c.enabled,endpoint:{...c.endpoint,allowedAddresses:[...c.endpoint.allowedAddresses].sort()},
-    capabilities:[...c.capabilities].sort(),credentialRef:c.credentialRef??null,secret:secret??null})).digest('hex');
+    capabilities:[...c.capabilities].sort(),registeredAgents:c.registeredAgents??null,credentialRef:c.credentialRef??null,secret:secret??null})).digest('hex');
 }
 export function connection(value: unknown): Connection {
   try {
-    const v = object(value,['id','ownerId','adapterType','name','namespace','generation','mode','enabled','endpoint','credentialRef','capabilities']);
+    const v = object(value,['id','ownerId','adapterType','name','namespace','generation','mode','enabled','endpoint','credentialRef','capabilities','registeredAgents']);
+    if(v.registeredAgents!==undefined&&v.adapterType!=='hermes.v1')throw Error();
     if (!['OBSERVATION_ONLY','CONTROLLED_DISPATCH'].includes(v.mode as string) || typeof v.enabled !== 'boolean' ||
       (v.credentialRef !== undefined && (typeof v.credentialRef !== 'string' || !/^EXTERNAL_SECRET_[A-Z0-9_]{1,80}$/.test(v.credentialRef)))) throw Error();
     return Object.freeze({id:uuid(v.id),ownerId:uuid(v.ownerId),adapterType:key(v.adapterType),name:text(v.name,160),namespace:key(v.namespace),generation:number(v.generation,1000000),
       mode:v.mode as Connection['mode'],enabled:v.enabled,endpoint:providerEndpoint(v.endpoint),capabilities:capabilityList(v.capabilities),
+      ...(v.registeredAgents===undefined?{}:{registeredAgents:agentRegistrations(v.registeredAgents)}),
       ...(v.credentialRef === undefined ? {} : {credentialRef:v.credentialRef as string})});
   } catch { throw new AdapterError('INVALID_CONFIGURATION'); }
 }

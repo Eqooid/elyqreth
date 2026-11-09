@@ -20,6 +20,17 @@ export function visualForBinding(binding,showCompletion=false){
  if(binding.freshness!=='fresh')return binding.freshness==='stale'?NPC_VISUALS.STALE:NPC_VISUALS.UNKNOWN;
  const a=binding.activity;
  if(a.availability!=='ACTIVE')return NPC_VISUALS.UNAVAILABLE;
+ if(a.externalObservation){
+  const external=a.externalObservation;
+  if(external.freshness==='STALE')return NPC_VISUALS.STALE;
+  if(external.freshness!=='RECENT_OBSERVATION')return NPC_VISUALS.UNKNOWN;
+  if(external.sourceStatus==='waiting_for_approval'||external.status==='QUEUED')return NPC_VISUALS.WAITING;
+  if(external.sourceStatus==='running'&&external.status==='RUNNING')return NPC_VISUALS.RUNNING;
+  if(external.status==='FAILED')return NPC_VISUALS.FAILED;
+  if(external.status==='CANCELLED')return NPC_VISUALS.CANCELLED;
+  if(external.status==='COMPLETED')return NPC_VISUALS.COMPLETED;
+  return NPC_VISUALS.UNKNOWN;
+ }
  if(a.activityStatus==='RUNNING')return NPC_VISUALS.RUNNING;
  if(a.activityStatus==='QUEUED')return NPC_VISUALS.WAITING;
  if(a.activityStatus!=='IDLE')return NPC_VISUALS.UNKNOWN;

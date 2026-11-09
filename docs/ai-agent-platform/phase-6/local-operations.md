@@ -4,7 +4,7 @@ T16 handover preparation, 2026-11-07 (Asia/Bangkok). This is the consolidated en
 
 ## Tools and workspace
 
-Use the Elyqreth repository root with Node 24 (see `.node-version` and package engines), the existing npm lockfile, and Docker Desktop/Linux containers for PostgreSQL-backed development or isolated integration tests. Native backup operations need PostgreSQL 17 client tools; optional LangGraph reference tooling needs the Python environment in its own guide. Browser acceptance requires the installed supported browser. Neither Ollama, paid OpenAI access, LangGraph nor production secrets are required for the decorative city or ordinary unit tests.
+Use the Elyqreth repository root with Node 24.22.2 (see `.node-version` and package engines), the existing npm lockfile, and Docker Desktop/Linux containers for PostgreSQL-backed development or isolated integration tests. Older Node 24 releases before 24.22.1 are affected by [CVE-2026-111497](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases); the repository selects 24.22.2 to match its existing containers. Native backup operations need PostgreSQL 17 client tools; optional LangGraph reference tooling needs the Python environment in its own guide. Browser acceptance requires the installed supported browser. Neither Ollama, paid OpenAI access, LangGraph nor production secrets are required for the decorative city or ordinary unit tests.
 
 `dist/` is maintained city source, not disposable build output. Never clean or overwrite it with a generic build script. `apps/api/dist/` is generated backend output. Never run volume deletion, broad Docker prune or reset commands to solve local setup problems. Existing local databases and configuration belong to their operator.
 

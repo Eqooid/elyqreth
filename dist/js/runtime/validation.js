@@ -24,6 +24,18 @@ function integer(value,min=0){if(typeof value!=='number'||!Number.isSafeInteger(
 function choice(value,choices){if(typeof value!=='string'||!choices.includes(/** @type {T} */(value)))throw new RuntimeApiError('SCHEMA');return /** @type {T} */(value);}
 const taskStatuses=/** @type {const} */(['CREATED','QUEUED','RUNNING','COMPLETED','FAILED','CANCELLED']);
 const executionStatuses=/** @type {const} */(['PENDING','RUNNING','SUCCEEDED','FAILED','CANCELLED','TIMED_OUT']);
+/** @param {unknown} value @returns {NonNullable<AgentActivity['externalObservation']>} */
+function normalizeExternalObservation(value){
+ const v=record(value);
+ if(v.source!=='Hermes'||typeof v.connectionName!=='string'||v.connectionName.length>160||typeof v.externalAgentId!=='string'||v.externalAgentId.length>256||
+  v.externalExecutionId!==null&&(typeof v.externalExecutionId!=='string'||!/^run_[a-f0-9]{32}$/.test(v.externalExecutionId))||
+  v.sourceStatus!==null&&(typeof v.sourceStatus!=='string'||v.sourceStatus.length>128))throw new RuntimeApiError('SCHEMA');
+ return Object.freeze({source:'Hermes',connectionId:identifier(v.connectionId),connectionName:v.connectionName,externalAgentId:v.externalAgentId,
+  externalExecutionId:/** @type {string|null} */(v.externalExecutionId),mappingId:v.mappingId===null?null:identifier(v.mappingId),version:integer(v.version),
+  status:choice(v.status,/** @type {const} */(['UNKNOWN','QUEUED','RUNNING','COMPLETED','FAILED','CANCELLED'])),sourceStatus:/** @type {string|null} */(v.sourceStatus),
+  observedAt:v.observedAt===null?null:date(v.observedAt),lastSynchronizedAt:v.lastSynchronizedAt===null?null:date(v.lastSynchronizedAt),
+  freshness:choice(v.freshness,/** @type {const} */(['UNKNOWN','RECENT_OBSERVATION','STALE','RETIRED'])),connectionHealth:choice(v.connectionHealth,/** @type {const} */(['UNKNOWN','DISABLED']))});
+}
 /** @param {unknown} value @returns {AgentActivity} */
 export function normalizeActivity(value){
  const v=record(value);if(v.schemaVersion!==1||typeof v.name!=='string'||v.name.length>160||typeof v.requiresAttention!=='boolean')throw new RuntimeApiError('SCHEMA');
@@ -32,12 +44,15 @@ export function normalizeActivity(value){
  const currentTask=t?Object.freeze({id:identifier(t.id),status:choice(t.status,taskStatuses),version:integer(t.version,1)}):null;
  const currentExecution=e?Object.freeze({id:identifier(e.id),status:choice(e.status,executionStatuses),version:integer(e.version,1),attemptNumber:integer(e.attemptNumber,1)}):null;
  const activityStatus=choice(v.activityStatus,/** @type {const} */(['IDLE','QUEUED','RUNNING','UNKNOWN']));
+ const externalObservation=v.externalObservation===undefined?undefined:normalizeExternalObservation(v.externalObservation);
+ if(externalObservation&&(v.agentType!=='EXTERNAL'||activityStatus!=='UNKNOWN'||currentTask||currentExecution))throw new RuntimeApiError('SCHEMA');
  const npcId=v.npcId??null,bindingId=v.bindingId==null?null:identifier(v.bindingId);
  if(npcId!==null&&(typeof npcId!=='string'||!/^resident-slot-(00[1-9]|01\d|020)$/.test(npcId))||
   (npcId===null)!==(bindingId===null)||currentExecution&&!currentTask||
   activityStatus==='QUEUED'&&!currentTask||activityStatus==='IDLE'&&v.activeExecutionCount!==0||
   activityStatus==='RUNNING'&&(currentTask?.status!=='RUNNING'||currentExecution?.status!=='RUNNING'))throw new RuntimeApiError('SCHEMA');
  return Object.freeze({schemaVersion:1,agentId:identifier(v.agentId),name:v.name,agentType:choice(v.agentType,/** @type {const} */(['RULE_BASED','LLM','EXTERNAL'])),
+  ...(externalObservation?{externalObservation}:{}),
   availability:choice(v.availability,/** @type {const} */(['ACTIVE','DISABLED','ARCHIVED'])),agentVersion:integer(v.agentVersion,1),npcId:/** @type {string|null} */(npcId),bindingId,
   activityStatus,currentTask,currentExecution,activeExecutionCount:integer(v.activeExecutionCount),queuedTaskCount:integer(v.queuedTaskCount),createdTaskCount:integer(v.createdTaskCount),
   recentOutcome:outcome?Object.freeze({taskId:identifier(outcome.taskId),executionId:outcome.executionId==null?null:identifier(outcome.executionId),

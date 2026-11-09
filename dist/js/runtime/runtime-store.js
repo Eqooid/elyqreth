@@ -28,6 +28,8 @@ export class RuntimeActivityStore {
   // Versions are comparable only for the same persisted entity, never unrelated attempts.
   for(const item of items){const previous=old[item.agentId];if(!previous)continue;
    if(item.agentVersion<previous.agentVersion||
+    item.externalObservation?.mappingId&&item.externalObservation.mappingId===previous.externalObservation?.mappingId&&
+      item.externalObservation.version<previous.externalObservation.version||
     item.currentTask&&previous.currentTask&&item.currentTask.id===previous.currentTask.id&&item.currentTask.version<previous.currentTask.version||
     item.currentExecution&&previous.currentExecution&&item.currentExecution.id===previous.currentExecution.id&&item.currentExecution.version<previous.currentExecution.version)
     throw new RuntimeApiError('STALE_SNAPSHOT');

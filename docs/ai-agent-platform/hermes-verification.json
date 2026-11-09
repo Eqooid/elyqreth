@@ -1,0 +1,224 @@
+{
+  "reviewDate": "2026-11-08",
+  "timezone": "Asia/Bangkok",
+  "status": "PARTIAL",
+  "scope": "Configuration-driven Hermes Agent registration, existing run polling, external activity projection and existing NPC status/inspection",
+  "identityDecision": "User explicitly authorized operator-configured stable identities and Agent/run associations; automatic provider discovery is not required",
+  "hermes": {
+    "repository": "https://github.com/NousResearch/hermes-agent",
+    "reviewCommit": "fa425c942ead972b7dd192fba82c9ef93d45e688",
+    "sourceDeclaredVersion": "0.21.2",
+    "installedVersionVerified": false,
+    "liveInstanceContacted": false,
+    "fixtureKind": "Source-derived synthetic fixtures, not captured Hermes responses"
+  },
+  "preservation": {
+    "initialTaskWorkingTree": "clean",
+    "continuation": "Preserved the preceding connectivity-only changes; added configuration-driven integration",
+    "applicableAgentsFilesFound": false
+  },
+  "environment": {
+    "node": "v24.9.0",
+    "npm": "11.6.2",
+    "shell": "PowerShell"
+  },
+  "commands": [
+    {
+      "command": "npm.cmd run lint",
+      "exitCode": 0,
+      "outcome": "Frontend syntax, frontend runtime typecheck and backend typecheck passed"
+    },
+    {
+      "command": "npm.cmd run test:api",
+      "phase": "final configuration-driven implementation",
+      "exitCode": 0,
+      "outcome": "411 passed; zero failed, skipped or cancelled. Includes backend build, 15 Hermes adapter tests and 6 Hermes registration/projection contract tests"
+    },
+    {
+      "command": "npm.cmd test",
+      "phase": "final",
+      "exitCode": 0,
+      "outcome": "241 passed; zero failed, skipped or cancelled. Includes 3 Hermes NPC rendering/inspection/reconnect tests"
+    },
+    {
+      "command": "npm.cmd run build",
+      "exitCode": 0,
+      "outcome": "Backend production TypeScript build passed; also rebuilt by final test:api"
+    },
+    {
+      "command": "npm.cmd run build:web",
+      "phase": "final outside sandbox",
+      "exitCode": 0,
+      "outcome": "66 modules bundled into disposable output; maintained city source is not overwritten"
+    },
+    {
+      "command": "npm.cmd run db:check",
+      "phase": "outside sandbox",
+      "exitCode": 0,
+      "outcome": "Offline migration metadata check passed; no schema changes or migrations"
+    },
+    {
+      "command": "node --test apps/api/test/hermes.test.cjs",
+      "exitCode": 0,
+      "outcome": "15 focused adapter tests passed; all included in final suite"
+    },
+    {
+      "command": "node --test apps/api/test/hermes-observation.test.cjs",
+      "phase": "initial authoring attempt",
+      "exitCode": 1,
+      "outcome": "Test fixture syntax error corrected before successful focused and full-suite runs"
+    },
+    {
+      "command": "node --test apps/api/test/hermes-observation.test.cjs",
+      "phase": "corrected",
+      "exitCode": 0,
+      "outcome": "6 registration/authorization/projection/event-contract tests passed"
+    },
+    {
+      "command": "node --test tests/hermes-npc.test.js",
+      "exitCode": 0,
+      "outcome": "3 frontend tests passed; also included in final frontend suite"
+    },
+    {
+      "command": "node --check apps/api/test/hermes.integration.cjs",
+      "exitCode": 0,
+      "outcome": "Database integration test syntax checked; not an executed integration result"
+    },
+    {
+      "command": "node (stdin): validate connection.example.json through connection() and HermesAdapter.validateConfiguration()",
+      "exitCode": 0,
+      "outcome": "Example configuration passes actual validators"
+    },
+    {
+      "command": "docker version --format '{{.Server.Version}}'",
+      "phase": "outside sandbox",
+      "exitCode": 1,
+      "outcome": "Docker Desktop Linux engine pipe missing"
+    },
+    {
+      "command": "npm.cmd run test:db",
+      "exitCode": null,
+      "outcome": "NOT RUN / BLOCKED: Docker unavailable. New Hermes integration test is registered in existing isolated database harness"
+    },
+    {
+      "command": "npm.cmd run test:city:e2e",
+      "exitCode": null,
+      "outcome": "NOT RUN / BLOCKED: Docker unavailable"
+    },
+    {
+      "command": "npm.cmd run hermes:health -- CONNECTION_UUID",
+      "exitCode": null,
+      "outcome": "NOT RUN against a real instance; local HTTP fixtures exercised actual adapter transport"
+    },
+    {
+      "command": "npm.cmd run hermes:observe -- apply/sync/watch CONNECTION_UUID",
+      "exitCode": null,
+      "outcome": "NOT RUN against live Hermes. CLI parsing/bounded watch and application services tested with local contracts; real database test remains blocked"
+    },
+    {
+      "command": "git status --short",
+      "exitCode": 0,
+      "outcome": "Reviewed only task-related files; no staged changes"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "outcome": "Passed; created file whitespace checked separately"
+    },
+    {
+      "command": "git diff",
+      "exitCode": 0,
+      "outcome": "Reviewed tracked changes and all created implementation/configuration/test files"
+    }
+  ],
+  "coverage": {
+    "verified": [
+      "connection/auth/endpoint policy",
+      "configured identity validation and capability negotiation",
+      "allowlisted run reads and safe status normalization",
+      "native Agent/NPC takeover prevention at service contract boundary",
+      "source grant revocation",
+      "durable ingestion ordering contracts",
+      "bounded watch/backoff without auth retry",
+      "external projection freshness/unknown hints",
+      "native registration event lifecycle contract",
+      "existing NPC binding/inspection/reconnect and theme regressions"
+    ],
+    "notVerifiedHere": [
+      "actual PostgreSQL execution of new configuration registration and projection query",
+      "live Hermes interoperability",
+      "live end-to-end NPC synchronization",
+      "production/account-mode source policy",
+      "Hermes collaboration graph/replay"
+    ]
+  },
+  "snapshotPolicy": "Lifecycle phase plus provider updated_at within phase, with existing stale/conflict/terminal guards. Receipt time only reconfirms freshness; unknown deferred hints never complete work.",
+  "filesChanged": [
+    "README.md",
+    "apps/api/package.json",
+    "apps/api/src/agents/agents.module.ts",
+    "apps/api/src/agents/agents.service.ts",
+    "apps/api/src/city/activity.contract.ts",
+    "apps/api/src/city/activity.repository.ts",
+    "apps/api/src/city/activity.service.ts",
+    "apps/api/src/city/binding.service.ts",
+    "apps/api/src/external-orchestrators/adapter.contract.ts",
+    "apps/api/src/external-orchestrators/external-adapter.service.ts",
+    "apps/api/src/external-orchestrators/external-configuration.ts",
+    "apps/api/src/external-orchestrators/external-orchestrators.module.ts",
+    "apps/api/test/database.integration.cjs",
+    "dist/js/runtime/contracts.d.ts",
+    "dist/js/runtime/npc-runtime-inspector.js",
+    "dist/js/runtime/npc-status.js",
+    "dist/js/runtime/runtime-store.js",
+    "dist/js/runtime/validation.js",
+    "docs/user-guide.md",
+    "package.json",
+    "apps/api/src/city/external-activity.mapper.ts",
+    "apps/api/src/external-orchestrators/agent-registration.configuration.ts",
+    "apps/api/src/external-orchestrators/hermes-command.ts",
+    "apps/api/src/external-orchestrators/hermes-observation.module.ts",
+    "apps/api/src/external-orchestrators/hermes-observation.service.ts",
+    "apps/api/src/external-orchestrators/hermes-sync-command.ts",
+    "apps/api/src/external-orchestrators/hermes.adapter.ts",
+    "apps/api/test/fixtures/hermes-0.21.2-connectivity.json",
+    "apps/api/test/hermes-observation.test.cjs",
+    "apps/api/test/hermes.integration.cjs",
+    "apps/api/test/hermes.test.cjs",
+    "docs/ai-agent-platform/hermes-integration-audit.md",
+    "docs/ai-agent-platform/hermes-verification.json",
+    "tests/hermes-npc.test.js",
+    "tools/hermes-reference/README.md",
+    "tools/hermes-reference/connection.example.json"
+  ],
+  "boundaries": {
+    "nativeRuntimeOrLifecycleCodeChanged": false,
+    "schemaOrMigrationsChanged": false,
+    "newRegistryCreated": false,
+    "newNpcSynchronizationArchitectureCreated": false,
+    "sourceAuthExpanded": false,
+    "realCredentialsIntroduced": false,
+    "productionInstancesContacted": false,
+    "infrastructureProvisioned": false,
+    "committedPushedTaggedReleasedOrDeployed": false
+  },
+  "priorConnectivityEvidence": {
+    "backendTests": 400,
+    "frontendTests": 238,
+    "environmentalBuildFailures": [
+      {
+        "command": "npm.cmd run build:web",
+        "phase": "initial sandbox attempt",
+        "exitCode": 1,
+        "outcome": "esbuild could not read ancestor directories under filesystem restrictions"
+      },
+      {
+        "command": "npm.cmd run db:check",
+        "phase": "initial sandbox attempt",
+        "exitCode": 1,
+        "outcome": "Drizzle user-info lookup failed: uv_os_get_passwd ENOMEM"
+      }
+    ]
+  },
+  "nextAction": "Run existing isolated PostgreSQL harness with Docker available, then verify the configured flow against one explicitly authorized isolated Hermes 0.21.2 instance"
+}

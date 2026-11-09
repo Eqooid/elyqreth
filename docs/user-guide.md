@@ -14,7 +14,8 @@ Elyqreth turns connected AI Agent activity into an interactive city. An NPC can 
 | View collaboration and delegation | Yes, for recorded authorized relationships | Configured collaboration views and access |
 | Observe an existing LangGraph run | Yes, limited observation-only connection | Manually configured supported LangGraph connection and existing run |
 | Start/cancel work in LangGraph from Elyqreth | No | Not implemented |
-| Connect Hermes, CrewAI or AutoGen | No | No implemented adapter for those systems |
+| Register Hermes Agents/NPCs and observe listed API runs | Implemented; live E2E not verified here | Explicit backend configuration for Hermes 0.21.2; [setup](../tools/hermes-reference/README.md) |
+| Connect CrewAI or AutoGen | No | No implemented adapter for those systems |
 
 There is no packaged desktop installer, public hosted sign-up service or universal “Connect orchestrator” wizard supplied by this repository. A full connected installation currently needs manual setup. The quick start does not automatically connect real Agents.
 
@@ -100,7 +101,7 @@ The panel shows recorded relationships you are authorized to see. It is not a dr
 
 ## Connect an existing orchestrator
 
-**Only LangGraph Agent Server currently has an implemented external adapter. Hermes is not supported yet.** General Agent NPC mapping does not make an unsupported framework connect automatically.
+**LangGraph Agent Server and explicitly configured Hermes Agent 0.21.2 have external observation adapters.** For Hermes, use the [configuration guide](../tools/hermes-reference/README.md) to declare stable Agent IDs, resident slots and existing run IDs, apply registrations and run bounded synchronization. The [compatibility audit](ai-agent-platform/hermes-integration-audit.md) records live-testing and source-authorization limits. A healthy connection does not establish Agent availability or activity.
 
 There is no end-user connection form. Initial connection setup is a manual backend/operator operation. For someone installing their own copy, the supported process is:
 
@@ -157,7 +158,7 @@ npm.cmd run langgraph:observe -- result ACTUAL_CONNECTION_UUID ACTUAL_THREAD_UUI
 
 The current reference uses restricted trusted development/source access. Named local/OIDC account mode cannot issue those legacy source grants, and production external activation remains closed. A normal browser sign-in is not connection-setup permission. Do not disable authentication to bypass this restriction.
 
-Each observation reads a selected run once and exits. There is no automatic provider-polling scheduler. The browser refreshes the observations already stored by Elyqreth; that is different from polling the provider. The adapter can discover/read supported provider information, but cannot dispatch/cancel work or invent missing history/results. Hermes needs a separate implemented and tested adapter before a truthful connection procedure can be supplied.
+Each LangGraph observation reads a selected run once and exits. Hermes additionally offers a finite watch command for explicitly configured runs. There is no automatic startup provider-polling service. The browser refreshes observations stored by Elyqreth; it never polls Hermes or receives provider keys. External adapters cannot dispatch/cancel work or invent missing history/results. Follow the separate [Hermes procedure](../tools/hermes-reference/README.md) for its configuration and limits.
 
 ## Install the complete connected application yourself
 
@@ -183,7 +184,7 @@ Open the access dialog and choose **Sign out**. Protected data and synchronizati
 | --- | --- |
 | The city runs, but nothing is connected | The preview is a simulation. Complete the real backend/access/mapping setup before expecting Agent data |
 | I added an Agent through Residents, but it does no AI work | That creates a simulated resident. Backend Agent registration, runtime configuration and mapping are separate |
-| There is no Hermes option | Expected: no Hermes adapter is implemented |
+| There is no Hermes connection form | Configure Hermes on the backend and use its apply/sync commands; no browser wizard is provided |
 | There is no Connect orchestrator button | Expected: the current LangGraph connection is manually configured by the installer/operator |
 | Sign-in expired | Sign in again; do not repeatedly resend an uncertain Task |
 | I can inspect but cannot run Tasks | Check whether access says viewer; ask the installer to review permissions and enabled Agent/runtime state |

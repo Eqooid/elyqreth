@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {reloadCity} from './browser-reload.mjs';
 /** Real native browser HTTP. CDP discards acknowledged responses after genuine backend commits. */
 export async function verifyInteractionReliability({config,taskId,evaluate,until,command,waitEvent}){
  const pending=new Map();let sequence=0;
@@ -22,7 +23,7 @@ export async function verifyInteractionReliability({config,taskId,evaluate,until
   const intent=JSON.parse(paused.request.postData),committed=await control('created',{key:intent.idempotencyKey});
   await command('Fetch.failRequest',{requestId:paused.requestId,errorReason:'ConnectionReset'});await command('Fetch.disable');
   await until(async()=>/unresolved/.test(await text('#agent-task-feedback')),'Lost Create was falsely confirmed or rejected');
-  await command('Page.reload');await until(()=>evaluate("document.getElementById('city-state').textContent.includes('agents')"),'Reload did not initialize city');
+  await reloadCity({command,waitEvent,evaluate,until});
   await evaluate(`(async()=>{const {runtimeIntegration:r}=await import('/js/runtime/index.js');r.connect({baseUrl:${JSON.stringify(config.apiOrigin)},pageOrigin:location.origin,token:${JSON.stringify(config.cityToken)}});await r.refresh();document.querySelector('[data-agent]').click();})()`);await authorize();
   await until(async()=>(await text('[data-reference]')).includes(committed.taskId),'Lost Create reload did not recover exact Task');
   await control('verifyCreate',{taskId:committed.taskId});checkpoints.push('CDP lost Create response after real commit; reload, explicit reauthorization and exact-key GET restore one Task');

@@ -27,7 +27,7 @@ Start with the architecture overview, then read only the guide for the subsystem
 
 ## Quick start
 
-To open the local city preview, install Node 24, open a terminal in this project folder, and run:
+To open the local city preview, install Node 24.22.2 (see `.node-version`; older 24.x releases may be vulnerable to [CVE-2026-111497](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases)), open a terminal in this project folder, and run:
 
 ```powershell
 npm.cmd ci
@@ -36,7 +36,7 @@ npm.cmd run dev:web -- --host 127.0.0.1 --port 5173 --strictPort
 
 Open **http://127.0.0.1:5173**. This starts the built-in simulation; real Agent activity needs a configured backend and explicit mappings. **Residents → + Add agent** adds a simulated resident, not an installed AI Agent.
 
-The only external adapter currently implemented is **LangGraph Agent Server, observation-only**. Connection setup is manual; Hermes, CrewAI and AutoGen are not integrated. See the [user integration instructions and limits](docs/user-guide.md#connect-an-existing-orchestrator).
+External observation adapters include **LangGraph Agent Server** and **Hermes Agent 0.21.2 with explicit configuration**. Hermes supports configured Agent/NPC registration and read-only polling of listed runs; see the [configuration guide](tools/hermes-reference/README.md) and [compatibility/testing limits](docs/ai-agent-platform/hermes-integration-audit.md). Automatic Hermes discovery is not required. CrewAI and AutoGen are not integrated.
 
 ## Current installation and production status
 

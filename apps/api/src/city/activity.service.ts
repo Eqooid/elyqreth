@@ -7,6 +7,7 @@ import { isLoopback } from '../agents/registry-configuration';
 import { AgentActivityRepository } from './activity.repository';
 import { activityQuery, ActivityPage, agentIdentifier, safeDate } from './activity.contract';
 import { mapAgentActivity } from './activity.mapper';
+import { withExternalActivity } from './external-activity.mapper';
 
 @Injectable()
 export class AgentActivityProjectionService {
@@ -29,7 +30,7 @@ export class AgentActivityProjectionService {
       if(!result||!Array.isArray(result.items)||result.items.length>q.limit+1)throw new ServiceUnavailableException();
       if(q.ids&&result.matched_count!==q.ids.length)throw new NotFoundException(); // Entire requested set rejected uniformly.
       const observedAt=safeDate(result.observed_at),hasMore=result.items.length>q.limit;
-      const items=result.items.slice(0,q.limit).map(row=>mapAgentActivity(row,observedAt));
+      const items=result.items.slice(0,q.limit).map(row=>withExternalActivity(mapAgentActivity(row,observedAt),row,this.config.value.externalOrchestrators));
       const response:ActivityPage={schemaVersion:1,observedAt,items,nextCursor:hasMore?items.at(-1)!.agentId:null};
       if(Buffer.byteLength(JSON.stringify(response),'utf8')>65536)throw new ServiceUnavailableException();
       this.log('projection.completed',{durationMs:Math.round((performance.now()-start)*100)/100,returnedAgentCount:items.length,

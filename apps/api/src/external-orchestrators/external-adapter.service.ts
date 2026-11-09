@@ -81,6 +81,7 @@ export class ExternalAdapterService implements OnModuleInit {
       const output=await budget(signal,deadline,active=>{
         started=true;
         const ctx:AdapterContext=Object.freeze({connectionId:c.id,namespace:c.namespace,generation:c.generation,correlationId:access.correlationId,deadlineAt:new Date(deadline).toISOString(),signal:active,
+          ...(c.registeredAgents===undefined?{}:{registeredAgents:connection(c).registeredAgents}),
           http:Object.freeze({search:(path:string,body:Readonly<Record<string,unknown>>)=>{assertCurrent();return this.transport.search(c,path,body,active,deadline,credential);},get:(path:string)=>{assertCurrent();return this.transport.get(c,path,active,deadline,credential);}})});
         const pending=(async()=>{
           const negotiated=snapshot(await adapter.describe(ctx),c);if(active.aborted)throw active.reason;assertCurrent();

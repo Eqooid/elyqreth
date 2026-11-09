@@ -66,7 +66,28 @@ SELECT to_char(statement_timestamp() AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS
    'binding',CASE WHEN p.binding_id IS NULL THEN NULL ELSE jsonb_build_object('id',p.binding_id,'npcId',p.npc_id) END,
    'current',to_jsonb(w),'outcome',to_jsonb(r),'lastExecution',to_jsonb(e),
    'activeCount',coalesce(es.active_count,0),'queuedCount',coalesce(ts.queued_count,0),'createdCount',coalesce(ts.created_count,0),
-   'lastActivityAt',greatest(p.updated_at,ts.updated_at,es.updated_at)
+   'lastActivityAt',greatest(p.updated_at,ts.updated_at,es.updated_at),
+   'external', (SELECT jsonb_build_object('mappingId',x.id,'version',x.version,'status',x.status,'sourceStatus',x.source_status,
+     'observedAt',x.observed_at,'externalExecutionId',x.external_id,'externalAgentId',m.external_id,
+     'mappingStatus',m.status,'connectionId',s.connection_id,'namespace',s.namespace,'generation',s.generation,
+     'registrationStatus',o.registration_status,
+     'unknownSourceStatus',(SELECT i.event->>'sourceStatus' FROM external_event_inbox i
+       WHERE i.owner_id=x.owner_id AND i.source_id=x.source_id AND i.status='DEFERRED_ORDERING'
+       AND i.event->>'kind'='execution.observed' AND i.event->>'externalExecutionId'=x.external_id
+       AND i.event->>'externalAgentId'=m.external_id AND i.event->>'normalizedStatus'='UNKNOWN'
+       AND i.received_at>x.observed_at ORDER BY i.received_at DESC,i.id DESC LIMIT 1),
+     'lastSynchronizedAt',coalesce(confirmation.last_seen,x.observed_at))
+     FROM external_execution_mappings x JOIN external_agent_mappings m ON m.id=x.agent_mapping_id AND m.owner_id=x.owner_id AND m.source_id=x.source_id
+     JOIN external_sources s ON s.id=x.source_id AND s.owner_id=x.owner_id
+     JOIN orchestrators o ON o.id=s.connection_id AND o.owner_id=s.owner_id
+     LEFT JOIN LATERAL (SELECT max(i.received_at) AS last_seen FROM external_event_inbox i
+       WHERE i.owner_id=x.owner_id AND i.source_id=x.source_id AND i.status='OBSERVED'
+       AND i.event->>'kind'='agent.observed' AND i.event->>'externalExecutionId'=x.external_id
+       AND i.event->>'externalAgentId'=m.external_id AND i.event->>'sourceStatus'=x.source_status
+       AND i.event->'sequence'->>'value'=x.sequence) confirmation ON true
+     WHERE x.owner_id=${ownerId}::uuid AND m.internal_agent_id=p.id AND s.adapter_type='hermes.v1'
+     ORDER BY s.generation DESC,CASE WHEN coalesce(confirmation.last_seen,x.observed_at)>=statement_timestamp()-interval '30 seconds' THEN 0 ELSE 1 END,
+       CASE WHEN x.status='RUNNING' THEN 0 WHEN x.status='QUEUED' THEN 1 ELSE 2 END,x.updated_at DESC,x.id LIMIT 1)
  ) ORDER BY p.id) FROM page p LEFT JOIN current_work w ON w.agent_id=p.id LEFT JOIN recent r ON r.agent_id=p.id
  LEFT JOIN last_execution e ON e.agent_id=p.id LEFT JOIN task_stats ts ON ts.agent_id=p.id LEFT JOIN execution_stats es ON es.agent_id=p.id),'[]'::jsonb) AS items`;
 }

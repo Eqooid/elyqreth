@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {verifyInteractionReliability} from './interaction-reliability-browser.mjs';
+import {reloadCity} from './browser-reload.mjs';
 /** Real DOM interaction with isolated deterministic HTTP fixtures. Never production Agent events. */
 export async function verifyTaskPanel({evaluate,until,command}){
  await evaluate(`(async()=>{
@@ -76,7 +77,7 @@ export async function verifyLiveTaskPanel({evaluate,until,permitApi,command,wait
  let synchronization;
  if(config.synchronization){
   const journalSafe=await evaluate(`(()=>{const raw=sessionStorage.getItem('elyqreth.interaction.locators.v1');return !!raw&&!raw.includes('T04 browser authorized Task')&&!raw.includes(${JSON.stringify(config.interactionToken)})&&!raw.includes(${JSON.stringify(config.cityToken)});})()`);assert.equal(journalSafe,true);
-  await command('Page.reload');await until(()=>evaluate("document.getElementById('city-state').textContent.includes('agents')"),'Recovery reload did not initialize city');
+  await reloadCity({command,waitEvent,evaluate,until});
   await evaluate(`(async()=>{const {runtimeIntegration:r}=await import('/js/runtime/index.js');r.connect({baseUrl:${JSON.stringify(config.apiOrigin)},pageOrigin:location.origin,token:${JSON.stringify(config.cityToken)}});await r.refresh();document.querySelector('[data-agent]').click();})()`);
   await evaluate(`(()=>{document.querySelector('.agent-task-section [data-connect]').click();const d=document.querySelector('dialog[open]');d.querySelector('[name=origin]').value=${JSON.stringify(config.apiOrigin)};d.querySelector('[name=credential]').value=${JSON.stringify(config.interactionToken)};d.querySelector('form').requestSubmit();})()`);
   await until(()=>evaluate(`document.querySelector('[data-reference]').textContent.includes(${JSON.stringify(taskId)})&&!document.querySelector('[data-start]').disabled`),'Saved unstarted Task locator was not reauthorized/restored');
@@ -129,7 +130,7 @@ export async function verifyLiveTaskPanel({evaluate,until,permitApi,command,wait
   await until(async()=>/Execution status: CANCELLED/.test(await status()),'Cancellation did not show its genuine persisted outcome');
   assert.equal(await evaluate("document.querySelector('.agent-task-section').contains(document.activeElement)&&!document.activeElement.disabled"),true,'Confirmed cancellation must retain focus in the interaction section');await control('release');
   await until(async()=>!(/Start HTTP response pending/.test(await status())),'Cancelled Start HTTP request did not settle');
-  await command('Page.reload');await until(()=>evaluate("document.getElementById('city-state').textContent.includes('agents')"),'Reload did not recreate city');
+  await reloadCity({command,waitEvent,evaluate,until});
   await evaluate(`(async()=>{const {runtimeIntegration:r}=await import('/js/runtime/index.js');r.connect({baseUrl:${JSON.stringify(config.apiOrigin)},pageOrigin:location.origin,token:${JSON.stringify(config.cityToken)}});await r.refresh();document.querySelector('[data-agent]').click();})()`);
   await evaluate(`(()=>{document.querySelector('.agent-task-section [data-connect]').click();const d=document.querySelector('dialog[open]');d.querySelector('[name=origin]').value=${JSON.stringify(config.apiOrigin)};d.querySelector('[name=credential]').value=${JSON.stringify(config.interactionToken)};d.querySelector('form').requestSubmit();})()`);
   await until(async()=>/Execution status: CANCELLED/.test(await status()),'Reload did not recover the exact terminal Execution');
@@ -144,7 +145,7 @@ export async function verifyLiveTaskPanel({evaluate,until,permitApi,command,wait
    await evaluate("document.querySelector('[data-refresh-execution]').click()");
    await until(async()=>/Execution status: RUNNING/.test(await status()),'Active reload Execution was not persisted RUNNING');
    const activeId=(await evaluate("document.querySelector('[data-execution-reference]').textContent")).match(/Execution ([a-f0-9-]{36})/)[1];
-   await command('Page.reload');await until(()=>evaluate("Boolean(document.getElementById('city-state')?.textContent?.includes('agents'))"),'Active reload did not recreate city');
+   await reloadCity({command,waitEvent,evaluate,until});
    await until(()=>evaluate("document.querySelectorAll('[data-agent]').length>=2"),'Reloaded resident roster did not initialize');
    await evaluate(`(async()=>{const {runtimeIntegration:r}=await import('/js/runtime/index.js');r.connect({baseUrl:${JSON.stringify(config.apiOrigin)},pageOrigin:location.origin,token:${JSON.stringify(config.cityToken)}});await r.refresh();document.querySelectorAll('[data-agent]')[1].click();})()`);
    await evaluate(`(()=>{document.querySelector('[data-connect]').click();const d=document.querySelector('dialog[open]');d.querySelector('[name=origin]').value=${JSON.stringify(config.apiOrigin)};d.querySelector('[name=credential]').value=${JSON.stringify(config.interactionToken)};d.querySelector('form').requestSubmit();})()`);

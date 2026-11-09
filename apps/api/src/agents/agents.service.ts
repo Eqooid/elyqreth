@@ -8,6 +8,7 @@ import { DatabaseService } from '../database/database.module';
 import { agents, commandAudit, orchestrators, owners } from '../database/schema';
 import { EventsService } from '../events/events.service';
 import { EventType } from '../events/contracts/event-contracts';
+import { isUUID } from 'class-validator';
 import { CreateAgentDto, ListAgentsQueryDto, UpdateAgentDto } from './dto/agent.dto';
 
 type Agent = typeof agents.$inferSelect;
@@ -104,6 +105,52 @@ export class AgentsService implements OnModuleInit {
       if (!agent) throw new ServiceUnavailableException();
       await this.record(tx, agent, 'agent.registered');
       return serializeAgent(agent);
+    }));
+  }
+
+  /** Internal configuration application only; no new HTTP creation surface.
+   * Caller declares a stable Registry UUID so interrupted/repeated application converges.
+   * Existing registrations, especially native/disabled ones, are never taken over. */
+  async registerConfiguredHermes(id: string, name: string, orchestratorId: string, authorize: () => void) {
+    authorize();
+    if (!isUUID(id) || !isUUID(orchestratorId) || !name || name.length > 160 || /[\u0000-\u001f\u007f]/u.test(name))
+      throw new BadRequestException();
+    return this.safe(() => this.database.db.transaction(async tx => {
+      authorize();
+      const [route] = await tx.select().from(orchestrators).where(and(eq(orchestrators.id, orchestratorId), eq(orchestrators.ownerId, this.ownerId))).for('share');
+      if (!route || route.type !== 'hermes.v1' || route.registrationStatus !== 'ENABLED') throw new BadRequestException();
+      const [existing] = await tx.select().from(agents).where(and(eq(agents.id, id), eq(agents.ownerId, this.ownerId))).for('update');
+      if (existing) {
+        if (existing.type !== 'EXTERNAL' || existing.orchestratorId !== orchestratorId || existing.lifecycleStatus === 'ARCHIVED') throw new ConflictException();
+        authorize(); return serializeAgent(existing);
+      }
+      const [created] = await tx.insert(agents).values({ id, ownerId: this.ownerId, orchestratorId, name,
+        type: 'EXTERNAL', lifecycleStatus: 'DISABLED', capabilities: [], configuration: {} }).returning();
+      if (!created) throw new ServiceUnavailableException();
+      await this.record(tx, created, 'agent.registered');
+      const [active] = await tx.update(agents).set({ lifecycleStatus: 'ACTIVE' }).where(eq(agents.id, created.id)).returning();
+      if (!active) throw new ServiceUnavailableException();
+      await this.record(tx, active, 'agent.active');
+      authorize();
+      return serializeAgent(active);
+    }));
+  }
+
+  async registerConfiguredHermesConnection(id: string, name: string, authorize: () => void) {
+    authorize();
+    if (!isUUID(id) || !name || name.length > 160 || /[\u0000-\u001f\u007f]/u.test(name)) throw new BadRequestException();
+    return this.safe(() => this.database.db.transaction(async tx => {
+      authorize();
+      const [existing] = await tx.select().from(orchestrators).where(eq(orchestrators.id, id)).for('update');
+      if (existing) {
+        if (existing.ownerId !== this.ownerId || existing.type !== 'hermes.v1' || existing.registrationStatus !== 'ENABLED') throw new ConflictException();
+        authorize(); return existing.id;
+      }
+      const [created] = await tx.insert(orchestrators).values({ id, ownerId: this.ownerId, name, type: 'hermes.v1', registrationStatus: 'ENABLED' }).returning();
+      if (!created) throw new ServiceUnavailableException();
+      await tx.insert(commandAudit).values({ ownerId: this.ownerId, actorReference: authenticatedActor('local-development-operator'),
+        commandType: 'external.connection.registered', resourceType: 'orchestrator', resourceId: id, correlationId: randomUUID(), outcome: 'ACCEPTED', details: {} });
+      authorize(); return created.id;
     }));
   }
 

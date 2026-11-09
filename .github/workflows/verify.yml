@@ -18,6 +18,11 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+      - name: Report verification runtimes
+        run: |
+          node --version
+          npm --version
+          docker version --format '{{.Server.Version}}'
       - run: npm ci
       - run: npm audit --omit=dev --audit-level=high
       # test:db owns a disposable PostgreSQL container/volume with random credentials,

@@ -3,6 +3,9 @@ export type TaskStatus='CREATED'|'QUEUED'|'RUNNING'|'COMPLETED'|'FAILED'|'CANCEL
 export type ExecutionStatus='PENDING'|'RUNNING'|'SUCCEEDED'|'FAILED'|'CANCELLED'|'TIMED_OUT';
 export type StatusReason='NO_ACTIVE_WORK'|'AWAITING_QUEUE'|'PERSISTED_QUEUED'|'CURRENT_LEASE'|'INCONSISTENT_STATE'|'DEADLINE_EXPIRED'|'LEASE_UNVERIFIED'|'EXTERNAL_LIVENESS_UNVERIFIED';
 export interface AgentActivity {
+ readonly externalObservation?: Readonly<{source:'Hermes';connectionId:string;connectionName:string;externalAgentId:string;externalExecutionId:string|null;
+ mappingId:string|null;version:number;status:'UNKNOWN'|'QUEUED'|'RUNNING'|'COMPLETED'|'FAILED'|'CANCELLED';sourceStatus:string|null;
+ observedAt:string|null;lastSynchronizedAt:string|null;freshness:'UNKNOWN'|'RECENT_OBSERVATION'|'STALE'|'RETIRED';connectionHealth:'UNKNOWN'|'DISABLED'}>;
  readonly schemaVersion:1;readonly agentId:string;readonly name:string;readonly agentType:'RULE_BASED'|'LLM'|'EXTERNAL';
  readonly availability:'ACTIVE'|'DISABLED'|'ARCHIVED';readonly agentVersion:number;
  readonly npcId:string|null;readonly bindingId:string|null;readonly activityStatus:ActivityStatus;

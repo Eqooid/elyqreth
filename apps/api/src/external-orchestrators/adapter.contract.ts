@@ -1,11 +1,17 @@
 export const capabilities = ['health','agents','executions','status','result','events.poll','events.subscribe','events.webhook','dispatch','cancel','dispatch.idempotent','submission.lookup'] as const;
 export type Capability = typeof capabilities[number];
 export type IntegrationMode = 'OBSERVATION_ONLY' | 'CONTROLLED_DISPATCH';
+/** Operator declarations, not a provider discovery response or a second registry. */
+export interface ExternalAgentRegistration {
+  readonly externalId: string; readonly name: string; readonly internalAgentId: string;
+  readonly npcId: string; readonly executionIds: readonly string[];
+}
 export interface Connection {
   readonly id: string; readonly ownerId: string; readonly adapterType: string; readonly name: string;
   readonly namespace: string; readonly generation: number; readonly mode: IntegrationMode; readonly enabled: boolean;
   readonly endpoint: { readonly origin: string; readonly network: 'local' | 'public'; readonly allowedAddresses: readonly string[] };
   readonly credentialRef?: string; readonly capabilities: readonly Capability[];
+  readonly registeredAgents?: readonly ExternalAgentRegistration[];
 }
 export interface Provenance { readonly connectionId: string; readonly namespace: string; readonly generation: number }
 export interface ExternalAgentDescriptor extends Provenance { readonly externalId: string; readonly name: string; readonly description?: string }
@@ -28,6 +34,7 @@ export interface CapabilitySnapshot extends Provenance { readonly capabilities: 
 export type HealthState = 'UNKNOWN' | 'HEALTHY' | 'DEGRADED' | 'UNAVAILABLE' | 'DISABLED';
 export interface ConnectionHealth extends Provenance { readonly state: HealthState; readonly checkedAt: string; readonly errorCode?: string }
 export interface AdapterContext extends Provenance {
+  readonly registeredAgents?: readonly ExternalAgentRegistration[];
   readonly correlationId: string; readonly deadlineAt: string; readonly signal: AbortSignal;
   /** Read-only, exact approved origin; bearer value never appears in adapter context. */
   readonly http: { get(path: string): Promise<unknown>; search?(path: string, body: Readonly<Record<string, unknown>>): Promise<unknown> };

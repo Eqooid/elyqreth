@@ -4,7 +4,7 @@
     "private": true,
     "type": "commonjs",
     "engines": {
-        "node": ">=24 <25"
+        "node": ">=24.22.2 <25"
     },
     "scripts": {
         "build": "tsc -p tsconfig.json",
@@ -22,6 +22,8 @@
         "test:openai:live": "npm run build && node test/openai.live.cjs",
         "test:langgraph:live": "npm run build && node test/langgraph.live.cjs",
         "langgraph:observe": "npm run build && node dist/external-orchestrators/langgraph-command.js",
+        "hermes:health": "npm run build && node dist/external-orchestrators/hermes-command.js",
+        "hermes:observe": "npm run build && node dist/external-orchestrators/hermes-sync-command.js",
         "test:keycloak:live": "npm run build && node test/keycloak.live.cjs",
         "auth:account": "npm run build && node dist/auth/local-account-command.js"
     },

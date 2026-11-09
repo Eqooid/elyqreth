@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "engines": {
-        "node": ">=24 <25"
+        "node": ">=24.22.2 <25"
     },
     "workspaces": [
         "apps/*"
@@ -43,6 +43,8 @@
         "test:openai:live": "npm run test:openai:live --workspace @elyqreth/api",
         "test:langgraph:live": "npm run test:langgraph:live --workspace @elyqreth/api",
         "langgraph:observe": "npm run langgraph:observe --workspace @elyqreth/api --",
+        "hermes:health": "npm run hermes:health --workspace @elyqreth/api --",
+        "hermes:observe": "npm run hermes:observe --workspace @elyqreth/api --",
         "test:keycloak:live": "npm run test:keycloak:live --workspace @elyqreth/api",
         "test:edge": "node scripts/container-hardening.mjs --edge"
     },

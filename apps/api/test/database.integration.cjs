@@ -323,6 +323,7 @@ require('./native-coordination.integration.cjs')({row,getUrl:()=>url,getPool:()=
 require('./collaboration-recovery.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});
 require('./collaboration-activity.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});
 require('./langgraph.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});
+require('./hermes.integration.cjs')({row,getUrl:()=>url});
 require('./external-ingestion.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});
 require('./collaboration-api.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});
 require('./collaboration.integration.cjs')({row,getUrl:()=>url,getPool:()=>pool});

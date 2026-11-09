@@ -18,6 +18,11 @@ export function runtimeInspectorHtml(binding,visual,selection=new NpcInspectionS
  const a=binding.state==='RESOLVED'?binding.activity:null,model=selection.read(binding);
  /** @type {[string,unknown][]} */const rows=[['Runtime status',visual.label],['Binding',binding.state],['Freshness',binding.freshness],['NPC identity',binding.npcId]];
  if(a){rows.push(['Registered Agent',a.name],['Agent ID',a.agentId],['Agent type',a.agentType],['Availability',a.availability],['Current activity',a.activityStatus]);
+  if(a.externalObservation){const external=a.externalObservation;rows.push(['Source',external.source],['Connection',external.connectionName],
+   ['External Agent ID (configured)',external.externalAgentId],['External execution',external.externalExecutionId],
+   ['Observed external status',external.sourceStatus??'Unknown'],['External data freshness',external.freshness],
+   ['External connection health',external.connectionHealth],['Accepted external snapshot',recordedTimestamp(external.observedAt)],
+   ['Last external synchronization',recordedTimestamp(external.lastSynchronizedAt)]);}
   if(a.currentTask)rows.push(['Current Task',a.currentTask.id],['Task status',a.currentTask.status]);
   if(a.currentExecution)rows.push(['Execution',a.currentExecution.id]);
   if(a.recentOutcome){rows.push(['Last outcome',a.recentOutcome.status],['Outcome time',recordedTimestamp(a.recentOutcome.finishedAt)]);if(a.recentOutcome.executionStatus)rows.push(['Last execution status',a.recentOutcome.executionStatus]);}
