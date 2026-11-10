@@ -78,6 +78,17 @@ def check():
     print(f"PASS: {len(DOCUMENTS)} documents, local links, direct consumed environment inventory and touched-file whitespace")
 
 
+def matches_evidence_hash(content, expected):
+    """Preserve historical hashes across Git's LF/CRLF checkout conversion.
+
+    Earlier reports were hashed on Windows before Git normalized their line
+    endings. Only newline encoding may vary; all other bytes remain checked.
+    """
+    lf = content.replace(b"\r\n", b"\n")
+    return any(hashlib.sha256(candidate).hexdigest() == expected
+               for candidate in (content, lf, lf.replace(b"\n", b"\r\n")))
+
+
 def check_handover(evidence, errors):
     """Offline consistency, not authenticated acceptance or a deployment permission."""
     expected = {f"T{i:02}": ("PARTIAL" if i in (2, 11, 12, 13, 14, 15) else "COMPLETE") for i in range(1, 17)}
@@ -95,7 +106,7 @@ def check_handover(evidence, errors):
     ids = {r["id"] for r in evidence["evidenceIndex"]} | {"E16-FRESH"}
     for row in evidence["evidenceIndex"]:
         path = ROOT / row["path"]
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != row["sha256"]:
+        if not path.is_file() or not matches_evidence_hash(path.read_bytes(), row["sha256"]):
             errors.append(f"T16 historical evidence changed or missing: {row['id']}")
     for row in rows + evidence["acceptanceMatrix"]:
         if not set(row["evidenceIds"]) <= ids:

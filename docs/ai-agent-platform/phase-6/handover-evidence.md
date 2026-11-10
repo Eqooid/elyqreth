@@ -27,7 +27,7 @@ The current column preserves T01-T15 authoritative scope/status. T16 COMPLETE re
 
 ## Evidence inventory
 
-Historical reports were read and hashed, not regenerated. PARTIALLY VERIFIED here describes T16 review depth, not a downgrade of the original scoped task result: report integrity/content is checked, but historical heavy execution is not independently repeated. Source commit is unknown for all supplied-source evidence. Dates are copied only when recorded; null/unknown is not invented. See JSON for full SHA256, result fields, environment, revision and raw-log availability. E03-OLD is explicitly superseded by E03; older no-auth/development-only statements must be read in their phase/date context.
+Historical reports were read and hashed, not regenerated. The checker preserves the recorded SHA256 values and accepts LF or CRLF line endings because Git converts the original Windows reports on Linux checkout; all other bytes remain checked. PARTIALLY VERIFIED here describes T16 review depth, not a downgrade of the original scoped task result: report integrity/content is checked, but historical heavy execution is not independently repeated. Source commit is unknown for all supplied-source evidence. Dates are copied only when recorded; null/unknown is not invented. See JSON for full SHA256, result fields, environment, revision and raw-log availability. E03-OLD is explicitly superseded by E03; older no-auth/development-only statements must be read in their phase/date context.
 
 | ID / task | Evidence file | Recorded date | Classification | Scope and limitations |
 | --- | --- | --- | --- | --- |

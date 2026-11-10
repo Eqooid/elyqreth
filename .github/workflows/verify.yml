@@ -42,6 +42,7 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/ci-yaml"
           "$RUNNER_TEMP/ci-yaml/bin/python" -m pip install PyYAML==6.0.2
           "$RUNNER_TEMP/ci-yaml/bin/python" scripts/check-release-workflows.py
+          python3 -m unittest discover -s docs/ai-agent-platform/phase-6/verification-evidence -p test_check_configuration.py
           python3 docs/ai-agent-platform/phase-6/verification-evidence/check_configuration.py
       - name: Build
         run: |
