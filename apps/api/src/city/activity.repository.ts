@@ -72,15 +72,18 @@ SELECT to_char(statement_timestamp() AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS
      'mappingStatus',m.status,'connectionId',s.connection_id,'namespace',s.namespace,'generation',s.generation,
      'registrationStatus',o.registration_status,
      'unknownSourceStatus',(SELECT i.event->>'sourceStatus' FROM external_event_inbox i
-       WHERE i.owner_id=x.owner_id AND i.source_id=x.source_id AND i.status='DEFERRED_ORDERING'
+       WHERE i.owner_id=x.owner_id AND i.source_id=x.source_id AND i.status IN ('DEFERRED_ORDERING','STALE')
        AND i.event->>'kind'='execution.observed' AND i.event->>'externalExecutionId'=x.external_id
        AND i.event->>'externalAgentId'=m.external_id AND i.event->>'normalizedStatus'='UNKNOWN'
-       AND i.received_at>x.observed_at ORDER BY i.received_at DESC,i.id DESC LIMIT 1),
+       -- Hermes UNKNOWN has phase zero, so a newer source timestamp can still be classified STALE.
+       -- Use it only as a presentation uncertainty hint; never regress the stored execution order.
+       AND i.event->>'occurredAt'>=to_char(x.occurred_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')
+       AND i.created_at>x.observed_at ORDER BY i.created_at DESC,i.id DESC LIMIT 1),
      'lastSynchronizedAt',coalesce(confirmation.last_seen,x.observed_at))
      FROM external_execution_mappings x JOIN external_agent_mappings m ON m.id=x.agent_mapping_id AND m.owner_id=x.owner_id AND m.source_id=x.source_id
      JOIN external_sources s ON s.id=x.source_id AND s.owner_id=x.owner_id
      JOIN orchestrators o ON o.id=s.connection_id AND o.owner_id=s.owner_id
-     LEFT JOIN LATERAL (SELECT max(i.received_at) AS last_seen FROM external_event_inbox i
+     LEFT JOIN LATERAL (SELECT max(i.created_at) AS last_seen FROM external_event_inbox i
        WHERE i.owner_id=x.owner_id AND i.source_id=x.source_id AND i.status='OBSERVED'
        AND i.event->>'kind'='agent.observed' AND i.event->>'externalExecutionId'=x.external_id
        AND i.event->>'externalAgentId'=m.external_id AND i.event->>'sourceStatus'=x.source_status

@@ -7,7 +7,7 @@ export function withExternalActivity(base: AgentActivityProjection, raw: unknown
   if (base.agentType !== 'EXTERNAL') return base;
   const connection = config?.connections.find(c => c.adapterType === 'hermes.v1' && c.registeredAgents?.some(a => a.internalAgentId === base.agentId));
   const registration = connection?.registeredAgents?.find(a => a.internalAgentId === base.agentId);
-  if (!connection || !registration) return Object.freeze({ ...base, activityStatus: 'UNKNOWN', statusReason: 'EXTERNAL_LIVENESS_UNVERIFIED', requiresAttention: true });
+  if (!connection || !registration) return base;
   const row = raw && typeof raw === 'object' ? (raw as { external?: Record<string, unknown> }).external : undefined;
   const matches = row && row.connectionId === connection.id && row.namespace === connection.namespace && row.generation === connection.generation &&
     row.externalAgentId === registration.externalId && row.mappingStatus === 'ACTIVE' && row.registrationStatus === 'ENABLED' &&

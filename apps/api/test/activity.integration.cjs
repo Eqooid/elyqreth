@@ -11,6 +11,7 @@ const {requestContext}=require('../dist/common/request-context');
 const {DatabaseService}=require('../dist/database/database.module');
 const {AgentActivityProjectionService}=require('../dist/city/activity.service');
 const {activitySql}=require('../dist/city/activity.repository');
+const {PgDialect}=require('drizzle-orm/pg-core');
 const {AgentNpcBindingService}=require('../dist/city/binding.service');
 const {AgentsService}=require('../dist/agents/agents.service');
 const {TasksService}=require('../dist/tasks/tasks.service');
@@ -18,6 +19,16 @@ const {TaskLifecycleService}=require('../dist/lifecycle/task-lifecycle.service')
 const {EventsService}=require('../dist/events/events.service');
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
 module.exports=({row,getPool,getUrl})=>{
+ test('activity SQL resolves optional external observation columns on a freshly migrated schema',async()=>{
+  // Execute directly so schema errors retain their PostgreSQL SQLSTATE instead of a safe HTTP 503.
+  // Even an empty owner scope must resolve every column in the optional Hermes subquery.
+  const query=new PgDialect().sqlToQuery(activitySql(randomUUID(),{limit:1,boundOnly:false},false));
+  const result=await getPool().query(query.sql,query.params);
+  assert.equal(result.rowCount,1);
+  assert.deepEqual(result.rows[0].items,[]);
+  assert.equal(result.rows[0].matched_count,0);
+  assert.ok(Number.isFinite(Date.parse(result.rows[0].observed_at)));
+ });
  async function fixture(){
   const owner=await row("INSERT INTO owners(name) VALUES ('activity-owner') RETURNING id");
   const orch=await row("INSERT INTO orchestrators(owner_id,name,type,registration_status) VALUES ($1,'activity-route','native','ENABLED') RETURNING id",[owner.id]);

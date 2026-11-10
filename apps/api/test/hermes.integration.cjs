@@ -34,6 +34,9 @@ module.exports=({row,getUrl})=>{
    const mappingId=view.externalObservation.mappingId;assert.equal((await sync())[0].duplicate,true);
    status='interrupted';updated++;await sync();assert.equal((await projection()).externalObservation.status,'UNKNOWN');
    status='running';updated++;await sync();assert.equal((await projection()).externalObservation.status,'RUNNING');
+   // A newly received unknown snapshot with an older source time must not hide newer known evidence.
+   status='older-unknown-state';updated--;assert.equal((await sync())[0].status,'STALE');
+   assert.equal((await projection()).externalObservation.status,'RUNNING');updated++;
    status='waiting_for_approval';updated++;await sync();view=await projection();assert.equal(view.externalObservation.sourceStatus,status);
    status='completed';updated++;await sync();assert.equal((await projection()).externalObservation.status,'COMPLETED');
    await app.close();app=null;await open();assert.equal((await sync())[0].duplicate,true);assert.equal((await projection()).externalObservation.mappingId,mappingId);
