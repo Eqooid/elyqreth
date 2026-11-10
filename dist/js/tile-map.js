@@ -7,11 +7,13 @@ export const GROUND_TEXTURE=[0,1,2,3,4,5,6,7,3,3,3];
 export class TileMap{
  constructor(){this.columns=WORLD.columns;this.rows=WORLD.rows;this.tileSize=TILE;this.terrain=TERRAIN;this.roads=new RoadNetwork();this.tiles=new Uint8Array(this.columns*this.rows).fill(TERRAIN.CONCRETE);this.walkable=new Uint8Array(this.tiles.length);this.interactionCells=new Set(INTERACTION_POINTS.map(p=>`${p.interactionCell.col},${p.interactionCell.row}`));this.construct();}
  index(col,row){return row*this.columns+col;}
- inBounds(col,row){return col>=0&&row>=0&&col<this.columns&&row<this.rows;}
+ inBounds(col,row){return Number.isInteger(col)&&Number.isInteger(row)&&col>=0&&row>=0&&col<this.columns&&row<this.rows;}
  isWalkable(col,row){return this.inBounds(col,row)&&!!this.walkable[this.index(col,row)];}
  cellAt(p){return {col:Math.floor(p.x/TILE),row:Math.floor(p.y/TILE)};}
  canStand(x,y){return this.isWalkable(Math.floor(x/TILE),Math.floor(y/TILE));}
- rectangle(x,y,w,h,tile,walk=true){for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++)if(this.inBounds(c,r)){const i=this.index(c,r);this.tiles[i]=tile;this.walkable[i]=Number(walk);}}
+ rectangle(x,y,w,h,tile,walk=true){
+ if(![x,y,w,h].every(Number.isInteger)||w<=0||h<=0||x<0||y<0||x+w>this.columns||y+h>this.rows)throw new RangeError('Tile rectangle must fit completely inside the city');
+ for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++){const i=this.index(c,r);this.tiles[i]=tile;this.walkable[i]=Number(walk);}}
  construct(){
  const T=TERRAIN;
  // Compact parcels share a connected sidewalk / alley network.
@@ -28,7 +30,8 @@ export class TileMap{
  // A recessed entrance / working alcove. The rest of the building stays solid.
  this.rectangle(b.workCell.col-1,b.workCell.row,3,1,T.FLOOR,true);
  this.rectangle(b.doorCell.col-1,b.doorCell.row,3,1,T.SIDEWALK,true);}
- for(const d of DECORATIONS.filter(d=>d.solid)){const c=this.cellAt(d);this.walkable[this.index(c.col,c.row)]=0;}
+ for(const d of DECORATIONS.filter(d=>d.solid)){const c=this.cellAt(d),p=d.collision??{col:c.col,row:c.row,columns:1,rows:1};
+ this.rectangle(p.col,p.row,p.columns,p.rows,this.tiles[this.index(p.col,p.row)],false);}
  for(const d of SCENERY)for(const part of [...(d.collision?[d.collision]:[]),...(d.collisionParts||[])]){const {col,row,columns,rows}=part;
  this.rectangle(col,row,columns,rows,['scenery','architecture','blueprintScenery'].includes(d.atlas)?T.BUILDING:this.tiles[this.index(col,row)],false);}
  for(const d of [...CAFE_OBJECTS,...PARK_OBJECTS])if(d.collision){const p=d.collision;this.rectangle(p.col,p.row,p.columns,p.rows,T.CONCRETE,false);}

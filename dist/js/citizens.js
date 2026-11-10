@@ -6,7 +6,8 @@ import {STATE,setState} from './agent-state.js';
 
 export const POPULATION_CONFIG={target:5,max:8,spawnGap:18,offscreenInterval:.2};
 const profiles=[['Jun','Designer','Café customer'],['Sol','Researcher','Station passenger'],['Ren','Tester','Market visitor'],['Ivo','Developer','Courier'],['Neri','Designer','Street cleaner'],['Lumi','Researcher','Pedestrian']];
-const entries=[{col:0,row:21},{col:115,row:21},{col:46,row:63}];
+// Feet are one tile inside side edges, keeping the unchanged 30px sprites in-map.
+const entries=[{col:1,row:21},{col:114,row:21},{col:46,row:63}];
 export const NPC_SERVICE_ZONES=[{id:'cafe-service',bounds:[1632,232,160,64]},{id:'cleaner-promenade',bounds:[1536,416,320,304]},{id:'station-platform',bounds:[864,912,192,48]},{id:'plaza-event',bounds:[448,592,96,64]}];
 // Decorative people have separate collection/identity; service and transit actors
 // never join the functional registry. Their chains reuse the one activity controller.

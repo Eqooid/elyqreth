@@ -1,5 +1,5 @@
 import {STATE} from './agent-state.js';
-import {CAFE_QUEUE_POINTS,CAFE_SEATS,CAFE_ORDER_POINT,PARK_SEATS,MARKET_LOCATION,HOME_LOCATIONS,SERVICE_POINTS} from './locations.js';
+import {CAFE_QUEUE_POINTS,CAFE_SEATS,CAFE_ORDER_POINT,PARK_SEATS,PARK_LOCATION,MARKET_LOCATION,HOME_LOCATIONS,SERVICE_POINTS} from './locations.js';
 const ids=points=>points.map(p=>p.id);
 const walk=(id,cell,state=STATE.LEAVING_ACTIVITY,extra={})=>({id,cell,kind:'walk',travelState:state,...extra});
 const interact=(id,points,state,duration,extra={})=>({id,points,kind:'interact',state,duration,travelState:STATE.WALKING,...extra});
@@ -27,7 +27,7 @@ export function buildActivityPlan(a,definition,random,outcome=shoppingOutcome(a,
   const exit=walk('exit-market',MARKET_LOCATION.entry,STATE.LEAVING_ACTIVITY,{show:true});
   if(outcome==='food')return [browse,enter,purchase,exit,
    interact('eat',ids(PARK_SEATS),STATE.EATING,[12,18],{kind:'eating',travelState:STATE.WALKING_TO_PARK}),
-   walk('leave-park',{col:27,row:46},STATE.LEAVING_ACTIVITY,{clearProp:true,event:'foodConsumed'})];
+   walk('leave-park',PARK_LOCATION.exit,STATE.LEAVING_ACTIVITY,{clearProp:true,event:'foodConsumed'})];
   const home=HOME_LOCATIONS.find(h=>h.id===a.homeId);
   if(!home)return [browse,walk('leave-market',MARKET_LOCATION.exit,STATE.LEAVING_ACTIVITY,{show:true})];
   return [browse,enter,purchase,exit,
@@ -55,7 +55,7 @@ export function buildActivityPlan(a,definition,random,outcome=shoppingOutcome(a,
  ];
  if(definition.id==='plaza-event')return [
   interact('watch',ids(SERVICE_POINTS.filter(p=>p.type==='gathering')),STATE.WATCHING_HOLOGRAM,[8,12],{kind:'watching',travelState:STATE.WALKING_TO_SOCIAL}),
-  walk('disperse',{col:27,row:46},STATE.LEAVING_ACTIVITY)
+  walk('disperse',PARK_LOCATION.exit,STATE.LEAVING_ACTIVITY)
  ];
  return null;
 }

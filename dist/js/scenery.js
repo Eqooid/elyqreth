@@ -1,5 +1,5 @@
 import {THEME} from './theme.js';
-import {TILE} from './world.js';
+import {TILE,containedArtwork} from './world.js';
 
 // Decorative objects never participate in workplace assignment or task processing.
 // Art extends above a ground footprint, like a tree canopy; navigation uses only
@@ -54,8 +54,11 @@ export function createScenery(id,type,footprint,options={}){
 }
 // Actual image-relative render rectangles; solid footprints can be narrower than roofs.
 function traced(id,type,referenceBounds,footprint,options={}){
- const [x,y,width,height]=referenceBounds;
- return createScenery(id,type,footprint,{referenceBounds,x:x+width/2,y:y+height,width,height,...options});
+ const [x,y,width,height]=containedArtwork(referenceBounds),[col,row,columns,rows]=footprint;
+ // A fitted facade cannot retain whole blocked tiles outside its rendered bounds.
+ const left=Math.max(col,Math.floor(x/TILE)),top=Math.max(row,Math.floor(y/TILE));
+ const right=Math.min(col+columns,Math.ceil((x+width)/TILE)),bottom=Math.min(row+rows,Math.ceil((y+height)/TILE));
+ return createScenery(id,type,[left,top,right-left,bottom-top],{referenceBounds:[x,y,width,height],x:x+width/2,y:y+height,width,height,...options});
 }
 export const DECORATIVE_BUILDINGS=[
  traced('cat-billboard','catTower',[0,-28,194,332],[0,0,12,19]),

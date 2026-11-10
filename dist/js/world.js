@@ -2,14 +2,22 @@
 export const TILE=16;
 export const ORIGINAL_WORLD={width:1536,height:1024,columns:96,rows:64};
 export const WORLD={width:1856,height:1024,columns:116,rows:64};
+// Fit the complete existing sprite into its original parcel's visible portion.
+// This scales artwork uniformly; it never crops source frames or expands the map.
+export function containedArtwork([x,y,width,height]){
+ const left=Math.max(0,x),top=Math.max(0,y),right=Math.min(WORLD.width,x+width),bottom=Math.min(WORLD.height,y+height);
+ if(![x,y,width,height].every(Number.isFinite)||width<=0||height<=0||right<=left||bottom<=top)throw new RangeError('Artwork must intersect the city');
+ const scale=Math.min(1,(right-left)/width,(bottom-top)/height),w=Math.floor(width*scale),h=Math.floor(height*scale);
+ return [Math.round(left+(right-left-w)/2),bottom-h,w,h];
+}
 export const AGENT_SIZE={width:30,height:42};
 export const ROLES=['Researcher','Designer','Developer','Tester'];
 export const COLORS={Researcher:'#ffc45b',Designer:'#ff85ca',Developer:'#69e2f2',Tester:'#b9b0ff'};
 // A render rectangle is independent of the solid ground footprint and entrance.
 const site=(id,name,title,tiles,referenceBounds,entranceCol,sprite,color,description)=>{
- const [tx,ty,tw,th]=tiles,[rx,ry,rw,rh]=referenceBounds;
+ const [tx,ty,tw,th]=tiles,[rx,ry,rw,rh]=containedArtwork(referenceBounds);
  const doorCell={col:entranceCol,row:ty+th},workCell={col:entranceCol,row:ty+th-1};
- return {id,name,title,tiles,referenceBounds,sprite,atlas:'buildings',color,description,
+ return {id,name,title,tiles,referenceBounds:[rx,ry,rw,rh],sprite,atlas:'buildings',color,description,
  door:id,doorCell,workCell,bounds:[tx*TILE,ty*TILE,tw*TILE,th*TILE],
  x:rx+rw/2,y:ry+rh,width:rw,height:rh,artWidth:rw,artHeight:rh,
  collision:{col:tx,row:ty,columns:tw,rows:th},layer:'world',depth:workCell.row*TILE-12};
@@ -98,7 +106,7 @@ export const URBAN_BLOCKS=[
 export const POINTS_OF_INTEREST=[
  {name:'City Hall stairs',col:26,row:18},{name:'Market frontage',col:50,row:21},
  {name:'Café terrace',col:66,row:21},{name:'Central crossing sidewalk',col:39,row:21},
- {name:'Clinic forecourt',col:27,row:35},{name:'Globe plaza',col:27,row:46},
+ {name:'Clinic forecourt',col:27,row:35},{name:'Globe plaza',col:29,row:46},
  {name:'Garden walk',col:35,row:36},{name:'Canal west bank',col:49,row:37},
  {name:'Upper canal bridge',col:57,row:28},{name:'Lower canal bridge',col:58,row:44},
  {name:'R&D doorway',col:70,row:42},{name:'East pedestrian lane',col:80,row:38},
@@ -115,11 +123,11 @@ export const DECORATIONS=[
  decor('clinic-garden-tree',8,591,517,116,146),
  decor('plaza-west-tree',8,185,721,106,142),decor('plaza-east-tree',8,560,718,105,139),
  decor('foreground-tree',8,354,984,99,139),
- decor('globe',12,421,740,128,166),
- decor('plaza-bench',11,286,742,77,42),decor('garden-bench',11,589,574,75,42),
+ decor('globe',12,421,740,128,166,{collision:{col:24,row:44,columns:5,rows:3}}),
+ decor('plaza-bench',11,286,742,77,42,{collision:{col:15,row:45,columns:6,rows:1}}),decor('garden-bench',11,589,574,75,42,{collision:{col:34,row:34,columns:6,rows:2}}),
  decor('hall-planter',14,277,271,55,55),decor('market-planter',14,938,329,52,50),
  decor('canal-planter',14,1010,656,52,52),decor('dock-kiosk',15,1430,961,63,85),
- decor('terrace-orange-tree',8,1568,120,80,111),decor('terrace-pink-tree',9,1824,135,76,105),
+ decor('terrace-orange-tree',8,1568,120,80,111),decor('terrace-pink-tree',9,1816,135,76,105),
  decor('terrace-garden-tree',8,1800,742,76,98),
  decor('terrace-lamp-north',10,1544,320,28,96,{light:true}),decor('terrace-lamp-south',10,1840,705,28,96,{light:true}),
  ...[[314,350],[550,350],[654,308],[1020,423],[1278,479],[301,632],[576,592],[672,553],[300,818],[749,990],[1157,966],[1505,970]].map(([x,y],i)=>decor(`lamp-${i}`,10,x,y,28,96,{light:true}))

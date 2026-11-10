@@ -13,7 +13,9 @@ export class RoadNetwork{
  constructor(segments=ROADS,nodes=STREET_NODES){
  this.segments=segments;this.nodes=nodes;this.crossings=CROSSINGS;
  this.nodeById=new Map(nodes.map(n=>[n.id,n]));this.cells=new Uint8Array(WORLD.columns*WORLD.rows);
- for(const s of segments){const [x,y,w,h]=s.tiles;for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++)this.cells[r*WORLD.columns+c]=s.roadType==='alley'?this.cells[r*WORLD.columns+c]||2:1;}
+ for(const s of segments){const [x,y,w,h]=s.tiles;
+ if(s.tiles.length!==4||![x,y,w,h].every(Number.isInteger)||w<=0||h<=0||x<0||y<0||x+w>WORLD.columns||y+h>WORLD.rows)throw new RangeError(`${s.id}: road footprint must fit completely inside the city`);
+ for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++)this.cells[r*WORLD.columns+c]=s.roadType==='alley'?this.cells[r*WORLD.columns+c]||2:1;}
  this.junctions=nodes.map(n=>({...n,mask:this.nodeMask(n),kind:junctionKind(this.nodeMask(n)),segments:segments.filter(s=>s.from===n.id||s.to===n.id).map(s=>s.id)}));
  this.validate();
  }
@@ -35,6 +37,7 @@ export class RoadNetwork{
  }return components;}
  validate(map){
  const errors=[];
+ for(const n of this.nodes)if(!Number.isInteger(n.col)||!Number.isInteger(n.row)||n.col<0||n.row<0||n.col>WORLD.columns||n.row>WORLD.rows)errors.push(`${n.id}: node outside city grid boundaries`);
  for(const s of this.segments){const a=this.nodeById.get(s.from),b=this.nodeById.get(s.to);
  if(!a||!b){errors.push(`${s.id}: missing connection`);continue;}
  if((a.col===b.col)===(a.row===b.row))errors.push(`${s.id}: non-cardinal or zero-length road`);

@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {THEME,icePixel,themeAtlas,CHARACTER_ATLASES,visualAccent,atlasColorRole,BUILDING_PALETTES,visualRoleColor} from '../dist/js/theme.js';
+import {THEME,PALETTE,icePixel,themeAtlas,CHARACTER_ATLASES,visualAccent,atlasColorRole,BUILDING_PALETTES,visualRoleColor} from '../dist/js/theme.js';
 const luminance=rgb=>rgb.reduce((v,c,i)=>v+c*[.2126,.7152,.0722][i],0);
 test('light ramps retain readable shading and preserve green/pink material accents',()=>{
  const ramp=[[36,19,7],[110,65,20],[210,125,35],[255,225,165]].map(c=>icePixel(...c));
@@ -19,10 +19,12 @@ test('primary button and body text have strong contrast against the midnight UI'
  const lum=hex=>{const rgb=hex.slice(1).match(/../g).map(c=>parseInt(c,16)/255).map(c=>c<=.04045?c/12.92:((c+.055)/1.055)**2.4);return luminance(rgb);};
  for(const color of [THEME.primary,THEME.text,THEME.muted])assert.ok((lum(color)+.05)/(lum(THEME.midnight)+.05)>4.5);
 });
-test('brand light stays white without neutralizing cyan technology, stone or local lighting',()=>{
- assert.equal(THEME.primary,'#F2F9FF');
- const rgb=icePixel(255,180,50);assert.ok(Math.min(...rgb)>215);assert.ok(Math.max(...rgb)-Math.min(...rgb)<30);
- for(const source of [[28,224,240],[245,240,232],[62,67,71]])assert.deepEqual(icePixel(...source),source);
+test('neon cyan lights and dark blue structures preserve technology and local material colors',()=>{
+ assert.deepEqual(PALETTE,{midnight:'#243449',cyan:'#31B6C4',purple:'#8E77CB',amber:'#F0B96C',ice:'#E0F0FF'});
+ assert.equal(THEME.id,'neon-tech-city');assert.equal(THEME.midnight,PALETTE.midnight);assert.equal(THEME.primary,PALETTE.cyan);
+ const rgb=icePixel(255,180,50);assert.ok(rgb[1]>rgb[0]+40&&rgb[2]>rgb[0]+40);
+ assert.deepEqual(icePixel(28,224,240),[28,224,240]);
+ for(const source of [[245,240,232],[62,67,71]]){const blue=icePixel(...source);assert.ok(blue[2]>blue[0]);assert.ok(luminance(blue)<luminance(source));}
  const leaves=icePixel(255,180,50,'foliage');assert.ok(leaves[1]>leaves[0]);assert.ok(leaves[2]<leaves[1]*.75);assert.ok(Math.max(...leaves)<180);
  assert.deepEqual(icePixel(242,78,183,'foliage'),[242,78,183]);
  for(const accent of Object.values(THEME.accents))assert.equal(visualAccent(accent),accent);
@@ -32,7 +34,7 @@ test('occupied interiors, furniture, shop signs and civic lights have separate m
  const source=[255,180,50],role=(name,index,u,v)=>icePixel(...source,atlasColorRole(name,index,u,v));
  const counter=role('cafe',0,.5,.7),table=role('cafe',1,.5,.5),sign=role('cafe',0,.5,.2),leaves=role('terrain',8,.5,.4);
  assert.ok(counter[0]>counter[1]&&counter[1]>counter[2]);assert.ok(table[0]>table[1]&&table[1]>table[2]);assert.notDeepEqual(counter,table);
- assert.ok(Math.max(...sign)-Math.min(...sign)<30);assert.ok(leaves[1]>leaves[0]);
+ assert.ok(sign[1]>sign[0]+40&&sign[2]>sign[0]+40);assert.ok(leaves[1]>leaves[0]);
  assert.notDeepEqual(role('buildings',1,.5,.5),sign);assert.notDeepEqual(role('buildings',4,.7,.4),sign);
  assert.equal(BUILDING_PALETTES.hall.sign,THEME.primary);assert.equal(BUILDING_PALETTES.station.sign,THEME.primary);assert.equal(BUILDING_PALETTES.design.window,THEME.accents.amber);
  const brake=[248,24,18];assert.deepEqual(icePixel(...brake,atlasColorRole('vehicles',3,.5,.8)),brake);
@@ -47,10 +49,11 @@ test('shared source colors retain different frame materials without leaking cach
   assert.deepEqual([output[3],output[7]],[255,128]);
  }finally{globalThis.document=prior;}
 });
-test('shared lighting remains white while local materials and character roles keep color',()=>{
+test('shared lighting uses neon accents while local materials and character roles keep their meaning',()=>{
  assert.equal(THEME.neon,THEME.lighting.primary);assert.equal(THEME.ui.accent,THEME.lighting.primary);
  const civic=['hall','design','test','station'];for(const id of civic)assert.equal(BUILDING_PALETTES[id].sign,THEME.primary);
- const whites=THEME.water.reflections.filter(c=>[THEME.primary,THEME.secondary].includes(c));assert.ok(whites.length>THEME.water.reflections.length/2);
+ for(const color of [PALETTE.cyan,PALETTE.purple,PALETTE.amber,PALETTE.ice])assert.ok(THEME.water.reflections.includes(color));
  assert.equal(BUILDING_PALETTES.develop.window,THEME.accents.amber);assert.equal(BUILDING_PALETTES.research.sign,THEME.accents.lavender);
- assert.equal(visualRoleColor('Developer'),THEME.accents.cyan);assert.notEqual(visualRoleColor('Developer'),THEME.neon);
+ assert.equal(visualRoleColor('Developer'),THEME.accents.cyan);assert.equal(new Set(['Researcher','Designer','Developer','Tester'].map(visualRoleColor)).size,4);
+ assert.equal(THEME.error,'#FF809B');assert.equal(THEME.success,'#A4D5BA');
 });

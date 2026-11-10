@@ -1,26 +1,29 @@
 // Render-only theme. No simulation state, identities, timing or geometry depend on it.
-const lighting=Object.freeze({primary:'#F2F9FF',highlight:'#FFFFFF',secondary:'#DCEEFF',accent:'#B8DDF5',muted:'#7BAFD1',window:'#F2F9FF',building:'#DCEEFF',road:'#DCEEFF',reflection:'#F2F9FF',selection:'#F2F9FF'});
-const accents=Object.freeze({cyan:'#67D5E8',lavender:'#B99AFF',amber:'#FFBE78',pink:'#F48DA9',green:'#79CFA7'});
+export const PALETTE=Object.freeze({midnight:'#243449',cyan:'#31B6C4',purple:'#8E77CB',amber:'#F0B96C',ice:'#E0F0FF'});
+const lighting=Object.freeze({primary:PALETTE.cyan,highlight:PALETTE.ice,secondary:PALETTE.purple,accent:PALETTE.cyan,muted:'#5E7898',window:PALETTE.ice,building:PALETTE.cyan,road:PALETTE.cyan,reflection:PALETTE.cyan,selection:PALETTE.cyan});
+const accents=Object.freeze({cyan:PALETTE.cyan,lavender:PALETTE.purple,amber:PALETTE.amber,pink:'#F48DA9',green:'#79CFA7'});
 export const THEME=Object.freeze({
- // Shared city lighting is white; saturated accents require an object-specific role.
- name:'Icy White',id:'icy-white',lighting,accents,materials:{wood:'#BC9369',navy:'#1D3045'},primary:lighting.primary,secondary:lighting.secondary,neon:lighting.primary,slate:'#344B63',midnight:'#111D2B',
- panel:'#182534ED',line:'#526576',muted:'#B5C3D0',text:'#F2F9FF',pink:accents.pink,violet:accents.lavender,success:'#A4D5BA',error:'#FF809B',
- ui:{accent:lighting.primary,hover:'#405469',selected:'#34495D',border:'#DCEEFF40',railBorder:'#DCEEFF66',header:'#111D2BEE',headerFade:'#111D2B80',brandGlow:'#F2F9FF44'},
- water:{base:'#102B3B',bands:['#183747','#204352','#285466','#346378'],crest:'#7195AB',ripple:'#9FC4D5',reflection:lighting.reflection,accent:accents.cyan,reflections:[lighting.primary,lighting.secondary,lighting.primary,accents.cyan,lighting.primary,accents.lavender,lighting.primary,accents.amber]},
- road:{asphalt:'#252E39',alley:'#303B47',grain:['#3C4955','#1C2833'],curb:'#7E8E9B',marking:'#B7C5D0',crossing:'#DCE6ED'}
+ // Cyan civic lighting, purple technology and amber occupied interiors share dark blue materials.
+ name:'Neon Tech City',id:'neon-tech-city',lighting,accents,materials:{wood:'#BC9369',navy:PALETTE.midnight},primary:lighting.primary,secondary:PALETTE.ice,neon:lighting.primary,slate:'#344B63',midnight:PALETTE.midnight,
+ panel:'#1B2A3DED',line:'#526B85',muted:'#B2C5DB',text:PALETTE.ice,pink:accents.pink,violet:accents.lavender,success:'#A4D5BA',error:'#FF809B',
+ ui:{accent:lighting.primary,hover:'#3B536D',selected:'#344B63',border:PALETTE.cyan+'40',railBorder:PALETTE.purple+'66',header:PALETTE.midnight+'EE',headerFade:PALETTE.midnight+'80',brandGlow:PALETTE.cyan+'44'},
+ water:{base:'#102A3A',bands:['#173748','#204354','#285468','#34647A'],crest:'#6C96AE',ripple:'#9FC4D5',reflection:lighting.reflection,accent:accents.cyan,reflections:[PALETTE.cyan,PALETTE.purple,PALETTE.cyan,PALETTE.amber,PALETTE.cyan,PALETTE.purple,PALETTE.ice,PALETTE.amber]},
+ road:{asphalt:'#172638',alley:'#293B50',grain:['#304257','#122032'],curb:'#607F99',marking:'#9AB5CB',crossing:PALETTE.ice}
 });
 export const CHARACTER_ATLASES=new Set(['characters','cafeResidents','lifeResidents','purposeResidents']);
-export const visualRoleColor=role=>({Researcher:THEME.primary,Designer:THEME.pink,Developer:THEME.accents.cyan,Tester:THEME.violet}[role]||THEME.secondary);
+export const visualRoleColor=role=>({Researcher:THEME.accents.amber,Designer:THEME.pink,Developer:THEME.accents.cyan,Tester:THEME.violet}[role]||THEME.secondary);
 export function visualAccent(color){
  if(!/^#[0-9a-f]{6}$/i.test(color||''))return color;
- // Only legacy brand colors become white. Local accents keep their own meaning.
+ // Only legacy brand colors become cyan. Local accents keep their own meaning.
  return ['#ff9a36','#ffc45b'].includes(color.toLowerCase())?THEME.primary:color;
 }
-const lightRamp=[[0,[7,13,20]],[.22,[52,75,99]],[.44,[112,130,147]],[.68,[220,230,240]],[.87,[242,249,255]],[1,[255,255,255]]];
+const rgb=hex=>hex.slice(1).match(/../g).map(v=>parseInt(v,16));
+const lightRamp=[[0,[8,15,26]],[.22,rgb(PALETTE.midnight)],[.44,[52,86,116]],[.68,rgb(PALETTE.cyan)],[.94,rgb(PALETTE.ice)],[1,rgb(PALETTE.ice)]];
+const surfaceRamp=[[0,[8,15,26]],[.22,[23,37,55]],[.44,rgb(PALETTE.midnight)],[.68,[61,82,108]],[1,[139,167,190]]];
 const foliageRamp=[[0,[12,20,17]],[.22,[33,59,39]],[.44,[59,106,58]],[.68,[96,153,88]],[1,[160,215,142]]];
 const interpolate=(ramp,luma)=>{let i=1;while(i<ramp.length-1&&luma>ramp[i][0])i++;const [start,a]=ramp[i-1],[end,z]=ramp[i],t=(luma-start)/(end-start);return a.map((v,j)=>Math.round(v+(z[j]-v)*t));};
-// Material-aware rendering: light cores become nearly neutral white; foliage,
-// character identity colors and magenta accents never become frosted surfaces.
+// Material-aware color replacement only. Neutral structures become dark blue;
+// existing warm light cores become cyan. Foliage and character identities survive.
 export function icePixel(r,g,b,material='surface'){
  const max=Math.max(r,g,b),min=Math.min(r,g,b),luma=(.2126*r+.7152*g+.0722*b)/255;
  const warm=max>12&&r>=g*.92&&(g>b*1.22||b<r*.25)&&(max-min)/max>.24;
@@ -31,8 +34,8 @@ export function icePixel(r,g,b,material='surface'){
   const color=THEME.accents[material]||THEME.materials[material];
   if(color){const rgb=color.slice(1).match(/../g).map(v=>parseInt(v,16));return interpolate([[0,[7,13,20]],[.22,[32,43,54]],[.68,rgb.map(v=>Math.round(v*.82))],[1,rgb]],luma);}
  }
- // Existing cyan technology, magenta paint, stone, bark and foliage are materials,
- // not automatically branded light. Their original shading and hues survive.
+ if(material==='surface'&&max-min<=Math.max(12,max*.18))return interpolate(surfaceRamp,luma);
+ // Existing cyan technology, magenta paint, bark and foliage retain their materials.
  return [r,g,b];
 }
 export const BUILDING_PALETTES=Object.freeze({hall:{sign:lighting.primary,window:lighting.window},develop:{sign:accents.pink,window:accents.amber},design:{sign:lighting.primary,window:accents.amber},test:{sign:lighting.primary,window:lighting.window},research:{sign:accents.lavender,window:lighting.window},station:{sign:lighting.primary,window:lighting.window}});

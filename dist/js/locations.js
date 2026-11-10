@@ -1,5 +1,6 @@
 // All positions are world coordinates. Service, furniture and task workplaces
 // have separate identities; transient occupancy is owned by ActivityController.
+import {containedArtwork} from './world.js';
 export const CAFE_LOCATION={id:'east-terrace',name:'Ember Café',bounds:[1536,64,320,288],exit:{col:96,row:21},entry:{col:96,row:21}};
 const prop=(id,type,sprite,x,y,width,height,extra={})=>({id,type,atlas:'cafe',sprite,x,y,width,height,layer:'world',...extra});
 // Compact frontage terrace north of the boulevard: three tables, six seats.
@@ -14,7 +15,7 @@ export const CAFE_OBJECTS=[
  ...CAFE_TABLES,...CAFE_SEATS,
  ...CAFE_TABLES.map(t=>prop(`${t.id}-cup`,'cup',8,t.x+11,t.y-32,10,10,{depth:t.y+1,tableId:t.id})),
  prop('cafe-umbrella','umbrella',6,1560,248,58,80,{collision:{col:97,row:15,columns:1,rows:1}}),
- ...[[1544,264],[1840,264]].map(([x,y],i)=>prop(`cafe-planter-${i}`,'planter',7,x,y,34,32,{collision:{col:Math.floor(x/16),row:Math.floor(y/16)-1,columns:1,rows:2}}))
+ ...[[1544,264],[1832,264]].map(([x,y],i)=>prop(`cafe-planter-${i}`,'planter',7,x,y,34,32,{collision:{col:Math.floor(x/16),row:Math.floor(y/16)-1,columns:1,rows:2}}))
 ];
 const servicePoint=(id,type,locationId,col,row,direction='up')=>({id,type,locationId,position:{x:col*16+8,y:row*16+8},interactionPosition:{x:col*16+8,y:row*16+8},interactionCell:{col,row},direction,capacity:1});
 export const CAFE_ORDER_POINT=servicePoint('cafe-order','counter',CAFE_LOCATION.id,109,17);
@@ -24,7 +25,7 @@ export const CAFE_STAFF={id:'cafe-barista',name:'Ember',role:'Designer',visitorR
 export const COFFEE_ACTIVITY={id:'coffee',locationId:CAFE_LOCATION.id,label:'Coffee break',chance:.62,maxAgents:3,maxVisitors:1,admissionGap:8,decisionDelay:[12,23],seatDuration:[38,64],cooldown:[45,95],afterWorkCooldown:20,routeTimeout:95,waitTimeout:5,sipPeriod:5.2};
 
 // Existing globe-plaza gardens become the shared park; no landmark moves.
-export const PARK_LOCATION={id:'globe-park',name:'Circuit Park',bounds:[256,544,448,256],entry:{col:23,row:39},exit:{col:27,row:46}};
+export const PARK_LOCATION={id:'globe-park',name:'Circuit Park',bounds:[256,544,448,256],entry:{col:23,row:39},exit:{col:29,row:46}};
 export const PARK_BENCHES=[
  {id:'plaza-bench',atlas:'terrain',sprite:11,x:286,y:742,width:77,height:42,depth:728,capacity:2},
  {id:'garden-bench',atlas:'terrain',sprite:11,x:589,y:574,width:75,height:42,depth:570,capacity:2},
@@ -36,12 +37,12 @@ export const PARK_OBJECTS=[PARK_BENCHES[2],
  {id:'park-reading-lamp',type:'lamp',atlas:'terrain',sprite:10,x:376,y:710,width:28,height:94,light:true,collision:{col:23,row:44,columns:1,rows:1},layer:'world'}];
 export const MARKET_LOCATION={id:'market-visit',name:'Maker Market',buildingId:'develop',bounds:[656,0,304,350],entry:{col:50,row:21},exit:{col:52,row:21}};
 export const HOME_LOCATIONS=[
- {id:'west-residence',name:'West Apartments',buildingId:'foreground-west-residences',bounds:[0,748,288,276],entry:{col:19,row:51},exit:{col:19,row:50}},
- {id:'central-residence',name:'Central Apartments',buildingId:'foreground-central-residences',bounds:[416,820,300,204],entry:{col:28,row:51},exit:{col:29,row:50}}
+ {id:'west-residence',name:'West Apartments',buildingId:'foreground-west-residences',bounds:containedArtwork([0,748,288,368]),entry:{col:17,row:51},exit:{col:17,row:50}},
+ {id:'central-residence',name:'Central Apartments',buildingId:'foreground-central-residences',bounds:containedArtwork([416,820,300,300]),entry:{col:28,row:51},exit:{col:29,row:50}}
 ];
 const entrance=(id,locationId,col,row,approach={col,row})=>({id,type:'entrance',locationId,position:{x:col*16+8,y:row*16+8},interactionPosition:{x:col*16+8,y:row*16+8},interactionCell:{col,row},approachCell:approach,direction:'up',capacity:1});
 export const ENTRANCE_POINTS=[entrance('market-entry',MARKET_LOCATION.id,50,20,MARKET_LOCATION.entry),...HOME_LOCATIONS.map(h=>entrance(`${h.id}-entry`,h.id,h.entry.col,h.entry.row))];
-export const LOCATIONS=[CAFE_LOCATION,PARK_LOCATION,MARKET_LOCATION,...HOME_LOCATIONS,{id:'station-platform',name:'Central Station platform',bounds:[864,904,192,64],entry:{col:59,row:58},exit:{col:65,row:59}},{id:'canal-promenade',name:'Canal promenade',bounds:[1536,416,320,320],entry:{col:98,row:29},exit:{col:98,row:44}},{id:'lab-delivery',name:'R&D delivery door',bounds:[1088,656,96,48],entry:{col:72,row:42},exit:{col:72,row:43}},{id:'central-plaza',name:'Central Plaza',bounds:[256,576,448,208],entry:{col:27,row:46},exit:{col:27,row:46}}];
+export const LOCATIONS=[CAFE_LOCATION,PARK_LOCATION,MARKET_LOCATION,...HOME_LOCATIONS,{id:'station-platform',name:'Central Station platform',bounds:[864,904,192,64],entry:{col:59,row:58},exit:{col:65,row:59}},{id:'canal-promenade',name:'Canal promenade',bounds:[1536,416,320,320],entry:{col:98,row:29},exit:{col:98,row:44}},{id:'lab-delivery',name:'R&D delivery door',bounds:[1088,656,96,48],entry:{col:72,row:42},exit:{col:72,row:43}},{id:'central-plaza',name:'Central Plaza',bounds:[256,576,448,208],entry:{col:29,row:46},exit:{col:29,row:46}}];
 export const SERVICE_POINTS=[
  servicePoint('market-window','browse',MARKET_LOCATION.id,48,21),
  servicePoint('courier-pickup','service',MARKET_LOCATION.id,52,21),

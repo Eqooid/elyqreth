@@ -1,6 +1,6 @@
 # Elyqreth - A Living AI City
 
-Elyqreth is an interactive cyberpunk city that represents backend AI Agents as NPCs. Its existing Canvas city, animated residents and environment use an Icy White (#F2F9FF) identity over dark architectural surfaces.
+Elyqreth is an interactive cyberpunk city that represents backend AI Agents as NPCs. Its existing Canvas city uses the Neon Tech City palette: midnight blue (#243449), neon cyan (#31B6C4), tech purple (#8E77CB), warm amber (#F0B96C), and ice-white highlights (#E0F0FF). The original pixel-art sprites, resident identities, and animations are preserved.
 
 ## For users
 
