@@ -283,22 +283,26 @@ module.exports=({row,getPool,getUrl})=>{
  });
  test('P4 T05 real browser starts, confirms cancellation and reloads authoritative execution controls', {timeout:120000},async()=>{
   const {resolve}=require('node:path'),{fork}=require('node:child_process'),{createServer}=await import('vite');
-  const root=resolve(__dirname,'../../..'),web=await createServer({configFile:resolve(root,'vite.config.js'),server:{host:'127.0.0.1',port:0}}),entered=deferred(),release=deferred();let f,child,stdout='',stderr='',calls=0;
+  const root=resolve(__dirname,'../../..'),web=await createServer({configFile:resolve(root,'vite.config.js'),server:{host:'127.0.0.1',port:0}}),entered=deferred(),release=deferred(),releaseStatus=deferred();let f,child,stdout='',stderr='',calls=0;
   try{
    await web.listen();const origin=`http://127.0.0.1:${web.httpServer.address().port}`;f=await fixture(origin);await f.service.remove({bindingId:f.bindings[3].id,revision:f.bindings[3].revision});
    await row('UPDATE agents SET name=$2 WHERE id=$1 RETURNING id',[f.agents[0].id,'LongAgentName'.repeat(12)]);
    const genuine=f.app.get(TextStatisticsStrategy);f.app.get(RuntimeCoordinator).strategies=new StrategyRegistry([{id:'text.stats.v1',strategy:{type:'RULE_BASED',execute:async(r,c)=>{if(++calls>1){entered.resolve();await release.promise;}return genuine.execute(r,c);}}}]);
+   // Hold the first completed Task's follow-up read until selection has moved
+   // to the second running Task. Both responses still come from real database reads.
+   const {RuntimeApiService}=require('../dist/runtime/http/runtime-api.service'),reads=f.app.get(RuntimeApiService),taskStatus=reads.taskStatus.bind(reads);let completedTask;
+   reads.taskStatus=async id=>{const value=await taskStatus(id);if(value.status==='COMPLETED')completedTask??=id;if(id===completedTask)await releaseStatus.promise;return value;};
    child=fork(resolve(root,'scripts/browser-smoke.mjs'),[],{cwd:root,execArgv:[],env:{...process.env,BROWSER_BASE_URL:origin,ELYQRETH_TASK_PANEL_E2E:'true'},windowsHide:true,stdio:['ignore','pipe','pipe','ipc']});
    child.stdout.on('data',chunk=>{stdout+=chunk;});child.stderr.on('data',chunk=>{stderr+=chunk;});
    child.on('message',async message=>{if(message?.kind==='task-panel-configuration-request')child.send({kind:'task-panel-configuration',config:{apiOrigin:`http://127.0.0.1:${f.app.getHttpServer().address().port}`,cityToken:f.reader,interactionToken:f.token,agentId:f.agents[0].id,lifecycle:true}});
-    if(message?.kind==='task-lifecycle-command'){try{assert.ok(['entered','release'].includes(message.name));if(message.name==='entered')await entered.promise;else release.resolve();if(child.connected)child.send({kind:'task-lifecycle-result',name:message.name});}catch{if(child.connected)child.send({kind:'task-lifecycle-result',name:message.name,error:true});}}
+    if(message?.kind==='task-lifecycle-command'){try{assert.ok(['entered','release'].includes(message.name));if(message.name==='entered'){await entered.promise;releaseStatus.resolve();}else release.resolve();if(child.connected)child.send({kind:'task-lifecycle-result',name:message.name});}catch{if(child.connected)child.send({kind:'task-lifecycle-result',name:message.name,error:true});}}
    });
    let timer;const code=await Promise.race([new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',resolve);}),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Lifecycle browser deadline')),100000);})]).finally(()=>clearTimeout(timer));
    assert.equal(code,0,stderr);const report=JSON.parse(stdout);assert.equal(report.status,'PASS');assert.equal(report.exceptions,0);assert.equal(report.taskPanelAcceptance.lifecycle.status,'PASS');assert.equal(report.taskPanelAcceptance.lifecycle.reloadRecovered,true);
    const rows=(await getPool().query('SELECT status FROM executions WHERE agent_id=$1 ORDER BY created_at,id',[f.agents[0].id])).rows;assert.deepEqual(rows.map(r=>r.status),['SUCCEEDED','CANCELLED']);assert.equal(calls,2);
    for(const secret of [f.operator,f.reader,f.token])assert.ok(!(stdout+stderr).includes(secret));
    const {writeFileSync}=require('node:fs'),{tmpdir}=require('node:os');writeFileSync(resolve(tmpdir(),'elyqreth-p4-t05-live-browser.json'),JSON.stringify(report,null,2));
-  }finally{release.resolve();if(child&&child.exitCode===null)child.kill();await f?.close();await web.close();}
+  }finally{release.resolve();releaseStatus.resolve();if(child&&child.exitCode===null)child.kill();await f?.close();await web.close();}
  });
  test('P4 T06 real browser inspects safe results, bounded history and isolated Agent scopes', {timeout:150000},async()=>{
   const {resolve}=require('node:path'),{fork}=require('node:child_process'),{createServer}=await import('vite');const root=resolve(__dirname,'../../..');

@@ -78,7 +78,8 @@ export class ExecutionLifecycleOwner {
    const finished=await response;if(generation!==this.#generation)return;
    this.#abortRead(e);this.#apply(e,finished.task,finished.execution);e.fresh=false;e.message='Start response received. Refreshing authoritative lifecycle.';
   }catch(error){if(generation===this.#generation)this.#failure(e,error,'START');}
-  finally{if(generation===this.#generation){e.startPending=false;e.startDispatched=false;this.#refreshActivity();await this.#read(e);this.#emit();}}
+  // Persist the settled response before selection can abort the follow-up read.
+  finally{if(generation===this.#generation){e.startPending=false;e.startDispatched=false;this.#save(e);this.#refreshActivity();await this.#read(e);this.#emit();}}
  }
  requestCancel(){const e=this.#selected;if(!this.#canCancel(e)||!e?.execution)return;this.#confirmation={entry:e,executionId:e.execution.id};this.#emit();}
  dismissCancel(){this.#confirmation=null;this.#emit();}

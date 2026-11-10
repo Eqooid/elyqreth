@@ -133,7 +133,13 @@ export async function verifyLiveTaskPanel({evaluate,until,permitApi,command,wait
   await reloadCity({command,waitEvent,evaluate,until});
   await evaluate(`(async()=>{const {runtimeIntegration:r}=await import('/js/runtime/index.js');r.connect({baseUrl:${JSON.stringify(config.apiOrigin)},pageOrigin:location.origin,token:${JSON.stringify(config.cityToken)}});await r.refresh();document.querySelector('[data-agent]').click();})()`);
   await evaluate(`(()=>{document.querySelector('.agent-task-section [data-connect]').click();const d=document.querySelector('dialog[open]');d.querySelector('[name=origin]').value=${JSON.stringify(config.apiOrigin)};d.querySelector('[name=credential]').value=${JSON.stringify(config.interactionToken)};d.querySelector('form').requestSubmit();})()`);
-  await until(async()=>/Execution status: CANCELLED/.test(await status()),'Reload did not recover the exact terminal Execution');
+  try{
+   await until(async()=>/Execution status: CANCELLED/.test(await status()),'Reload did not recover the exact terminal Execution');
+  }catch(error){
+   // Fixed UI status fields only: never report credentials, Task input or raw storage.
+   const recovery=await evaluate(`(()=>{const read=s=>document.querySelector('.agent-task-section '+s)?.textContent??null;return {status:read('[data-execution-status]'),reference:read('[data-execution-reference]'),feedback:read('[data-execution-feedback]'),recovery:read('[data-interaction-health]'),submission:read('#agent-task-feedback')};})()`);
+   throw new Error(error.message+': '+JSON.stringify(recovery),{cause:error});
+  }
   assert.ok((await evaluate("document.querySelector('.agent-task-section [data-execution-reference]').textContent")).includes(executionId));
   lifecycle={status:'PASS',executionId,terminalStatuses:['SUCCEEDED','CANCELLED'],reloadRecovered:true,confirmationBackVerified:true,selectionClosePreserved:true};
   if(config.synchronization){

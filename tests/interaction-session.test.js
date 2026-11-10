@@ -7,7 +7,7 @@ const store=()=>({data:new Map(),writes:0,getItem(k){return this.data.get(k)??nu
 const scope=(n=1)=>({agentId:id(n),bindingId:id(n+100),npcId:`resident-slot-00${n}`});
 const binding=(n=1,patch={})=>({state:'RESOLVED',...scope(n),freshness:'fresh',lastSuccessfulSyncAt:stamp,activity:activity(n,{...scope(n)}),...patch});
 const locator=(patch={})=>({...scope(),taskId:id(201),action:null,...patch});
-function fixture({storage=store(),lostCreate=false}={}){const clock=new FakeClock(),requests=[],tasks=new Map(),byKey=new Map();let network=false,denied=0,refreshes=0;
+function fixture({storage=store(),lostCreate=false,beforeStatus=async()=>{}}={}){const clock=new FakeClock(),requests=[],tasks=new Map(),byKey=new Map();let network=false,denied=0,refreshes=0;
  const journal=new InteractionRecoveryJournal(origin,{storage,now:clock.wallNow});
  const taskNow=t=>taskDetail({id:t.id,agentId:t.agentId,status:t.status==='SUCCEEDED'?'COMPLETED':t.status,version:t.status==='CREATED'?1:t.status==='RUNNING'?3:4,completedAt:['CREATED','RUNNING'].includes(t.status)?null:stamp,latestExecutionId:t.executionId,actionEligibility:{canCreateTask:true,canRequestStart:t.status==='CREATED',canRequestCancel:false,reason:null}});
  const execNow=t=>execution({id:t.executionId,taskId:t.id,agentId:t.agentId,status:t.status,version:t.status==='RUNNING'?2:3,finishedAt:t.status==='RUNNING'?null:stamp,durationMs:t.status==='RUNNING'?null:0,resultAvailability:t.status==='SUCCEEDED'?'AVAILABLE':t.status==='RUNNING'?'PENDING':'UNAVAILABLE',actionEligibility:{canCreateTask:true,canRequestStart:false,canRequestCancel:t.status==='RUNNING',reason:null}});
@@ -18,6 +18,7 @@ function fixture({storage=store(),lostCreate=false}={}){const clock=new FakeCloc
   if(parts[3]==='agents'&&parts[5]==='executions')return response({items:[...tasks.values()].filter(t=>t.agentId===parts[4]&&t.executionId).map(execNow),pagination:{limit:10,nextCursor:null}});
   if(u.pathname==='/api/v1/tasks'&&options.method==='POST'){const input=JSON.parse(options.body),t={id:id(201+tasks.size),agentId:input.agentId,status:'CREATED',executionId:null,run:deferred()};tasks.set(t.id,t);byKey.set(input.idempotencyKey,t);if(lostCreate)throw TypeError('Lost response after commit');return response(taskNow(t),201);}
   const t=tasks.get(parts[4]);if(!t)return response({},404);
+  if(parts[5]==='status')await beforeStatus(t);
   if(parts[5]==='execute'){t.status='RUNNING';t.executionId=id(501+tasks.size);return t.run.promise;}
   if(parts.at(-1)==='cancel'){t.status='CANCELLED';t.run.resolve(response({},409));return response({task:taskNow(t),execution:execNow(t)});}
   if(parts.at(-1)==='result')return response({execution:execNow(t),availability:t.status==='SUCCEEDED'?'AVAILABLE':t.status==='RUNNING'?'PENDING':'UNAVAILABLE',result:t.status==='SUCCEEDED'?result({executionId:t.executionId}):null});
@@ -32,6 +33,23 @@ test('journal remains bounded, never evicts unresolved locators and avoids per-p
 test('settling an older action does not steal the latest saved Task recovery target',()=>{let now=100000;const j=new InteractionRecoveryJournal(origin,{storage:store(),now:()=>now});j.put(locator({taskId:id(201),action:'START'}));now++;j.put(locator({taskId:id(202)}));now++;j.put(locator({taskId:id(201),executionId:id(501)}));assert.equal(j.find(scope()).taskId,id(202));});
 test('storage-denied mode is explicit and keeps only volatile recovery identifiers',()=>{const storage={getItem(){throw Error('denied');},setItem(){throw Error('denied');},removeItem(){throw Error('denied');}},j=new InteractionRecoveryJournal(origin,{storage});j.put(locator());assert.equal(j.available,false);assert.equal(j.find(scope()).taskId,id(201));});
 test('page suspension preserves a confirmed Task locator; reauthorization restores it by GET without cached lifecycle or POST',async()=>{const f=fixture();await f.ready();const t=await f.create();assert.ok(f.storage.getItem(RECOVERY_STORAGE_KEY));assert.ok(!f.storage.getItem(RECOVERY_STORAGE_KEY).includes('Private instruction'));f.session.suspend();assert.equal(f.client.hasCredential,false);assert.ok(f.journal.find(scope()));f.session.dispose();f.client.authorize('J'.repeat(40));const resumed=new InteractionSession(f.client,{baseUrl:origin,journal:new InteractionRecoveryJournal(origin,{storage:f.storage,now:f.clock.wallNow})});const before=f.requests.filter(r=>r.options.method==='POST').length;resumed.select(binding());await flush();await resumed.restore(true);await flush();assert.equal(resumed.submission.getSnapshot().task.id,t.id);assert.equal(resumed.lifecycle.getSnapshot().task.status,'CREATED');assert.equal(f.requests.filter(r=>r.options.method==='POST').length,before);resumed.dispose();f.dispose();});
+test('a confirmed Start does not retain an unresolved journal action when selection aborts its follow-up read',async()=>{
+ const reading=deferred(),release=deferred();let firstId;
+ const f=fixture({beforeStatus:async t=>{if(t.id===firstId&&t.status==='SUCCEEDED'){reading.resolve();await release.promise;}}});
+ let running;
+ try{
+  await f.ready();const first=await f.create();firstId=first.id;
+  running=f.session.lifecycle.start();await flush();f.complete(first);await reading.promise;await flush();
+  assert.equal(f.session.lifecycle.getSnapshot().execution.status,'SUCCEEDED');
+  f.clock.time++;
+  f.session.submission.newTask();f.session.submission.setDraft('New saved Task');await f.session.submission.submit();await flush();
+  const second=[...f.tasks.values()].at(-1);assert.notEqual(second.id,first.id);
+  release.resolve();await running;
+  const prior=f.journal.list().find(row=>row.taskId===first.id);
+  assert.equal(prior.action,null,'A confirmed terminal Start must not outrank a newer Task as unresolved');
+  assert.equal(f.journal.find(scope()).taskId,second.id);
+ }finally{release.resolve();await running;f.dispose();}
+});
 test('committed lost Create response survives reload via its exact key, with no instructions or mutation replay',async()=>{const f=fixture({lostCreate:true});await f.ready();await f.create();assert.equal(f.session.submission.getSnapshot().phase,'RECOVERY_REQUIRED');const saved=f.journal.find(scope());assert.ok(saved.idempotencyKey);assert.equal(saved.taskId,undefined);f.session.suspend();f.session.dispose();f.client.authorize('J'.repeat(40));const resumed=new InteractionSession(f.client,{baseUrl:origin,journal:new InteractionRecoveryJournal(origin,{storage:f.storage,now:f.clock.wallNow})});resumed.select(binding());await flush();await resumed.restore(true);await flush();assert.equal(resumed.submission.getSnapshot().task.id,id(201));assert.equal(f.requests.filter(r=>r.options.method==='POST').length,1);resumed.dispose();f.dispose();});
 test('uncommitted restored Create stays unresolved without a stored private payload or retry button capability',async()=>{const f=fixture();f.journal.put({...scope(),idempotencyKey:'city.unknown-original',action:'CREATE'});await f.ready();await f.session.restore(true);assert.equal(f.session.submission.getSnapshot().recoverable,true);assert.equal(f.session.submission.getSnapshot().canRetry,false);assert.equal(f.session.submission.getSnapshot().canSubmit,false);assert.equal(f.requests.filter(r=>r.options.method==='POST').length,0);f.dispose();});
 test('multiple Agents retain independent mutations across panel closure and out-of-order completion',async()=>{const f=fixture();const a=await f.create();const runA=f.session.lifecycle.start();await flush();const b=await f.create(2);const runB=f.session.lifecycle.start();await flush();assert.equal(f.requests.find(r=>r.url.endsWith(a.id+'/execute')).options.signal.aborted,false);f.complete(a);await runA;assert.equal(f.session.lifecycle.getSnapshot().task.id,b.id);assert.notEqual(f.session.lifecycle.getSnapshot().execution?.id,a.executionId);f.complete(b);await runB;assert.equal(f.session.lifecycle.getSnapshot().execution.status,'SUCCEEDED');f.session.select(binding());await flush();assert.equal(f.session.lifecycle.getSnapshot().task.id,a.id);assert.equal(f.journal.list().filter(r=>r.executionId).length,2);f.dispose();});
