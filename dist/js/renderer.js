@@ -47,6 +47,7 @@ export class TownRenderer{
  // Road geometry and canal railings belong to the ground/detail layer.
  // Tone the swatches toward the reference's dark slate paving, leaving neon luminous.
  c.fillStyle='#0b101e28';c.fillRect(0,0,WORLD.width,WORLD.height);
+ this.roads.drawSurfaceEdges(c,this.sim.map);
  this.roads.draw(c,this.sim.map);
  for(const [x,y,w,h] of BRIDGES){c.fillStyle='#152532';c.fillRect(x*TILE-3,y*TILE,3,h*TILE);c.fillRect((x+w)*TILE,y*TILE,3,h*TILE);}
  this.terrainLayer=layer;this.water.initialize(this.sim.map);

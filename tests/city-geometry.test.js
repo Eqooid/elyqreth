@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {WORLD,TILE,BUILDINGS,DECORATIONS,ROADS,POINTS_OF_INTEREST,center,containedArtwork} from '../dist/js/world.js';
-import {SCENERY,DECORATIVE_BUILDINGS} from '../dist/js/scenery.js';
+import {SCENERY,DECORATIVE_BUILDINGS,URBAN_DETAILS} from '../dist/js/scenery.js';
 import {CAFE_OBJECTS,PARK_OBJECTS,INTERACTION_POINTS,LOCATIONS,HOME_LOCATIONS,PARK_LOCATION} from '../dist/js/locations.js';
 import {TileMap} from '../dist/js/tile-map.js';
 import {RoadNetwork} from '../dist/js/road-network.js';
@@ -12,9 +12,9 @@ import {Citizens} from '../dist/js/citizens.js';
 const objects=[...BUILDINGS,...DECORATIONS,...SCENERY,...CAFE_OBJECTS,...PARK_OBJECTS];
 const inside=([x,y,w,h])=>x>=0&&y>=0&&w>0&&h>0&&x+w<=WORLD.width&&y+h<=WORLD.height;
 
-test('complete static artwork fits all map edges without changing the city inventory',()=>{
+test('complete static artwork fits all map edges while preserving the building inventory',()=>{
  assert.deepEqual(WORLD,{width:1856,height:1024,columns:116,rows:64});
- assert.equal(BUILDINGS.length,6);assert.equal(DECORATIVE_BUILDINGS.length,9);assert.equal(SCENERY.length,31);assert.equal(DECORATIONS.length,33);assert.equal(ROADS.length,5);
+ assert.equal(BUILDINGS.length,6);assert.equal(DECORATIVE_BUILDINGS.length,9);assert.equal(SCENERY.length,31+URBAN_DETAILS.length);assert.equal(DECORATIONS.length,33);assert.equal(ROADS.length,5);
  assert.equal(new Set(objects.map(o=>o.id)).size,objects.length);
  for(const o of objects){const w=o.artWidth??o.width??o.w,h=o.artHeight??o.height??o.h;assert.ok(inside([o.x-w/2,o.y-h,w,h]),o.id);}
  for(const home of HOME_LOCATIONS){const building=DECORATIVE_BUILDINGS.find(b=>b.id===home.buildingId);assert.deepEqual(home.bounds,building.referenceBounds);}

@@ -82,7 +82,11 @@ export const SIDEWALKS=[
  {id:'terrace-frontage',tiles:[96,19,20,3]},
  {id:'terrace-counter-court',tiles:[99,9,14,10]},
  {id:'cafe-frontage-terrace',tiles:[96,15,20,7]},
- {id:'terrace-promenade',tiles:[96,26,20,19]}
+ // Keep the existing square green; the promenade follows its perimeter.
+ {id:'terrace-promenade',tiles:[96,40,20,5]},
+ {id:'terrace-promenade-north',tiles:[96,26,20,2]},
+ {id:'terrace-promenade-west',tiles:[96,28,3,12]},
+ {id:'terrace-promenade-east',tiles:[113,28,3,12]}
 ];
 export const PUBLIC_SPACES=[
  {id:'globe-plaza',tiles:[16,36,28,13],terrain:'PLAZA'},

@@ -1,10 +1,24 @@
 import {THEME} from './theme.js';
 import {TILE,WORLD} from './world.js';
 import {TERRAIN} from './tile-map.js';
+const PAVING=new Set([TERRAIN.SIDEWALK,TERRAIN.PLAZA,TERRAIN.CONCRETE,TERRAIN.FLOOR]);
+const GROUND_EDGES=[[-1,0,0,0,1,TILE],[1,0,TILE-1,0,1,TILE],[0,-1,0,0,TILE,1],[0,1,0,TILE-1,TILE,1]];
 
 // Reusable adjacency tiles. Pixel aggregate varies deterministically; topology,
 // edges, corners, crossings and lane placement always follow the street graph.
 export class RoadRenderer{
+ drawSurfaceEdges(c,map){
+ // Quiet borders sit on the paving side. Shared paving edges and bridge
+ // entrances stay open; this pass changes no terrain or navigation cells.
+ for(let row=0;row<map.rows;row++)for(let col=0;col<map.columns;col++){
+  if(!PAVING.has(map.tiles[map.index(col,row)]))continue;
+  for(const [dc,dr,x,y,w,h]of GROUND_EDGES){const nx=col+dc,ny=row+dr;if(!map.inBounds(nx,ny))continue;
+   const next=map.tiles[map.index(nx,ny)];
+   if(next!==TERRAIN.GRASS&&next!==TERRAIN.LEAVES&&next!==TERRAIN.WATER)continue;
+   c.fillStyle=next===TERRAIN.WATER?THEME.road.curb:THEME.materials.navy;c.fillRect(col*TILE+x,row*TILE+y,w,h);
+  }
+ }
+ }
  draw(c,map){
  const network=map.roads;network.validate(map);
  for(let row=0;row<map.rows;row++)for(let col=0;col<map.columns;col++)if(network.at(col,row))this.drawTile(c,col,row,network.descriptor(col,row));

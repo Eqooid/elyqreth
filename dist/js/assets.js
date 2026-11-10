@@ -1,11 +1,11 @@
-import {themeAtlas} from './theme.js';
+import {themeAtlas,THEME} from './theme.js';
 import {LIFE_FRAMES} from './life-frames.js';
 import {PURPOSE_FRAMES} from './purpose-frames.js';
 import {CAFE_FRAMES} from './cafe-frames.js';
 import {BLUEPRINT_FRAMES} from './blueprint-frames.js';
 // Atlases are transparent sprites, never whole-scene illustrations.
 export class AssetManager{
- constructor(){this.images={};this.frames={};}
+ constructor(){this.images={};this.frames={};this.terrainPatterns=new Map();}
  async load(){
  await Promise.all([['purposeResidents','assets/purpose-residents-v2.png',6,4],['lifeResidents','assets/life-residents.png',4,4],['cafe','assets/cafe-props.png',3,3],['cafeResidents','assets/cafe-residents.png',12,4],['vehicles','assets/vehicles.png',4,3],['buildings','assets/blueprint-landmarks.png',3,2],['rail','assets/central-station-train.png',2,1],['characters','assets/characters.png',8,8],['terrain','assets/terrain-props.png',4,4],['scenery','assets/decorative-buildings.png',4,2,[0,540,1024]],['street','assets/street-objects.png',4,2],['architecture','assets/urban-architecture.png',3,2],['blueprintScenery','assets/blueprint-scenery.png',4,2],['blueprintProps','assets/blueprint-props.png',3,2]].map(async([name,url,columns,rows,rowEdges])=>{
  const image=await this.loadImage(url);
@@ -40,13 +40,22 @@ export class AssetManager{
  else ctx.drawImage(image,f.sx,f.sy,f.sw,f.sh,Math.round(x-w/2),Math.round(anchor==='bottom'?y-h:y),w,h);
  return {x:Math.round(x-w/2),y:Math.round(anchor==='bottom'?y-h:y),width:w,height:h};
  }
+ terrainPattern(index){
+ if(this.terrainPatterns.has(index))return this.terrainPatterns.get(index);
+ const f=this.frame('terrain',index),layer=document.createElement('canvas');layer.width=256;layer.height=256;
+ const c=layer.getContext('2d');c.imageSmoothingEnabled=false;c.fillStyle=THEME.slate;c.fillRect(0,0,256,256);
+ // The source swatches are illustrations, not seamless textures. Reflect their
+ // edges in a cached 2x2 repeat instead of restarting unrelated edge pixels.
+ c.drawImage(this.images.terrain,f.sx,f.sy,index===0?f.sw*.34:f.sw,f.sh,0,0,128,128);
+ c.save();c.translate(256,0);c.scale(-1,1);c.drawImage(layer,0,0,128,128,0,0,128,128);c.restore();
+ c.save();c.translate(0,256);c.scale(1,-1);c.drawImage(layer,0,0,256,128,0,0,256,128);c.restore();
+ this.terrainPatterns.set(index,layer);return layer;
+ }
  tile(ctx,index,x,y,size){
- const source=this.frame('terrain',index);const f={...source};
- // Spread one texture across 4×4 grid cells instead of miniaturizing it on every tile.
- // Asphalt samples the left third of the swatch, leaving lane marks to the map layer.
- if(index===0)f.sw*=.34;
- const span=Math.round(128/size),col=Math.floor(x/size)%span,row=Math.floor(y/size)%span;
- ctx.drawImage(this.images.terrain,f.sx+col*f.sw/span,f.sy+row*f.sh/span,f.sw/span,f.sh/span,x,y,size,size);
+ // Integer, one-to-one samples keep adjacent grid cells continuous. Patterns
+ // are prepared only while building the cached terrain, never per animation frame.
+ const pattern=this.terrainPattern(index);
+ ctx.drawImage(pattern,((x%256)+256)%256,((y%256)+256)%256,size,size,x,y,size,size);
  }
 
 }

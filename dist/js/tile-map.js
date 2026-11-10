@@ -13,7 +13,7 @@ export class TileMap{
  canStand(x,y){return this.isWalkable(Math.floor(x/TILE),Math.floor(y/TILE));}
  rectangle(x,y,w,h,tile,walk=true){
  if(![x,y,w,h].every(Number.isInteger)||w<=0||h<=0||x<0||y<0||x+w>this.columns||y+h>this.rows)throw new RangeError('Tile rectangle must fit completely inside the city');
- for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++){const i=this.index(c,r);this.tiles[i]=tile;this.walkable[i]=Number(walk);}}
+ for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++){const i=this.index(c,r);if(tile!==undefined)this.tiles[i]=tile;this.walkable[i]=Number(walk);}}
  construct(){
  const T=TERRAIN;
  // Compact parcels share a connected sidewalk / alley network.
@@ -31,10 +31,12 @@ export class TileMap{
  this.rectangle(b.workCell.col-1,b.workCell.row,3,1,T.FLOOR,true);
  this.rectangle(b.doorCell.col-1,b.doorCell.row,3,1,T.SIDEWALK,true);}
  for(const d of DECORATIONS.filter(d=>d.solid)){const c=this.cellAt(d),p=d.collision??{col:c.col,row:c.row,columns:1,rows:1};
- this.rectangle(p.col,p.row,p.columns,p.rows,this.tiles[this.index(p.col,p.row)],false);}
+ this.rectangle(p.col,p.row,p.columns,p.rows,undefined,false);}
  for(const d of SCENERY)for(const part of [...(d.collision?[d.collision]:[]),...(d.collisionParts||[])]){const {col,row,columns,rows}=part;
- this.rectangle(col,row,columns,rows,['scenery','architecture','blueprintScenery'].includes(d.atlas)?T.BUILDING:this.tiles[this.index(col,row)],false);}
- for(const d of [...CAFE_OBJECTS,...PARK_OBJECTS])if(d.collision){const p=d.collision;this.rectangle(p.col,p.row,p.columns,p.rows,T.CONCRETE,false);}
+ this.rectangle(col,row,columns,rows,['scenery','architecture','blueprintScenery'].includes(d.atlas)?T.BUILDING:undefined,false);}
+ // Furniture blocks feet, not the material underneath it. Keep plaza, grass
+ // and sidewalk patterns continuous instead of painting concrete collision boxes.
+ for(const d of [...CAFE_OBJECTS,...PARK_OBJECTS])if(d.collision){const p=d.collision;this.rectangle(p.col,p.row,p.columns,p.rows,undefined,false);}
  // Protected street surface: terrain paint order can never trim a corridor.
  // Collision is retained and validation rejects any solid main-street overlap.
  for(let row=0;row<this.rows;row++)for(let col=0;col<this.columns;col++){const type=this.roads.at(col,row);if(type)this.tiles[this.index(col,row)]=type===1?T.ASPHALT:T.ALLEY;}
