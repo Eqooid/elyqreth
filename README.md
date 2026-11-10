@@ -61,7 +61,7 @@ Use Node 24 and npm from this repository root. Install dependencies with `npm ci
 
 Run `npm run dev:api` for the configured backend. External provider setup is optional: see the [pinned LangGraph local reference](tools/langgraph-reference/README.md). Operator/provider secrets remain backend-only; use the distinct limited browser audiences described in the guides.
 
-Verification uses `npm run lint`, `npm test`, `npm run test:api`, `npm run test:db`, `npm run test:browser`, `npm run build` and `npm run build:web`. Docker and Chrome/Chromium are required for isolated database/browser E2E. `npm run test:interaction:e2e` and `npm run test:city:e2e` cover real existing workflows; `npm run test:langgraph:live` requires the optional pinned reference server. `npm run verify:phase1` retains its historical name for the current local rollup. Root `dist/` is maintained city source; build:web verifies a bundle in a disposable directory.
+Use `npm run verify:phase1` for the local verification rollup; it builds once, then runs the essential checks and tests. Docker and Chrome/Chromium are required for isolated database/browser E2E. See the [CI flow and additional manual checks](docs/ci.md). `npm run test:interaction:e2e` and `npm run test:city:e2e` cover specialized acceptance tiers; `npm run test:langgraph:live` requires the optional pinned reference server. Root `dist/` is maintained city source; build:web verifies a bundle in a disposable directory.
 
 ## History and evidence
 

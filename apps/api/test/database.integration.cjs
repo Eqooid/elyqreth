@@ -12,16 +12,18 @@ const { migrateDatabase, migrationFolder } = require('../dist/database/migrate')
 const { validateEnvironment } = require('../dist/config/configuration');
 const { createApplication } = require('../dist/application');
 const { DatabaseService } = require('../dist/database/database.module');
+const { postgresService, assertPostgresService, postgresPort, testDatabases } = require('./helpers/postgres-service.cjs');
 
 const run = promisify(execFile);
 const migrationCount = JSON.parse(readFileSync(join(migrationFolder, 'meta/_journal.json'), 'utf8')).entries.length;
 const runId = randomBytes(12).toString('hex');
-const container = `elyqreth_t03_test_${runId}`;
+const service = postgresService();
+const container = service?.container ?? `elyqreth_t03_test_${runId}`;
 const volume = `${container}_data`;
 const database = `elyqreth_test_${runId}`;
-const password = randomBytes(24).toString('hex');
+const password = service?.password ?? randomBytes(24).toString('hex');
 const label = 'elyqreth.test.run';
-let temp, admin, pool, config, url, containerCreated = false, volumeCreated = false;
+let temp, admin, pool, config, url, image, databaseCreated = false, containerCreated = false, volumeCreated = false;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const docker = async (...args) => (await run('docker', args, { timeout: 120_000, maxBuffer: 1024 * 1024 })).stdout.trim();
 
@@ -38,36 +40,52 @@ async function waitReady() {
 
 before(async () => {
   // No DATABASE_URL/TEST_DATABASE_URL is consumed. Existing databases cannot be targeted.
-  temp = mkdtempSync(join(tmpdir(), 'elyqreth-t03-'));
-  writeFileSync(join(temp, 'postgres.env'), `POSTGRES_USER=elyqreth_test\nPOSTGRES_PASSWORD=${password}\nPOSTGRES_DB=postgres\n`, { mode: 0o600 });
   const compose = readFileSync(join(__dirname, '../../../docker-compose.yml'), 'utf8');
-  const image = compose.match(/^\s+image:\s+(postgres:\S+@sha256:[a-f0-9]{64})\s*$/m)?.[1];
+  image = compose.match(/^\s+image:\s+(postgres:\S+@sha256:[a-f0-9]{64})\s*$/m)?.[1];
   assert.ok(image, 'Tests require the pinned official PostgreSQL image from Compose');
-  await docker('volume', 'create', '--label', `${label}=${runId}`, volume); volumeCreated = true;
-  await docker('run', '--detach', '--name', container, '--label', `${label}=${runId}`,
-    '--env-file', join(temp, 'postgres.env'), '-p', '127.0.0.1::5432',
-    '--mount', `type=volume,source=${volume},target=/var/lib/postgresql/data`,
-    '--health-cmd', 'pg_isready -U elyqreth_test -d postgres', '--health-interval', '1s', '--health-timeout', '2s', '--health-retries', '60', image);
-  containerCreated = true;
+  if (service) {
+    assertPostgresService(JSON.parse(await docker('inspect', container))[0], service, image);
+  } else {
+    temp = mkdtempSync(join(tmpdir(), 'elyqreth-t03-'));
+    writeFileSync(join(temp, 'postgres.env'), `POSTGRES_USER=elyqreth_test\nPOSTGRES_PASSWORD=${password}\nPOSTGRES_DB=postgres\n`, { mode: 0o600 });
+    await docker('volume', 'create', '--label', `${label}=${runId}`, volume); volumeCreated = true;
+    await docker('run', '--detach', '--name', container, '--label', `${label}=${runId}`,
+      '--env-file', join(temp, 'postgres.env'), '-p', '127.0.0.1::5432',
+      '--mount', `type=volume,source=${volume},target=/var/lib/postgresql/data`,
+      '--health-cmd', 'pg_isready -U elyqreth_test -d postgres', '--health-interval', '1s', '--health-timeout', '2s', '--health-retries', '60', image);
+    containerCreated = true;
+  }
   await waitReady();
   const state = JSON.parse(await docker('inspect', container))[0];
-  const mapping = state.NetworkSettings.Ports['5432/tcp'][0];
-  assert.equal(mapping.HostIp, '127.0.0.1');
-  url = `postgresql://elyqreth_test:${password}@127.0.0.1:${mapping.HostPort}/${database}`;
+  const port = postgresPort(state, service);
+  url = `postgresql://elyqreth_test:${password}@127.0.0.1:${port}/${database}`;
   config = validateEnvironment({ NODE_ENV: 'test', DATABASE_URL: url, DATABASE_SSL_MODE: 'disable' });
-  const connection = { host: '127.0.0.1', port: Number(mapping.HostPort), user: 'elyqreth_test', password,
+  const connection = { host: '127.0.0.1', port, user: 'elyqreth_test', password,
     connectionTimeoutMillis: 5000, statement_timeout: 10000 };
   admin = new Pool({ ...connection, database: 'postgres', max: 1 });
   admin.on('error', () => {});
   assert.match(database, /^elyqreth_test_[a-f0-9]{24}$/);
   await admin.query(`CREATE DATABASE "${database}"`);
+  databaseCreated = true;
   await migrateDatabase(config.database);
   pool = new Pool({ ...connection, database, max: 5 });
   pool.on('error', () => {}); // A test intentionally restarts this isolated server.
 }, { timeout: 120_000 });
 
 after(async () => {
-  await pool?.end(); await admin?.end();
+  if (pool && !pool.ended) await pool.end();
+  if (admin && !admin.ended) await admin.end();
+  if (service && databaseCreated) {
+    const state = JSON.parse(await docker('inspect', container))[0];
+    assertPostgresService(state, service, image);
+    const cleanup = new Pool({ host: '127.0.0.1', port: postgresPort(state, service), user: 'elyqreth_test', password,
+      database: 'postgres', max: 1, connectionTimeoutMillis: 5000, statement_timeout: 10000 });
+    try {
+      for (const name of testDatabases(database)) {
+        await cleanup.query(`DROP DATABASE IF EXISTS "${name}" WITH (FORCE)`);
+      }
+    } finally { await cleanup.end(); }
+  }
   // Verify exact identity/labels before removing this run's disposable resources.
   if (containerCreated) {
     const state = JSON.parse(await docker('inspect', container))[0];
@@ -118,7 +136,7 @@ test('fresh migration creates the complete schema, no business seed, and reappli
   assert.equal((await row('SELECT id FROM tasks WHERE id=$1', [f.task.id])).id, f.task.id);
   assert.equal((await row('SELECT count(*)::int AS count FROM drizzle.__drizzle_migrations')).count, migrationCount);
   const command = process.platform === 'win32' ? (process.env.ComSpec || 'cmd.exe') : 'npm';
-  const args = process.platform === 'win32' ? ['/d', '/s', '/c', 'npm run db:migrate'] : ['run', 'db:migrate'];
+  const args = process.platform === 'win32' ? ['/d', '/s', '/c', 'npm run db:migrate:compiled --workspace=@elyqreth/api'] : ['run', 'db:migrate:compiled', '--workspace=@elyqreth/api'];
   const cli = await run(command, args, { cwd: join(__dirname, '../../..'), timeout: 60_000,
     env: { ...process.env, NODE_ENV: 'test', API_HOST: '127.0.0.1', API_PORT: '3001',
       CORS_ORIGINS: 'http://localhost:5173', DATABASE_URL: url, DATABASE_SSL_MODE: 'disable',
@@ -303,9 +321,8 @@ test('committed data and migration journal survive a real PostgreSQL container r
   await waitReady();
   // Docker may reassign a random host port on restart; resolve it again.
   const state = JSON.parse(await docker('inspect', container))[0];
-  const mapping = state.NetworkSettings.Ports['5432/tcp'][0];
-  assert.equal(mapping.HostIp, '127.0.0.1');
-  url = `postgresql://elyqreth_test:${password}@127.0.0.1:${mapping.HostPort}/${database}`;
+  const port = postgresPort(state, service);
+  url = `postgresql://elyqreth_test:${password}@127.0.0.1:${port}/${database}`;
   config = validateEnvironment({ NODE_ENV: 'test', DATABASE_URL: url, DATABASE_SSL_MODE: 'disable' });
   const db = config.database;
   pool = new Pool({ host: db.host, port: db.port, database: db.database, user: db.user, password: db.password, max: 5, connectionTimeoutMillis: 5000 });
