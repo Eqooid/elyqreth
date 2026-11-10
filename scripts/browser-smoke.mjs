@@ -49,6 +49,15 @@ async function evaluate(expression) {
 }
 const state = () => evaluate("JSON.parse(document.getElementById('city-state').textContent || 'null')");
 const click = id => evaluate(`document.getElementById(${JSON.stringify(id)}).click()`);
+async function reloadPage() {
+  const previousDocument = await evaluate('performance.timeOrigin');
+  // Register before reloading: the old city DOM can still satisfy readiness
+  // predicates until navigation commits. Wait for the new document to load.
+  const loaded = waitEvent('Page.loadEventFired');
+  await command('Page.reload');
+  await loaded;
+  assert.notEqual(await evaluate('performance.timeOrigin'), previousDocument, 'Reload retained the previous document');
+}
 try {
   let origin;
   if(process.env.BROWSER_BASE_URL){
@@ -242,14 +251,14 @@ try {
   await click('reset'); await until(async () => (await state()).mission.phase === 'idle', 'Reset failed');
   checkpoints.push('Existing simulated mission start, pause, resume and reset');
   await command('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
-  await command('Page.reload');
+  await reloadPage();
   await until(async () => { try { return (await state())?.agents.length === 4; } catch { return false; } }, 'Mobile city did not initialize');
   assert.equal(await evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
   checkpoints.push('Mobile reload and viewport');
   let phase3Profile;
   if(process.env.BROWSER_PROFILE_PHASE3==='true'){
     await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
-    await command('Page.reload');
+    await reloadPage();
     await until(async()=>{try{return (await state())?.agents.length===4;}catch{return false;}},'Profiling city did not initialize');
     phase3Profile=await profileCity({command,evaluate,state});
     checkpoints.push('T09 measured frame/heap/DOM samples and 300 integration mount/dispose cycles');
