@@ -31,6 +31,7 @@
         "test:database-roles": "npm run build && node --test apps/api/test/database-roles.integration.cjs",
         "test:db": "npm run test:db --workspace @elyqreth/api",
         "test:browser": "node scripts/browser-smoke.mjs",
+        "check:city": "node scripts/validate-city.mjs",
         "test:docker": "node scripts/docker-smoke.mjs",
         "test:containers": "node scripts/container-hardening.mjs",
         "test:city:e2e": "npm run build && node scripts/city-acceptance.mjs",

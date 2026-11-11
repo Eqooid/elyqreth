@@ -1,0 +1,56 @@
+{
+  "status": "COMPLETE — VERIFIED",
+  "date": "2026-11-11",
+  "timezone": "Asia/Bangkok",
+  "runtime": {
+    "node": "v24.22.2",
+    "npm": "11.19.1",
+    "executable": "C:\\Users\\user\\AppData\\Local\\Temp\\elyqreth-audit-node-24.22.2\\node.exe",
+    "compatible": true,
+    "signature": "Valid OpenJS Foundation Authenticode",
+    "selection": "Process-local PATH; existing portable runtime; no system-wide change"
+  },
+  "checks": {
+    "frontend": {
+      "command": "npm.cmd test",
+      "passed": 264,
+      "failed": 0,
+      "skipped": 0
+    },
+    "lint": {
+      "command": "npm.cmd run lint",
+      "status": "PASS"
+    },
+    "build": {
+      "command": "npm.cmd run build:web",
+      "status": "PASS"
+    },
+    "browser": {
+      "command": "npm.cmd run test:browser",
+      "status": "PASS",
+      "browser": "Chrome/157.0.8103.39",
+      "exceptions": 0
+    },
+    "dynamic": {
+      "workplace": "PASS",
+      "cafe": "PASS",
+      "trees": "PASS",
+      "bridges": "PASS"
+    },
+    "baseline": {
+      "preservedFiles": 18,
+      "unchanged": true
+    }
+  },
+  "review": "Chronological contact sheets (all ten), matched by SHA-256 to the independently captured first-run sequences; production movement traces and exact unchanged-NPC-region checks. WebM recordings are available alongside the reviewed frames.",
+  "limitations": [
+    "Bridge full-frame readback differences occur outside the NPC region; the first diagnostic pair differs in 16 water pixels. See report and per-scenario readbackDifferences. No confirmed NPC rendering defect.",
+    "Isolated existing-simulation fixtures; controlled initial positions, no unrelated ambient visitors.",
+    "No live database/provider/orchestrator end-to-end rerun, long-duration soak or quantitative performance guarantee."
+  ],
+  "applicationFixes": [],
+  "baselineOverwrites": 0,
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

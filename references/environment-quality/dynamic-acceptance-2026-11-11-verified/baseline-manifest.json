@@ -1,0 +1,74 @@
+[
+  {
+    "path": "references/environment-quality/after/boundary.png",
+    "hash": "822D97C2C8CD8DB645DBA849F88921894F9A03A8FD0A323A190E0B58E486CDE1"
+  },
+  {
+    "path": "references/environment-quality/after/building-block.png",
+    "hash": "01207E6A286C97AB9B333781CEACD71524E0917C9BB2ABE731A817BCD511FE0A"
+  },
+  {
+    "path": "references/environment-quality/after/cafe.png",
+    "hash": "CAACD059F5191B051135DEA6F9FC191E90E0D44672C1FD42D59AA4DBDB9B97D8"
+  },
+  {
+    "path": "references/environment-quality/after/intersection.png",
+    "hash": "D846D0898C7FBCFF3A309556776C43E7C5DA9BA298B46F90FE82E4618751FF10"
+  },
+  {
+    "path": "references/environment-quality/after/npc-entrance.png",
+    "hash": "9A00E4DDD4AB55B2086D2CAFE964481F2C21CBF2D4C0292EADD07D2B619BDA8C"
+  },
+  {
+    "path": "references/environment-quality/after/park.png",
+    "hash": "762C06DD669D592A99CE782437B5A1F96A97C4898A9FD1FC3E20BF4907D31B25"
+  },
+  {
+    "path": "references/environment-quality/after/scenarios.json",
+    "hash": "A362E2DA12595048207908263CF61E7FE1D55EF7F58F57B4C1641829C456BBFB"
+  },
+  {
+    "path": "references/environment-quality/after/sidewalk.png",
+    "hash": "362DB8CA0B1367CA5B2D87CDE0DC2899E3D8BD1EBC54F3A21246401144EDD1C1"
+  },
+  {
+    "path": "references/environment-quality/after/transitions.png",
+    "hash": "3E8EA3221D19611279D867DEFB0A640BF94556AC76033C1718112A10DAD837F0"
+  },
+  {
+    "path": "references/environment-quality/before/boundary.png",
+    "hash": "822D97C2C8CD8DB645DBA849F88921894F9A03A8FD0A323A190E0B58E486CDE1"
+  },
+  {
+    "path": "references/environment-quality/before/building-block.png",
+    "hash": "BC271590FA53D112C5F63C0DE9C7AF278820558866E32591DC146825CA77D35A"
+  },
+  {
+    "path": "references/environment-quality/before/cafe.png",
+    "hash": "DDB3E34D7ACF1E0BE4C1375FBF8516934CA5B23B2111E023E922AEC197EBC7D3"
+  },
+  {
+    "path": "references/environment-quality/before/intersection.png",
+    "hash": "68730AFDFC77868F5E248C2D3793837A92B66C832872E2ECDE53204B5A0BA7FB"
+  },
+  {
+    "path": "references/environment-quality/before/npc-entrance.png",
+    "hash": "A5144DD2292A3E7A0E649D9B04F962040754FFEDBD9DFEA025DB668C241CC006"
+  },
+  {
+    "path": "references/environment-quality/before/park.png",
+    "hash": "83A5C87067EBE9F08C5CF37AF67EFD9E0EF1DABB3271F9960B1EA2A93467EDF3"
+  },
+  {
+    "path": "references/environment-quality/before/scenarios.json",
+    "hash": "A362E2DA12595048207908263CF61E7FE1D55EF7F58F57B4C1641829C456BBFB"
+  },
+  {
+    "path": "references/environment-quality/before/sidewalk.png",
+    "hash": "0FB24411E1FF464FE4596BEE071837F58E04EEC22CECC2427071F7A407115B08"
+  },
+  {
+    "path": "references/environment-quality/before/transitions.png",
+    "hash": "ACE3D555A283A2C3E8D78E990AD0EBD09C6B68AE55AF2EEFC50B90E3B0BF0728"
+  }
+]

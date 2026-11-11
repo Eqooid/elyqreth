@@ -1,0 +1,623 @@
+{
+  "browserChecks": "PASS",
+  "visualReview": "PASS",
+  "reports": [
+    {
+      "kind": "workplace",
+      "done": true,
+      "camera": {
+        "x": 1128,
+        "y": 632,
+        "zoom": 2
+      },
+      "viewport": {
+        "width": 640,
+        "height": 480,
+        "dpr": 1
+      },
+      "seed": 29,
+      "ticks": 1620,
+      "videoFrames": 324,
+      "seconds": 53.999999999999496,
+      "states": [
+        "IDLE",
+        "WALKING",
+        "WALKING_TO_WORK",
+        "WORKING",
+        "COMPLETED"
+      ],
+      "activitySteps": [],
+      "workingAt": 32.86666666666736,
+      "completedLegs": 0,
+      "goals": [],
+      "stats": {
+        "started": 0,
+        "seated": 0,
+        "sips": 0,
+        "conversations": 0,
+        "completed": 0,
+        "interrupted": 0,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {},
+        "encounters": 0,
+        "marketEntries": 0,
+        "homeReturns": 0,
+        "readingFrames": 0,
+        "orders": 0,
+        "drinksServed": 0,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 0,
+        "cleaningStops": 0,
+        "passengersBoarded": 0,
+        "passengersAlighted": 0,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 0,
+          "household": 0
+        }
+      },
+      "reservations": [],
+      "errors": [],
+      "readbackDifferences": [],
+      "mimeType": "video/webm;codecs=vp9",
+      "samples": 18
+    },
+    {
+      "kind": "cafe",
+      "done": true,
+      "camera": {
+        "x": 1688,
+        "y": 288,
+        "zoom": 1.7
+      },
+      "viewport": {
+        "width": 640,
+        "height": 480,
+        "dpr": 1
+      },
+      "seed": 29,
+      "ticks": 2144,
+      "videoFrames": 429,
+      "seconds": 71.46666666666518,
+      "states": [
+        "WALKING",
+        "QUEUING",
+        "ORDERING_COFFEE",
+        "WAITING_FOR_COFFEE",
+        "RECEIVING_DRINK",
+        "WALKING_TO_CAFE",
+        "SITTING",
+        "DRINKING_COFFEE",
+        "LEAVING_CAFE",
+        "IDLE"
+      ],
+      "activitySteps": [
+        "queue",
+        "order",
+        "prepare",
+        "receive",
+        "drink",
+        "leave-coffee"
+      ],
+      "workingAt": null,
+      "completedLegs": 0,
+      "goals": [],
+      "stats": {
+        "started": 1,
+        "seated": 1,
+        "sips": 11,
+        "conversations": 0,
+        "completed": 1,
+        "interrupted": 0,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {
+          "coffee": {
+            "started": 1,
+            "completed": 1,
+            "interrupted": 0
+          }
+        },
+        "encounters": 0,
+        "marketEntries": 0,
+        "homeReturns": 0,
+        "readingFrames": 0,
+        "orders": 1,
+        "drinksServed": 1,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 0,
+        "cleaningStops": 0,
+        "passengersBoarded": 0,
+        "passengersAlighted": 0,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 0,
+          "household": 0
+        }
+      },
+      "reservations": [],
+      "errors": [],
+      "readbackDifferences": [],
+      "mimeType": "video/webm;codecs=vp9",
+      "samples": 27
+    },
+    {
+      "kind": "trees",
+      "done": true,
+      "camera": {
+        "x": 1624,
+        "y": 600,
+        "zoom": 2.5
+      },
+      "viewport": {
+        "width": 640,
+        "height": 480,
+        "dpr": 1
+      },
+      "seed": 29,
+      "ticks": 112,
+      "videoFrames": 23,
+      "seconds": 3.73333333333333,
+      "states": [
+        "WALKING"
+      ],
+      "activitySteps": [],
+      "workingAt": null,
+      "completedLegs": 4,
+      "goals": [
+        {
+          "col": 103,
+          "row": 36
+        },
+        {
+          "col": 103,
+          "row": 40
+        },
+        {
+          "col": 99,
+          "row": 40
+        },
+        {
+          "col": 99,
+          "row": 36
+        }
+      ],
+      "stats": {
+        "started": 0,
+        "seated": 0,
+        "sips": 0,
+        "conversations": 0,
+        "completed": 0,
+        "interrupted": 0,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {},
+        "encounters": 0,
+        "marketEntries": 0,
+        "homeReturns": 0,
+        "readingFrames": 0,
+        "orders": 0,
+        "drinksServed": 0,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 0,
+        "cleaningStops": 0,
+        "passengersBoarded": 0,
+        "passengersAlighted": 0,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 0,
+          "household": 0
+        }
+      },
+      "reservations": [],
+      "errors": [],
+      "readbackDifferences": [],
+      "mimeType": "video/webm;codecs=vp9",
+      "samples": 10
+    },
+    {
+      "kind": "bridges",
+      "done": true,
+      "camera": {
+        "x": 928,
+        "y": 580,
+        "zoom": 1.35
+      },
+      "viewport": {
+        "width": 640,
+        "height": 480,
+        "dpr": 1
+      },
+      "seed": 29,
+      "ticks": 576,
+      "videoFrames": 116,
+      "seconds": 19.200000000000113,
+      "states": [
+        "WALKING"
+      ],
+      "activitySteps": [],
+      "workingAt": null,
+      "completedLegs": 5,
+      "goals": [
+        {
+          "col": 67,
+          "row": 44
+        },
+        {
+          "col": 49,
+          "row": 44
+        },
+        {
+          "col": 49,
+          "row": 28
+        },
+        {
+          "col": 65,
+          "row": 28
+        },
+        {
+          "col": 49,
+          "row": 28
+        }
+      ],
+      "stats": {
+        "started": 0,
+        "seated": 0,
+        "sips": 0,
+        "conversations": 0,
+        "completed": 0,
+        "interrupted": 0,
+        "routeFailures": 0,
+        "routeDiagnostics": [],
+        "waits": 0,
+        "byActivity": {},
+        "encounters": 0,
+        "marketEntries": 0,
+        "homeReturns": 0,
+        "readingFrames": 0,
+        "orders": 0,
+        "drinksServed": 0,
+        "foodConsumed": 0,
+        "householdDeliveries": 0,
+        "courierDeliveries": 0,
+        "cleaningStops": 0,
+        "passengersBoarded": 0,
+        "passengersAlighted": 0,
+        "shoppingOutcomes": {
+          "window": 0,
+          "food": 0,
+          "household": 0
+        }
+      },
+      "reservations": [],
+      "errors": [],
+      "readbackDifferences": [
+        {
+          "time": 0,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 1,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 2,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            176,
+            256,
+            183,
+            256
+          ]
+        },
+        {
+          "time": 2.5,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 3.5,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 4,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 4.667,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            176,
+            256,
+            183,
+            256
+          ]
+        },
+        {
+          "time": 5.167,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 6.167,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 7.167,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            176,
+            256,
+            183,
+            256
+          ]
+        },
+        {
+          "time": 8.333,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 10.333,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 10.833,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 11.333,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 11.833,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 13,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 13.5,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 15,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 15.5,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 15.667,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 16.167,
+          "changed": 24,
+          "npcChanged": 0,
+          "bounds": [
+            256,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 16.667,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 17.167,
+          "changed": 16,
+          "npcChanged": 0,
+          "bounds": [
+            352,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 17.667,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 18.167,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 18.667,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 19.167,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        },
+        {
+          "time": 19.2,
+          "changed": 8,
+          "npcChanged": 0,
+          "bounds": [
+            360,
+            256,
+            367,
+            256
+          ]
+        }
+      ],
+      "mimeType": "video/webm;codecs=vp9",
+      "samples": 44
+    }
+  ],
+  "reviewMethod": "Chronological contact sheets (all ten), matched by SHA-256 to the independently captured first-run sequences; production movement traces and exact unchanged-NPC-region checks. WebM recordings are available alongside the reviewed frames.",
+  "reviewedScenarios": {
+    "workplace": "PASS",
+    "cafe": "PASS",
+    "trees": "PASS",
+    "bridges": "PASS"
+  },
+  "nonblockingFinding": "Bridge full-frame readback differences occur outside the NPC region; the first diagnostic pair differs in 16 water pixels. See report and per-scenario readbackDifferences. No confirmed NPC rendering defect."
+}

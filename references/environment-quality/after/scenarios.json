@@ -1,0 +1,58 @@
+[
+  {
+    "id": "intersection",
+    "x": 768,
+    "y": 384,
+    "zoom": 2,
+    "stable": true
+  },
+  {
+    "id": "building-block",
+    "x": 400,
+    "y": 210,
+    "zoom": 1.2,
+    "stable": true
+  },
+  {
+    "id": "cafe",
+    "x": 1696,
+    "y": 280,
+    "zoom": 1.5,
+    "stable": true
+  },
+  {
+    "id": "park",
+    "x": 480,
+    "y": 670,
+    "zoom": 1.5,
+    "stable": true
+  },
+  {
+    "id": "transitions",
+    "x": 928,
+    "y": 460,
+    "zoom": 1.5,
+    "stable": true
+  },
+  {
+    "id": "boundary",
+    "x": 1760,
+    "y": 900,
+    "zoom": 1.2,
+    "stable": true
+  },
+  {
+    "id": "npc-entrance",
+    "x": 440,
+    "y": 568,
+    "zoom": 2,
+    "stable": true
+  },
+  {
+    "id": "sidewalk",
+    "x": 1664,
+    "y": 568,
+    "zoom": 2,
+    "stable": true
+  }
+]

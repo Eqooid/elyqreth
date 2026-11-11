@@ -1,5 +1,5 @@
 import {THEME} from './theme.js';
-import {TILE,containedArtwork,building} from './world.js';
+import {TILE,containedArtwork} from './world.js';
 
 // Decorative objects never participate in workplace assignment or task processing.
 // Art extends above a ground footprint, like a tree canopy; navigation uses only
@@ -75,13 +75,13 @@ const prop=(id,type,x,y,options={})=>createScenery(id,type,[Math.floor(x/TILE),M
 // Deliberate infill: commercial bins, residential furniture and a few garden
 // accents. Existing entrances, crossroads and activity anchors remain clear.
 export const URBAN_DETAILS=[
- prop('terrace-cafe-bin','bin',1842,296),
- prop('residence-east-planter','planter',696,904),
- prop('terrace-square-tree-west','tree',1624,616,{width:56,height:74}),
- prop('terrace-square-tree-east','tree',1784,504,{width:56,height:74}),
- prop('terrace-square-planter','planter',1608,472),
- prop('dock-promenade-bin','bin',1352,952),
- prop('residence-garden-lamp','lamp',440,984)
+ prop('terrace-cafe-bin','bin',1842,296,{context:'commercial'}),
+ prop('residence-east-planter','planter',696,904,{context:'residential'}),
+ prop('terrace-square-tree-west','tree',1624,616,{width:56,height:74,context:'park'}),
+ prop('terrace-square-tree-east','tree',1784,504,{width:56,height:74,context:'park'}),
+ prop('terrace-square-planter','planter',1608,472,{context:'park'}),
+ prop('dock-promenade-bin','bin',1352,952,{context:'promenade'}),
+ prop('residence-garden-lamp','lamp',440,984,{context:'residential'})
 ];
 export const STREET_OBJECTS=[
  ...URBAN_DETAILS,
@@ -107,7 +107,7 @@ export const STREET_OBJECTS=[
  collision:null,collisionParts:[{col:50,row:30,columns:1,rows:3},{col:65,row:30,columns:1,rows:3}],depth:438}),
  traced('lower-canal-footbridge','canalBridge',[784,682,286,64],[50,43,16,3],{
  collision:null,depth:686}),
- prop('station-vent','vent',813,757,{collision:null,depth:building('station').depth+1}),
- prop('apartment-tank','tank',98,804,{collision:null,depth:1024})
+ prop('station-vent','vent',813,757,{collision:null,roofHostId:'station'}),
+ prop('apartment-tank','tank',98,804,{collision:null,roofHostId:'foreground-west-residences'})
 ];
 export const SCENERY=[...DECORATIVE_BUILDINGS,...STREET_OBJECTS];

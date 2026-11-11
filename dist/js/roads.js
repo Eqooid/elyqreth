@@ -1,6 +1,7 @@
 import {THEME} from './theme.js';
 import {TILE,WORLD} from './world.js';
 import {TERRAIN} from './tile-map.js';
+import {tileVariation} from './environment-quality.js';
 const PAVING=new Set([TERRAIN.SIDEWALK,TERRAIN.PLAZA,TERRAIN.CONCRETE,TERRAIN.FLOOR]);
 const GROUND_EDGES=[[-1,0,0,0,1,TILE],[1,0,TILE-1,0,1,TILE],[0,-1,0,0,TILE,1],[0,1,0,TILE-1,TILE,1]];
 
@@ -52,7 +53,8 @@ export class RoadRenderer{
  drawTile(c,col,row,tile){
  const x=col*TILE,y=row*TILE,alley=tile.surface===2;
  c.fillStyle=alley?THEME.road.alley:THEME.road.asphalt;c.fillRect(x,y,TILE,TILE);
- for(let i=0;i<10;i++){c.fillStyle=THEME.road.grain[i%2];c.fillRect(x+(col*7+row*3+i*5)%TILE,y+(row*11+col*3+i*7)%TILE,1,1);}
+ const variation=tileVariation(col,row,tile.surface);
+ for(let i=0;i<10;i++){c.fillStyle=THEME.road.grain[i%2];c.fillRect(x+((variation&15)+i*5)%TILE,y+(((variation>>>8)&15)+i*7)%TILE,1,1);}
  if(alley){c.fillStyle='#181e28';if(col%2===0)c.fillRect(x+TILE-1,y,1,TILE);}
  else if((col+row*7)%9===0){c.fillStyle='#131d2b';c.fillRect(x+3,y+7,5,1);c.fillRect(x+7,y+8,3,1);}
  // Shared edges are omitted. This is the same rule for straight, corner, T and
@@ -63,6 +65,7 @@ export class RoadRenderer{
  if(!(tile.mask&8))c.fillRect(x,y,4,TILE);if(!(tile.mask&2))c.fillRect(x+TILE-4,y,4,TILE);
  c.fillStyle=THEME.road.curb;if(!(tile.mask&1))c.fillRect(x,y,TILE,1);if(!(tile.mask&4))c.fillRect(x,y+TILE-1,TILE,1);
  if(!(tile.mask&8))c.fillRect(x,y,1,TILE);if(!(tile.mask&2))c.fillRect(x+TILE-1,y,1,TILE);
+ for(const [i,dx,dy]of [[0,0,0],[1,TILE-1,0],[2,TILE-1,TILE-1],[3,0,TILE-1]])if(tile.cornerMask&(1<<i))c.fillRect(x+dx,y+dy,1,1);
  // Sparse drains are aligned to curb runs, not scattered across the asphalt.
  if(!alley&&col%12===6&&!(tile.mask&4)){c.fillStyle='#101925';c.fillRect(x+4,y+TILE-5,8,3);c.fillStyle='#394551';for(let k=0;k<4;k++)c.fillRect(x+4+k*2,y+TILE-5,1,2);}
  }

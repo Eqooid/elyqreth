@@ -8,6 +8,7 @@ export function junctionKind(mask){
  return mask?'terminal':'isolated';
 }
 const contains=([x,y,w,h],col,row)=>col>=x&&col<x+w&&row>=y&&row<y+h;
+const CORNERS=[[1,8,-1,-1],[1,2,1,-1],[4,2,1,1],[4,8,-1,1]];
 
 export class RoadNetwork{
  constructor(segments=ROADS,nodes=STREET_NODES){
@@ -19,7 +20,7 @@ export class RoadNetwork{
  this.junctions=nodes.map(n=>({...n,mask:this.nodeMask(n),kind:junctionKind(this.nodeMask(n)),segments:segments.filter(s=>s.from===n.id||s.to===n.id).map(s=>s.id)}));
  this.validate();
  }
- at(col,row){return col>=0&&row>=0&&col<WORLD.columns&&row<WORLD.rows?this.cells[row*WORLD.columns+col]:0;}
+ at(col,row){return Number.isInteger(col)&&Number.isInteger(row)&&col>=0&&row>=0&&col<WORLD.columns&&row<WORLD.rows?this.cells[row*WORLD.columns+col]:0;}
  nodeMask(node){let mask=0;for(const s of this.segments.filter(s=>s.from===node.id||s.to===node.id)){
  const other=this.nodeById.get(s.from===node.id?s.to:s.from);if(!other)continue;
  mask|=other.col>node.col?2:other.col<node.col?8:other.row>node.row?4:1;
@@ -28,7 +29,10 @@ export class RoadNetwork{
  descriptor(col,row){
  const junction=this.junctions.find(n=>!n.endpoint&&Math.abs(col+.5-n.col)<2&&Math.abs(row+.5-n.row)<2);
  const segment=this.segments.find(s=>contains(s.tiles,col,row));
- return {kind:junction?.kind||(`straight-${segment?.axis||'horizontal'}`),mask:this.adjacency(col,row),surface:this.at(col,row)};
+ const mask=this.adjacency(col,row);
+ // Concave corners need a one-pixel join even when both cardinal edges are open.
+ const cornerMask=CORNERS.reduce((result,[a,b,dx,dy],i)=>result|((mask&a)&&(mask&b)&&!this.at(col+dx,row+dy)?1<<i:0),0);
+ return {kind:junction?.kind||(`straight-${segment?.axis||'horizontal'}`),mask,cornerMask,surface:this.at(col,row)};
  }
  components(predicate=()=>true){const visited=new Set(),components=[];
  for(let r=0;r<WORLD.rows;r++)for(let c=0;c<WORLD.columns;c++){const index=r*WORLD.columns+c;if(!this.at(c,r)||visited.has(index)||!predicate(c,r))continue;

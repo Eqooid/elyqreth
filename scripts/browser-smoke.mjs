@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {verifyAccessPanel} from './access-panel-browser.mjs';
 import {verifyTerrain} from './terrain-browser.mjs';
+import {verifyEnvironment} from './environment-browser.mjs';
+import {verifyDynamicEnvironment} from './environment-dynamic-browser.mjs';
 import { spawn } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -132,6 +134,8 @@ try {
     checkpoints.push('T10 real PostgreSQL / authorized HTTP / native browser fetch / genuine runtime / NPC inspection acceptance');
   }else{
   checkpoints.push(await verifyTerrain({evaluate}));
+  checkpoints.push(await verifyEnvironment({evaluate}));
+  if(process.env.ENVIRONMENT_DYNAMIC_DIR)checkpoints.push(await verifyDynamicEnvironment({evaluate}));
   const runtimeBoundary=await evaluate("(async()=>{const a=await import('/js/runtime/index.js'),b=await import('/js/runtime/index.js');return {shared:a.runtimeIntegration===b.runtimeIntegration,phase:a.runtimeIntegration.getSnapshot().phase,agents:Object.keys(a.runtimeIntegration.view.getSnapshot().activitiesByAgentId).length};})()");
   assert.equal(runtimeBoundary.shared,true);assert.equal(runtimeBoundary.phase,'DISCONNECTED');assert.equal(runtimeBoundary.agents,0);
   checkpoints.push('Shared runtime integration loads disabled and credential-free without city API requests');

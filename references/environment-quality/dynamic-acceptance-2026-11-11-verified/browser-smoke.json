@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "browser": "Chrome/157.0.8103.39",
+  "checkpoints": [
+    "Canvas draws; city clock/environment, four agents and decorative citizens run without API",
+    "T03 interaction data client imports in the real browser without credentials, timers or startup API requests",
+    "Continuous ground swatches: matching edges, opaque cells and no Canvas gaps at six zoom levels",
+    "Eight fixed-seed environment cameras render identical consecutive frames (960x640, DPR 1, time 0)",
+    "Four dynamic environment sequences recorded using production movement; path continuity, walkability, activities and exact unchanged-NPC-region checks passed; manual visual review required",
+    "Shared runtime integration loads disabled and credential-free without city API requests",
+    "P4 T04 real browser fixture: existing inspector form, safe text, eligibility, validation, duplicate guard, close/reopen, saved-not-started reference, exact-key lost-response recovery and unbound preservation",
+    "P5 T10 collaboration DOM: memberships, multiple directed relationships, native detail permission, external freshness/XSS, history, outage/reconnect, focus, mobile, Agent/session isolation",
+    "T06 mocked transport: real T04/T05 pipeline, selected NPC inspector, Canvas running/waiting/completed/failed/stale/recovery and binding removal",
+    "T07 projection-only inspection: current/historical selection, single outcome timeline, expansion/focus preservation, NPC switch isolation and authorization cleanup",
+    "T08 mocked multi-Agent outage: independent A/B states, selection during disconnection and automatic authoritative poll reconciliation",
+    "NPC runtime binding sidecar indexes four stable slots without creating NPCs or backend requests",
+    "Camera zoom/focus/recenter and help/developer panels",
+    "Existing simulated mission start, pause, resume and reset",
+    "Mobile reload and viewport",
+    "T04 local login, /me, 403 isolation, 401 expiry, cleanup, late-response rejection, reauthentication, cross-tab logout and OIDC token-only UI"
+  ],
+  "resourceRequests": 218,
+  "exceptions": 0,
+  "limitations": "Smoke checks only; no visual-diff baseline, FPS threshold, complete gesture or long-duration browser test."
+}
